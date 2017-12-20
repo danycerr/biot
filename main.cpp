@@ -1,7 +1,7 @@
 /**************************************************************************/
 /*  main program.                                                         */
 /**************************************************************************/
-#include "biot.hpp"
+#include "biot_ls.hpp"
 
 
 int main(int argc, char *argv[]) {
@@ -10,21 +10,23 @@ int main(int argc, char *argv[]) {
   FE_ENABLE_EXCEPT;        // Enable floating point exception for Nan.
 
   try {    
-    biot_problem p;
-     p.init();
+    biotls_problem p;
+    p.init();
 
 
-     double dt=1.e-3;
+     double dt=0.5e+8;
      p.assembly_p(dt); 
      p.assembly_u(dt);
      p.build_fix_stress_preconditioner();
-     int n_step=200;
-     for(int istep=0; istep<n_step; istep++)
+     int n_step=80;
+     for(int istep=1; istep<n_step; istep++)
      {
-       // p.solve_fix_stress(dt, 2000);
+         
+       if (istep<40) p.update_ls(istep*dt);
+       p.solve_fix_stress(dt, 2000);
        
-        p.assembly(dt);
-        p.solve();
+      //    p.assembly(dt);
+      //   p.solve();
        
        
        p.print(istep);
