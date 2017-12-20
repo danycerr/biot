@@ -1,5 +1,5 @@
-#ifndef BIOT_H
-#define BIOT_H
+#ifndef BIOTLS_H
+#define BIOTLS_H
 /*===========================================================================
 
  Copyright (C) 2002-2016 Yves Renard, Julien Pommier.
@@ -32,6 +32,9 @@
 #include "getfem/getfem_superlu.h"
 #include "getfem/getfem_models.h"
 #include "getfem/getfem_model_solvers.h" // for preconditioners
+#include "getfem/getfem_mesh_im_level_set.h"
+#include "getfem/getfem_mesh_level_set.h"
+#include "getfem/getfem_mesh_fem_level_set.h"
 
 #include "gmm/gmm.h"
 
@@ -62,13 +65,13 @@ struct problem_descriptor_tri{
 	std::string INTEGRATION =       "IM_TRIANGLE(6)";
     std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; 
     std::string datafilename="laplace"; 
-    int nsubdiv=5; // subdivision of the sqaured mesh
+    int nsubdiv=50; // subdivision of the sqaured mesh
     double E=1.e+10;
 	double poisson =0.3;
 	double mu_s = E/( 2 * ( 1 + poisson) ) ;
 	double lambda_l= E*poisson/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;
 	double biot_modulus=1.e+9;
-	double k =1.e-10; //permeability
+	double k =1.e-13; //permeability
 	double alpha=1; // Biot coefficient
     };
     
@@ -107,16 +110,27 @@ struct problem_descriptor_quad_3d{
     };
 
 //   structure for the Laplacian problem
-class biot_problem {
+class biotls_problem {
     private:
       getfem::mesh mesh;
       getfem::mesh_im mim;      /// the integration methods
       getfem::mesh_fem mf_u;    /// the main mesh_fem, for the displacement solution
       getfem::mesh_fem mf_p;    /// the main mesh_fem, for the pressure solution
       getfem::mesh_fem mf_rhs;  /// the mesh_fem for the right hand side(f(x),..)
+      // Levelset
+      getfem::level_set ls; // create a levelset
+      getfem::mesh_level_set mls;
+      getfem::mesh mesh_ls;
+      getfem::mesh_im_level_set mim_ls_all;
+      getfem::mesh_im_level_set mim_ls_in;
+      getfem::mesh_im_level_set mim_ls_out;
+      getfem::mesh_im_level_set mim_ls_bd;
+      getfem::mesh_fem_level_set mfls, mfls_u, mfls_p;
+      getfem::mesh_fem_level_set mfls_u_old, mfls_p_old;
       problem_descriptor_tri p_des;
       enum { DIRICHLET_BOUNDARY_NUM = 10, NEUMANN_BOUNDARY_NUM = 11}; // descriptor for bcs flag
       enum { BOTTOM = 2, TOP = 1 , LEFT = 3, RIGHT =4}; // descriptor for zones
+      enum { CUT_REGION = 100, UNCUT_REGION = 200};
       size_type N_;             /// dimension of the problem
       
       ///  workspace configuration parameters---------------------
@@ -135,6 +149,10 @@ class biot_problem {
       void configure_workspace                          /// configure the workspace add constants
           (getfem::ga_workspace & workspace,                /// the workspace
            double dt);                                      /// timestep
+           
+      base_small_vector ls_function(const base_node P, 
+                                    double time=0,
+                                    int num = 0);
     public:
       void assembly(double dt);                         /// assemble the monolithic iteration matrix for the problem
       void assembly_p(double dt);                       /// assemble the iteration matrix for pressure, can be used as preconditioner
@@ -144,8 +162,17 @@ class biot_problem {
       void solve_fix_stress(double dt, int max_iter);   /// solves the system with classic fixed stress approach
       void init(void);                                  /// initial configuration for the problem 
       void print(int time=0);
-      biot_problem(void): mim(mesh), mf_u(mesh), mf_rhs(mesh), mf_p(mesh)
+      
+      void update_ls(double time=0);
+      biotls_problem(void): mim(mesh), mf_u(mesh), mf_rhs(mesh), mf_p(mesh)
       ,tau_(1), vmu_(1), bm_(1), lambda_(1),alpha_(1), permeability_(1), force_(1), beta_(1),penalty_(1)
+      // level set 
+      ,ls(mesh,2),mls(mesh),
+      mim_ls_all(mls, getfem::mesh_im_level_set::INTEGRATE_ALL),
+      mim_ls_in(mls, getfem::mesh_im_level_set::INTEGRATE_INSIDE),
+      mim_ls_out(mls, getfem::mesh_im_level_set::INTEGRATE_OUTSIDE),
+      mim_ls_bd(mls, getfem::mesh_im_level_set::INTEGRATE_BOUNDARY),
+      mfls(mls, mf_u), mfls_u(mls, mf_u), mfls_p(mls, mf_p), mfls_u_old(mls, mf_u), mfls_p_old(mls, mf_p)
       {}
 };
 
