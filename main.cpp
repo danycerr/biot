@@ -15,21 +15,21 @@ int main(int argc, char *argv[]) {
 
 
      double dt=0.5e+8;
-     p.assembly_p(dt); 
-     p.assembly_u(dt);
-     p.build_fix_stress_preconditioner();
-     int n_step=80;
+     // p.assembly_p(dt); 
+     // p.assembly_u(dt);
+     // p.build_fix_stress_preconditioner();
+     int n_step=20;
      for(int istep=1; istep<n_step; istep++)
      {
-         
-       if (istep<40) p.update_ls(istep*dt);
-       p.solve_fix_stress(dt, 2000);
+        double time=istep*dt;
+       //  if (istep<40) p.update_ls(istep*dt);
+       // p.solve_fix_stress(dt, 2000);
        
-      //    p.assembly(dt);
-      //   p.solve();
-       
-       
-       p.print(istep);
+       p.assembly(dt,time);
+       p.solve(time);
+              
+        p.print(istep);
+        p.update_ls(istep*dt);
    }
   }
   GMM_STANDARD_CATCH_ERROR;

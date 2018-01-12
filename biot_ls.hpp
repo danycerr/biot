@@ -55,17 +55,18 @@ typedef gmm::row_matrix<sparse_vector_type> sparse_matrix_type;
 typedef gmm::col_matrix<sparse_vector_type> col_sparse_matrix_type;
 typedef std::vector<scalar_type> plain_vector;
 
+#define LS_TYPE 1
 // Right hand side. Allows an interpolation for the source term.
 // scalar_type sol_f(const base_node &x) { return 10.; }
 
 struct problem_descriptor_tri{    
     std::string MESH_TYPE =         "GT_PK(2,1)" ; // triangular elements
-    std::string FEM_TYPE_U  =         "FEM_PK(2,2)";
+    std::string FEM_TYPE_U  =         "FEM_PK(2,1)";
     std::string FEM_TYPE_P  =         "FEM_PK(2,1)";
 	std::string INTEGRATION =       "IM_TRIANGLE(6)";
     std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; 
     std::string datafilename="laplace"; 
-    int nsubdiv=50; // subdivision of the sqaured mesh
+    int nsubdiv=10; // subdivision of the sqaured mesh
     double E=1.e+10;
 	double poisson =0.3;
 	double mu_s = E/( 2 * ( 1 + poisson) ) ;
@@ -89,7 +90,7 @@ struct problem_descriptor_quad{
 	double lambda_l= E*poisson/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;
 	double biot_modulus=1.e+18;
 	double k =1.e-4; //permeability
-	double alpha=1; // Biot coefficient
+	double alpha=0; // Biot coefficient
     };
 
 struct problem_descriptor_quad_3d{    
@@ -127,10 +128,12 @@ class biotls_problem {
       getfem::mesh_im_level_set mim_ls_bd;
       getfem::mesh_fem_level_set mfls, mfls_u, mfls_p;
       getfem::mesh_fem_level_set mfls_u_old, mfls_p_old;
+      std::vector<size_type> eXt_dof, eXt_dof_u;  // The extended dofs
+      size_type nb_x_dof_p, nb_x_dof_u;
       problem_descriptor_tri p_des;
       enum { DIRICHLET_BOUNDARY_NUM = 10, NEUMANN_BOUNDARY_NUM = 11}; // descriptor for bcs flag
       enum { BOTTOM = 2, TOP = 1 , LEFT = 3, RIGHT =4}; // descriptor for zones
-      enum { CUT_REGION = 100, UNCUT_REGION = 200};
+      enum { CUT_REGION = 100, UNCUT_REGION = 200, UNCUT_REGION_IN = 201, UNCUT_REGION_OUT = 202};
       size_type N_;             /// dimension of the problem
       
       ///  workspace configuration parameters---------------------
@@ -138,7 +141,7 @@ class biotls_problem {
                                alpha_, permeability_, force_,penalty_;
      // ---------------------------------------------------------
      sparse_matrix_type K;                                /// iteration matrix
-     std::vector<scalar_type> U, U_old, P,                /// diplacement, disp old, pressure
+     std::vector<scalar_type> U, U_old, P,  Px,           /// diplacement, disp old, pressure
                               P_old, B, UP;               /// main unknown, and right hand side
      sparse_matrix_type Kp, Ku;                           /// iteration matrix for fixed steres of tpreconditioner
      std::vector<scalar_type> U_iter, P_iter, Bp, Bu;     /// main unknown, and right hand side
@@ -154,11 +157,11 @@ class biotls_problem {
                                     double time=0,
                                     int num = 0);
     public:
-      void assembly(double dt);                         /// assemble the monolithic iteration matrix for the problem
+      void assembly(double dt,double time);                         /// assemble the monolithic iteration matrix for the problem
       void assembly_p(double dt);                       /// assemble the iteration matrix for pressure, can be used as preconditioner
       void assembly_u(double dt);                       /// assemble the iteration matrix for pressure, can be used as preconditioner
       void build_fix_stress_preconditioner();
-      void solve(void);                                 /// solves the monolithic system 
+      void solve(double time);                                 /// solves the monolithic system 
       void solve_fix_stress(double dt, int max_iter);   /// solves the system with classic fixed stress approach
       void init(void);                                  /// initial configuration for the problem 
       void print(int time=0);
