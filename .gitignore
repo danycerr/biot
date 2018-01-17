@@ -25,7 +25,7 @@
 *.la
 *.a
 *.lib
-
+*.vtk
 # Executables
 *.exe
 *.out

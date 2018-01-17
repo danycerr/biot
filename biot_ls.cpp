@@ -280,7 +280,7 @@ void biotls_problem::assembly(double dt,double time) {
 	//======= RHS =====================
     if(N_== 2 )	workspace.add_expression("[0,-(2200-1000)].Test_u", mim);
     else        workspace.add_expression("[0,0,-0].Test_u", mim_ls_in);
-    workspace.add_expression("+[+0.0e-6].Test_p*tau + (1/bm)*p_old.Test_p + alpha*Test_p*Div_u_old", mim_ls_in,UNCUT_REGION_IN);
+    workspace.add_expression("+[+1.0e-6].Test_p*tau + (1/bm)*p_old.Test_p + alpha*Test_p*Div_u_old", mim_ls_in,UNCUT_REGION_IN);
     workspace.set_assembled_vector(B);
     workspace.assembly(1);
     // gmm::copy(workspace.assembled_vector(),B);
@@ -326,9 +326,9 @@ void biotls_problem::assembly(double dt,double time) {
 	workspace.clear_expressions();
    /// end boundary contions
    
-    workspace.add_expression("1.e+28*p*Test_p *tau"	, mim_ls_out, UNCUT_REGION);
-  //  workspace.add_expression( "+(1/bm)*p.Test_p + tau*permeability*Grad_p.Grad_Test_p"
-   //                            "+ alpha*Test_p*Div_u", mim_ls_out, UNCUT_REGION);
+     workspace.add_expression("1.e+28*p*Test_p *tau"	, mim_ls_out, UNCUT_REGION);
+   // workspace.add_expression( "+(1/bm)*p.Test_p + tau*permeability*Grad_p.Grad_Test_p"
+    //                           "+ alpha*Test_p*Div_u", mim_ls_out, UNCUT_REGION);
    
    
    workspace.add_expression("1.e+12*u.Test_u "	, mim_ls_out, UNCUT_REGION);
@@ -347,8 +347,9 @@ void biotls_problem::assembly(double dt,double time) {
    sparse_matrix_type K_out(nb_dof_u + nb_dof_p,nb_dof_u + nb_dof_p);
    workspace.add_expression("1.e+28*p*Test_p*tau "	, mim_ls_out, CUT_REGION);
    workspace.add_expression("1.e+12*u.Test_u "	, mim_ls_out, CUT_REGION);
-   //   workspace.add_expression( "+(1/bm)*p.Test_p + tau*permeability*Grad_p.Grad_Test_p"
-   //                            "+ alpha*Test_p*Div_u", mim_ls_out, CUT_REGION);
+   workspace.add_expression("1.e+28*p*Test_p*tau ", mim_ls_in, RIGHT);
+   // workspace.add_expression( "+(1/bm)*p.Test_p + tau*permeability*Grad_p.Grad_Test_p"
+   //                             "+ alpha*Test_p*Div_u", mim_ls_out, CUT_REGION);
    workspace.assembly(2);
    gmm::copy(workspace.assembled_matrix(),K_out);
    workspace.clear_expressions();
@@ -363,17 +364,20 @@ void biotls_problem::assembly(double dt,double time) {
    //  workspace.add_expression("1.e+18*p*Test_p "	, mim_ls_in, CUT_REGION);
    // internal for pressure
    workspace.add_expression( "+(1/bm)*p.Test_p + tau*permeability*Grad_p.Grad_Test_p"
-                              "+ alpha*Test_p*Div_u", mim_ls_in, CUT_REGION);
-   workspace.add_expression( "+1.e+30*p.Test_p ", mim_ls_bd, CUT_REGION);
+                             "+ alpha*Test_p*Div_u", mim_ls_in, CUT_REGION);
+   // workspace.add_expression( "+1.e+30*p.Test_p ", mim_ls_bd, CUT_REGION);
        // internal for displacement
    workspace.add_expression( "2*mu*Sym(Grad_u):Grad_Test_u + lambda*Div_u*Div_Test_u"
                               "- alpha*p.Div_Test_u ", mim_ls_in, CUT_REGION);
    workspace.assembly(2);
    gmm::copy(workspace.assembled_matrix(),K_in);
    workspace.clear_expressions();
-   workspace.add_expression("+[+0.0e-6].Test_p*tau + (1/bm)*p_old.Test_p + alpha*Test_p*Div_u_old", mim,CUT_REGION);
+   workspace.add_expression("+[+1.0e-6].Test_p*tau + (1/bm)*p_old.Test_p + alpha*Test_p*Div_u_old", mim_ls_in,CUT_REGION);
    workspace.assembly(1);
    workspace.clear_expressions();
+   workspace.add_expression("1.e+28*p*Test_p*tau ", mim_ls_in, LEFT);
+   
+   workspace.add_expression("1.e+28*p*Test_p*tau ", mim_ls_in, RIGHT);
    std::cout<< "end kin"<< std::endl; 
    {// mapping for pressure
     std::cout<<"start mapping pressure"<<std::endl;
@@ -621,12 +625,12 @@ void biotls_problem::solve(double time){
   size_type restart = 50;
   scalar_type cond;
   // gmm::identity_matrix PM; // no precond
-  // gmm::diagonal_precond<sparse_matrix_type> PR(K);
+  gmm::diagonal_precond<sparse_matrix_type> PR(K);
   gmm::iteration iter(1.e-8);  // iteration object with the max residu
   iter.set_noisy(1);               // output of iterations (2: sub-iteration)
   iter.set_maxiter(1000); // maximum number of iterations
-  // gmm::gmres(K, UP, B, *bPR_, restart, iter);
-  gmm::SuperLU_solve(K, UP , B, cond);
+  gmm::gmres(K, UP, B, PR, restart, iter);
+  // gmm::SuperLU_solve(K, UP , B, cond);
    std::cout << "  Condition number (momentum: " << cond << std::endl;
   getfem::size_type nb_dof_u = mf_u.nb_dof();
   getfem::size_type nb_dof_p = mf_p.nb_dof();
