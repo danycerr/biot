@@ -58,13 +58,18 @@ void biotls_problem::init(void) {
          std::cout<<"CUT element"<<std::endl;
          getfem::mesh_fem::ind_dof_ct idofs = mf_p.ind_basic_dof_of_element(i_cv);
          phicell[i_cv] = 0.5;
-         for (size_type i=0; i < idofs.size(); ++i)  std::cout<<"\t dofs "<< i<<" "<< idofs[i]<<std::endl;
+         for (size_type i=0; i < idofs.size(); ++i) {
+              std::cout<<"\t dofs "<< i<<" "<< idofs[i]<<std::endl;
+              std::cout<< "x" << mf_p.point_of_basic_dof(idofs[i])[0] 
+              << "y" << mf_p.point_of_basic_dof(idofs[i])[1] 
+             //  << "z" << mf_p.point_of_basic_dof(idofs[i])[2] 
+              <<std::endl;
+              }
         }
       else {
           mesh.region(UNCUT_REGION).add(i_cv);
-
-          std::cout<< "creating cut and uncut region ls is"<<
-                    ls_function(ls.get_mesh_fem().point_of_basic_dof(ls.get_mesh_fem().ind_basic_dof_of_element(i_cv)[0]),0, LS_TYPE)[0]<<std::endl;  
+          // std::cout<< "creating cut and uncut region ls is"<<
+            //         ls_function(ls.get_mesh_fem().point_of_basic_dof(ls.get_mesh_fem().ind_basic_dof_of_element(i_cv)[0]),0, LS_TYPE)[0]<<std::endl;  
           if (ls_function(mf_p.point_of_basic_dof(mf_p.ind_basic_dof_of_element(i_cv)[0]),0, LS_TYPE)[0]<0) 
               mesh.region(UNCUT_REGION_IN).add(i_cv);
           else mesh.region(UNCUT_REGION_OUT).add(i_cv);
@@ -73,7 +78,7 @@ void biotls_problem::init(void) {
    
     { // Just to see what elements are cut by the level set ls:
     getfem::vtk_export vtke("cut_elements.vtk");
-    vtke.exporting(mf_p);
+    vtke.exporting(ls.get_mesh_fem());
     vtke.write_mesh();
     vtke.write_cell_data(phicell, "CutEl");
     }
@@ -149,7 +154,7 @@ void biotls_problem::init(void) {
     gmm::clear(U);gmm::clear(U_old);gmm::clear(U_iter);
     // pressure
     gmm::resize(P, nb_dof_p); gmm::resize(P_old, nb_dof_p); gmm::resize(P_iter, nb_dof_p); 
-    std::fill(P.begin(), P.end(), 1);
+    std::fill(P.begin(), P.end(), 0);
     gmm::copy(P,P_old);gmm::copy(P,P_iter);
     // iteration matrix monolithic
     gmm::resize(K, nb_dof_u + nb_dof_p, nb_dof_u + nb_dof_p); gmm::clear(K);
@@ -276,11 +281,10 @@ void biotls_problem::assembly(double dt,double time) {
             );
 	workspace.clear_expressions();
    
-
 	//======= RHS =====================
     if(N_== 2 )	workspace.add_expression("[0,-(2200-1000)].Test_u", mim_ls_in);
     else        workspace.add_expression("[0,0,-0].Test_u", mim_ls_in);
-    workspace.add_expression("+[+0.0e-6].Test_p*tau + (1/bm)*p_old.Test_p + alpha*Test_p*Div_u_old", mim_ls_in,UNCUT_REGION_IN);
+     workspace.add_expression("+0.0e-6*Test_p*tau + (1/bm)*p_old.Test_p + alpha*Test_p*Div_u_old", mim_ls_in,UNCUT_REGION_IN);
     workspace.set_assembled_vector(B);
     workspace.assembly(1);
     // gmm::copy(workspace.assembled_vector(),B);
@@ -304,78 +308,48 @@ void biotls_problem::assembly(double dt,double time) {
                                                              )
             );
 	workspace.clear_expressions();
-		
-	//rhs term
-    if(N_ == 2){
-       // workspace.add_expression("0*penalty*u.Test_u" "+ penalty*0*p*Test_p", mim, TOP); // 1 is the region
-       // workspace.add_expression("[0,-2*force].Test_u" , mim_ls_in, TOP); //neumann disp
-	   // workspace.add_expression("0*penalty*u.Test_u" "+ 0*penalty*0*p*Test_p", mim, BOTTOM); // 1 is the region
-	  //  workspace.add_expression("[0,+2*force].Test_u" , mim_ls_in, BOTTOM); //neumann disp
-    }
-	else if(N_== 3){
-       // workspace.add_expression("0*penalty*u.Test_u" "+ penalty*0*p*Test_p", mim, TOP); // 1 is the region
-       workspace.add_expression("[0,0,-2*force].Test_u" , mim_ls_in, TOP); //neumann disp
-	   // workspace.add_expression("0*penalty*u.Test_u" "+ 0*penalty*0*p*Test_p", mim, BOTTOM); // 1 is the region
-	   workspace.add_expression("[0,0,+2*force].Test_u" , mim_ls_in, BOTTOM); //neumann disp
-    }
-	
+    // rhs for niche boudary condition
 	workspace.add_expression(" 0*penalty/element_size*Test_p - permeability*Grad_Test_p.Normal*0 ", mim_ls_in, LEFT);
 	workspace.add_expression(" 0*penalty/element_size*Test_p - permeability*Grad_Test_p.Normal*0 ", mim_ls_in, RIGHT);
 	workspace.assembly(1);
-    // gmm::add(workspace.assembled_vector(),B);
 	workspace.clear_expressions();
-   /// end boundary contions
-   
-     workspace.add_expression("1.e+28*p*Test_p *tau"	, mim_ls_out, UNCUT_REGION);
-   // workspace.add_expression( "+(1/bm)*p.Test_p + tau*permeability*Grad_p.Grad_Test_p"
-    //                           "+ alpha*Test_p*Div_u", mim_ls_out, UNCUT_REGION);
-   
-   
-   workspace.add_expression("1.e+12*u.Test_u "	, mim_ls_out, UNCUT_REGION);
-   workspace.assembly(2);
-   gmm::add(workspace.assembled_matrix(), gmm::sub_matrix( K ,
+    /// end boundary contions
+    // uncut region penalization
+    workspace.add_expression("1.e+28*p*Test_p *tau"	, mim_ls_out, UNCUT_REGION);
+    workspace.add_expression("1.e+15*u.Test_u "	, mim_ls_out, UNCUT_REGION);
+    workspace.assembly(2);
+    gmm::add(workspace.assembled_matrix(), gmm::sub_matrix( K ,
                                                              gmm::sub_interval(0, nb_dof_u+ nb_dof_p),
                                                              gmm::sub_interval(0, nb_dof_u+ nb_dof_p) 
                                                              )
             );
-   workspace.clear_expressions();
-   // workspace.add_expression("-10.e+28*p*Test_p *tau"	, mim_ls_out, UNCUT_REGION);
-   workspace.assembly(1);
     workspace.clear_expressions();
-   std::cout<< "DOF of ls "<<ls.get_mesh_fem().nb_dof()<<std::endl;
-   // Kout
+    // workspace.add_expression("-[1.e+15,1.e+15].Test_u "	, mim_ls_out, UNCUT_REGION);
+    workspace.assembly(1); 
+    workspace.clear_expressions();
+   // Kout fotr enriched dof
    sparse_matrix_type K_out(nb_dof_u + nb_dof_p,nb_dof_u + nb_dof_p);
-  //  workspace.add_expression("1.e+28*p*Test_p*tau "	, mim_ls_out, CUT_REGION);
-  
-
-     workspace.add_expression("1.e+12*u.Test_u "	, mim_ls_out, CUT_REGION);
-   // 	workspace.add_expression( "2*mu*Sym(Grad_u):Grad_Test_u + lambda*Div_u*Div_Test_u"
-    //                          "- alpha*p.Div_Test_u ",  mim_ls_out, CUT_REGION);
+   workspace.add_expression("1.e+15*u.Test_u "	,   mim_ls_out, CUT_REGION);
+   workspace.add_expression("1.e+15*u.Test_u "	,   mim_ls_bd, CUT_REGION);
    workspace.add_expression("1.e+28*p*Test_p*tau ", mim_ls_out, CUT_REGION);
-   // workspace.add_expression( "+(1/bm)*p.Test_p + tau*permeability*Grad_p.Grad_Test_p"
-   //                             "+ alpha*Test_p*Div_u", mim, CUT_REGION);
-    // workspace.add_expression( "+1.e+30*p.Test_p ", mim_ls_bd, CUT_REGION);
    workspace.assembly(2);
    gmm::copy(workspace.assembled_matrix(),K_out);
    workspace.clear_expressions();
+   // workspace.add_expression("-[1.e+15,1.e+15].Test_u "	, mim_ls_out, CUT_REGION);
+   // workspace.add_expression("-[1.e+15,1.e+15].Test_u "	, mim_ls_bd, CUT_REGION);
+   workspace.assembly(1); 
+   workspace.clear_expressions();
    // std::cout<<K_out<<std::endl;
-   // workspace.add_expression("-10.e+28*Test_p *tau"	, mim_ls_out, CUT_REGION);
-   // workspace.add_expression("+[+1.0e-6].Test_p*tau + (1/bm)*p_old.Test_p + alpha*Test_p*Div_u_old", mim_ls_out,CUT_REGION);
-   // workspace.assembly(1);
-   // workspace.clear_expressions();
    std::cout<< "end kout"<< std::endl; 
-   // Kin
+   // Kin for enriched dof
    sparse_matrix_type K_in(nb_dof_u + nb_dof_p,nb_dof_u + nb_dof_p);
-   //  workspace.add_expression("1.e+18*p*Test_p "	, mim_ls_in, CUT_REGION);
-   // internal for pressure
-    // workspace.add_expression( "+1.e+1*p*Test_p ", mim_ls_bd, CUT_REGION);
-  // NICHE
-    workspace.add_expression("2/element_size*p*Test_p", mim_ls_bd, CUT_REGION);// 1 is the region		
-    workspace.add_expression("-permeability*[0,1].Grad_p*Test_p*tau - permeability*[0,1].Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION); 
+   // NICHE
+     workspace.add_expression("2/element_size*p*Test_p", mim_ls_bd, CUT_REGION);// 1 is the region		
+     workspace.add_expression("-permeability*[0,1].Grad_p*Test_p*tau - permeability*[0,1].Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION); 
    //NICHE
    // workspace.add_expression( "permeability*tau*[0,1].Grad_p*Test_p ", mim_ls_bd, CUT_REGION);
     workspace.add_expression( "+(1/bm)*p.Test_p + tau*permeability*Grad_p.Grad_Test_p"
-                             "+ alpha*Test_p*Div_u", mim, CUT_REGION);
+                             "+ alpha*Test_p*Div_u", mim_ls_in, CUT_REGION);
        // internal for displacement
    workspace.add_expression( "2*mu*Sym(Grad_u):Grad_Test_u + lambda*Div_u*Div_Test_u"
                               "- alpha*p.Div_Test_u ", mim_ls_in, CUT_REGION);
@@ -383,6 +357,7 @@ void biotls_problem::assembly(double dt,double time) {
    gmm::copy(workspace.assembled_matrix(),K_in);
    workspace.clear_expressions();
    workspace.add_expression("+[+0.0e-6].Test_p*tau + (1/bm)*p_old.Test_p + alpha*Test_p*Div_u_old", mim_ls_in,CUT_REGION);
+   workspace.add_expression("[0,-(2200-1000)].Test_u", mim_ls_in,CUT_REGION);
    workspace.assembly(1);
    workspace.clear_expressions();
    workspace.add_expression("1.e+28*p*Test_p*tau ", mim_ls_in, LEFT);
@@ -390,6 +365,8 @@ void biotls_problem::assembly(double dt,double time) {
    workspace.assembly(2);
    gmm::add(workspace.assembled_matrix(),K_in);
    std::cout<< "end kin"<< std::endl; 
+   
+   
    {// mapping for pressure
     std::cout<<"start mapping pressure"<<std::endl;
     size_type dof_shift = nb_dof_u+nb_dof_p;
@@ -654,12 +631,12 @@ void biotls_problem::solve(double time){
   for (size_type i = 0; i < eXt_dof.size(); ++i) 
     {
      size_type ii = eXt_dof[i];
-     double ls_i = ls_function(mf_p.point_of_basic_dof(ii),0, LS_TYPE)[0];
+     double ls_i = ls_function(mf_p.point_of_basic_dof(ii),time, LS_TYPE)[0];
      if (ls_i >= 0) PIn[ii] = UP[mf_u.nb_dof() + mf_p.nb_dof()+ i];
     }
   for (size_type i = 0; i < mf_p.nb_dof(); ++i) 
     {
-     double ls_i = ls_function(mf_p.point_of_basic_dof(i),0, LS_TYPE)[0];
+     double ls_i = ls_function(mf_p.point_of_basic_dof(i),time, LS_TYPE)[0];
      if (ls_i < 0)  PIn[i] = UP[mf_u.nb_dof() +i];
     }
   gmm::copy(PIn,P_old);
@@ -675,7 +652,7 @@ void biotls_problem::solve(double time){
     }
   for (size_type i = 0; i < mf_u.nb_dof(); ++i) 
     {
-     double ls_i = ls_function(mf_u.point_of_basic_dof(i),0, LS_TYPE)[0];
+     double ls_i = ls_function(mf_u.point_of_basic_dof(i),time, LS_TYPE)[0];
      if (ls_i < 0)  UIn[i] = UP[i];
     }
   gmm::copy(UIn,U_old);
@@ -851,13 +828,13 @@ void biotls_problem::print(double time,int istep){
         if (ls_i < 0) {
           UIn[i] = UP[i];Um[i] = UP[i];}
         else {
-          UOut[i] = -100+UP[i]; Um[i] = UP[i];}
+          UOut[i] = +UP[i]; Um[i] = UP[i];}
       }
        for (size_type i = 0; i < eXt_dof_u.size(); ++i) {
          size_type ii = eXt_dof_u[i];
           double ls_i = ls_function(mf_u.point_of_basic_dof(ii),time, LS_TYPE)[0];
          if (ls_i < 0) {
-          UOut[ii] = -100+UP[shift_xdof_u + i];
+          UOut[ii] = +UP[shift_xdof_u + i];
       }
          else
           UIn[ii] = UP[shift_xdof_u + i];
@@ -961,7 +938,7 @@ void biotls_problem::print(double time,int istep){
       res[1] = -.5 + x;
     } break;
     case 1: {
-      res[0] = y - 2750 + time/(1e+8)*120*4;
+      res[0] = y - 3615 + time/(1e+8)*120*4;
       res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.27;
     } break;
     case 2: {

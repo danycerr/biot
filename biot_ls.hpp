@@ -62,7 +62,7 @@ typedef std::vector<scalar_type> plain_vector;
 
 struct problem_descriptor_tri{    
     std::string MESH_TYPE =         "GT_PK(2,1)" ; // triangular elements
-    std::string FEM_TYPE_U  =         "FEM_PK(2,2)";
+    std::string FEM_TYPE_U  =         "FEM_PK(2,1)";
     std::string FEM_TYPE_P  =         "FEM_PK(2,1)";
 	std::string INTEGRATION =       "IM_TRIANGLE(6)";
     std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; 
@@ -74,7 +74,7 @@ struct problem_descriptor_tri{
 	double lambda_l= E*poisson/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;
 	double biot_modulus=1.e+9;
 	double k =1.e-10; //permeability
-	double alpha=0; // Biot coefficient
+	double alpha=1; // Biot coefficient
     };
     
 struct problem_descriptor_quad{    
@@ -173,7 +173,7 @@ class biotls_problem {
       biotls_problem(void): mim(mesh), mf_u(mesh), mf_rhs(mesh), mf_p(mesh)
       ,tau_(1), vmu_(1), bm_(1), lambda_(1),alpha_(1), permeability_(1), force_(1), beta_(1),penalty_(1)
       // level set 
-      ,ls(mesh,1),mls(mesh),
+      ,ls(mesh,2),mls(mesh),
       mim_ls_all(mls, getfem::mesh_im_level_set::INTEGRATE_ALL),
       mim_ls_in(mls, getfem::mesh_im_level_set::INTEGRATE_INSIDE),
       mim_ls_out(mls, getfem::mesh_im_level_set::INTEGRATE_OUTSIDE),
