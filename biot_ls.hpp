@@ -36,6 +36,7 @@
 #include "getfem/getfem_mesh_level_set.h"
 #include "getfem/getfem_mesh_fem_level_set.h"
 
+#include "getfem/getfem_mesh_slice.h"
 #include "gmm/gmm.h"
 
 #include "gmm/gmm_inoutput.h"
@@ -55,7 +56,7 @@ typedef gmm::row_matrix<sparse_vector_type> sparse_matrix_type;
 typedef gmm::col_matrix<sparse_vector_type> col_sparse_matrix_type;
 typedef std::vector<scalar_type> plain_vector;
 
-#define LS_TYPE 2
+#define LS_TYPE 1
 // Right hand side. Allows an interpolation for the source term.
 // scalar_type sol_f(const base_node &x) { return 10.; }
 
@@ -66,13 +67,13 @@ struct problem_descriptor_tri{
 	std::string INTEGRATION =       "IM_TRIANGLE(6)";
     std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; 
     std::string datafilename="laplace"; 
-    int nsubdiv=10; // subdivision of the sqaured mesh
+    int nsubdiv=20; // subdivision of the sqaured mesh
     double E=1.e+10;
 	double poisson =0.3;
 	double mu_s = E/( 2 * ( 1 + poisson) ) ;
 	double lambda_l= E*poisson/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;
 	double biot_modulus=1.e+9;
-	double k =1.e-11; //permeability
+	double k =1.e-10; //permeability
 	double alpha=0; // Biot coefficient
     };
     
@@ -83,7 +84,7 @@ struct problem_descriptor_quad{
 	std::string INTEGRATION =       "IM_GAUSS_PARALLELEPIPED(2,6)";
     std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; 
     std::string datafilename="laplace"; 
-    int nsubdiv=10; // subdivision of the sqaured mesh
+    int nsubdiv=20; // subdivision of the sqaured mesh
     double E=1.e+4;
 	double poisson =0.0;
 	double mu_s = E/( 2 * ( 1 + poisson) ) ;
@@ -164,13 +165,15 @@ class biotls_problem {
       void solve(double time);                                 /// solves the monolithic system 
       void solve_fix_stress(double dt, int max_iter);   /// solves the system with classic fixed stress approach
       void init(void);                                  /// initial configuration for the problem 
-      void print(int time=0);
+      void print(double time=0,int istep=0);
       
-      void update_ls(double time=0);
+      void print_crop(double time=0,int istep=0);
+      
+      void update_ls(double time=0, int iter=0);
       biotls_problem(void): mim(mesh), mf_u(mesh), mf_rhs(mesh), mf_p(mesh)
       ,tau_(1), vmu_(1), bm_(1), lambda_(1),alpha_(1), permeability_(1), force_(1), beta_(1),penalty_(1)
       // level set 
-      ,ls(mesh,2),mls(mesh),
+      ,ls(mesh,1),mls(mesh),
       mim_ls_all(mls, getfem::mesh_im_level_set::INTEGRATE_ALL),
       mim_ls_in(mls, getfem::mesh_im_level_set::INTEGRATE_INSIDE),
       mim_ls_out(mls, getfem::mesh_im_level_set::INTEGRATE_OUTSIDE),

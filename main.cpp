@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
     p.init();
 
 
-     double dt=0.5e+8;
+     double dt=0.2e+8;
      // p.assembly_p(dt); 
      // p.assembly_u(dt);
      // p.build_fix_stress_preconditioner();
@@ -25,11 +25,12 @@ int main(int argc, char *argv[]) {
        //  if (istep<40) p.update_ls(istep*dt);
        // p.solve_fix_stress(dt, 2000);
        
-       p.assembly(dt,time);
-       p.solve(time);
-              
-        p.print(istep);
-        p.update_ls(istep*dt);
+        p.assembly(dt,time);
+        p.solve(time);
+        
+        p.print(istep*dt,istep);      
+        p.print_crop(istep*dt,istep);
+        p.update_ls(istep*dt, istep);
    }
   }
   GMM_STANDARD_CATCH_ERROR;
