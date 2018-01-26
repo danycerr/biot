@@ -123,6 +123,9 @@ void biot_problem::configure_workspace(getfem::ga_workspace & workspace,double d
     
     penalty_[0] = 1.e+12; // 1---10
 	workspace.add_fixed_size_constant("penalty", penalty_);
+    
+    
+    // workspace.add_fem_constant("f", mf_data, F);
     }
 // 
 
