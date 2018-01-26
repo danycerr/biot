@@ -12,7 +12,7 @@ void biotls_problem::init(void) {
     std::vector<size_type> nsubdiv(N_);
 	int NX=p_des.nsubdiv;
 	std::fill(nsubdiv.begin(),nsubdiv.end(),NX);
-	getfem::regular_unit_mesh(mesh, nsubdiv, pgt, 0);
+	getfem::regular_unit_mesh(mesh, nsubdiv, pgt, p_des.noised);
     // A trasformation for the squarred mesh
 	  bgeot::base_matrix M(N_,N_);
 	  for (size_type i=0; i < N_; ++i) {
@@ -25,8 +25,8 @@ void biotls_problem::init(void) {
 
   
     // set  integration methods  
-    getfem::pfem pf_u = getfem::fem_descriptor(p_des.FEM_TYPE_U);
-    getfem::pfem pf_p = getfem::fem_descriptor(p_des.FEM_TYPE_P);
+    getfem::pfem pf_u = getfem::fem_descriptor(p_des.FEM_TYPE_U); // for displacement 
+    getfem::pfem pf_p = getfem::fem_descriptor(p_des.FEM_TYPE_P); // for pressure
 	getfem::pintegration_method ppi = getfem::int_method_descriptor(p_des.INTEGRATION);
     getfem::pintegration_method simp_ppi = getfem::int_method_descriptor(p_des.SIMPLEX_INTEGRATION);
     
@@ -34,6 +34,11 @@ void biotls_problem::init(void) {
     mf_u.set_qdim(N_);
 	mf_u.set_finite_element(mesh.convex_index(), pf_u); // finite element for displacement
     mf_p.set_finite_element(mesh.convex_index(), pf_p); //  finite element for pressure
+    mf_coef.set_finite_element(mesh.convex_index(),
+			     getfem::classical_fem(pgt,0));         // p0 for coefficient
+    mf_coef_v.set_qdim(N_);          
+    mf_coef_v.set_finite_element(mesh.convex_index(),
+			     getfem::classical_fem(pgt,0));         // p0 for coefficient
     // boundary conditions zones
     gen_bc();
     
@@ -55,15 +60,15 @@ void biotls_problem::init(void) {
     for (i_cv << bv_cv; i_cv != size_type(-1); i_cv << bv_cv) {
        if (mls.is_convex_cut(i_cv)) {
          mesh.region(CUT_REGION).add(i_cv);
-         std::cout<<"CUT element"<<std::endl;
+         // std::cout<<"CUT element"<<std::endl;
          getfem::mesh_fem::ind_dof_ct idofs = mf_p.ind_basic_dof_of_element(i_cv);
          phicell[i_cv] = 0.5;
          for (size_type i=0; i < idofs.size(); ++i) {
-              std::cout<<"\t dofs "<< i<<" "<< idofs[i]<<std::endl;
-              std::cout<< "x" << mf_p.point_of_basic_dof(idofs[i])[0] 
-              << "y" << mf_p.point_of_basic_dof(idofs[i])[1] 
+             //  std::cout<<"\t dofs "<< i<<" "<< idofs[i]<<std::endl;
+              // std::cout<< "x" << mf_p.point_of_basic_dof(idofs[i])[0] 
+              // << "y" << mf_p.point_of_basic_dof(idofs[i])[1] 
              //  << "z" << mf_p.point_of_basic_dof(idofs[i])[2] 
-              <<std::endl;
+              // <<std::endl;
               }
         }
       else {
@@ -82,7 +87,40 @@ void biotls_problem::init(void) {
     vtke.write_mesh();
     vtke.write_cell_data(phicell, "CutEl");
     }
+    base_small_vector a(2);
+    gmm::resize(normal_ls, mf_coef.nb_dof()); gmm::clear(normal_ls);    // rhs monolithic problem
     
+    gmm::resize(normal_ls_v, mf_coef_v.nb_dof()); gmm::clear(normal_ls_v);    // rhs monolithic problem
+    { // creating a coefficient
+    dal::bit_vector bv_cv = mesh.convex_index();
+    size_type i_cv = 0;
+    for (i_cv << bv_cv; i_cv != size_type(-1); i_cv << bv_cv) {
+         getfem::mesh_fem::ind_dof_ct idofs = mf_coef.ind_basic_dof_of_element(i_cv);
+         for (size_type i=0; i < idofs.size(); ++i) {
+         normal_ls[idofs[i]]=1.e-9;
+       //  std::vector<scalar_type>(mf_coef.nb_dof(), 1.0)
+      }
+   }
+   }
+   {
+    dal::bit_vector bv_cv = mesh.convex_index();
+    size_type i_cv = 0;
+       for (i_cv << bv_cv; i_cv != size_type(-1); i_cv << bv_cv) {
+         getfem::mesh_fem::ind_dof_ct idofs = mf_coef_v.ind_basic_dof_of_element(i_cv);
+         for (size_type i=0; i < idofs.size(); ++i) {
+         if (i==0) normal_ls_v[idofs[i]]=0;
+         if (i==1) normal_ls_v[idofs[i]]=1;
+       //  std::vector<scalar_type>(mf_coef.nb_dof(), 1.0)
+    }
+   }
+   
+    getfem::vtk_export vtke("normalls.vtk");
+    vtke.exporting(mf_coef_v);
+    vtke.write_mesh();
+    vtke.write_cell_data(normal_ls_v, "nls");
+        }
+        
+    compute_normal_2_ls();
     // Create vector eXt_dof.  This is the vector handling the mapping
     // from standard i  = 0, ..., nb_dof_u - 1 to extended degrees of freedom
     // ii = nb_dof_u, ..., nb_dof_x - 1 = nb_dof_u + j. The rule is that if element
@@ -228,6 +266,10 @@ void biotls_problem::configure_workspace(getfem::ga_workspace & workspace,double
     
     penalty_[0] = 1.e+12; // 1---10
 	workspace.add_fixed_size_constant("penalty", penalty_);
+    
+    workspace.add_fem_constant("nls", mf_coef, normal_ls);
+    
+    workspace.add_fem_constant("nlsv", mf_coef_v, normal_ls_v);
     }
 // 
 
@@ -263,6 +305,7 @@ void biotls_problem::assembly(double dt,double time) {
     // getfem::base_vector invdt(1); invdt[0] = 1/dt;
 	// workspace.add_fixed_size_constant("invdt", invdt);
     // 
+
    
    	workspace.add_fem_variable("u", mf_u, gmm::sub_interval(0, nb_dof_u), U);
 	workspace.add_fem_variable("p", mf_p, gmm::sub_interval(nb_dof_u, nb_dof_p), P);
@@ -285,11 +328,13 @@ void biotls_problem::assembly(double dt,double time) {
     if(N_== 2 )	workspace.add_expression("[0,-(2200-1000)].Test_u", mim_ls_in);
     else        workspace.add_expression("[0,0,-0].Test_u", mim_ls_in);
      workspace.add_expression("+0.0e-6*Test_p*tau + (1/bm)*p_old.Test_p + alpha*Test_p*Div_u_old", mim_ls_in,UNCUT_REGION_IN);
+     // workspace.add_expression("nls*Test_p*tau ", mim_ls_in,UNCUT_REGION_IN);
     workspace.set_assembled_vector(B);
     workspace.assembly(1);
     // gmm::copy(workspace.assembled_vector(),B);
 	workspace.clear_expressions();
-
+        level_set_unit_normal< std::vector<scalar_type> >
+      nterm(ls.get_mesh_fem(), ls.values());
 	//Boudanry conditions // NICHE
 	getfem::base_vector penalty(1); penalty[0] = 2e+18; // 1---10
 	workspace.add_fixed_size_constant("penalty", penalty);
@@ -345,7 +390,7 @@ void biotls_problem::assembly(double dt,double time) {
    sparse_matrix_type K_in(nb_dof_u + nb_dof_p,nb_dof_u + nb_dof_p);
    // NICHE
      workspace.add_expression("2/element_size*p*Test_p", mim_ls_bd, CUT_REGION);// 1 is the region		
-     workspace.add_expression("-permeability*[0,1].Grad_p*Test_p*tau - permeability*[0,1].Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION); 
+     workspace.add_expression("-permeability*nlsv.Grad_p*Test_p*tau - permeability*nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION); 
    //NICHE
    // workspace.add_expression( "permeability*tau*[0,1].Grad_p*Test_p ", mim_ls_bd, CUT_REGION);
     workspace.add_expression( "+(1/bm)*p.Test_p + tau*permeability*Grad_p.Grad_Test_p"
@@ -757,7 +802,7 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter){
 
 
 // method for solving the laplace problem
-void biotls_problem::print(double time,int istep){
+void biotls_problem::print(double time,int istep,double time_ls){
     std::cout<< "biotls_problem::print" <<std::endl;
      //getfem::vtk_export exp(p_des.datafilename + "." +  std::to_string(time) + ".vtk");
      //exp.exporting(mf_u);  	exp.write_point_data(mf_u, U, "u"); 
@@ -876,7 +921,7 @@ void biotls_problem::print(double time,int istep){
         getfem::mesh_fem::ind_dof_ct idofs = mfcut.ind_basic_dof_of_element(cv);
         scalar_type dmean = 0;
         for (size_type i=0; i < idofs.size(); ++i) {
-            double ls_val=ls_function(mfcut.point_of_basic_dof( idofs[i] ) ,time, LS_TYPE)[0];
+            double ls_val=ls_function(mfcut.point_of_basic_dof( idofs[i] ) ,time_ls, LS_TYPE)[0];
           dmean += pow(ls_val,11);
       }
         if (dmean < 0) 
@@ -908,7 +953,7 @@ void biotls_problem::print(double time,int istep){
         getfem::mesh_fem::ind_dof_ct idofs = mfcut_u.ind_basic_dof_of_element(cv);
         scalar_type dmean = 0;
         for (size_type i=0; i < idofs.size(); ++i) 
-          dmean += ls_function(mfcut_u.point_of_basic_dof( idofs[i] ) ,time, LS_TYPE)[0];
+          dmean += ls_function(mfcut_u.point_of_basic_dof( idofs[i] ) ,time_ls, LS_TYPE)[0];
         if (dmean < 0) 
           for (size_type i=0; i < idofs.size(); ++i) {
         size_type ii = idofs[i];
@@ -938,11 +983,11 @@ void biotls_problem::print(double time,int istep){
       res[1] = -.5 + x;
     } break;
     case 1: {
-      res[0] = y - 3615 + time/(1e+8)*120*4;
+      res[0] = y - 3615 + time/(1e+12)*120*4;
       res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.27;
     } break;
     case 2: {
-      res[0] = y - (4.e+2 * time / (1.e+9) * sin(2 * 3.14 *x/4000) + 3300);
+      res[0] = y - (2.e+2 * time / (1.e+12) * sin(2 * 3.14 *x/4000) + 3300);
       res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.35;
     } break;
     default: assert(0);
@@ -998,7 +1043,7 @@ void biotls_problem::update_ls(double time, int iter){
 
           // std::cout<< "update level set creating cut and uncut region ls is"<<
           //           ls_function(ls.get_mesh_fem().point_of_basic_dof(ls.get_mesh_fem().ind_basic_dof_of_element(i_cv)[0]),0, LS_TYPE)[0]<<std::endl;  
-          if (ls_function(mf_p.point_of_basic_dof(mf_p.ind_basic_dof_of_element(i_cv)[0]),0, LS_TYPE)[0]<0) 
+          if (ls_function(mf_p.point_of_basic_dof(mf_p.ind_basic_dof_of_element(i_cv)[0]),time, LS_TYPE)[0]<0) 
               mesh.region(UNCUT_REGION_IN).add(i_cv);
           else mesh.region(UNCUT_REGION_OUT).add(i_cv);
       }
@@ -1037,7 +1082,7 @@ void biotls_problem::update_ls(double time, int iter){
     std::cout << "# Cut Elements      = " << mesh.region(CUT_REGION).size() << std::endl;
     std::cout << "# dof to extend are  for pressure   = " << eXt_dof.size() << std::endl;
     std::cout << "# dof to extend are  for displacement   = " << eXt_dof_u.size() << std::endl;
-    
+    compute_normal_2_ls();
     //mfls.adapt();mfls_u.adapt();mfls_p.adapt();
     //getfem::size_type nbdofu  = mfls_u.nb_dof();
 	//getfem::size_type nbdofp = mfls_p.nb_dof();
@@ -1066,7 +1111,7 @@ void biotls_problem::update_ls(double time, int iter){
     
 }
 
-void biotls_problem::print_crop(double time,int istep){
+void biotls_problem::print_crop(double time,int istep,double time_ls){
     std::cout<< "biotls_problem::print crop" <<std::endl;
     
     
@@ -1076,7 +1121,7 @@ void biotls_problem::print_crop(double time,int istep){
     {
         for (size_type i = 0; i < eXt_dof.size(); ++i) {
          size_type ii = eXt_dof[i];
-          double ls_i = ls_function(mf_p.point_of_basic_dof(ii),time, LS_TYPE)[0];
+          double ls_i = ls_function(mf_p.point_of_basic_dof(ii),time_ls, LS_TYPE)[0];
          if (ls_i < 0) {
           POut[ii] = -100+UP[mf_u.nb_dof() + mf_p.nb_dof() + i];
       }
@@ -1085,7 +1130,7 @@ void biotls_problem::print_crop(double time,int istep){
           Pm[ii] = 0.5* (UP[mf_u.nb_dof() +ii] + UP[mf_u.nb_dof() +mf_p.nb_dof()+ i]);
       }
       for (size_type i = 0; i < mf_p.nb_dof(); ++i) {
-           double ls_i = ls_function(mf_p.point_of_basic_dof(i),time, LS_TYPE)[0];
+           double ls_i = ls_function(mf_p.point_of_basic_dof(i),time_ls, LS_TYPE)[0];
         if (ls_i < 0) {
           PIn[i] = UP[mf_u.nb_dof() +i];Pm[i] = UP[mf_u.nb_dof() +i];}
         else {
@@ -1099,12 +1144,12 @@ void biotls_problem::print_crop(double time,int istep){
     {
 
       for (size_type i = 0; i < mf_u.nb_dof(); ++i) {
-           double ls_i = ls_function(mf_u.point_of_basic_dof(i),time, LS_TYPE)[0];
+           double ls_i = ls_function(mf_u.point_of_basic_dof(i),time_ls, LS_TYPE)[0];
         if (ls_i < 0) UIn[i] = UP[i];
       }
        for (size_type i = 0; i < eXt_dof_u.size(); ++i) {
          size_type ii = eXt_dof_u[i];
-          double ls_i = ls_function(mf_u.point_of_basic_dof(ii),time, LS_TYPE)[0];
+          double ls_i = ls_function(mf_u.point_of_basic_dof(ii),time_ls, LS_TYPE)[0];
           if (ls_i >= 0)  UIn[ii] = UP[shift_xdof_u + i];
          
         }
@@ -1132,12 +1177,41 @@ slicer.exec(nrefine);
   vtkd.write_point_data(mf_u, UIn, "u");
   std::cout<<"end printing"<<std::endl;
 } 
+      }  
     
     
+void biotls_problem::compute_normal_2_ls(){
+    dal::bit_vector bv_cv = mesh.convex_index();
+    size_type i_cv = 0;
+    getfem::base_matrix gradU(1, N_);
+    getfem::base_matrix interp;
+    bgeot::base_vector ls_val;
+    for (i_cv << bv_cv; i_cv != size_type(-1); i_cv << bv_cv) {
+    ls_val.resize(ls.get_mesh_fem().nb_basic_dof_of_element(i_cv));
+    base_tensor t;
+    const base_node x= mf_coef_v.point_of_basic_dof(i_cv);
+    	bgeot::pgeometric_trans pgt = 
+		bgeot::geometric_trans_descriptor(p_des.MESH_TYPE);; 
+        bgeot::vectors_to_base_matrix
+          (interp, ls.get_mesh_fem().linked_mesh().points_of_convex(i_cv));
+    getfem::fem_interpolation_context icx(pgt,
+    ls.get_mesh_fem().fem_of_element(i_cv),
+    x,
+    interp ,
+    i_cv
+    );
+    	
+    getfem::mesh_fem::ind_dof_ct idofs_ls = ls.get_mesh_fem().ind_basic_dof_of_element(i_cv);
+    for (size_type i=0; i < idofs_ls.size(); ++i)ls_val[i] = ls.values(0)[i];
+    icx.pf()->interpolation_grad(icx, ls_val, gradU, 1);
+    scalar_type norm = gmm::vect_norm2(gmm::mat_row(gradU, 0));
+    getfem::mesh_fem::ind_dof_ct idofs = mf_coef_v.ind_basic_dof_of_element(i_cv);
     
+    for (size_type i=0; i < idofs.size(); ++i) {
+        if (i==0) normal_ls_v[idofs[i]]=gradU(0, i) / norm;
+        if (i==1) normal_ls_v[idofs[i]]=gradU(0, i) / norm;
+        }
+   }
+}
     
-    
-    
-    
-    
-    }
+

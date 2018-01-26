@@ -50,13 +50,14 @@ using bgeot::base_node; /* geometrical nodes (derived from base_small_vector)*/
 using bgeot::scalar_type; /* = double */
 using bgeot::size_type;   /* = unsigned long */
 using bgeot::dim_type; 
+using bgeot::base_tensor;
 
 typedef gmm::rsvector<scalar_type> sparse_vector_type;
 typedef gmm::row_matrix<sparse_vector_type> sparse_matrix_type;
 typedef gmm::col_matrix<sparse_vector_type> col_sparse_matrix_type;
 typedef std::vector<scalar_type> plain_vector;
 
-#define LS_TYPE 1
+#define LS_TYPE 2
 // Right hand side. Allows an interpolation for the source term.
 // scalar_type sol_f(const base_node &x) { return 10.; }
 
@@ -67,13 +68,14 @@ struct problem_descriptor_tri{
 	std::string INTEGRATION =       "IM_TRIANGLE(6)";
     std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; 
     std::string datafilename="laplace"; 
-    int nsubdiv=20; // subdivision of the sqaured mesh
+    int noised =1;  // noise on mesh
+    int nsubdiv=39; // subdivision of the sqaured mesh
     double E=1.e+10;
 	double poisson =0.3;
 	double mu_s = E/( 2 * ( 1 + poisson) ) ;
 	double lambda_l= E*poisson/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;
 	double biot_modulus=1.e+9;
-	double k =1.e-10; //permeability
+	double k =1.e-15; //permeability
 	double alpha=1; // Biot coefficient
     };
     
@@ -85,6 +87,7 @@ struct problem_descriptor_quad{
     std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; 
     std::string datafilename="laplace"; 
     int nsubdiv=20; // subdivision of the sqaured mesh
+    int noised =1;  // noise on mesh
     double E=1.e+4;
 	double poisson =0.0;
 	double mu_s = E/( 2 * ( 1 + poisson) ) ;
@@ -110,7 +113,36 @@ struct problem_descriptor_quad_3d{
 	double k =1.e-4; //permeability
 	double alpha=1; // Biot coefficient
     };
+  // Defining unit normal on a level set ------------------------------------
 
+  template<typename VECT1> class level_set_unit_normal
+    : public getfem::nonlinear_elem_term {
+    const getfem::mesh_fem &mf;
+    std::vector<scalar_type> U;
+    size_type N;
+    bgeot::base_matrix gradU;
+    bgeot::base_vector coeff;
+    bgeot::multi_index sizes_;
+  public:
+  level_set_unit_normal(const getfem::mesh_fem &mf_, const VECT1 &U_)
+    : mf(mf_), U(mf_.nb_basic_dof()), N(mf_.linked_mesh().dim()),
+      gradU(1, N) {
+      sizes_.resize(1); sizes_[0] = bgeot::short_type(N);
+      mf.extend_vector(U_, U);
+    }
+    const bgeot::multi_index &sizes(bgeot::size_type) const {  return sizes_; }
+    virtual void compute(getfem::fem_interpolation_context& ctx,
+			 bgeot::base_tensor &t) {
+      size_type cv = ctx.convex_num();
+      coeff.resize(mf.nb_basic_dof_of_element(cv));
+      gmm::copy
+	(gmm::sub_vector(U,gmm::sub_index(mf.ind_basic_dof_of_element(cv))),
+	 coeff);
+      ctx.pf()->interpolation_grad(ctx, coeff, gradU, 1);
+      scalar_type norm = gmm::vect_norm2(gmm::mat_row(gradU, 0));
+      for (size_type i = 0; i < N; ++i) t[i] = gradU(0, i) / norm;
+    }
+  };
 //   structure for the Laplacian problem
 class biotls_problem {
     private:
@@ -119,6 +151,8 @@ class biotls_problem {
       getfem::mesh_fem mf_u;    /// the main mesh_fem, for the displacement solution
       getfem::mesh_fem mf_p;    /// the main mesh_fem, for the pressure solution
       getfem::mesh_fem mf_rhs;  /// the mesh_fem for the right hand side(f(x),..)
+      getfem::mesh_fem mf_coef; /* the mesh_fem to represent pde coefficients    */
+      getfem::mesh_fem mf_coef_v; /* the mesh_fem to represent pde vectorial coefficients    */
       // Levelset
       getfem::level_set ls; // create a levelset
       getfem::mesh_level_set mls;
@@ -148,8 +182,11 @@ class biotls_problem {
      std::vector<scalar_type> U_iter, P_iter, Bp, Bu;     /// main unknown, and right hand side
      biot_precond<sparse_matrix_type> *bPR_;               /// preconditioner based on fixed stress
      
+     std::vector<scalar_type> normal_ls;
+     std::vector<scalar_type> normal_ls_v;
      /// Methods
       void gen_bc(void);                                /// create zones for boundary conditions
+      void compute_normal_2_ls(void);                                /// create normal to ls as a cell field
       void configure_workspace                          /// configure the workspace add constants
           (getfem::ga_workspace & workspace,                /// the workspace
            double dt);                                      /// timestep
@@ -165,12 +202,12 @@ class biotls_problem {
       void solve(double time);                                 /// solves the monolithic system 
       void solve_fix_stress(double dt, int max_iter);   /// solves the system with classic fixed stress approach
       void init(void);                                  /// initial configuration for the problem 
-      void print(double time=0,int istep=0);
+      void print(double time=0,int istep=0,double time_ls=0);
       
-      void print_crop(double time=0,int istep=0);
+      void print_crop(double time=0,int istep=0,double time_ls=0);
       
       void update_ls(double time=0, int iter=0);
-      biotls_problem(void): mim(mesh), mf_u(mesh), mf_rhs(mesh), mf_p(mesh)
+      biotls_problem(void): mim(mesh), mf_u(mesh), mf_rhs(mesh), mf_p(mesh),mf_coef(mesh),mf_coef_v(mesh)
       ,tau_(1), vmu_(1), bm_(1), lambda_(1),alpha_(1), permeability_(1), force_(1), beta_(1),penalty_(1)
       // level set 
       ,ls(mesh,2),mls(mesh),
