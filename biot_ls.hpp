@@ -115,34 +115,6 @@ struct problem_descriptor_quad_3d{
     };
   // Defining unit normal on a level set ------------------------------------
 
-  template<typename VECT1> class level_set_unit_normal
-    : public getfem::nonlinear_elem_term {
-    const getfem::mesh_fem &mf;
-    std::vector<scalar_type> U;
-    size_type N;
-    bgeot::base_matrix gradU;
-    bgeot::base_vector coeff;
-    bgeot::multi_index sizes_;
-  public:
-  level_set_unit_normal(const getfem::mesh_fem &mf_, const VECT1 &U_)
-    : mf(mf_), U(mf_.nb_basic_dof()), N(mf_.linked_mesh().dim()),
-      gradU(1, N) {
-      sizes_.resize(1); sizes_[0] = bgeot::short_type(N);
-      mf.extend_vector(U_, U);
-    }
-    const bgeot::multi_index &sizes(bgeot::size_type) const {  return sizes_; }
-    virtual void compute(getfem::fem_interpolation_context& ctx,
-			 bgeot::base_tensor &t) {
-      size_type cv = ctx.convex_num();
-      coeff.resize(mf.nb_basic_dof_of_element(cv));
-      gmm::copy
-	(gmm::sub_vector(U,gmm::sub_index(mf.ind_basic_dof_of_element(cv))),
-	 coeff);
-      ctx.pf()->interpolation_grad(ctx, coeff, gradU, 1);
-      scalar_type norm = gmm::vect_norm2(gmm::mat_row(gradU, 0));
-      for (size_type i = 0; i < N; ++i) t[i] = gradU(0, i) / norm;
-    }
-  };
 //   structure for the Laplacian problem
 class biotls_problem {
     private:

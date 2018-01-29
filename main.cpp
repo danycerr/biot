@@ -18,12 +18,13 @@ int main(int argc, char *argv[]) {
      // p.assembly_p(dt); 
      // p.assembly_u(dt);
      // p.build_fix_stress_preconditioner();
-     int n_step=2;int erosion_limit=20;
+     int n_step=80;int erosion_limit=20;
      double time=0*dt;
      double time_ls  =0;
      for(int istep=0; istep<n_step; istep++)
      {
         time=istep*dt;
+        std::cout<< "*** Time step "<< istep << "/"<<n_step<<std::endl;
         if (istep<erosion_limit){ 
             p.update_ls(istep*dt, istep);
             time_ls  =istep*dt;
