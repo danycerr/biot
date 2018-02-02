@@ -57,7 +57,7 @@ typedef gmm::row_matrix<sparse_vector_type> sparse_matrix_type;
 typedef gmm::col_matrix<sparse_vector_type> col_sparse_matrix_type;
 typedef std::vector<scalar_type> plain_vector;
 
-#define LS_TYPE 2
+#define LS_TYPE 1
 // Right hand side. Allows an interpolation for the source term.
 // scalar_type sol_f(const base_node &x) { return 10.; }
 
@@ -68,15 +68,15 @@ struct problem_descriptor_tri{
 	std::string INTEGRATION =       "IM_TRIANGLE(6)";
     std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; 
     std::string datafilename="laplace"; 
-    int noised =1;  // noise on mesh
-    int nsubdiv=39; // subdivision of the sqaured mesh
+    int noised =0;  // noise on mesh
+    int nsubdiv=10; // subdivision of the sqaured mesh
     double E=1.e+10;
 	double poisson =0.3;
 	double mu_s = E/( 2 * ( 1 + poisson) ) ;
 	double lambda_l= E*poisson/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;
 	double biot_modulus=1.e+9;
 	double k =1.e-15; //permeability
-	double alpha=1; // Biot coefficient
+	double alpha=0; // Biot coefficient
     };
     
 struct problem_descriptor_quad{    
@@ -168,11 +168,11 @@ class biotls_problem {
                                     int num = 0);
     public:
       void assembly(double dt,double time);                         /// assemble the monolithic iteration matrix for the problem
-      void assembly_p(double dt);                       /// assemble the iteration matrix for pressure, can be used as preconditioner
+      void assembly_p(double dt,double time);                       /// assemble the iteration matrix for pressure, can be used as preconditioner
       void assembly_u(double dt);                       /// assemble the iteration matrix for pressure, can be used as preconditioner
       void build_fix_stress_preconditioner();
       void solve(double time);                                 /// solves the monolithic system 
-      void solve_fix_stress(double dt, int max_iter);   /// solves the system with classic fixed stress approach
+      void solve_fix_stress(double dt, int max_iter,double time);   /// solves the system with classic fixed stress approach
       void init(void);                                  /// initial configuration for the problem 
       void print(double time=0,int istep=0,double time_ls=0);
       
