@@ -499,87 +499,188 @@ void biotls_problem::assembly(double dt,double time) {
 // Assembling pressure matrix for fixed stress
 // -------------------------------------------------
 
-void biotls_problem::assembly_p(double dt){
+void biotls_problem::assembly_p(double dt, double time){
     
     gmm::clean(P_old, 1E-10);gmm::clean(U_old, 1E-10);
 	gmm::clean(P, 1E-10);gmm::clean(U, 1E-10);
     gmm::clear(Bp); gmm::clear(Kp);
 	std::cout<<"biot_assembler::assembly_p(double dt)" <<std::endl;
-   	getfem::size_type nb_dof_u = mfls_u.nb_dof();
-    getfem::size_type nb_dof_p = mfls_p.nb_dof();
-    std::cout<< "total dofs " <<   mfls_p.nb_dof() << "normal dof" << mf_p.nb_dof()  <<std::endl;
+   	getfem::size_type nb_dof_u = mf_u.nb_dof();
+    getfem::size_type nb_dof_p = mf_p.nb_dof();
+    getfem::size_type nb_dof_p_x = nb_dof_p + nb_x_dof_p;
+    getfem::size_type nb_dof_u_x = nb_dof_u + nb_x_dof_u;
+    std::cout<< "total dofs " <<   mf_p.nb_dof() << "normal dof" << mf_p.nb_dof()  <<std::endl;
     
-    //  gmm::resize(P, nb_dof_p); gmm::resize(P_old, nb_dof_p);gmm::resize(P_iter, nb_dof_p);
-    //  gmm::resize(Kp, nb_dof_p, nb_dof_p);  gmm::resize(Bp, nb_dof_p);
+    gmm::resize(U, nb_dof_u); gmm::resize(U_old, nb_dof_u); gmm::resize(U_iter, nb_dof_u); 
+    gmm::resize(P, nb_dof_p); gmm::resize(P_old, nb_dof_p);gmm::resize(P_iter, nb_dof_p);
+    gmm::resize(P, nb_dof_p_x); gmm::resize(P_old, nb_dof_p);gmm::resize(P_iter, nb_dof_p);
+    gmm::resize(Kp, nb_dof_p_x, nb_dof_p_x);  gmm::resize(Bp, nb_dof_p_x);
 	
     
     getfem::ga_workspace workspace;
     configure_workspace(workspace,dt);
 
 
-	workspace.add_fem_variable("p", mfls_p, gmm::sub_interval(0, nb_dof_p), P);
-	workspace.add_fem_variable("p_old", mfls_p, gmm::sub_interval(0,nb_dof_p), P_old);
-	workspace.add_fem_variable("p_iter", mfls_p, gmm::sub_interval(0,nb_dof_p), P_iter);
-	workspace.add_fem_variable("u", mfls_u, gmm::sub_interval(0, nb_dof_u), U);
-	workspace.add_fem_variable("u_old", mfls_u, gmm::sub_interval(0, nb_dof_u), U_old);
-	workspace.add_fem_variable("u_iter", mfls_u, gmm::sub_interval(0, nb_dof_u), U_iter);
+	workspace.add_fem_variable("p", mf_p, gmm::sub_interval(0, nb_dof_p), P);
+	workspace.add_fem_variable("p_old", mf_p, gmm::sub_interval(0,nb_dof_p), P_old);
+	workspace.add_fem_variable("p_iter", mf_p, gmm::sub_interval(0,nb_dof_p), P_iter);
+	workspace.add_fem_variable("u", mf_u, gmm::sub_interval(0, nb_dof_u), U);
+	workspace.add_fem_variable("u_old", mf_u, gmm::sub_interval(0, nb_dof_u), U_old);
+	workspace.add_fem_variable("u_iter", mf_u, gmm::sub_interval(0, nb_dof_u), U_iter);
 	
 	// Pressure equation
-	workspace.add_expression("(1/bm + beta)*p.Test_p + tau*permeability*Grad_p.Grad_Test_p", mim_ls_in); // tau
+	workspace.add_expression("(1/bm + beta)*p.Test_p + tau*permeability*Grad_p.Grad_Test_p", mim , UNCUT_REGION_IN); // tau
 	// workspace.set_assembled_matrix(Kp);
 	workspace.assembly(2);
-    gmm::copy(workspace.assembled_matrix(), Kp);
+    gmm::copy(workspace.assembled_matrix(), gmm::sub_matrix(Kp,
+                                                             gmm::sub_interval(0, nb_dof_p),
+                                                             gmm::sub_interval(0, nb_dof_p) 
+                                                             ));
 	workspace.clear_expressions();
     
 	//======= RHS =====================
 	//  workspace.add_expression("[+0.0].Test_p + (1/bm)*invdt*p_old.Test_p + invdt*alpha*Test_p*Trace((Grad_u_old))", mim);// 1/dt
 	//  workspace.add_expression("(beta)*invdt*p_iter.Test_p - invdt*alpha*Test_p*Trace((Grad_u_iter))", mim);// 1/dt
 	// tau
-	workspace.add_expression("[+1.0]*Test_p + (1/bm)*p_old.Test_p + alpha*Test_p*Trace(Sym(Grad_u_old))", mim_ls_in); // tau
+	 workspace.add_expression("[+1.0e-20]*Test_p*tau + (1/bm)*p_old.Test_p + alpha*Test_p*Trace(Sym(Grad_u_old))", mim, UNCUT_REGION_IN); // tau
 	workspace.add_expression("(beta)*p_iter.Test_p - alpha*Test_p*Trace(Sym(Grad_u_iter))", mim_ls_in); // tau
 	workspace.set_assembled_vector(Bp);
 	workspace.assembly(1);
 	workspace.clear_expressions();
 
-	//Boudanry conditions
-	// getfem::base_vector penalty(1); penalty[0] = 1.e+4;
-	// workspace.add_fixed_size_constant("penalty", penalty);
-	// Matrix term
-	// workspace.add_expression("0*penalty*u.Test_u" "+ 0*penalty*p*Test_p", mim, TOP); // 1 is the region
-	// workspace.add_expression("penalty*u.Test_u" "+ 0*penalty*p*Test_p", mim, BOTTOM); // 1 is the region
-	// workspace.add_expression("0*penalty*u.Test_u" "+ 0*penalty*p*Test_p", mim, BOTTOM); // 1 is the region	
-	// good one
-    // workspace.add_expression("penalty*p*Test_p", mim, LEFT); workspace.add_expression("penalty*p*Test_p", mim, RIGHT);// 1 is the region	
-		//Boudanry conditions // NICHE
-
 	//Matrix term
-	workspace.add_expression("penalty/element_size*p*Test_p", mim_ls_in, TOP);
-	workspace.add_expression("-permeability*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim_ls_in, TOP); 	
-    workspace.add_expression("penalty/element_size*p*Test_p", mim_ls_in, LEFT);
-	workspace.add_expression("-permeability*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim_ls_in, LEFT); 	
-   	workspace.add_expression("penalty/element_size*p*Test_p", mim_ls_in, RIGHT);
-	workspace.add_expression("-permeability*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim_ls_in, RIGHT); 	
+	workspace.add_expression("penalty/element_size*p*Test_p", mim, TOP);
+	workspace.add_expression("-permeability*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, TOP); 	
+    workspace.add_expression("penalty/element_size*p*Test_p", mim, LEFT);
+	workspace.add_expression("-permeability*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, LEFT); 	
+   	workspace.add_expression("penalty/element_size*p*Test_p", mim, RIGHT);
+	workspace.add_expression("-permeability*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, RIGHT); 	
     
     workspace.assembly(2);
-    gmm::add(workspace.assembled_matrix(), Kp);
+    gmm::add(workspace.assembled_matrix(), gmm::sub_matrix(Kp,
+                                                             gmm::sub_interval(0, nb_dof_p),
+                                                             gmm::sub_interval(0, nb_dof_p) 
+                                                             ));
 	workspace.clear_expressions();
 	//rhs term
-	workspace.add_expression("0*penalty*p*Test_p", mim_ls_in, TOP); 
-	workspace.assembly(1);
+	// workspace.add_expression("0*penalty*p*Test_p", mim, TOP); 
+	// workspace.assembly(1);
+	// workspace.clear_expressions();
+    
+    ////dummy part of the matrix
+    workspace.add_expression("1.e+28*p*Test_p "	, mim,UNCUT_REGION_OUT);
+    //workspace.add_expression("(1/bm + beta)*p.Test_p + tau*permeability*Grad_p.Grad_Test_p"	, mim_ls_out,UNCUT_REGION_OUT);
+    //// workspace.add_expression("1.e+18*p*Test_p "	, mim_ls_bd);
+    workspace.assembly(2);
+    gmm::add(workspace.assembled_matrix(), gmm::sub_matrix(Kp,
+                                                             gmm::sub_interval(0, nb_dof_p),
+                                                             gmm::sub_interval(0, nb_dof_p) 
+                                                             ));
 	workspace.clear_expressions();
     
-    //dummy part of the matrix
-    workspace.add_expression("1.e+18*p*Test_p "	, mim_ls_out);
-    // workspace.add_expression("1.e+18*p*Test_p "	, mim_ls_bd);
-    workspace.assembly(2);
-    gmm::add(workspace.assembled_matrix(), Kp);
-	workspace.clear_expressions();
+    
+   sparse_matrix_type K_out(nb_dof_p,nb_dof_p);
+   {
+    workspace.add_expression("1.e+28*p*Test_p*tau ", mim, CUT_REGION);
+   // workspace.add_expression("(1/bm + beta)*p.Test_p + tau*permeability*Grad_p.Grad_Test_p"	, mim, CUT_REGION);
+   workspace.assembly(2);
+   gmm::copy(workspace.assembled_matrix(),K_out);
+   workspace.add_expression("1.e+28*p*Test_p*tau ", mim, LEFT);
+   workspace.add_expression("1.e+28*p*Test_p*tau ", mim, RIGHT);
+   workspace.assembly(2);
+   gmm::add(workspace.assembled_matrix(),K_out);
+   workspace.clear_expressions();
+   std::cout<< "end kout"<< std::endl; 
+   }
+   // Kin for enriched dof
+   sparse_matrix_type K_in(nb_dof_p,nb_dof_p);
+   {
+   // NICHE
+    workspace.add_expression("2/element_size*p*Test_p*tau", mim_ls_bd, CUT_REGION);// 1 is the region		
+    workspace.add_expression("-permeability*nlsv.Grad_p*Test_p*tau - permeability*nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION); 
+   //NICHE
+   // workspace.add_expression( "permeability*tau*[0,1].Grad_p*Test_p ", mim_ls_bd, CUT_REGION);
+    workspace.add_expression( "+(1/bm)*p.Test_p + tau*permeability*Grad_p.Grad_Test_p"
+                             "+ alpha*Test_p*Div_u", mim, CUT_REGION);
+   workspace.assembly(2);
+   gmm::copy(workspace.assembled_matrix(),K_in);
+   workspace.clear_expressions();
+   workspace.add_expression("+[1.0e-20].Test_p*tau + (1/bm)*p_old.Test_p + alpha*Test_p*Div_u_old", mim,CUT_REGION);
+   workspace.assembly(1);
+   workspace.clear_expressions();
+   workspace.add_expression("1.e+28*p*Test_p*tau ", mim_ls_in, LEFT);
+   workspace.add_expression("1.e+28*p*Test_p*tau ", mim_ls_in, RIGHT);
+   workspace.assembly(2);
+   gmm::add(workspace.assembled_matrix(),K_in);
+   std::cout<< "end kin"<< std::endl; 
+   //gmm::copy(gmm::sub_matrix(Kp,
+                                                             //gmm::sub_interval(0, nb_dof_p),
+                                                             //gmm::sub_interval(0, nb_dof_p) 
+                                                             //),K_in);
+                //gmm::copy(K_in,K_out);                                             
+    {// mapping for pressure
+    std::cout<<"start mapping pressure"<<std::endl;
+    size_type dof_shift = nb_dof_p;
+    // On cut elements, the contribution is splitted in two parts,
+    // corresponding to the sub-elements In (ls < 0) and Out (ls >= 0).
+    // Basis functions on cut elements are copies of standard
+    // functions, but are integrated on the In and Out sub-element (since
+    // they are extended by zero on the rest of the element).
+    // The simple rule to enrich the FE spaces is thus the following:
+    // * If a dof index ii is In, its In contribution is 
+    // is mapped to the index iIn = ii;
+    // * on the other hand, its Out contribution is mapped 
+    // in the extended dof range: ii = i + nb_dof_u, where eXt_dof[i] = ii;
+    // * If a dof index ii is Out, proceeds analogously.
+       // No interface terms here: only In-In and Out-Out dofs.
+    for (size_type i = 0; i < eXt_dof.size(); ++i) {
+      size_type ii = eXt_dof[i];
+      double ls_i = ls_function(mf_p.point_of_basic_dof(ii),time, LS_TYPE)[0];
+      // std::cout<< "ls values of dof"<< ii << " is "  << ls_i<< std::endl;
+       Bp[dof_shift + i] = Bp[ ii];
+      for (size_type j = 0; j < eXt_dof.size(); ++j) {
+	    size_type jj = eXt_dof[j];
+       double ls_j = ls_function(mf_p.point_of_basic_dof(jj),time, LS_TYPE)[0];
+            // std::cout<< "ls_i "<< ls_i << " ls_j "<< ls_j << std::endl;
+	        if ( (ls_i <= 0) && (ls_j <= 0) ) {
+	         // i and j are both In
+	         Kp(ii , jj) += K_in(ii, jj);
+	         Kp(i + dof_shift, j  + dof_shift) += K_out(ii, jj);
+            }
+            else if ( (ls_i>= 0) && (ls_j >= 0) ) {
+	         // i and j are both Out
+	         Kp(ii, jj) += K_out(ii, jj);
+	         Kp(i + dof_shift, j  + dof_shift) += K_in(ii, jj);
+	        }
+	        else if ( (ls_i <= 0) && (ls_j>= 0) ) {
+             // i is In, j is Out
+	         Kp(ii, j  + dof_shift) += K_in(ii, jj);
+	         Kp(i + dof_shift, jj) += K_out(ii, jj);
+	        }
+	        else {
+	        // i is Out, j is In
+	        Kp(i + dof_shift, jj) += K_in(ii, jj);
+	        Kp(ii, j  + dof_shift) += K_out(ii, jj);
+	        }
+        }
+    }
+   }
+}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     //dummy part of the matrix
     // workspace.add_expression("-200*1.e+12*Test_p "	, mim_ls_out);
     // workspace.add_expression("-200*1.e+12*Test_p "	, mim_ls_bd);
     //workspace.assembly(1);
 	// workspace.clear_expressions();
-     for (int i=0; i< nb_dof_p; i++) if(fabs(Kp(i,i)) < 1.e-19 ) Kp(i,i)=1.e+4;
 	return;}
 
 
@@ -589,19 +690,19 @@ void biotls_problem::assembly_p(double dt){
 // -------------------------------------------------
 void biotls_problem::assembly_u(double dt){
 	std::cout<<"biot_assembler::assembly_u(double dt)" <<std::endl;
-   	getfem::size_type nb_dof_u = mfls_u.nb_dof();
-    getfem::size_type nb_dof_p = mfls_p.nb_dof();
+   	getfem::size_type nb_dof_u = mf_u.nb_dof();
+    getfem::size_type nb_dof_p = mf_p.nb_dof();
     gmm::clear(Bu);  gmm::clear(Ku);
-    // gmm::resize(P, nb_dof_p); gmm::resize(P_old, nb_dof_p);gmm::resize(P_iter, nb_dof_p);
-    // gmm::resize(Ku, nb_dof_u, nb_dof_u);  gmm::resize(Bu, nb_dof_u);
+    gmm::resize(P, nb_dof_p); gmm::resize(P_old, nb_dof_p);gmm::resize(P_iter, nb_dof_p);
+    gmm::resize(Ku, nb_dof_u, nb_dof_u);  gmm::resize(Bu, nb_dof_u);
 	getfem::ga_workspace workspace; configure_workspace(workspace,dt);
 	
-    workspace.add_fem_variable("p", mfls_p, gmm::sub_interval(0, nb_dof_p), P);
-	workspace.add_fem_variable("p_old", mfls_p, gmm::sub_interval(0,nb_dof_p), P_old);
-	workspace.add_fem_variable("p_iter", mfls_p, gmm::sub_interval(0,nb_dof_p), P_iter);
-	workspace.add_fem_variable("u", mfls_u, gmm::sub_interval(0, nb_dof_u), U);
-	workspace.add_fem_variable("u_old", mfls_u, gmm::sub_interval(0, nb_dof_u), U_old);
-	workspace.add_fem_variable("u_iter", mfls_u, gmm::sub_interval(0, nb_dof_u), U_iter);
+    workspace.add_fem_variable("p", mf_p, gmm::sub_interval(0, nb_dof_p), P);
+	workspace.add_fem_variable("p_old", mf_p, gmm::sub_interval(0,nb_dof_p), P_old);
+	workspace.add_fem_variable("p_iter", mf_p, gmm::sub_interval(0,nb_dof_p), P_iter);
+	workspace.add_fem_variable("u", mf_u, gmm::sub_interval(0, nb_dof_u), U);
+	workspace.add_fem_variable("u_old", mf_u, gmm::sub_interval(0, nb_dof_u), U_old);
+	workspace.add_fem_variable("u_iter", mf_u, gmm::sub_interval(0, nb_dof_u), U_iter);
     
     // ----- Boundary condisions displacemenet
     if(N_==2){
@@ -699,24 +800,30 @@ void biotls_problem::solve(double time){
 //====================================================
 // method for solving the fixed stress  problem
 //====================================================
-void biotls_problem::solve_fix_stress(double dt, int max_iter){
+void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
 
   
   double epsu=1.e-6; double epsp=1.e-6;
   double rel_unorm=1; double rel_pnorm=1; int fix_count=0;
   double old_unorm=1; double new_unorm=1;
   double old_pnorm=1; double new_pnorm=1;
-  
+  getfem::size_type nb_dof_u = mf_u.nb_dof();
+  getfem::size_type nb_dof_p = mf_p.nb_dof();
   while(fix_count < max_iter && ( rel_unorm>epsu ||  rel_pnorm > epsp) )
 		{
 		 fix_count++; 
 		 std::cout<<"\033[1;34m***** iteration " << fix_count 
                   << " norm p " <<  rel_pnorm 
-                   << " norm u " <<  rel_unorm << std::endl;
-		 std::cout<< " \033[1;32m Start solving pressure"<<std::endl;
+                 << " norm u " <<  rel_unorm << std::endl;
+		 
+                 
+         std::cout<< " \033[1;32m Assembling pressure"<<std::endl;
+         assembly_p(dt,time);
+         std::cout<< " \033[1;32m Start solving pressure"<<std::endl;
+         
          // precond
          gmm::identity_matrix PM; // no precond
-         gmm::diagonal_precond<sparse_matrix_type> PRp(Kp);
+         // gmm::diagonal_precond<sparse_matrix_type> PRp(Kp);
          // gmm::clear(P);
          {
           size_type restart = 50;
@@ -724,9 +831,12 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter){
           iter.set_noisy(1);               // output of iterations (2: sub-iteration)
           iter.set_maxiter(1000); // maximum number of iterations
           
+          // std::cout<<P.size()<<std::endl;
+          // std::cout<<Bp.size()<<std::endl;std::cin.get();
           // gmm::gmres(Kp, P, Bp, PRp, restart, iter);
           scalar_type cond;
 		  gmm::SuperLU_solve(Kp, P , Bp, cond);
+          
 		  std::cout << "  Condition number (momentum: " << cond << std::endl;
           
          }
@@ -740,14 +850,14 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter){
          #endif // PRINTMATRIX
          //----------------------------------------------------------------
          
-         getfem::size_type nb_dof_u = mf_u.nb_dof();
-         getfem::size_type nb_dof_p = mf_p.nb_dof();
-         
+
+        if (0) { // for displacement
          new_pnorm = gmm::vect_norm2(P);
          rel_pnorm=fabs(new_pnorm - old_pnorm)/ (old_pnorm+1.e-18);
          old_pnorm = new_pnorm;
          // updating u
-         gmm::copy(P,P_iter);
+         //////warrnincg
+         // gmm::copy(P,P_iter);
          assembly_u(dt);
          //solving u
          std::cout<< " \033[1;31m Start solving momentum balance"<<std::endl;
@@ -779,14 +889,52 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter){
          new_unorm = gmm::vect_norm2(U);
          rel_unorm=fabs(new_unorm - old_unorm)/ old_unorm;
          old_unorm = new_unorm;
-         // updating u
-         assembly_p(dt);
+       }
      }
   	 std::cout<<"\033[1;34m***** last iteration " << fix_count 
               << " norm p " <<  rel_pnorm 
               << " norm u " <<  rel_unorm << std::endl;
-     gmm::copy(U,U_old); gmm::copy(P,P_old);
+     
+     
+     std::cout<<"\033[1;34m updating old vectors "<< std::endl;
+      std::vector<scalar_type> PIn(mf_p.nb_dof(), 0.0);
+      int nb_exdof_p=eXt_dof.size();
+      int nb_exdof_u=eXt_dof_u.size();
+    {  
+         for (size_type i = 0; i < eXt_dof.size(); ++i) 
+          {
+             size_type ii = eXt_dof[i];
+             double ls_i = ls_function(mf_p.point_of_basic_dof(ii),time, LS_TYPE)[0];
+             if (ls_i >= 0) PIn[ii] = P[mf_p.nb_dof()+ i];
+          }
+        for (size_type i = 0; i < mf_p.nb_dof(); ++i) 
+         {
+          double ls_i = ls_function(mf_p.point_of_basic_dof(i),time, LS_TYPE)[0];
+          if (ls_i < 0)  PIn[i] = P[i];
+         }
+         gmm::copy(PIn,P_old);
+    } 
+  
+    if (0){  
+      std::vector<scalar_type> UIn(mf_u.nb_dof(), 0.0);
+      for (size_type i = 0; i < eXt_dof_u.size(); ++i) 
+      {
+       size_type ii = eXt_dof_u[i];
+       double ls_i = ls_function(mf_u.point_of_basic_dof(ii),time, LS_TYPE)[0];
+       if (ls_i >= 0) UIn[ii] = U[mf_u.nb_dof() + eXt_dof.size() + i];
+      }
+      for (size_type i = 0; i < mf_u.nb_dof(); ++i) 
+      {
+       double ls_i = ls_function(mf_u.point_of_basic_dof(i),time, LS_TYPE)[0];
+       if (ls_i < 0)  UIn[i] = U[i];
+      }
+      gmm::copy(UIn,U_old);
+    } 
+     
      gmm::clear(U_iter); gmm::clear(P_iter);
+     gmm::resize(UP, nb_dof_u + nb_exdof_u + nb_dof_p + nb_exdof_p);  
+     // gmm::copy(U,gmm::sub_vector(UP,gmm::sub_interval(0, nb_dof_u)));				
+     gmm::copy(P,gmm::sub_vector(UP,gmm::sub_interval(nb_dof_u , nb_dof_p + nb_exdof_p)));	
   
  }
  
@@ -830,7 +978,7 @@ void biotls_problem::print(double time,int istep,double time_ls){
          size_type ii = eXt_dof[i];
           double ls_i = ls_function(mf_p.point_of_basic_dof(ii),time, LS_TYPE)[0];
          if (ls_i < 0) {
-          POut[ii] = -100+UP[mf_u.nb_dof() + mf_p.nb_dof() + i];
+          POut[ii] = +UP[mf_u.nb_dof() + mf_p.nb_dof() + i];
       }
          else
           PIn[ii] = UP[mf_u.nb_dof() + mf_p.nb_dof()+ i];
@@ -841,7 +989,7 @@ void biotls_problem::print(double time,int istep,double time_ls){
         if (ls_i < 0) {
           PIn[i] = UP[mf_u.nb_dof() +i];Pm[i] = UP[mf_u.nb_dof() +i];}
         else {
-          POut[i] = -100+UP[mf_u.nb_dof() +i]; Pm[i] = UP[mf_u.nb_dof() +i];}
+          POut[i] = +UP[mf_u.nb_dof() +i]; Pm[i] = UP[mf_u.nb_dof() +i];}
       }
         getfem::vtk_export vtke("pressure."+std::to_string(istep)+".vtk");
         vtke.exporting(mf_p);
@@ -974,7 +1122,7 @@ void biotls_problem::print(double time,int istep,double time_ls){
       res[1] = -.5 + x;
     } break;
     case 1: {
-      res[0] = y - 3615 + time/(1e+12)*120*4;
+      res[0] = y - 3050 + time/(1e+12)*120*4;
       res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.27;
     } break;
     case 2: {
