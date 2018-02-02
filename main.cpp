@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
 
      double dt=0.4e+11;
    //    p.assembly_p(dt,0); 
-      p.assembly_u(dt);
+   //    p.assembly_u(dt);
      // p.build_fix_stress_preconditioner();
      int n_step=10;int erosion_limit=20;
      double time=0*dt;

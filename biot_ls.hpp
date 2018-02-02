@@ -75,7 +75,7 @@ struct problem_descriptor_tri{
 	double mu_s = E/( 2 * ( 1 + poisson) ) ;
 	double lambda_l= E*poisson/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;
 	double biot_modulus=1.e+9;
-	double k =1.e-15; //permeability
+	double k =1.e-10; //permeability
 	double alpha=0; // Biot coefficient
     };
     
@@ -169,7 +169,7 @@ class biotls_problem {
     public:
       void assembly(double dt,double time);                         /// assemble the monolithic iteration matrix for the problem
       void assembly_p(double dt,double time);                       /// assemble the iteration matrix for pressure, can be used as preconditioner
-      void assembly_u(double dt);                       /// assemble the iteration matrix for pressure, can be used as preconditioner
+      void assembly_u(double dt,double time);                       /// assemble the iteration matrix for pressure, can be used as preconditioner
       void build_fix_stress_preconditioner();
       void solve(double time);                                 /// solves the monolithic system 
       void solve_fix_stress(double dt, int max_iter,double time);   /// solves the system with classic fixed stress approach

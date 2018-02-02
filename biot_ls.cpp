@@ -501,8 +501,8 @@ void biotls_problem::assembly(double dt,double time) {
 
 void biotls_problem::assembly_p(double dt, double time){
     
-    gmm::clean(P_old, 1E-10);gmm::clean(U_old, 1E-10);
-	gmm::clean(P, 1E-10);gmm::clean(U, 1E-10);
+    // gmm::clean(P_old, 1E-10);gmm::clean(U_old, 1E-10);
+	// gmm::clean(P, 1E-10);gmm::clean(U, 1E-10);
     gmm::clear(Bp); gmm::clear(Kp);
 	std::cout<<"biot_assembler::assembly_p(double dt)" <<std::endl;
    	getfem::size_type nb_dof_u = mf_u.nb_dof();
@@ -511,8 +511,6 @@ void biotls_problem::assembly_p(double dt, double time){
     getfem::size_type nb_dof_u_x = nb_dof_u + nb_x_dof_u;
     std::cout<< "total dofs " <<   mf_p.nb_dof() << "normal dof" << mf_p.nb_dof()  <<std::endl;
     
-    gmm::resize(U, nb_dof_u); gmm::resize(U_old, nb_dof_u); gmm::resize(U_iter, nb_dof_u); 
-    gmm::resize(P, nb_dof_p); gmm::resize(P_old, nb_dof_p);gmm::resize(P_iter, nb_dof_p);
     gmm::resize(P, nb_dof_p_x); gmm::resize(P_old, nb_dof_p);gmm::resize(P_iter, nb_dof_p);
     gmm::resize(Kp, nb_dof_p_x, nb_dof_p_x);  gmm::resize(Bp, nb_dof_p_x);
 	
@@ -524,7 +522,7 @@ void biotls_problem::assembly_p(double dt, double time){
 	workspace.add_fem_variable("p", mf_p, gmm::sub_interval(0, nb_dof_p), P);
 	workspace.add_fem_variable("p_old", mf_p, gmm::sub_interval(0,nb_dof_p), P_old);
 	workspace.add_fem_variable("p_iter", mf_p, gmm::sub_interval(0,nb_dof_p), P_iter);
-	workspace.add_fem_variable("u", mf_u, gmm::sub_interval(0, nb_dof_u), U);
+	// workspace.add_fem_variable("u", mf_u, gmm::sub_interval(0, nb_dof_u), U);
 	workspace.add_fem_variable("u_old", mf_u, gmm::sub_interval(0, nb_dof_u), U_old);
 	workspace.add_fem_variable("u_iter", mf_u, gmm::sub_interval(0, nb_dof_u), U_iter);
 	
@@ -581,8 +579,10 @@ void biotls_problem::assembly_p(double dt, double time){
     
    sparse_matrix_type K_out(nb_dof_p,nb_dof_p);
    {
-    workspace.add_expression("1.e+28*p*Test_p*tau ", mim, CUT_REGION);
+     workspace.add_expression("1.e+28*p*Test_p*tau ", mim, CUT_REGION);
    // workspace.add_expression("(1/bm + beta)*p.Test_p + tau*permeability*Grad_p.Grad_Test_p"	, mim, CUT_REGION);
+    // workspace.add_expression("2/element_size*p*Test_p*tau", mim_ls_bd, CUT_REGION);// 1 is the region		
+  //   workspace.add_expression("-permeability*nlsv.Grad_p*Test_p *tau- permeability*nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION); 
    workspace.assembly(2);
    gmm::copy(workspace.assembled_matrix(),K_out);
    workspace.add_expression("1.e+28*p*Test_p*tau ", mim, LEFT);
@@ -596,12 +596,12 @@ void biotls_problem::assembly_p(double dt, double time){
    sparse_matrix_type K_in(nb_dof_p,nb_dof_p);
    {
    // NICHE
-    workspace.add_expression("2/element_size*p*Test_p*tau", mim_ls_bd, CUT_REGION);// 1 is the region		
-    workspace.add_expression("-permeability*nlsv.Grad_p*Test_p*tau - permeability*nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION); 
+     workspace.add_expression("2/element_size*p*Test_p*1000", mim_ls_bd, CUT_REGION);// 1 is the region		
+     workspace.add_expression("-permeability*nlsv.Grad_p*Test_p *tau- permeability*nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION); 
    //NICHE
-   // workspace.add_expression( "permeability*tau*[0,1].Grad_p*Test_p ", mim_ls_bd, CUT_REGION);
+   //  workspace.add_expression( "permeability*tau*[0,1].Grad_p*Test_p ", mim_ls_bd, CUT_REGION);
     workspace.add_expression( "+(1/bm)*p.Test_p + tau*permeability*Grad_p.Grad_Test_p"
-                             "+ alpha*Test_p*Div_u", mim, CUT_REGION);
+                             "+ alpha*Test_p*Div_u_iter", mim, CUT_REGION);
    workspace.assembly(2);
    gmm::copy(workspace.assembled_matrix(),K_in);
    workspace.clear_expressions();
@@ -688,18 +688,22 @@ void biotls_problem::assembly_p(double dt, double time){
 // -------------------------------------------------
 // Assembling displacement matrix for fixed stress
 // -------------------------------------------------
-void biotls_problem::assembly_u(double dt){
+void biotls_problem::assembly_u(double dt,double time){
 	std::cout<<"biot_assembler::assembly_u(double dt)" <<std::endl;
    	getfem::size_type nb_dof_u = mf_u.nb_dof();
     getfem::size_type nb_dof_p = mf_p.nb_dof();
+    getfem::size_type nb_dof_p_x = nb_dof_p + nb_x_dof_p;
+    getfem::size_type nb_dof_u_x = nb_dof_u + nb_x_dof_u;
+    
     gmm::clear(Bu);  gmm::clear(Ku);
-    gmm::resize(P, nb_dof_p); gmm::resize(P_old, nb_dof_p);gmm::resize(P_iter, nb_dof_p);
-    gmm::resize(Ku, nb_dof_u, nb_dof_u);  gmm::resize(Bu, nb_dof_u);
+    gmm::resize(U_old, nb_dof_u);
+    // gmm::resize(P_iter, nb_dof_p);
+    gmm::resize(U, nb_dof_u_x); gmm::resize(Ku, nb_dof_u_x, nb_dof_u_x);  gmm::resize(Bu, nb_dof_u_x);
 	getfem::ga_workspace workspace; configure_workspace(workspace,dt);
 	
-    workspace.add_fem_variable("p", mf_p, gmm::sub_interval(0, nb_dof_p), P);
-	workspace.add_fem_variable("p_old", mf_p, gmm::sub_interval(0,nb_dof_p), P_old);
-	workspace.add_fem_variable("p_iter", mf_p, gmm::sub_interval(0,nb_dof_p), P_iter);
+    // workspace.add_fem_variable("p", mf_p, gmm::sub_interval(0, nb_dof_p), P);
+	// workspace.add_fem_variable("p_old", mf_p, gmm::sub_interval(0,nb_dof_p), P_old);
+	// workspace.add_fem_variable("p_iter", mf_p, gmm::sub_interval(0,nb_dof_p), P_iter);
 	workspace.add_fem_variable("u", mf_u, gmm::sub_interval(0, nb_dof_u), U);
 	workspace.add_fem_variable("u_old", mf_u, gmm::sub_interval(0, nb_dof_u), U_old);
 	workspace.add_fem_variable("u_iter", mf_u, gmm::sub_interval(0, nb_dof_u), U_iter);
@@ -718,28 +722,91 @@ void biotls_problem::assembly_u(double dt){
 	workspace.set_assembled_vector(Bu);
     workspace.assembly(1);
 	workspace.clear_expressions();
-
     // ----- momentum equation
-	workspace.add_expression("2*mu*Sym(Grad_u):Grad_Test_u + lambda*Div_u*Div_Test_u", mim_ls_in); // stress tensor 
-    workspace.add_expression("penalty*u.Test_u" , mim_ls_in, BOTTOM); //neumann disp
-	workspace.assembly(2);
-    gmm::copy(workspace.assembled_matrix(), Ku);
+	workspace.add_expression("2*mu*Sym(Grad_u):Grad_Test_u + lambda*Div_u*Div_Test_u", mim , UNCUT_REGION_IN); // stress tensor 
+    workspace.add_expression("penalty*u.Test_u" , mim, BOTTOM); //neumann disp
+	workspace.assembly(2);   
+    gmm::copy(workspace.assembled_matrix(), gmm::sub_matrix(Ku,
+                                                             gmm::sub_interval(0, nb_dof_u),
+                                                             gmm::sub_interval(0, nb_dof_u) 
+                                                             ));
 	workspace.clear_expressions();
-	if(N_==2) workspace.add_expression("(2200*0.8 + 1000*0.2 -1000 )*[0,-1].Test_u", mim_ls_in);
+    
+	if(N_==2) workspace.add_expression("(2200*0.8 + 1000*0.2 -1000 )*[0,-1].Test_u", mim,UNCUT_REGION_IN);
     if(N_==3) workspace.add_expression("[0,0,-0].Test_u", mim_ls_in);
-    workspace.add_expression("alpha*p*Div_Test_u ", mim_ls_in);
+    // workspace.add_expression("alpha*p*Div_Test_u ",  mim, UNCUT_REGION_IN);
 	workspace.assembly(1);
 	workspace.clear_expressions();
     // std::cout<< Bu<< std::endl; 
     //dummy part of the matrix
-    workspace.add_expression("1.e+12*u.Test_u "	, mim_ls_out);
-    workspace.assembly(2);
-    gmm::add(workspace.assembled_matrix(), Ku);
+    workspace.add_expression("1.e+12*u.Test_u "	, mim, UNCUT_REGION_OUT);
+    workspace.assembly(2);    
+    gmm::add(workspace.assembled_matrix(), gmm::sub_matrix(Ku,
+                                                             gmm::sub_interval(0, nb_dof_u),
+                                                             gmm::sub_interval(0, nb_dof_u) 
+                                                             ));
 	workspace.clear_expressions();
     
-    for (int i=0; i< nb_dof_u; i++) if(fabs(Ku(i,i)) < 1.e-16 ) Ku(i,i)=1.e+4;
+    // Enriched dof
+   sparse_matrix_type K_out(nb_dof_u ,nb_dof_u );
+   workspace.add_expression("1.e+15*u.Test_u "	,mim, CUT_REGION);;
+   workspace.assembly(2);
+   gmm::copy(workspace.assembled_matrix(),K_out);
+   workspace.clear_expressions();
+   std::cout<< "end kout"<< std::endl; 
+   // Kin for enriched dof
+   sparse_matrix_type K_in(nb_dof_u, nb_dof_u );
+       // internal for displacement
+   workspace.add_expression( "2*mu*Sym(Grad_u):Grad_Test_u + lambda*Div_u*Div_Test_u", mim, CUT_REGION);
+   // workspace.add_expression("- alpha*p.Div_Test_u ", mim_ls_in, CUT_REGION);
+   workspace.assembly(2);
+   gmm::copy(workspace.assembled_matrix(),K_in);
+   workspace.clear_expressions();
+   workspace.add_expression("[0,-(2200-1000)].Test_u", mim,CUT_REGION);
+   workspace.assembly(1);
+   workspace.clear_expressions();
+   std::cout<< "end kin"<< std::endl; 
+   
+   
+   // Mapping
+   {// mapping for displacement
+    std::cout<<"start mapping displacement"<<std::endl;
+    size_type dof_shift = nb_dof_u ;
+    for (size_type i = 0; i < eXt_dof_u.size(); ++i) {
+      size_type ii = eXt_dof_u[i];
+      double ls_i = ls_function(mf_u.point_of_basic_dof(ii),time, LS_TYPE)[0];
+      // std::cout<< "ls values of dof"<< ii<< " is "  << ls_i<< std::endl;
+       B[dof_shift +i ] = B[ii];
+      for (size_type j = 0; j < eXt_dof_u.size(); ++j) {
+	    size_type jj = eXt_dof_u[j];
+       double ls_j = ls_function(mf_u.point_of_basic_dof(jj),time, LS_TYPE)[0];
+        // std::cout<< "ls_i "<< ls_i << " ls_j "<< ls_j << std::endl;
+	        if ( (ls_i <= 0) && (ls_j <= 0) ) {
+	         // i and j are both In
+	         Ku(ii , jj ) += K_in(ii, jj);
+	         Ku(i + dof_shift, j  + dof_shift) += K_out(ii, jj);
+            }
+            else if ( (ls_i>= 0) && (ls_j >= 0) ) {
+	         // i and j are both Out
+	         Ku(ii, jj) += K_out(ii, jj);
+	         Ku(i + dof_shift, j  + dof_shift) += K_in(ii, jj);
+	        }
+	        else if ( (ls_i <= 0) && (ls_j>= 0) ) {
+             // i is In, j is Out
+	         Ku(ii, j  + dof_shift) += K_in(ii, jj);
+	         Ku(i + dof_shift, jj) += K_out(ii, jj);
+	        }
+	        else {
+	        // i is Out, j is In
+	        Ku(i + dof_shift, jj) += K_in(ii, jj);
+	        Ku(ii, j  + dof_shift) += K_out(ii, jj);
+	        }
+        }
+    }
+   }
+    // end enriched dof
   
-    
+   //  std::cout<<Ku<<std::endl;std::cin.get();
 } // end assembling momentum matrix for fixed stress approach
 
 //====================================================
@@ -837,7 +904,7 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
           scalar_type cond;
 		  gmm::SuperLU_solve(Kp, P , Bp, cond);
           
-		  std::cout << "  Condition number (momentum: " << cond << std::endl;
+		  std::cout << "  Condition number pressure: " << cond << std::endl;
           
          }
          //--------------------------------------------------------------
@@ -851,17 +918,17 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
          //----------------------------------------------------------------
          
 
-        if (0) { // for displacement
+        { // for displacement
          new_pnorm = gmm::vect_norm2(P);
          rel_pnorm=fabs(new_pnorm - old_pnorm)/ (old_pnorm+1.e-18);
          old_pnorm = new_pnorm;
          // updating u
          //////warrnincg
          // gmm::copy(P,P_iter);
-         assembly_u(dt);
+         assembly_u(dt,time);
          //solving u
          std::cout<< " \033[1;31m Start solving momentum balance"<<std::endl;
-         gmm::diagonal_precond<sparse_matrix_type> PRu(Ku);
+         // gmm::diagonal_precond<sparse_matrix_type> PRu(Ku);
          {
           size_type restart = 50;
           gmm::iteration iter(1.e-7);  // iteration object with the max residu
@@ -872,7 +939,7 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
           // gmm::gmres(Ku, U, Bu, PRu, restart, iter);
           scalar_type cond;
 		  gmm::SuperLU_solve(Ku, U , Bu, cond);
-		  std::cout << "  Condition number (momentum: " << cond << std::endl;
+		  std::cout << "  Condition number momentum: " << cond << std::endl;
         }
          //--------------------------------------------------------------
          #ifdef PRINT_MATRIX
@@ -885,7 +952,7 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
          //----------------------------------------------------------------
 	     
          
-         gmm::copy(U,U_iter);
+         // gmm::copy(U,U_iter);
          new_unorm = gmm::vect_norm2(U);
          rel_unorm=fabs(new_unorm - old_unorm)/ old_unorm;
          old_unorm = new_unorm;
@@ -915,13 +982,13 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
          gmm::copy(PIn,P_old);
     } 
   
-    if (0){  
+    {  
       std::vector<scalar_type> UIn(mf_u.nb_dof(), 0.0);
       for (size_type i = 0; i < eXt_dof_u.size(); ++i) 
       {
        size_type ii = eXt_dof_u[i];
        double ls_i = ls_function(mf_u.point_of_basic_dof(ii),time, LS_TYPE)[0];
-       if (ls_i >= 0) UIn[ii] = U[mf_u.nb_dof() + eXt_dof.size() + i];
+       if (ls_i >= 0) UIn[ii] = U[mf_u.nb_dof() + i];
       }
       for (size_type i = 0; i < mf_u.nb_dof(); ++i) 
       {
@@ -933,9 +1000,15 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
      
      gmm::clear(U_iter); gmm::clear(P_iter);
      gmm::resize(UP, nb_dof_u + nb_exdof_u + nb_dof_p + nb_exdof_p);  
-     // gmm::copy(U,gmm::sub_vector(UP,gmm::sub_interval(0, nb_dof_u)));				
+     gmm::copy( gmm::sub_vector(U,gmm::sub_interval(0, nb_dof_u)),
+               gmm::sub_vector(UP,gmm::sub_interval(0, nb_dof_u))
+               );				
+     gmm::copy(
+               gmm::sub_vector(U,gmm::sub_interval(nb_dof_u, nb_exdof_u)),
+                gmm::sub_vector(UP,gmm::sub_interval(nb_dof_u+nb_dof_p + nb_exdof_p, nb_exdof_u))
+                );				
      gmm::copy(P,gmm::sub_vector(UP,gmm::sub_interval(nb_dof_u , nb_dof_p + nb_exdof_p)));	
-  
+  std::cout<<"end updating old"<<std::endl;
  }
  
 
@@ -1061,7 +1134,7 @@ void biotls_problem::print(double time,int istep,double time_ls){
         scalar_type dmean = 0;
         for (size_type i=0; i < idofs.size(); ++i) {
             double ls_val=ls_function(mfcut.point_of_basic_dof( idofs[i] ) ,time_ls, LS_TYPE)[0];
-          dmean += pow(ls_val,11);
+          dmean += ls_val;
       }
         if (dmean < 0) 
           for (size_type i=0; i < idofs.size(); ++i) {
@@ -1122,7 +1195,7 @@ void biotls_problem::print(double time,int istep,double time_ls){
       res[1] = -.5 + x;
     } break;
     case 1: {
-      res[0] = y - 3050 + time/(1e+12)*120*4;
+      res[0] = y - 3050 + time/(1e+12)*120*8;
       res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.27;
     } break;
     case 2: {
