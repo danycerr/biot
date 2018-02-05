@@ -60,6 +60,7 @@ typedef std::vector<scalar_type> plain_vector;
 #define LS_TYPE 1
 // Right hand side. Allows an interpolation for the source term.
 // scalar_type sol_f(const base_node &x) { return 10.; }
+// branch no dim
 struct problem_descriptor_tri{    
     std::string MESH_TYPE =         "GT_PK(2,1)" ; // triangular elements
     std::string FEM_TYPE_U  =         "FEM_PK(2,1)";
