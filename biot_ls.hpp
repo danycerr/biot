@@ -74,8 +74,8 @@ struct problem_descriptor_tri{
 	double poisson =0.3;
 	double mu_s = E/( 2 * ( 1 + poisson) ) ;
 	double lambda_l= E*poisson/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;
-	double biot_modulus=1.e+0;
-	double k =1.e-0; //permeability
+	double biot_modulus=1.e+9;
+	double k =1.e-10; //permeability
 	double alpha=0; // Biot coefficient
     };
     

@@ -16,7 +16,7 @@ void biotls_problem::init(void) {
     // A trasformation for the squarred mesh
 	  bgeot::base_matrix M(N_,N_);
 	  for (size_type i=0; i < N_; ++i) {
-	    M(i,i) = 1.0;
+	    M(i,i) = 4000.0;
 	  }
 	//  if (N>1) { M(0,1) = 0; }
 	//
@@ -540,7 +540,7 @@ void biotls_problem::assembly_p(double dt, double time){
 	//  workspace.add_expression("[+0.0].Test_p + (1/bm)*invdt*p_old.Test_p + invdt*alpha*Test_p*Trace((Grad_u_old))", mim);// 1/dt
 	//  workspace.add_expression("(beta)*invdt*p_iter.Test_p - invdt*alpha*Test_p*Trace((Grad_u_iter))", mim);// 1/dt
 	// tau
-	 workspace.add_expression("[+1.0e-0]*Test_p*tau + (1/bm)*p_old.Test_p + alpha*Test_p*Trace(Sym(Grad_u_old))", mim, UNCUT_REGION_IN); // tau
+	 workspace.add_expression("[+1.0e-20]*Test_p*tau + (1/bm)*p_old.Test_p + alpha*Test_p*Trace(Sym(Grad_u_old))", mim, UNCUT_REGION_IN); // tau
 	workspace.add_expression("(beta)*p_iter.Test_p - alpha*Test_p*Trace(Sym(Grad_u_iter))", mim_ls_in); // tau
 	workspace.set_assembled_vector(Bp);
 	workspace.assembly(1);
@@ -596,7 +596,7 @@ void biotls_problem::assembly_p(double dt, double time){
    sparse_matrix_type K_in(nb_dof_p,nb_dof_p);
    {
    // NICHE
-     workspace.add_expression("20/element_size*p*Test_p*tau", mim_ls_bd, CUT_REGION);// 1 is the region		
+     workspace.add_expression("2/element_size*p*Test_p*1000", mim_ls_bd, CUT_REGION);// 1 is the region		
      workspace.add_expression("-permeability*nlsv.Grad_p*Test_p *tau- permeability*nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION); 
    //NICHE
    //  workspace.add_expression( "permeability*tau*[0,1].Grad_p*Test_p ", mim_ls_bd, CUT_REGION);
@@ -605,7 +605,7 @@ void biotls_problem::assembly_p(double dt, double time){
    workspace.assembly(2);
    gmm::copy(workspace.assembled_matrix(),K_in);
    workspace.clear_expressions();
-   workspace.add_expression("+[1.0e-0].Test_p*tau + (1/bm)*p_old.Test_p + alpha*Test_p*Div_u_old", mim,CUT_REGION);
+   workspace.add_expression("+[1.0e-20].Test_p*tau + (1/bm)*p_old.Test_p + alpha*Test_p*Div_u_old", mim,CUT_REGION);
    workspace.assembly(1);
    workspace.clear_expressions();
    workspace.add_expression("1.e+28*p*Test_p*tau ", mim_ls_in, LEFT);
@@ -1187,16 +1187,15 @@ void biotls_problem::print(double time,int istep,double time_ls){
  
   // level set function
   base_small_vector biotls_problem::ls_function(const base_node P, double time,int num) {
-  scalar_type x = P[0]*4000, y = P[1]*4000;
+  scalar_type x = P[0], y = P[1];
   base_small_vector res(2);
-  time*=16.e+7;
   switch (num) {
     case 0: {
       res[0] = y-3050  ;
       res[1] = -.5 + x;
     } break;
     case 1: {
-      res[0] = y - 3050 + time/(1e+9)*120*8;
+      res[0] = y - 3050 + time/(1e+12)*120*8;
       res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.27;
     } break;
     case 2: {

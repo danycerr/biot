@@ -14,8 +14,7 @@ int main(int argc, char *argv[]) {
     p.init();
 
 
-    //  double dt=0.4e+11;
-     double dt=1;
+     double dt=0.4e+11;
    //    p.assembly_p(dt,0); 
    //    p.assembly_u(dt);
      // p.build_fix_stress_preconditioner();
