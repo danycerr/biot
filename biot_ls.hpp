@@ -67,7 +67,7 @@ struct problem_descriptor_tri{
 	std::string INTEGRATION =       "IM_TRIANGLE(6)";
     std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; 
     std::string datafilename="laplace"; 
-    int noised =1;  // noise on mesh
+    int noised =0;  // noise on mesh
     int nsubdiv=10; // subdivision of the sqaured mesh
     double E=1.e+10;
 	double poisson =0.3;
