@@ -14,7 +14,7 @@ int main(int argc, char *argv[]) {
     p.init();
 
 
-     double dt=4e+10;
+     double dt=4e+6;
    //    p.assembly_p(dt,0); 
    //    p.assembly_u(dt);
      // p.build_fix_stress_preconditioner();
@@ -29,11 +29,11 @@ int main(int argc, char *argv[]) {
             p.update_ls(istep*dt, istep);
             time_ls  =istep*dt;
             }
-       //  if (istep<40) p.update_ls(istep*dt);
-         p.solve_fix_stress(dt, 2000,time_ls);
+     //  if (istep<40) p.update_ls(istep*dt);
+        //    p.solve_fix_stress(dt, 2000,time_ls);
        
-       //  p.assembly(dt,time_ls);
-       //  p.solve(time_ls);
+         p.assembly(dt,time_ls);
+         p.solve(time_ls);
         
         p.print(istep*dt,istep);      
         p.print_crop(istep*dt,istep,time_ls);

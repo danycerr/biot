@@ -75,7 +75,7 @@ struct problem_descriptor_tri{
 	double mu_s = E/( 2 * ( 1 + poisson) ) ;
 	double lambda_l= E*poisson/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;
 	double biot_modulus=1.e+9;
-	double k =1.e-13; //permeability
+	double k =1.e-16; //permeability
 	double alpha=1; // Biot coefficient
 	double rho_l=1000; // Biot coefficient
 	double rho_r=2200; // Biot coefficient
@@ -154,7 +154,7 @@ class biotls_problem {
       
       ///  workspace configuration parameters---------------------
       std::vector<scalar_type> tau_, vmu_, bm_ ,lambda_, beta_,
-                               alpha_, permeability_, force_,penalty_;
+                               alpha_, permeability_, force_,penalty_, c1_, c2_;
      // ---------------------------------------------------------
      sparse_matrix_type K;                                /// iteration matrix
      std::vector<scalar_type> U, U_old, P,  Px,           /// diplacement, disp old, pressure
@@ -191,7 +191,8 @@ class biotls_problem {
       
       void update_ls(double time=0, int iter=0);
       biotls_problem(void): mim(mesh), mf_u(mesh), mf_rhs(mesh), mf_p(mesh),mf_coef(mesh),mf_coef_v(mesh)
-      ,tau_(1), vmu_(1), bm_(1), lambda_(1),alpha_(1), permeability_(1), force_(1), beta_(1),penalty_(1)
+      ,tau_(1), vmu_(1), bm_(1), lambda_(1),alpha_(1), permeability_(1), force_(1), beta_(1),penalty_(1),
+      c1_(1),c2_(1)
       // level set 
       ,ls(mesh,2),mls(mesh),
       mim_ls_all(mls, getfem::mesh_im_level_set::INTEGRATE_ALL),
