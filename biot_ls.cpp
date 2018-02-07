@@ -18,6 +18,7 @@ void biotls_problem::init(void) {
 	  for (size_type i=0; i < N_; ++i) {
 	    M(i,i) = 4000.0;
 	  }
+      p_des.l_ref=4000;
 	//  if (N>1) { M(0,1) = 0; }
 	//
 	  mesh.transformation(M);
@@ -261,7 +262,7 @@ void biotls_problem::configure_workspace(getfem::ga_workspace & workspace,double
     std::cout << "end of Configuring workspace " << std::endl;
     //---------------------------------------------------------
    	//  getfem::base_vector beta(1); beta[0] = 1*(alpha[0] * alpha[0] ) / (2 * p_des.mu_s + p_des.lambda_l);
-	beta_[0] = 0*(alpha_[0] * alpha_[0]  ) / (-2 * p_des.mu_s / 3 + p_des.lambda_l);
+	beta_[0] = (alpha_[0] * alpha_[0]  ) / (-2 * p_des.mu_s / 3 + p_des.lambda_l);
 	workspace.add_fixed_size_constant("beta", beta_);
     
     penalty_[0] = 1.e+12; // 1---10
@@ -422,7 +423,7 @@ void biotls_problem::assembly(double dt,double time) {
       size_type ii = eXt_dof[i];
       double ls_i = ls_function(mf_p.point_of_basic_dof(ii),time, LS_TYPE)[0];
       // std::cout<< "ls values of dof"<< ii << " is "  << ls_i<< std::endl;
-      B[dof_shift + ii] = B[nb_dof_u+ ii];
+      B[dof_shift + i] = B[nb_dof_u+ ii];
       for (size_type j = 0; j < eXt_dof.size(); ++j) {
 	    size_type jj = eXt_dof[j];
        double ls_j = ls_function(mf_p.point_of_basic_dof(jj),time, LS_TYPE)[0];
@@ -457,7 +458,7 @@ void biotls_problem::assembly(double dt,double time) {
       size_type ii = eXt_dof_u[i];
       double ls_i = ls_function(mf_u.point_of_basic_dof(ii),time, LS_TYPE)[0];
       // std::cout<< "ls values of dof"<< ii<< " is "  << ls_i<< std::endl;
-       B[dof_shift + ii] = B[ii];
+       B[dof_shift + i] = B[ii];
       for (size_type j = 0; j < eXt_dof_u.size(); ++j) {
 	    size_type jj = eXt_dof_u[j];
        double ls_j = ls_function(mf_u.point_of_basic_dof(jj),time, LS_TYPE)[0];
@@ -540,8 +541,8 @@ void biotls_problem::assembly_p(double dt, double time){
 	//  workspace.add_expression("[+0.0].Test_p + (1/bm)*invdt*p_old.Test_p + invdt*alpha*Test_p*Trace((Grad_u_old))", mim);// 1/dt
 	//  workspace.add_expression("(beta)*invdt*p_iter.Test_p - invdt*alpha*Test_p*Trace((Grad_u_iter))", mim);// 1/dt
 	// tau
-	 workspace.add_expression("[+1.0e-20]*Test_p*tau + (1/bm)*p_old.Test_p + alpha*Test_p*Trace(Sym(Grad_u_old))", mim, UNCUT_REGION_IN); // tau
-	workspace.add_expression("(beta)*p_iter.Test_p - alpha*Test_p*Trace(Sym(Grad_u_iter))", mim_ls_in); // tau
+	 workspace.add_expression("[+0.0e-20]*Test_p*tau + (1/bm)*p_old.Test_p + alpha*Test_p*Trace(Sym(Grad_u_old))", mim, UNCUT_REGION_IN); // tau
+	workspace.add_expression("(beta)*p_iter.Test_p - alpha*Test_p*Trace(Sym(Grad_u_iter))", mim, UNCUT_REGION_IN); // tau
 	workspace.set_assembled_vector(Bp);
 	workspace.assembly(1);
 	workspace.clear_expressions();
@@ -600,12 +601,12 @@ void biotls_problem::assembly_p(double dt, double time){
      workspace.add_expression("-permeability*nlsv.Grad_p*Test_p *tau- permeability*nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION); 
    //NICHE
    //  workspace.add_expression( "permeability*tau*[0,1].Grad_p*Test_p ", mim_ls_bd, CUT_REGION);
-    workspace.add_expression( "+(1/bm)*p.Test_p + tau*permeability*Grad_p.Grad_Test_p"
-                             "+ alpha*Test_p*Div_u_iter", mim, CUT_REGION);
+    workspace.add_expression( "+(1/bm)*p.Test_p + tau*permeability*Grad_p.Grad_Test_p", mim, CUT_REGION);
    workspace.assembly(2);
    gmm::copy(workspace.assembled_matrix(),K_in);
    workspace.clear_expressions();
-   workspace.add_expression("+[1.0e-20].Test_p*tau + (1/bm)*p_old.Test_p + alpha*Test_p*Div_u_old", mim,CUT_REGION);
+   workspace.add_expression("+[0.0e-20].Test_p*tau + (1/bm)*p_old.Test_p + alpha*Test_p*Div_u_old", mim,CUT_REGION);
+   workspace.add_expression("(beta)*p_iter.Test_p - alpha*Test_p*Trace(Sym(Grad_u_iter))", mim,CUT_REGION); // tau
    workspace.assembly(1);
    workspace.clear_expressions();
    workspace.add_expression("1.e+28*p*Test_p*tau ", mim_ls_in, LEFT);
@@ -703,7 +704,7 @@ void biotls_problem::assembly_u(double dt,double time){
 	
     // workspace.add_fem_variable("p", mf_p, gmm::sub_interval(0, nb_dof_p), P);
 	// workspace.add_fem_variable("p_old", mf_p, gmm::sub_interval(0,nb_dof_p), P_old);
-	// workspace.add_fem_variable("p_iter", mf_p, gmm::sub_interval(0,nb_dof_p), P_iter);
+	workspace.add_fem_variable("p_iter", mf_p, gmm::sub_interval(0,nb_dof_p), P_iter);
 	workspace.add_fem_variable("u", mf_u, gmm::sub_interval(0, nb_dof_u), U);
 	workspace.add_fem_variable("u_old", mf_u, gmm::sub_interval(0, nb_dof_u), U_old);
 	workspace.add_fem_variable("u_iter", mf_u, gmm::sub_interval(0, nb_dof_u), U_iter);
@@ -734,7 +735,7 @@ void biotls_problem::assembly_u(double dt,double time){
     
 	if(N_==2) workspace.add_expression("(2200*0.8 + 1000*0.2 -1000 )*[0,-1].Test_u", mim,UNCUT_REGION_IN);
     if(N_==3) workspace.add_expression("[0,0,-0].Test_u", mim_ls_in);
-    // workspace.add_expression("alpha*p*Div_Test_u ",  mim, UNCUT_REGION_IN);
+    workspace.add_expression("alpha*p_iter*Div_Test_u ",  mim, UNCUT_REGION_IN);
 	workspace.assembly(1);
 	workspace.clear_expressions();
     // std::cout<< Bu<< std::endl; 
@@ -763,6 +764,7 @@ void biotls_problem::assembly_u(double dt,double time){
    gmm::copy(workspace.assembled_matrix(),K_in);
    workspace.clear_expressions();
    workspace.add_expression("[0,-(2200-1000)].Test_u", mim,CUT_REGION);
+    workspace.add_expression("alpha*p_iter*Div_Test_u ",  mim, CUT_REGION);
    workspace.assembly(1);
    workspace.clear_expressions();
    std::cout<< "end kin"<< std::endl; 
@@ -821,7 +823,7 @@ void biotls_problem::solve(double time){
   gmm::iteration iter(1.e-8);  // iteration object with the max residu
   iter.set_noisy(1);               // output of iterations (2: sub-iteration)
   iter.set_maxiter(1000); // maximum number of iterations
-  //  gmm::diagonal_precond<sparse_matrix_type> PR(K);
+  gmm::diagonal_precond<sparse_matrix_type> PR(K);
   // gmm::gmres(K, UP, B, PR, restart, iter);
   gmm::SuperLU_solve(K, UP , B, cond);
   std::cout << "  Condition number momentum: " << cond << std::endl;
@@ -876,7 +878,8 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
   double old_pnorm=1; double new_pnorm=1;
   getfem::size_type nb_dof_u = mf_u.nb_dof();
   getfem::size_type nb_dof_p = mf_p.nb_dof();
-  while(fix_count < max_iter && ( rel_unorm>epsu ||  rel_pnorm > epsp) )
+  int min_iter=5;
+  while( ( fix_count < max_iter  && ( rel_unorm>epsu ||  rel_pnorm > epsp)) ||  fix_count < min_iter  )
 		{
 		 fix_count++; 
 		 std::cout<<"\033[1;34m***** iteration " << fix_count 
@@ -890,7 +893,7 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
          
          // precond
          gmm::identity_matrix PM; // no precond
-         // gmm::diagonal_precond<sparse_matrix_type> PRp(Kp);
+         gmm::diagonal_precond<sparse_matrix_type> PRp(Kp);
          // gmm::clear(P);
          {
           size_type restart = 50;
@@ -900,12 +903,28 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
           
           // std::cout<<P.size()<<std::endl;
           // std::cout<<Bp.size()<<std::endl;std::cin.get();
-          // gmm::gmres(Kp, P, Bp, PRp, restart, iter);
-          scalar_type cond;
-		  gmm::SuperLU_solve(Kp, P , Bp, cond);
-          
-		  std::cout << "  Condition number pressure: " << cond << std::endl;
-          
+        gmm::gmres(Kp, P, Bp, PRp, restart, iter);
+        scalar_type cond;
+		 //  gmm::SuperLU_solve(Kp, P , Bp, cond);
+        std::cout << "  Condition number pressure: " << cond << std::endl;
+        std::vector<scalar_type> PIn(mf_p.nb_dof(), 0.0);
+        std::cout<<"Updating P_iter"<<std::endl;
+         int nb_exdof_p=eXt_dof.size();
+        {  
+         for (size_type i = 0; i < eXt_dof.size(); ++i) 
+          {
+             size_type ii = eXt_dof[i];
+             double ls_i = ls_function(mf_p.point_of_basic_dof(ii),time, LS_TYPE)[0];
+             if (ls_i >= 0) PIn[ii] = P[mf_p.nb_dof()+ i];
+          }
+        for (size_type i = 0; i < mf_p.nb_dof(); ++i) 
+         {
+          double ls_i = ls_function(mf_p.point_of_basic_dof(i),time, LS_TYPE)[0];
+          if (ls_i < 0)  PIn[i] = P[i];
+         }
+         gmm::copy(PIn,P_iter);
+         } 
+         // updating p_iter
          }
          //--------------------------------------------------------------
          #ifdef PRINT_MATRIX
@@ -928,7 +947,7 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
          assembly_u(dt,time);
          //solving u
          std::cout<< " \033[1;31m Start solving momentum balance"<<std::endl;
-         // gmm::diagonal_precond<sparse_matrix_type> PRu(Ku);
+         gmm::diagonal_precond<sparse_matrix_type> PRu(Ku);
          {
           size_type restart = 50;
           gmm::iteration iter(1.e-7);  // iteration object with the max residu
@@ -936,10 +955,27 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
           iter.set_maxiter(1000); // maximum number of iterations
           // gmm::MatrixMarket_load("km",Ku);
           // gmm::clear(U);
-          // gmm::gmres(Ku, U, Bu, PRu, restart, iter);
+          gmm::gmres(Ku, U, Bu, PRu, restart, iter);
           scalar_type cond;
-		  gmm::SuperLU_solve(Ku, U , Bu, cond);
+		  // gmm::SuperLU_solve(Ku, U , Bu, cond);
 		  std::cout << "  Condition number momentum: " << cond << std::endl;
+          {
+             std::cout << " Updating U_iter"<<std::endl;
+             int nb_exdof_u=eXt_dof_u.size();        
+             std::vector<scalar_type> UIn(mf_u.nb_dof(), 0.0);
+             for (size_type i = 0; i < eXt_dof_u.size(); ++i) 
+             {
+                size_type ii = eXt_dof_u[i];
+                double ls_i = ls_function(mf_u.point_of_basic_dof(ii),time, LS_TYPE)[0];
+                if (ls_i >= 0) UIn[ii] = U[mf_u.nb_dof() + i];
+            }
+            for (size_type i = 0; i < mf_u.nb_dof(); ++i) 
+            {
+             double ls_i = ls_function(mf_u.point_of_basic_dof(i),time, LS_TYPE)[0];
+             if (ls_i < 0)  UIn[i] = U[i];
+            }
+            gmm::copy(UIn,U_iter);
+           } 
         }
          //--------------------------------------------------------------
          #ifdef PRINT_MATRIX
