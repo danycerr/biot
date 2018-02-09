@@ -267,10 +267,10 @@ void biotls_problem::configure_workspace(getfem::ga_workspace & workspace,double
     std::cout << "end of Configuring workspace " << std::endl;
     //---------------------------------------------------------
    	//  getfem::base_vector beta(1); beta[0] = 1*(alpha[0] * alpha[0] ) / (2 * p_des.mu_s + p_des.lambda_l);
-	beta_[0] = (alpha_[0] * alpha_[0]  ) / (-2 * p_des.mu_s / 3 + p_des.lambda_l);
+	beta_[0] = (p_des.alpha* p_des.alpha ) /( (-2 * p_des.mu_s / 3 + p_des.lambda_l)*p_des.biot_modulus);
 	workspace.add_fixed_size_constant("beta", beta_);
     
-    penalty_[0] = 1.e+1; // 1---10
+    penalty_[0] = 1.e+3; // 1---10
 	workspace.add_fixed_size_constant("penalty", penalty_);
     
     workspace.add_fem_constant("nls", mf_coef, normal_ls);
@@ -533,7 +533,7 @@ void biotls_problem::assembly_p(double dt, double time){
 	workspace.add_fem_variable("u_iter", mf_u, gmm::sub_interval(0, nb_dof_u), U_iter);
 	
 	// Pressure equation
-	workspace.add_expression("(1/bm + beta)*p.Test_p + tau*permeability*Grad_p.Grad_Test_p", mim , UNCUT_REGION_IN); // tau
+	workspace.add_expression("(1+beta)*p.Test_p + tau*Grad_p.Grad_Test_p", mim , UNCUT_REGION_IN); // tau
 	// workspace.set_assembled_matrix(Kp);
 	workspace.assembly(2);
     gmm::copy(workspace.assembled_matrix(), gmm::sub_matrix(Kp,
@@ -546,19 +546,19 @@ void biotls_problem::assembly_p(double dt, double time){
 	//  workspace.add_expression("[+0.0].Test_p + (1/bm)*invdt*p_old.Test_p + invdt*alpha*Test_p*Trace((Grad_u_old))", mim);// 1/dt
 	//  workspace.add_expression("(beta)*invdt*p_iter.Test_p - invdt*alpha*Test_p*Trace((Grad_u_iter))", mim);// 1/dt
 	// tau
-	 workspace.add_expression("[+0.0e-20]*Test_p*tau + (1/bm)*p_old.Test_p + alpha*Test_p*Trace(Sym(Grad_u_old))", mim, UNCUT_REGION_IN); // tau
-	workspace.add_expression("(beta)*p_iter.Test_p - alpha*Test_p*Trace(Sym(Grad_u_iter))", mim, UNCUT_REGION_IN); // tau
+	 workspace.add_expression("[+0.0e-20]*Test_p*tau + p_old.Test_p + Test_p*Trace(Sym(Grad_u_old))", mim, UNCUT_REGION_IN); // tau
+	workspace.add_expression("(beta)*p_iter.Test_p - Test_p*Trace(Sym(Grad_u_iter))", mim, UNCUT_REGION_IN); // tau
 	workspace.set_assembled_vector(Bp);
 	workspace.assembly(1);
 	workspace.clear_expressions();
 
 	//Matrix term
-	workspace.add_expression("penalty/element_size*p*Test_p", mim, TOP);
-	workspace.add_expression("-permeability*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, TOP); 	
-    workspace.add_expression("penalty/element_size*p*Test_p", mim, LEFT);
-	workspace.add_expression("-permeability*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, LEFT); 	
-   	workspace.add_expression("penalty/element_size*p*Test_p", mim, RIGHT);
-	workspace.add_expression("-permeability*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, RIGHT); 	
+	workspace.add_expression("2/element_size*p*Test_p", mim, TOP);
+	workspace.add_expression("-Grad_p.Normal*Test_p - Grad_Test_p.Normal*p ", mim, TOP); 	
+    workspace.add_expression("2/element_size*p*Test_p", mim, LEFT);
+	workspace.add_expression("-Grad_p.Normal*Test_p*tau- Grad_Test_p.Normal*p*tau ", mim, LEFT); 	
+   	workspace.add_expression("2/element_size*p*Test_p", mim, RIGHT);
+	workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, RIGHT); 	
     
     workspace.assembly(2);
     gmm::add(workspace.assembled_matrix(), gmm::sub_matrix(Kp,
@@ -572,7 +572,7 @@ void biotls_problem::assembly_p(double dt, double time){
 	// workspace.clear_expressions();
     
     ////dummy part of the matrix
-    workspace.add_expression("1.e+28*p*Test_p "	, mim,UNCUT_REGION_OUT);
+    workspace.add_expression("penalty*p*Test_p "	, mim,UNCUT_REGION_OUT);
     //workspace.add_expression("(1/bm + beta)*p.Test_p + tau*permeability*Grad_p.Grad_Test_p"	, mim_ls_out,UNCUT_REGION_OUT);
     //// workspace.add_expression("1.e+18*p*Test_p "	, mim_ls_bd);
     workspace.assembly(2);
@@ -585,16 +585,12 @@ void biotls_problem::assembly_p(double dt, double time){
     
    sparse_matrix_type K_out(nb_dof_p,nb_dof_p);
    {
-     workspace.add_expression("1.e+28*p*Test_p*tau ", mim, CUT_REGION);
+     workspace.add_expression("penalty*p*Test_p ", mim, CUT_REGION);
    // workspace.add_expression("(1/bm + beta)*p.Test_p + tau*permeability*Grad_p.Grad_Test_p"	, mim, CUT_REGION);
     // workspace.add_expression("2/element_size*p*Test_p*tau", mim_ls_bd, CUT_REGION);// 1 is the region		
   //   workspace.add_expression("-permeability*nlsv.Grad_p*Test_p *tau- permeability*nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION); 
    workspace.assembly(2);
    gmm::copy(workspace.assembled_matrix(),K_out);
-   workspace.add_expression("1.e+28*p*Test_p*tau ", mim, LEFT);
-   workspace.add_expression("1.e+28*p*Test_p*tau ", mim, RIGHT);
-   workspace.assembly(2);
-   gmm::add(workspace.assembled_matrix(),K_out);
    workspace.clear_expressions();
    std::cout<< "end kout"<< std::endl; 
    }
@@ -602,20 +598,22 @@ void biotls_problem::assembly_p(double dt, double time){
    sparse_matrix_type K_in(nb_dof_p,nb_dof_p);
    {
    // NICHE
-     workspace.add_expression("2/element_size*p*Test_p*1000", mim_ls_bd, CUT_REGION);// 1 is the region		
-     workspace.add_expression("-permeability*nlsv.Grad_p*Test_p *tau- permeability*nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION); 
+     workspace.add_expression("2/element_size*p*Test_p*penalty", mim_ls_bd, CUT_REGION);// 1 is the region		
+     workspace.add_expression("-nlsv.Grad_p*Test_p*tau- nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION); 
    //NICHE
    //  workspace.add_expression( "permeability*tau*[0,1].Grad_p*Test_p ", mim_ls_bd, CUT_REGION);
-    workspace.add_expression( "+(1/bm)*p.Test_p + tau*permeability*Grad_p.Grad_Test_p", mim, CUT_REGION);
+   workspace.add_expression( "(1+beta)*p.Test_p + tau*Grad_p.Grad_Test_p", mim, CUT_REGION);
    workspace.assembly(2);
    gmm::copy(workspace.assembled_matrix(),K_in);
    workspace.clear_expressions();
-   workspace.add_expression("+[0.0e-20].Test_p*tau + (1/bm)*p_old.Test_p + alpha*Test_p*Div_u_old", mim,CUT_REGION);
-   workspace.add_expression("(beta)*p_iter.Test_p - alpha*Test_p*Trace(Sym(Grad_u_iter))", mim,CUT_REGION); // tau
+   workspace.add_expression("+[0.0e-20].Test_p*tau + p_old.Test_p + Test_p*Div_u_old", mim,CUT_REGION);
+   workspace.add_expression("(beta)*p_iter.Test_p - Test_p*Trace(Sym(Grad_u_iter))", mim,CUT_REGION); // tau
    workspace.assembly(1);
    workspace.clear_expressions();
-   workspace.add_expression("1.e+28*p*Test_p*tau ", mim_ls_in, LEFT);
-   workspace.add_expression("1.e+28*p*Test_p*tau ", mim_ls_in, RIGHT);
+   workspace.add_expression("2/element_size*p*Test_p", mim, LEFT);
+   workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, LEFT); 	
+   workspace.add_expression("2/element_size*p*Test_p", mim, RIGHT);
+   workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, RIGHT); 	
    workspace.assembly(2);
    gmm::add(workspace.assembled_matrix(),K_in);
    std::cout<< "end kin"<< std::endl; 
@@ -729,7 +727,7 @@ void biotls_problem::assembly_u(double dt,double time){
     workspace.assembly(1);
 	workspace.clear_expressions();
     // ----- momentum equation
-	workspace.add_expression("2*mu*Sym(Grad_u):Grad_Test_u + lambda*Div_u*Div_Test_u", mim , UNCUT_REGION_IN); // stress tensor 
+	workspace.add_expression("2*Sym(Grad_u):Grad_Test_u + C2*Div_u*Div_Test_u", mim , UNCUT_REGION_IN); // stress tensor 
     workspace.add_expression("penalty*u.Test_u" , mim, BOTTOM); //neumann disp
 	workspace.assembly(2);   
     gmm::copy(workspace.assembled_matrix(), gmm::sub_matrix(Ku,
@@ -738,14 +736,14 @@ void biotls_problem::assembly_u(double dt,double time){
                                                              ));
 	workspace.clear_expressions();
     
-	if(N_==2) workspace.add_expression("(2200*0.8 + 1000*0.2 -1000 )*[0,-1].Test_u", mim,UNCUT_REGION_IN);
+	if(N_==2) workspace.add_expression("[0,-1].Test_u", mim,UNCUT_REGION_IN);
     if(N_==3) workspace.add_expression("[0,0,-0].Test_u", mim_ls_in);
-    workspace.add_expression("alpha*p_iter*Div_Test_u ",  mim, UNCUT_REGION_IN);
+    workspace.add_expression("C1*p_iter*Div_Test_u ",  mim, UNCUT_REGION_IN);
 	workspace.assembly(1);
 	workspace.clear_expressions();
     // std::cout<< Bu<< std::endl; 
     //dummy part of the matrix
-    workspace.add_expression("1.e+12*u.Test_u "	, mim, UNCUT_REGION_OUT);
+    workspace.add_expression("penalty*u.Test_u "	, mim, UNCUT_REGION_OUT);
     workspace.assembly(2);    
     gmm::add(workspace.assembled_matrix(), gmm::sub_matrix(Ku,
                                                              gmm::sub_interval(0, nb_dof_u),
@@ -755,7 +753,7 @@ void biotls_problem::assembly_u(double dt,double time){
     
     // Enriched dof
    sparse_matrix_type K_out(nb_dof_u ,nb_dof_u );
-   workspace.add_expression("1.e+15*u.Test_u "	,mim, CUT_REGION);;
+   workspace.add_expression("penalty*u.Test_u "	,mim, CUT_REGION);;
    workspace.assembly(2);
    gmm::copy(workspace.assembled_matrix(),K_out);
    workspace.clear_expressions();
@@ -763,13 +761,13 @@ void biotls_problem::assembly_u(double dt,double time){
    // Kin for enriched dof
    sparse_matrix_type K_in(nb_dof_u, nb_dof_u );
        // internal for displacement
-   workspace.add_expression( "2*mu*Sym(Grad_u):Grad_Test_u + lambda*Div_u*Div_Test_u", mim, CUT_REGION);
+   workspace.add_expression( "2*Sym(Grad_u):Grad_Test_u + C2*Div_u*Div_Test_u", mim, CUT_REGION);
    // workspace.add_expression("- alpha*p.Div_Test_u ", mim_ls_in, CUT_REGION);
    workspace.assembly(2);
    gmm::copy(workspace.assembled_matrix(),K_in);
    workspace.clear_expressions();
-   workspace.add_expression("[0,-(2200-1000)].Test_u", mim,CUT_REGION);
-    workspace.add_expression("alpha*p_iter*Div_Test_u ",  mim, CUT_REGION);
+   workspace.add_expression("[0,-1].Test_u", mim,CUT_REGION);
+    workspace.add_expression("C1*p_iter*Div_Test_u ",  mim, CUT_REGION);
    workspace.assembly(1);
    workspace.clear_expressions();
    std::cout<< "end kin"<< std::endl; 

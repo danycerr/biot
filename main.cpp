@@ -30,10 +30,10 @@ int main(int argc, char *argv[]) {
             time_ls  =istep*dt;
             }
      //  if (istep<40) p.update_ls(istep*dt);
-        //    p.solve_fix_stress(dt, 2000,time_ls);
+            p.solve_fix_stress(dt, 2000,time_ls);
        
-         p.assembly(dt,time_ls);
-         p.solve(time_ls);
+        //  p.assembly(dt,time_ls);
+        //  p.solve(time_ls);
         
         p.print(istep*dt,istep);      
         p.print_crop(istep*dt,istep,time_ls);
