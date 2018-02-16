@@ -226,7 +226,7 @@ void biot_problem::assembly(double dt) {
 
 void biot_problem::assembly_p(double dt){
     
-    gmm::clean(P_old, 1E-10);gmm::clean(U_old, 1E-10);
+    // gmm::clean(P_old, 1E-10);gmm::clean(U_old, 1E-10);
 	gmm::clean(P, 1E-10);gmm::clean(U, 1E-10);
     gmm::clear(Bp); gmm::clear(Kp);
 	std::cout<<"biot_assembler::assembly_p(double dt)" <<std::endl;
