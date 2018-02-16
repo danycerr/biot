@@ -26,16 +26,16 @@ int main(int argc, char *argv[]) {
         time=istep*dt;
         std::cout<< "*** Time step "<< istep << "/"<<n_step<<std::endl;
         if (istep<erosion_limit){ 
-            p.update_ls(istep*dt, istep);
             time_ls  =istep*dt;
+            p.update_ls(time_ls, istep);
             }
-     //  if (istep<40) p.update_ls(istep*dt);
-            p.solve_fix_stress(dt, 2000,time_ls);
+      //   if (istep<40) p.update_ls(istep*dt);
+             p.solve_fix_stress(dt, 2000,time_ls);
        
-        //  p.assembly(dt,time_ls);
-        //  p.solve(time_ls);
+      //    p.assembly(dt,time_ls);
+      //    p.solve(time_ls);
         
-        p.print(istep*dt,istep);      
+        p.print(istep*dt,istep,time_ls);      
         p.print_crop(istep*dt,istep,time_ls);
     }
   }
