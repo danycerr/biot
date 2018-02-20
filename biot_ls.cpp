@@ -1089,7 +1089,7 @@ void biotls_problem::print(double time,int istep,double time_ls){
         else {
           POut[i] = +UP[mf_u.nb_dof() +i]; Pm[i] = UP[mf_u.nb_dof() +i];}
       }
-        getfem::vtk_export vtke("pressure."+std::to_string(istep)+".vtk");
+        getfem::vtk_export vtke(p_des.datafilename +".pressure."+std::to_string(istep)+".vtk");
         vtke.exporting(mf_p);
         vtke.write_mesh();
         vtke.write_point_data(mf_p, PIn, "NSolution_PIn");
@@ -1122,7 +1122,7 @@ void biotls_problem::print(double time,int istep,double time_ls){
           UIn[ii] = UP[shift_xdof_u + i];
           Um[ii] = 0.5* (UP[ii] + UP[shift_xdof_u + i]);
       }
-        getfem::vtk_export vtke("dislpacement."+std::to_string(istep)+".vtk");
+        getfem::vtk_export vtke(p_des.datafilename +".dislpacement."+std::to_string(istep)+".vtk");
         vtke.exporting(mf_u);
         vtke.write_mesh();
         vtke.write_point_data(mf_u, UIn, "NSolution_UIn");
@@ -1220,7 +1220,7 @@ void biotls_problem::print(double time,int istep,double time_ls){
       res[1] = -.5 + x;
     } break;
     case 1: {
-      res[0] = y - 3050 - 500*time/(1e+8);
+      res[0] = y - 3050 + 500*time/(1e+8);
       res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.27;
     } break;
     case 2: {
@@ -1267,7 +1267,7 @@ void biotls_problem::update_ls(double time, int iter){
     }
    
     { // Just to see what elements are cut by the level set ls:
-    getfem::vtk_export vtke("cut_elements."+std::to_string(iter)+".vtk");
+    getfem::vtk_export vtke(p_des.datafilename + ".cut_elements."+std::to_string(iter)+".vtk");
     vtke.exporting(mf_p);
     vtke.write_mesh();
     vtke.write_cell_data(phicell, "CutEl");
