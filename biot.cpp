@@ -82,6 +82,12 @@ void biot_problem::gen_bc(){
 		} else if (gmm::abs(un[N_-2] - 1.0) < 1.0E-7) {
 			mesh.region(RIGHT).add(i.cv(), i.f());
 		}
+        else if(N_=3){
+                 if (gmm::abs(un[N_-3] + 1.0) < 1.0E-7) {
+			     mesh.region(LEFTX).add(i.cv(), i.f());
+		            } else if (gmm::abs(un[N_-3] - 1.0) < 1.0E-7) {
+			     mesh.region(RIGHTX).add(i.cv(), i.f());
+		        }
 		else {
 			mesh.region(DIRICHLET_BOUNDARY_NUM).add(i.cv(), i.f());
 		}

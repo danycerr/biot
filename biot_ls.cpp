@@ -148,9 +148,13 @@ void biotls_problem::init(void) {
     
     
     // integration method on lev set
+    std::cout<< "set integration method"<<std::endl;
     mim_ls_all.set_integration_method(mesh.convex_index(), ppi);
+    std::cout<< "set integration method simp"<<std::endl;
     mim_ls_all.set_simplex_im(simp_ppi);
+    std::cout<< "set integration adapt"<<std::endl;
     mim_ls_all.adapt();
+    std::cout<< "end"<<std::endl;
     
     mim_ls_in.set_integration_method(mesh.convex_index(), ppi);
     mim_ls_in.set_simplex_im(simp_ppi);
@@ -165,13 +169,13 @@ void biotls_problem::init(void) {
     mim_ls_bd.adapt();
     
     mfls.adapt();mfls_u.adapt();mfls_p.adapt();
-    mfls_u_old.adapt();mfls_p_old.adapt();
+    // mfls_u_old.adapt();mfls_p_old.adapt();
     
-	mf_u.set_qdim(bgeot::dim_type(2)); //number of variable
-    mfls_u.set_qdim(bgeot::dim_type(2)); //number of variable
+	mf_u.set_qdim(bgeot::dim_type(N_)); //number of variable
+    mfls_u.set_qdim(bgeot::dim_type(N_)); //number of variable
     mfls_p.set_qdim(bgeot::dim_type(1)); //number of variable
-    mfls_u_old.set_qdim(bgeot::dim_type(2)); //number of variable
-    mfls_p_old.set_qdim(bgeot::dim_type(1)); //number of variable
+    // mfls_u_old.set_qdim(bgeot::dim_type(2)); //number of variable
+    // mfls_p_old.set_qdim(bgeot::dim_type(1)); //number of variable
     
     getfem::mesh mesh_ls;
     mls.global_cut_mesh(mesh_ls);
@@ -226,6 +230,13 @@ void biotls_problem::gen_bc(){
 		} else if (gmm::abs(un[N_-2] - 1.0) < 1.0E-7) {
 			mesh.region(RIGHT).add(i.cv(), i.f());
 		}
+        else if(N_=3){
+                 if (gmm::abs(un[N_-3] + 1.0) < 1.0E-7) {
+			     mesh.region(LEFTX).add(i.cv(), i.f());
+		            } else if (gmm::abs(un[N_-3] - 1.0) < 1.0E-7) {
+			     mesh.region(RIGHTX).add(i.cv(), i.f());
+		        }
+            }
 		else {
 			mesh.region(DIRICHLET_BOUNDARY_NUM).add(i.cv(), i.f());
 		}
@@ -560,6 +571,12 @@ void biotls_problem::assembly_p(double dt, double time){
 	workspace.add_expression("-Grad_p.Normal*Test_p*tau- Grad_Test_p.Normal*p*tau ", mim, LEFT); 	
    	workspace.add_expression("2*penalty/element_size*p*Test_p", mim, RIGHT);
 	workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, RIGHT); 	
+    if (N_= 3 ){
+    workspace.add_expression("2*penalty/element_size*p*Test_p", mim, LEFTX);
+	workspace.add_expression("-Grad_p.Normal*Test_p*tau- Grad_Test_p.Normal*p*tau ", mim, LEFTX); 	
+   	workspace.add_expression("2*penalty/element_size*p*Test_p", mim, RIGHTX);
+	workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, RIGHTX); 	
+        }
     
     workspace.assembly(2);
     gmm::add(workspace.assembled_matrix(), gmm::sub_matrix(Kp,
@@ -619,7 +636,14 @@ void biotls_problem::assembly_p(double dt, double time){
    workspace.add_expression("2/element_size*p*Test_p", mim, LEFT);
    workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, LEFT); 	
    workspace.add_expression("2/element_size*p*Test_p", mim, RIGHT);
-   workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, RIGHT); 	
+   workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, RIGHT);
+   if (N_=3){
+   workspace.add_expression("2/element_size*p*Test_p", mim, LEFT);
+   workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, LEFT); 	
+   workspace.add_expression("2/element_size*p*Test_p", mim, RIGHT);
+   workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, RIGHT);
+     }
+    	
    workspace.assembly(2);
    gmm::add(workspace.assembled_matrix(),K_in);
    std::cout<< "end kin"<< std::endl; 
@@ -743,7 +767,7 @@ void biotls_problem::assembly_u(double dt,double time){
 	workspace.clear_expressions();
     
 	if(N_==2) workspace.add_expression("[0,-1].Test_u"  ,  mim_ls_in,  UNCUT_REGION_IN);
-    if(N_==3) workspace.add_expression("[0,0,-0].Test_u",  mim_ls_in                  );
+    if(N_==3) workspace.add_expression("[0,0,-1].Test_u",  mim_ls_in,  UNCUT_REGION_IN);
     workspace.add_expression("C1*p_iter*Div_Test_u "    ,  mim_ls_in,  UNCUT_REGION_IN);
 	workspace.assembly(1);
 	workspace.clear_expressions();
@@ -772,9 +796,9 @@ void biotls_problem::assembly_u(double dt,double time){
    workspace.clear_expressions();
    
    std::vector<scalar_type> B_in(nb_dof_u, 0.0);
-   std::vector<scalar_type> B_in2(nb_dof_u, 0.0);
    workspace.set_assembled_vector(B_in);
-   workspace.add_expression("[0,-1].Test_u", mim_ls_in,CUT_REGION);
+   if(N_==2) workspace.add_expression("[0,-1].Test_u", mim_ls_in,CUT_REGION);
+   if(N_==3) workspace.add_expression("[0,0,-1].Test_u", mim_ls_in,CUT_REGION);
    workspace.add_expression("C1*p_iter*Div_Test_u ",  mim_ls_in, CUT_REGION);
    workspace.assembly(1);
    //workspace.clear_expressions();
@@ -1211,7 +1235,9 @@ void biotls_problem::print(double time,int istep,double time_ls){
  
   // level set function
   base_small_vector biotls_problem::ls_function(const base_node P, double time,int num) {
-  scalar_type x = P[0]*p_des.l_ref, y = P[1]*p_des.l_ref;
+  scalar_type x = P[0]*p_des.l_ref, y = P[1]*p_des.l_ref, z=0;
+  if (N_=3)  z = P[2]*p_des.l_ref;
+  y = P[1]*p_des.l_ref;
   // time*=p_des.t_ref;
   base_small_vector res(2);
   switch (num) {
@@ -1225,6 +1251,10 @@ void biotls_problem::print(double time,int istep,double time_ls){
     } break;
     case 2: {
       res[0] = y - (4.e+2 * time / (1.e+8) * sin(2 * 3.14 *x/4000) + 3300);
+      res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.35;
+    } break;
+    case 3: {
+      res[0] = z  - 3050 + 500*time/(1e+8);
       res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.35;
     } break;
     default: assert(0);
@@ -1301,9 +1331,9 @@ void biotls_problem::update_ls(double time, int iter){
     compute_normal_2_ls();
     
     
-    ls.touch();
-    mls.adapt();mls.global_cut_mesh(mesh_ls);
-    mim_ls_in.adapt(); mim_ls_out.adapt();mim_ls_bd.adapt();  mim_ls_all.adapt();
+    // ls.touch();
+    // mls.adapt();mls.global_cut_mesh(mesh_ls);
+    // mim_ls_in.adapt(); mim_ls_out.adapt();mim_ls_bd.adapt();  mim_ls_all.adapt();
 
     
     }
@@ -1424,8 +1454,7 @@ void biotls_problem::compute_normal_2_ls(){
     getfem::mesh_fem::ind_dof_ct idofs = mf_coef_v.ind_basic_dof_of_element(i_cv);
     
     for (size_type i=0; i < idofs.size(); ++i) {
-        if (i==0) normal_ls_v[idofs[i]]=gradU(0, i) / norm;
-        if (i==1) normal_ls_v[idofs[i]]=gradU(0, i) / norm;
+        normal_ls_v[idofs[i]]=gradU(0, i) / norm;
         }
    }
 }
