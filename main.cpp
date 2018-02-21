@@ -1,7 +1,8 @@
 /**************************************************************************/
 /*  main program.                                                         */
 /**************************************************************************/
-#include "biot_ls.hpp"
+// #include "biot_ls.hpp"
+#include "biot.hpp"
 
 
 int main(int argc, char *argv[]) {
@@ -10,7 +11,8 @@ int main(int argc, char *argv[]) {
   FE_ENABLE_EXCEPT;        // Enable floating point exception for Nan.
 
   try {    
-    biotls_problem p;
+    // biotls_problem p;
+    biot_problem p;
     p.init();
 
 
@@ -25,11 +27,11 @@ int main(int argc, char *argv[]) {
      {
         time=istep*dt;
         std::cout<< "*** Time step "<< istep << "/"<<n_step<<std::endl;
-        if (istep<erosion_limit){ 
-            time_ls  =istep*dt;
-            p.update_ls(time_ls, istep);
-            }
-      //   if (istep<40) p.update_ls(istep*dt);
+        //if (istep<erosion_limit){ 
+            //time_ls  =istep*dt;
+            //p.update_ls(time_ls, istep);
+            //}
+      // //   if (istep<40) p.update_ls(istep*dt);
              p.solve_fix_stress(dt, 2000,time_ls);
        
       //    p.assembly(dt,time_ls);

@@ -61,7 +61,7 @@ struct problem_descriptor_tri{
     std::string FEM_TYPE_P  =         "FEM_PK(2,1)";
 	std::string INTEGRATION =       "IM_TRIANGLE(6)";
     std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; 
-    std::string datafilename="laplace"; 
+    std::string datafilename="resu/laplace"; 
     int nsubdiv=5; // subdivision of the sqaured mesh
     double E=1.e+10;
 	double poisson =0.3;
@@ -116,7 +116,7 @@ class biot_problem {
       getfem::mesh_fem mf_rhs;  /// the mesh_fem for the right hand side(f(x),..)
       problem_descriptor_tri p_des;
       enum { DIRICHLET_BOUNDARY_NUM = 10, NEUMANN_BOUNDARY_NUM = 11}; // descriptor for bcs flag
-      enum { BOTTOM = 2, TOP = 1 , LEFT = 3, RIGHT =4}; // descriptor for zones
+      enum { BOTTOM = 2, TOP = 1 , LEFT = 3, RIGHT =4, LEFTX = 5, RIGHTX =6}; // descriptor for zones
       size_type N_;             /// dimension of the problem
       
       ///  workspace configuration parameters---------------------
