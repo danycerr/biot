@@ -1257,6 +1257,10 @@ void biotls_problem::print(double time,int istep,double time_ls){
       res[0] = z  - 3050 + 500*time/(1e+8);
       res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.35;
     } break;
+    case 4: {
+      res[0] = z - (4.e+2 * time / (1.e+8) * sin(2 * 3.14 *x/4000)*sin(2 * 3.14 *y/4000) + 3300);
+      res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.35;
+    } break;
     default: assert(0);
   }
   return res;

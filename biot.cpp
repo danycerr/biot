@@ -57,6 +57,7 @@ void biot_problem::init(void) {
     gmm::resize(Ku, nb_dof_u , nb_dof_u ); gmm::clear(Ku);
     // iteration matrix pressure fixed stress
     gmm::resize(Kp, nb_dof_p , nb_dof_p ); gmm::clear(Kp);
+    std::cout<<"number of dof "<< nb_dof_u<< " and "<<  nb_dof_p<<std::endl;
 }
 // assembly with ls
 
@@ -88,6 +89,7 @@ void biot_problem::gen_bc(){
 		            } else if (gmm::abs(un[N_-3] - 1.0) < 1.0E-7) {
 			     mesh.region(RIGHTX).add(i.cv(), i.f());
 		        }
+            }
 		else {
 			mesh.region(DIRICHLET_BOUNDARY_NUM).add(i.cv(), i.f());
 		}
@@ -182,8 +184,8 @@ void biot_problem::assembly(double dt) {
 
 	//======= RHS =====================
     if(N_== 2 )	workspace.add_expression("[0,-0].Test_u", mim);
-    else        workspace.add_expression("[0,0,-0].Test_u", mim);
-    workspace.add_expression("+[+0.0].Test_p*tau + (0/bm)*p_old.Test_p + alpha*Test_p*Div_u_old", mim);
+    else        workspace.add_expression("[0,0,-1].Test_u", mim);
+    workspace.add_expression("+[+0.0].Test_p*tau + (1/bm)*p_old.Test_p + alpha*Test_p*Div_u_old", mim);
     workspace.set_assembled_vector(B);
     workspace.assembly(1);
     // gmm::copy(workspace.assembled_vector(),B);
@@ -271,16 +273,6 @@ void biot_problem::assembly_p(double dt){
 	workspace.assembly(1);
 	workspace.clear_expressions();
 
-	//Boudanry conditions
-	// getfem::base_vector penalty(1); penalty[0] = 1.e+4;
-	// workspace.add_fixed_size_constant("penalty", penalty);
-	// Matrix term
-	// workspace.add_expression("0*penalty*u.Test_u" "+ 0*penalty*p*Test_p", mim, TOP); // 1 is the region
-	// workspace.add_expression("penalty*u.Test_u" "+ 0*penalty*p*Test_p", mim, BOTTOM); // 1 is the region
-	// workspace.add_expression("0*penalty*u.Test_u" "+ 0*penalty*p*Test_p", mim, BOTTOM); // 1 is the region	
-	// good one
-    // workspace.add_expression("penalty*p*Test_p", mim, LEFT); workspace.add_expression("penalty*p*Test_p", mim, RIGHT);// 1 is the region	
-		//Boudanry conditions // NICHE
 
 	//Matrix term
 	workspace.add_expression("penalty/element_size*p*Test_p", mim, TOP);
@@ -288,7 +280,13 @@ void biot_problem::assembly_p(double dt){
     workspace.add_expression("penalty/element_size*p*Test_p", mim, LEFT);
 	workspace.add_expression("-permeability*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, LEFT); 	
    	workspace.add_expression("penalty/element_size*p*Test_p", mim, RIGHT);
-	workspace.add_expression("-permeability*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, RIGHT); 	
+	workspace.add_expression("-permeability*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, RIGHT);
+    if(N_==3){	 	
+        workspace.add_expression("penalty/element_size*p*Test_p", mim, LEFTX);
+        workspace.add_expression("-permeability*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, LEFTX);
+        workspace.add_expression("penalty/element_size*p*Test_p", mim, RIGHTX);
+        workspace.add_expression("-permeability*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, RIGHTX);    
+    }
     
     workspace.assembly(2);
     gmm::add(workspace.assembled_matrix(), Kp);
@@ -342,7 +340,7 @@ void biot_problem::assembly_u(double dt){
     gmm::copy(workspace.assembled_matrix(), Ku);
 	workspace.clear_expressions();
 	if(N_==2) workspace.add_expression("(2200*0.8 + 1000*0.2 -1000 )*[0,-1].Test_u", mim);
-    if(N_==3) workspace.add_expression("[0,0,-0].Test_u", mim);
+    if(N_==3) workspace.add_expression("(2200*0.8 + 1000*0.2 -1000 )*[0,0,-1].Test_u", mim);
     workspace.add_expression("alpha*p*Div_Test_u ", mim);
 	workspace.assembly(1);
 	workspace.clear_expressions();
@@ -389,6 +387,8 @@ void biot_problem::solve_fix_stress(double dt, int max_iter){
 		 std::cout<<"\033[1;34m***** iteration " << fix_count 
                   << " norm p " <<  rel_pnorm 
                    << " norm u " <<  rel_unorm << std::endl;
+        
+         assembly_p(dt);
 		 std::cout<< " \033[1;32m Start solving pressure"<<std::endl;
          // precond
          gmm::identity_matrix PM; // no precond
@@ -449,7 +449,6 @@ void biot_problem::solve_fix_stress(double dt, int max_iter){
          rel_unorm=fabs(new_unorm - old_unorm)/ old_unorm;
          old_unorm = new_unorm;
          // updating u
-         assembly_p(dt);
      }
   	 std::cout<<"\033[1;34m***** last iteration " << fix_count 
               << " norm p " <<  rel_pnorm 
@@ -463,7 +462,8 @@ void biot_problem::solve_fix_stress(double dt, int max_iter){
 
 // method for solving the laplace problem
 void biot_problem::print(int time){
-    std::cout<< "biot_problem::print" <<std::endl;
+    std::cout<< "biot_problem::print  "<< 
+    p_des.datafilename + "." +  std::to_string(time) + ".vtk"<<std::endl;
     getfem::vtk_export exp(p_des.datafilename + "." +  std::to_string(time) + ".vtk");
     exp.exporting(mf_u);  	exp.write_point_data(mf_u, U, "u"); 
                          	exp.write_point_data(mf_p, P, "p"); 

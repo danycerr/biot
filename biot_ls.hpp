@@ -57,7 +57,7 @@ typedef gmm::row_matrix<sparse_vector_type> sparse_matrix_type;
 typedef gmm::col_matrix<sparse_vector_type> col_sparse_matrix_type;
 typedef std::vector<scalar_type> plain_vector;
 
-#define LS_TYPE 3
+#define LS_TYPE 4
 // Right hand side. Allows an interpolation for the source term.
 // scalar_type sol_f(const base_node &x) { return 10.; }
 
@@ -139,7 +139,7 @@ struct problem_descriptor_quad_3d{
     std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TETRAHEDRON(6),3)"; 
     std::string datafilename="resu/laplace"; 
     int noised =0;  // noise on mesh
-    int nsubdiv=10; // subdivision of the sqaured mesh
+    int nsubdiv=6; // subdivision of the sqaured mesh
     double E=1.e+10;
 	double poisson =0.3;
 	double mu_s = E/( 2 * ( 1 + poisson) ) ;

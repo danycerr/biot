@@ -16,7 +16,7 @@ $(FIN_EXEC): $(OBJS)
 %.cpp: %.hpp
 	touch $@
 	
-main.cpp: biot_ls.hpp
+main.cpp: $(HDRS)
 	touch $@
 
 clean:
