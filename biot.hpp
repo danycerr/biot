@@ -95,15 +95,48 @@ struct problem_descriptor_quad_3d{
     std::string FEM_TYPE_P  =         "FEM_QK(3,1)";
 	std::string INTEGRATION =       "IM_GAUSS_PARALLELEPIPED(3,6)";
     std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; 
-    std::string datafilename="laplace"; 
-    int nsubdiv=10; // subdivision of the sqaured mesh
-    double E=1.e+4;
-	double poisson =0.0;
+    std::string datafilename="resu/laplace"; 
+    int nsubdiv=6; // subdivision of the sqaured mesh
+    double E=1.e+10;
+	double poisson =0.3;
 	double mu_s = E/( 2 * ( 1 + poisson) ) ;
 	double lambda_l= E*poisson/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;
-	double biot_modulus=1.e+18;
-	double k =1.e-4; //permeability
+	double biot_modulus=1.e+9;
+	double k =1.e-12; //permeability
 	double alpha=1; // Biot coefficient
+	double rho_l=1000; // Biot coefficient
+	double rho_r=2200; // Biot coefficient
+    // non dimensional quantities
+    double l_ref=1;
+    double sigma_ref=1;
+    double t_ref=1;
+    double u_ref=1;
+    double p_ref=1;
+    };
+    
+    struct problem_descriptor_tetra_3d{    
+    std::string MESH_TYPE =         "GT_PK(3,1)" ; // triangular elements
+    std::string FEM_TYPE_U  =         "FEM_PK(3,2)";
+    std::string FEM_TYPE_P  =         "FEM_PK(3,1)";
+	std::string INTEGRATION =       "IM_TETRAHEDRON(6)";
+    std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; 
+    std::string datafilename="resu/laplace"; 
+    int nsubdiv=6; // subdivision of the sqaured mesh
+    double E=1.e+10;
+	double poisson =0.3;
+	double mu_s = E/( 2 * ( 1 + poisson) ) ;
+	double lambda_l= E*poisson/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;
+	double biot_modulus=1.e+9;
+	double k =1.e-12; //permeability
+	double alpha=1; // Biot coefficient
+	double rho_l=1000; // Biot coefficient
+	double rho_r=2200; // Biot coefficient
+    // non dimensional quantities
+    double l_ref=1;
+    double sigma_ref=1;
+    double t_ref=1;
+    double u_ref=1;
+    double p_ref=1;
     };
 
 //   structure for the Laplacian problem
@@ -114,7 +147,7 @@ class biot_problem {
       getfem::mesh_fem mf_u;    /// the main mesh_fem, for the displacement solution
       getfem::mesh_fem mf_p;    /// the main mesh_fem, for the pressure solution
       getfem::mesh_fem mf_rhs;  /// the mesh_fem for the right hand side(f(x),..)
-      problem_descriptor_tri p_des;
+      problem_descriptor_tetra_3d p_des;
       enum { DIRICHLET_BOUNDARY_NUM = 10, NEUMANN_BOUNDARY_NUM = 11}; // descriptor for bcs flag
       enum { BOTTOM = 2, TOP = 1 , LEFT = 3, RIGHT =4, LEFTX = 5, RIGHTX =6}; // descriptor for zones
       size_type N_;             /// dimension of the problem
