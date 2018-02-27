@@ -137,9 +137,9 @@ struct problem_descriptor_quad_3d{
     std::string FEM_TYPE_P  =         "FEM_PK(3,1)";
 	std::string INTEGRATION =       "IM_TETRAHEDRON(6)";
     std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TETRAHEDRON(6),3)"; 
-    std::string datafilename="resu/laplace"; 
+    std::string datafilename="resu3d_tpt/laplace"; 
     int noised =0;  // noise on mesh
-    int nsubdiv=6; // subdivision of the sqaured mesh
+    int nsubdiv=13; // subdivision of the sqaured mesh
     double E=1.e+10;
 	double poisson =0.3;
 	double mu_s = E/( 2 * ( 1 + poisson) ) ;
@@ -177,8 +177,10 @@ class biotls_problem {
       getfem::mesh_im_level_set mim_ls_out;
       getfem::mesh_im_level_set mim_ls_bd;
       getfem::mesh_fem_level_set mfls, mfls_u, mfls_p;
-      getfem::mesh_fem_level_set mfls_u_old, mfls_p_old;
+      // getfem::mesh_fem_level_set mfls_u_old, mfls_p_old;
       std::vector<size_type> eXt_dof, eXt_dof_u;  // The extended dofs
+      std::vector<size_type> pin_index_, pout_index_;  // The extended dofs
+      std::vector<size_type> uin_index_, uout_index_;  // The extended dofs
       size_type nb_x_dof_p, nb_x_dof_u;
       // problem_descriptor_tri p_des;
       // problem_descriptor_tetra_3d p_des;
@@ -226,6 +228,8 @@ class biotls_problem {
       void print_crop(double time=0,int istep=0,double time_ls=0);
       
       void update_ls(double time=0, int iter=0);
+      void update_p_index(double timels=0);
+      void update_u_index(double timels=0);
       biotls_problem(void): mim(mesh), mf_u(mesh), mf_rhs(mesh), mf_p(mesh),mf_coef(mesh),mf_coef_v(mesh)
       ,tau_(1), vmu_(1), bm_(1), lambda_(1),alpha_(1), permeability_(1), force_(1), beta_(1),penalty_(1),
       c1_(1),c2_(1)
@@ -235,7 +239,7 @@ class biotls_problem {
       mim_ls_in(mls, getfem::mesh_im_level_set::INTEGRATE_INSIDE),
       mim_ls_out(mls, getfem::mesh_im_level_set::INTEGRATE_OUTSIDE),
       mim_ls_bd(mls, getfem::mesh_im_level_set::INTEGRATE_BOUNDARY),
-      mfls(mls, mf_u), mfls_u(mls, mf_u), mfls_p(mls, mf_p), mfls_u_old(mls, mf_u), mfls_p_old(mls, mf_p)
+      mfls(mls, mf_u), mfls_u(mls, mf_u), mfls_p(mls, mf_p)
       {}
 };
 

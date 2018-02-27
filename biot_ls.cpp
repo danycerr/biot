@@ -53,7 +53,7 @@ void biotls_problem::init(void) {
     ls.touch();
     mls.adapt();
     mls.global_cut_mesh(mesh_ls);
-    
+    std::cout<<"End of ls evaluation"<<std::endl;
     // creating cut and uncut region
     std::vector<scalar_type> phicell(mesh.convex_index().size(), 0.0);
     dal::bit_vector bv_cv = mesh.convex_index();
@@ -64,13 +64,6 @@ void biotls_problem::init(void) {
          // std::cout<<"CUT element"<<std::endl;
          getfem::mesh_fem::ind_dof_ct idofs = mf_p.ind_basic_dof_of_element(i_cv);
          phicell[i_cv] = 0.5;
-         for (size_type i=0; i < idofs.size(); ++i) {
-             //  std::cout<<"\t dofs "<< i<<" "<< idofs[i]<<std::endl;
-              // std::cout<< "x" << mf_p.point_of_basic_dof(idofs[i])[0] 
-              // << "y" << mf_p.point_of_basic_dof(idofs[i])[1] 
-             //  << "z" << mf_p.point_of_basic_dof(idofs[i])[2] 
-              // <<std::endl;
-              }
         }
       else {
           mesh.region(UNCUT_REGION).add(i_cv);
@@ -153,7 +146,7 @@ void biotls_problem::init(void) {
     std::cout<< "set integration method simp"<<std::endl;
     mim_ls_all.set_simplex_im(simp_ppi);
     std::cout<< "set integration adapt"<<std::endl;
-    mim_ls_all.adapt();
+    // mim_ls_all.adapt();
     std::cout<< "end"<<std::endl;
     
     mim_ls_in.set_integration_method(mesh.convex_index(), ppi);
@@ -571,7 +564,7 @@ void biotls_problem::assembly_p(double dt, double time){
 	workspace.add_expression("-Grad_p.Normal*Test_p*tau- Grad_Test_p.Normal*p*tau ", mim, LEFT); 	
    	workspace.add_expression("2*penalty/element_size*p*Test_p", mim, RIGHT);
 	workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, RIGHT); 	
-    if (N_= 3 ){
+    if (N_== 3 ){
     workspace.add_expression("2*penalty/element_size*p*Test_p", mim, LEFTX);
 	workspace.add_expression("-Grad_p.Normal*Test_p*tau- Grad_Test_p.Normal*p*tau ", mim, LEFTX); 	
    	workspace.add_expression("2*penalty/element_size*p*Test_p", mim, RIGHTX);
@@ -615,6 +608,7 @@ void biotls_problem::assembly_p(double dt, double time){
    std::cout<< "end kout"<< std::endl; 
    }
    // Kin for enriched dof
+   std::cout<< "start kin"<< std::endl; 
    sparse_matrix_type K_in(nb_dof_p,nb_dof_p);
    std::vector<scalar_type> Bp_in(nb_dof_p, 0.0);
    {
@@ -637,7 +631,7 @@ void biotls_problem::assembly_p(double dt, double time){
    workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, LEFT); 	
    workspace.add_expression("2/element_size*p*Test_p", mim, RIGHT);
    workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, RIGHT);
-   if (N_=3){
+   if (N_==3){
    workspace.add_expression("2/element_size*p*Test_p", mim, LEFT);
    workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, LEFT); 	
    workspace.add_expression("2/element_size*p*Test_p", mim, RIGHT);
@@ -655,6 +649,8 @@ void biotls_problem::assembly_p(double dt, double time){
     {// mapping for pressure
     std::cout<<"start mapping pressure"<<std::endl;
     size_type dof_shift = nb_dof_p;
+    
+     int j_shift=eXt_dof.size()*eXt_dof.size();
     // On cut elements, the contribution is splitted in two parts,
     // corresponding to the sub-elements In (ls < 0) and Out (ls >= 0).
     // Basis functions on cut elements are copies of standard
@@ -667,13 +663,15 @@ void biotls_problem::assembly_p(double dt, double time){
     // in the extended dof range: ii = i + nb_dof_u, where eXt_dof[i] = ii;
     // * If a dof index ii is Out, proceeds analogously.
        // No interface terms here: only In-In and Out-Out dofs.
-    for (size_type i = 0; i < eXt_dof.size(); ++i) {
+     
+	double time_1 = gmm::uclock_sec();  
+    if (0) for (size_type i = 0; i < eXt_dof.size(); ++i) {
       size_type ii = eXt_dof[i];
       double ls_i = ls_function(mf_p.point_of_basic_dof(ii),time, LS_TYPE)[0];
       // std::cout<< "ls values of dof"<< ii << " is "  << ls_i<< std::endl;
     // Bp[nb_dof_p+i] =Bp[ii];
-     if(ls_i<=0) Bp[ii]+=Bp_in[ii];
-     else        Bp[nb_dof_p+i]+= Bp_in[ii];
+     if(ls_i<=0) {Bp[ii]+=Bp_in[ii]; }
+     else        {Bp[nb_dof_p+i]+= Bp_in[ii];}
       for (size_type j = 0; j < eXt_dof.size(); ++j) {
 	    size_type jj = eXt_dof[j];
        double ls_j = ls_function(mf_p.point_of_basic_dof(jj),time, LS_TYPE)[0];
@@ -682,6 +680,8 @@ void biotls_problem::assembly_p(double dt, double time){
 	         // i and j are both In
 	         Kp(ii , jj) += K_in(ii, jj);
 	         Kp(i + dof_shift, j  + dof_shift) += K_out(ii, jj);
+             // std::cout<< " i " << ii << " " << pin_index_[i* eXt_dof.size()+j]<<"   ";
+             // std::cout<< " j " << jj << " " << pin_index_[i* eXt_dof.size()+j+j_shift]<<std::endl;
             }
             else if ( (ls_i>= 0) && (ls_j >= 0) ) {
 	         // i and j are both Out
@@ -700,6 +700,21 @@ void biotls_problem::assembly_p(double dt, double time){
 	        }
         }
     }
+    
+	std::cout << "... time to map pressure with if : " << gmm::uclock_sec() - time_1 << " seconds\n";
+    double time_2 = gmm::uclock_sec();  
+    for (size_type i = 0; i < eXt_dof.size(); ++i) {
+     size_type ii = eXt_dof[i]; 
+     Bp[pin_index_[i* eXt_dof.size()]]+=Bp_in[ii];
+     for (size_type j = 0; j < eXt_dof.size(); ++j) {
+	    size_type jj = eXt_dof[j];
+        Kp(pin_index_[i* eXt_dof.size()+j],pin_index_[i* eXt_dof.size()+j+j_shift])+=K_in(ii, jj);
+        Kp(pout_index_[i* eXt_dof.size()+j],pout_index_[i* eXt_dof.size()+j+j_shift])+=K_out(ii, jj);
+        }
+      }
+    
+    std::cout << "... time to map pressure no if : " << gmm::uclock_sec() - time_2 << " seconds\n";
+    // std::cin.ignore();
    }
 }
     
@@ -815,8 +830,10 @@ void biotls_problem::assembly_u(double dt,double time){
    // Mapping
    {// mapping for displacement
     std::cout<<"start mapping displacement"<<std::endl;
+    double time_1 = gmm::uclock_sec();  
     size_type dof_shift = nb_dof_u ;
-    for (size_type i = 0; i < eXt_dof_u.size(); ++i) {
+     int j_shift=eXt_dof_u.size()*eXt_dof_u.size();
+   if(0)for (size_type i = 0; i < eXt_dof_u.size(); ++i) {
       size_type ii = eXt_dof_u[i];
       double ls_i = ls_function(mf_u.point_of_basic_dof(ii),time, LS_TYPE)[0];
       // B[dof_shift +i ] = B[ii];
@@ -848,6 +865,21 @@ void biotls_problem::assembly_u(double dt,double time){
 	        }
         }
     }
+    
+    
+    std::cout << "... time to map disp with if : " << gmm::uclock_sec() - time_1 << " seconds\n";
+    double time_2 = gmm::uclock_sec();  
+    for (size_type i = 0; i < eXt_dof_u.size(); ++i) {
+     size_type ii = eXt_dof_u[i]; 
+     Bu[uin_index_[i* eXt_dof_u.size()]]+=B_in[ii];
+     for (size_type j = 0; j < eXt_dof_u.size(); ++j) {
+	    size_type jj = eXt_dof_u[j];
+        Ku(uin_index_[i* eXt_dof_u.size()+j],uin_index_[i* eXt_dof_u.size()+j+j_shift])+=K_in(ii, jj);
+        Ku(uout_index_[i* eXt_dof_u.size()+j],uout_index_[i* eXt_dof_u.size()+j+j_shift])+=K_out(ii, jj);
+        }
+      }
+      std::cout << "... time to map dipl no if : " << gmm::uclock_sec() - time_2 << " seconds\n";
+    // std::cin.ignore();
    }
     // end enriched dof
   
@@ -915,7 +947,7 @@ void biotls_problem::solve(double time){
 void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
 
   
-  double epsu=1.e-6; double epsp=1.e-6;
+  double epsu=1.e-4; double epsp=1.e-4;
   double rel_unorm=1; double rel_pnorm=1; int fix_count=0;
   double old_unorm=1; double new_unorm=1;
   double old_pnorm=1; double new_pnorm=1;
@@ -1236,7 +1268,7 @@ void biotls_problem::print(double time,int istep,double time_ls){
   // level set function
   base_small_vector biotls_problem::ls_function(const base_node P, double time,int num) {
   scalar_type x = P[0]*p_des.l_ref, y = P[1]*p_des.l_ref, z=0;
-  if (N_=3)  z = P[2]*p_des.l_ref;
+  if (N_==3)  z = P[2]*p_des.l_ref;
   y = P[1]*p_des.l_ref;
   // time*=p_des.t_ref;
   base_small_vector res(2);
@@ -1258,7 +1290,7 @@ void biotls_problem::print(double time,int istep,double time_ls){
       res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.35;
     } break;
     case 4: {
-      res[0] = z - (4.e+2 * time / (1.e+8) * sin(2 * 3.14 *x/4000)*sin(2 * 3.14 *y/4000) + 3300);
+      res[0] = z - (8.e+2 * time / (1.e+8) * sin(2 * 3.14 *x/4000)*sin(2 * 3.14 *y/4000) + 3300);
       res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.35;
     } break;
     default: assert(0);
@@ -1313,7 +1345,7 @@ void biotls_problem::update_ls(double time, int iter){
     // is CUT, than each node corresponding to the standard dof ii is duplicated, and the
     // extended dof ii is created, such that eXt_dof[j] = i (here j = ii - nb_dof_u).
     //
-    // for pressure 
+    // for pressure
     eXt_dof.clear();
     {
        dal::bit_vector ndofs = mf_p.basic_dof_on_region(CUT_REGION);
@@ -1333,7 +1365,8 @@ void biotls_problem::update_ls(double time, int iter){
     std::cout << "# dof to extend are  for pressure   = " << eXt_dof.size() << std::endl;
     std::cout << "# dof to extend are  for displacement   = " << eXt_dof_u.size() << std::endl;
     compute_normal_2_ls();
-    
+    update_p_index(time);
+    update_u_index(time);
     
     // ls.touch();
     // mls.adapt();mls.global_cut_mesh(mesh_ls);
@@ -1462,5 +1495,117 @@ void biotls_problem::compute_normal_2_ls(){
         }
    }
 }
-    
 
+// =================================================
+// update p index 
+void biotls_problem::update_p_index(double time_ls){
+     // std::map<int,int[2]> inx_p_map;
+     gmm::resize(pin_index_,2*eXt_dof.size()*eXt_dof.size());
+     gmm::resize(pout_index_,2*eXt_dof.size()*eXt_dof.size());
+     size_type dof_shift = mf_p.nb_dof();
+     int j_shift=eXt_dof.size()*eXt_dof.size();
+     
+      for (size_type i = 0; i < eXt_dof.size(); ++i) {
+      size_type ii = eXt_dof[i];
+      double ls_i = ls_function(mf_p.point_of_basic_dof(ii),time_ls, LS_TYPE)[0];
+      // std::cout<< "ls values of dof"<< ii << " is "  << ls_i<< std::endl;
+     // if(ls_i<=0) Bp[ii]+=Bp_in[ii];
+     // else        Bp[nb_dof_p+i]+= Bp_in[ii];
+      for (size_type j = 0; j < eXt_dof.size(); ++j) {
+	    size_type jj = eXt_dof[j];
+       double ls_j = ls_function(mf_p.point_of_basic_dof(jj),time_ls, LS_TYPE)[0];
+            // std::cout<< "ls_i "<< ls_i << " ls_j "<< ls_j << std::endl;
+	        if ( (ls_i <= 0) && (ls_j <= 0) ) {
+	         // i and j are both In
+             pin_index_[i*eXt_dof.size()+j]=ii;
+             pin_index_[i*eXt_dof.size()+j+j_shift]=jj;
+	         // Kp(i + dof_shift, j  + dof_shift) += K_out(ii, jj);
+             pout_index_[i*eXt_dof.size()+j]=i + dof_shift;
+             pout_index_[i*eXt_dof.size()+j+j_shift]=j  + dof_shift;
+            }
+            else if ( (ls_i>= 0) && (ls_j >= 0) ) {
+	         // i and j are both Out
+	         // Kp(ii, jj) += K_out(ii, jj);
+	         pin_index_[i*eXt_dof.size()+j]=i + dof_shift;
+             pin_index_[i*eXt_dof.size()+j+j_shift]=j  + dof_shift;
+             // out
+             pout_index_[i*eXt_dof.size()+j]=ii;
+             pout_index_[i*eXt_dof.size()+j+j_shift]=jj;
+	        }
+	        else if ( (ls_i <= 0) && (ls_j>= 0) ) {
+             // i is In, j is Out
+             pin_index_[i*eXt_dof.size()+j]=ii;
+             pin_index_[i*eXt_dof.size()+j+j_shift]=j+ dof_shift;
+	         // Kp(i + dof_shift, jj) += K_out(ii, jj);
+             pout_index_[i*eXt_dof.size()+j]=i + dof_shift;
+             pout_index_[i*eXt_dof.size()+j+j_shift]=jj;
+	        }
+	        else {
+	        // i is Out, j is In
+            pin_index_[i*eXt_dof.size()+j]=i + dof_shift;
+            pin_index_[i*eXt_dof.size()+j+j_shift]=jj;
+	        // Kp(ii, j  + dof_shift) += K_out(ii, jj);
+            pout_index_[i*eXt_dof.size()+j]=ii;
+            pout_index_[i*eXt_dof.size()+j+j_shift]=j+dof_shift;
+	        }
+        }
+    }
+     
+    }
+
+// =================================================
+// update u index 
+void biotls_problem::update_u_index(double time_ls){
+     // std::map<int,int[2]> inx_p_map;
+     gmm::resize(uin_index_,2*eXt_dof_u.size()*eXt_dof_u.size());
+     gmm::resize(uout_index_,2*eXt_dof_u.size()*eXt_dof_u.size());
+     size_type dof_shift = mf_u.nb_dof();
+     int j_shift=eXt_dof_u.size()*eXt_dof_u.size();
+     
+      for (size_type i = 0; i < eXt_dof_u.size(); ++i) {
+      size_type ii = eXt_dof_u[i];
+      double ls_i = ls_function(mf_u.point_of_basic_dof(ii),time_ls, LS_TYPE)[0];
+      // std::cout<< "ls values of dof"<< ii << " is "  << ls_i<< std::endl;
+     // if(ls_i<=0) Bp[ii]+=Bp_in[ii];
+     // else        Bp[nb_dof_p+i]+= Bp_in[ii];
+      for (size_type j = 0; j < eXt_dof_u.size(); ++j) {
+	    size_type jj = eXt_dof_u[j];
+       double ls_j = ls_function(mf_u.point_of_basic_dof(jj),time_ls, LS_TYPE)[0];
+            // std::cout<< "ls_i "<< ls_i << " ls_j "<< ls_j << std::endl;
+	        if ( (ls_i <= 0) && (ls_j <= 0) ) {
+	         // i and j are both In
+             uin_index_[i*eXt_dof_u.size()+j]=ii;
+             uin_index_[i*eXt_dof_u.size()+j+j_shift]=jj;
+	         // Kp(i + dof_shift, j  + dof_shift) += K_out(ii, jj);
+             uout_index_[i*eXt_dof_u.size()+j]=i + dof_shift;
+             uout_index_[i*eXt_dof_u.size()+j+j_shift]=j  + dof_shift;
+            }
+            else if ( (ls_i>= 0) && (ls_j >= 0) ) {
+	         // i and j are both Out
+	         // Kp(ii, jj) += K_out(ii, jj);
+	         uin_index_[i*eXt_dof_u.size()+j]=i + dof_shift;
+             uin_index_[i*eXt_dof_u.size()+j+j_shift]=j  + dof_shift;
+             // out
+             uout_index_[i*eXt_dof_u.size()+j]=ii;
+             uout_index_[i*eXt_dof_u.size()+j+j_shift]=jj;
+	        }
+	        else if ( (ls_i <= 0) && (ls_j>= 0) ) {
+             // i is In, j is Out
+             uin_index_[i*eXt_dof_u.size()+j]=ii;
+             uin_index_[i*eXt_dof_u.size()+j+j_shift]=j+ dof_shift;
+	         // Kp(i + dof_shift, jj) += K_out(ii, jj);
+             uout_index_[i*eXt_dof_u.size()+j]=i + dof_shift;
+             uout_index_[i*eXt_dof_u.size()+j+j_shift]=jj;
+	        }
+	        else {
+	        // i is Out, j is In
+            uin_index_[i*eXt_dof_u.size()+j]=i + dof_shift;
+            uin_index_[i*eXt_dof_u.size()+j+j_shift]=jj;
+	        // Kp(ii, j  + dof_shift) += K_out(ii, jj);
+            uout_index_[i*eXt_dof_u.size()+j]=ii;
+            uout_index_[i*eXt_dof_u.size()+j+j_shift]=j+dof_shift;
+	        }
+        }
+    }
+     
+    }
