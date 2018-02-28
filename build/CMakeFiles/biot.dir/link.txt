@@ -1,0 +1,1 @@
+/u/sw/pkgs/toolchains/gcc-glibc/5/prefix/bin/c++    -DGMM_USES_BLAS -std=c++14   CMakeFiles/biot.dir/biot_ls.cpp.o CMakeFiles/biot.dir/biot.cpp.o CMakeFiles/biot.dir/main.cpp.o  -o biot -rdynamic 
