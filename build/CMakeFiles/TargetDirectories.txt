@@ -1,0 +1,3 @@
+/u/archive/agip/cerroni/software/mygetfem/biot/build/CMakeFiles/edit_cache.dir
+/u/archive/agip/cerroni/software/mygetfem/biot/build/CMakeFiles/rebuild_cache.dir
+/u/archive/agip/cerroni/software/mygetfem/biot/build/CMakeFiles/biot.dir
