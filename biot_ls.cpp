@@ -9,21 +9,30 @@ void biotls_problem::init(void) {
 
 	// Mesh generation
 	N_ = pgt->dim();
-    std::vector<size_type> nsubdiv(N_);
-	int NX=p_des.nsubdiv;
-	std::fill(nsubdiv.begin(),nsubdiv.end(),NX);
-	getfem::regular_unit_mesh(mesh, nsubdiv, pgt, p_des.noised);
-    // A trasformation for the squarred mesh
-	  bgeot::base_matrix M(N_,N_);
-	  for (size_type i=0; i < N_; ++i) {
-	    M(i,i) = 1.0;
-	  }
-      p_des.l_ref=4000;
+    // std::vector<size_type> nsubdiv(N_);
+	// int NX=p_des.nsubdiv;
+	// std::fill(nsubdiv.begin(),nsubdiv.end(),NX);
+	// getfem::regular_unit_mesh(mesh, nsubdiv, pgt, p_des.noised);
+    // // A trasformation for the squarred mesh
+    p_des.l_ref=4000;
+
+    
+    // import mesh
+     // getfem::import_mesh("gmsh:mesh/square2k.msh",mesh);
+    // getfem::import_mesh("gmsh:mesh/squarepinch.msh",mesh);
+     getfem::import_mesh("gmsh:mesh/squarepinch_fine.msh",mesh);
+    // dal::bit_vector b; b.add(0);
+    // mesh.Bank_refine(b);
+    // mesh.Bank_refine(mesh.convex_index());
+    bgeot::base_matrix M(N_,N_);
+	for (size_type i=0; i < N_; ++i) {
+	     M(i,i) = 1./p_des.l_ref;
+	   }
 	//  if (N>1) { M(0,1) = 0; }
 	//
 	  mesh.transformation(M);
     // // End of mesh generation
-
+    // std::cout << "has 50 "<< mesh.has_region(50)<<std::endl;std::cin.ignore();
    
     // set  integration methods  
     getfem::pfem pf_u = getfem::fem_descriptor(p_des.FEM_TYPE_U); // for displacement 
@@ -81,21 +90,13 @@ void biotls_problem::init(void) {
     vtke.write_mesh();
     vtke.write_cell_data(phicell, "CutEl");
     }
-    base_small_vector a(2);
-    gmm::resize(normal_ls, mf_coef.nb_dof()); gmm::clear(normal_ls);    // rhs monolithic problem
+    // base_small_vector a(2);
     
     gmm::resize(normal_ls_v, mf_coef_v.nb_dof()); gmm::clear(normal_ls_v);    // rhs monolithic problem
-    { // creating a coefficient
-    dal::bit_vector bv_cv = mesh.convex_index();
-    size_type i_cv = 0;
-    for (i_cv << bv_cv; i_cv != size_type(-1); i_cv << bv_cv) {
-         getfem::mesh_fem::ind_dof_ct idofs = mf_coef.ind_basic_dof_of_element(i_cv);
-         for (size_type i=0; i < idofs.size(); ++i) {
-         normal_ls[idofs[i]]=1.e-9;
-       //  std::vector<scalar_type>(mf_coef.nb_dof(), 1.0)
-      }
-   }
-   }
+    
+    
+    gen_coefficient();
+
    {
     dal::bit_vector bv_cv = mesh.convex_index();
     size_type i_cv = 0;
@@ -277,7 +278,8 @@ void biotls_problem::configure_workspace(getfem::ga_workspace & workspace,double
     penalty_[0] = 1.e+10; // 1---10
 	workspace.add_fixed_size_constant("penalty", penalty_);
     
-    workspace.add_fem_constant("nls", mf_coef, normal_ls);
+    workspace.add_fem_constant("Kr", mf_coef, Kr_);
+    workspace.add_fem_constant("Er", mf_coef, Er_);
     
     workspace.add_fem_constant("nlsv", mf_coef_v, normal_ls_v);
     }
@@ -538,7 +540,7 @@ void biotls_problem::assembly_p(double dt, double time){
 	workspace.add_fem_variable("u_iter", mf_u, gmm::sub_interval(0, nb_dof_u), U_iter);
 	
 	// Pressure equation
-	workspace.add_expression("(1+beta)*p.Test_p + tau*Grad_p.Grad_Test_p", mim,UNCUT_REGION_IN); // tau
+	workspace.add_expression("(1+beta)*p.Test_p + tau*Kr*Grad_p.Grad_Test_p", mim,UNCUT_REGION_IN); // tau
 	// workspace.set_assembled_matrix(Kp);
 	workspace.assembly(2);
     gmm::copy(workspace.assembled_matrix(), gmm::sub_matrix(Kp,
@@ -618,7 +620,7 @@ void biotls_problem::assembly_p(double dt, double time){
     workspace.add_expression("-nlsv.Grad_p*Test_p*tau- nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION); 
    //NICHE
    //  workspace.add_expression( "permeability*tau*[0,1].Grad_p*Test_p ", mim_ls_bd, CUT_REGION);
-   workspace.add_expression( "(1+beta)*p.Test_p + tau*Grad_p.Grad_Test_p", mim_ls_in, CUT_REGION);
+   workspace.add_expression( "(1+beta)*p.Test_p + tau*Kr*Grad_p.Grad_Test_p", mim_ls_in, CUT_REGION);
    workspace.assembly(2);
    gmm::copy(workspace.assembled_matrix(),K_in);
    workspace.clear_expressions();
@@ -772,7 +774,7 @@ void biotls_problem::assembly_u(double dt,double time){
     workspace.assembly(1);
 	workspace.clear_expressions();
     // ----- momentum equation
-	workspace.add_expression("2*Sym(Grad_u):Grad_Test_u + C2*Div_u*Div_Test_u", mim , UNCUT_REGION_IN); // stress tensor 
+	workspace.add_expression("2*Er*Sym(Grad_u):Grad_Test_u + C2*Er*Div_u*Div_Test_u", mim , UNCUT_REGION_IN); // stress tensor 
     workspace.add_expression("penalty*u.Test_u" , mim, BOTTOM); //neumann disp
 	workspace.assembly(2);   
     gmm::copy(workspace.assembled_matrix(), gmm::sub_matrix(Ku,
@@ -805,7 +807,7 @@ void biotls_problem::assembly_u(double dt,double time){
    // Kin for enriched dof
    sparse_matrix_type K_in(nb_dof_u, nb_dof_u );
        // internal for displacement
-   workspace.add_expression( "2*Sym(Grad_u):Grad_Test_u + C2*Div_u*Div_Test_u", mim_ls_in, CUT_REGION);
+   workspace.add_expression( "2*Er*Sym(Grad_u):Grad_Test_u + Er*C2*Div_u*Div_Test_u", mim_ls_in, CUT_REGION);
    workspace.assembly(2);
    gmm::copy(workspace.assembled_matrix(),K_in);
    workspace.clear_expressions();
@@ -947,7 +949,7 @@ void biotls_problem::solve(double time){
 void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
 
   
-  double epsu=1.e-4; double epsp=1.e-4;
+  double epsu=1.e-6; double epsp=1.e-6;
   double rel_unorm=1; double rel_pnorm=1; int fix_count=0;
   double old_unorm=1; double new_unorm=1;
   double old_pnorm=1; double new_pnorm=1;
@@ -1609,3 +1611,24 @@ void biotls_problem::update_u_index(double time_ls){
     }
      
     }
+//============================================
+// routine for the generation of coeffient
+//============================================
+    void biotls_problem::gen_coefficient(){ // creating a coefficient
+       gmm::resize(Kr_, mf_coef.nb_dof()); gmm::clear(Kr_);    // rhs monolithic problem
+       gmm::resize(Er_, mf_coef.nb_dof()); gmm::clear(Er_);    // rhs monolithic problem
+       std::vector<int> material; material.push_back(50);material.push_back(60);
+       std::vector<double> k; k.push_back(1);k.push_back(1.e+2);
+       std::vector<double> E; E.push_back(1);E.push_back(5.e-1);
+       for (int imat=0; imat< material.size();imat++){
+            dal::bit_vector bv_cv = mesh.region(material[imat]).index();
+            size_type i_cv = 0;
+            for (i_cv << bv_cv; i_cv != size_type(-1); i_cv << bv_cv) {
+                getfem::mesh_fem::ind_dof_ct idofs = mf_coef.ind_basic_dof_of_element(i_cv);
+                for (size_type i=0; i < idofs.size(); ++i) {
+                    Kr_[idofs[i]]=k[imat];
+                    Er_[idofs[i]]=E[imat];
+                    }
+            }
+        }
+   }
