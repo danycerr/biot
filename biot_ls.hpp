@@ -38,6 +38,7 @@
 
 #include "getfem/getfem_mesh_slice.h"
 #include "gmm/gmm.h"
+#include "getfem/getfem_import.h"
 
 #include "gmm/gmm_inoutput.h"
 
@@ -57,7 +58,7 @@ typedef gmm::row_matrix<sparse_vector_type> sparse_matrix_type;
 typedef gmm::col_matrix<sparse_vector_type> col_sparse_matrix_type;
 typedef std::vector<scalar_type> plain_vector;
 
-#define LS_TYPE 4
+#define LS_TYPE 2
 // Right hand side. Allows an interpolation for the source term.
 // scalar_type sol_f(const base_node &x) { return 10.; }
 
@@ -137,7 +138,7 @@ struct problem_descriptor_quad_3d{
     std::string FEM_TYPE_P  =         "FEM_PK(3,1)";
 	std::string INTEGRATION =       "IM_TETRAHEDRON(6)";
     std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TETRAHEDRON(6),3)"; 
-    std::string datafilename="resu3d_tpt/laplace"; 
+    std::string datafilename="resu/laplace"; 
     int noised =0;  // noise on mesh
     int nsubdiv=13; // subdivision of the sqaured mesh
     double E=1.e+10;
@@ -182,9 +183,9 @@ class biotls_problem {
       std::vector<size_type> pin_index_, pout_index_;  // The extended dofs
       std::vector<size_type> uin_index_, uout_index_;  // The extended dofs
       size_type nb_x_dof_p, nb_x_dof_u;
-      // problem_descriptor_tri p_des;
+      problem_descriptor_tri p_des;
       // problem_descriptor_tetra_3d p_des;
-      problem_descriptor_tetra_3d p_des;
+      // problem_descriptor_tetra_3d p_des;
       enum { DIRICHLET_BOUNDARY_NUM = 10, NEUMANN_BOUNDARY_NUM = 11}; // descriptor for bcs flag
       enum { BOTTOM = 2, TOP = 1 , LEFT = 3, RIGHT =4, LEFTX = 5, RIGHTX =6}; // descriptor for zones
       enum { CUT_REGION = 100, UNCUT_REGION = 200, UNCUT_REGION_IN = 201, UNCUT_REGION_OUT = 202};
@@ -201,11 +202,13 @@ class biotls_problem {
      std::vector<scalar_type> U_iter, P_iter, Bp, Bu;     /// main unknown, and right hand side
      biot_precond<sparse_matrix_type> *bPR_;               /// preconditioner based on fixed stress
      
-     std::vector<scalar_type> normal_ls;
+     std::vector<scalar_type> Kr_; // permeability ratio
+     std::vector<scalar_type> Er_; // young ratio
      std::vector<scalar_type> normal_ls_v;
      /// Methods
       void gen_bc(void);                                /// create zones for boundary conditions
-      void compute_normal_2_ls(void);                                /// create normal to ls as a cell field
+      void compute_normal_2_ls(void);                   /// create normal to ls as a cell field
+      void gen_coefficient();                         /// generate coefficient p0
       
       void configure_workspace                          /// configure the workspace add constants
           (getfem::ga_workspace & workspace,                /// the workspace
