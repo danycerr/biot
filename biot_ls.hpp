@@ -222,7 +222,7 @@ class biotls_problem {
       void assembly(double dt,double time);                         /// assemble the monolithic iteration matrix for the problem
       void assembly_p(double dt,double time);                       /// assemble the iteration matrix for pressure, can be used as preconditioner
       void assembly_u(double dt,double time);                       /// assemble the iteration matrix for pressure, can be used as preconditioner
-      void build_fix_stress_preconditioner();
+      void build_fix_stress_preconditioner(double dt, double time_ls);
       void solve(double time);                                 /// solves the monolithic system 
       void solve_fix_stress(double dt, int max_iter,double time);   /// solves the system with classic fixed stress approach
       void init(void);                                  /// initial configuration for the problem 
