@@ -9,10 +9,10 @@ void biotls_problem::init(void) {
 
 	// Mesh generation
 	N_ = pgt->dim();
-    // std::vector<size_type> nsubdiv(N_);
-	// int NX=p_des.nsubdiv;
-	// std::fill(nsubdiv.begin(),nsubdiv.end(),NX);
-	// getfem::regular_unit_mesh(mesh, nsubdiv, pgt, p_des.noised);
+    std::vector<size_type> nsubdiv(N_);
+	int NX=p_des.nsubdiv;
+	std::fill(nsubdiv.begin(),nsubdiv.end(),NX);
+	getfem::regular_unit_mesh(mesh, nsubdiv, pgt, p_des.noised);
     // // A trasformation for the squarred mesh
     p_des.l_ref=4000;
 
@@ -20,13 +20,13 @@ void biotls_problem::init(void) {
     // import mesh
      // getfem::import_mesh("gmsh:mesh/square2k.msh",mesh);
     // getfem::import_mesh("gmsh:mesh/squarepinch.msh",mesh);
-     getfem::import_mesh("gmsh:mesh/squarepinch_fine.msh",mesh);
+    //  getfem::import_mesh("gmsh:mesh/squarepinch_fine.msh",mesh);
     // dal::bit_vector b; b.add(0);
     // mesh.Bank_refine(b);
     // mesh.Bank_refine(mesh.convex_index());
     bgeot::base_matrix M(N_,N_);
 	for (size_type i=0; i < N_; ++i) {
-	     M(i,i) = 1./p_des.l_ref;
+	     M(i,i) = 1.;// /p_des.l_ref;
 	   }
 	//  if (N>1) { M(0,1) = 0; }
 	//
@@ -290,8 +290,9 @@ void biotls_problem::configure_workspace(getfem::ga_workspace & workspace,double
 // Build fix stress preconditioner 
 // for the monolithic problem
 //=======================================================
-void biotls_problem::build_fix_stress_preconditioner(){
+void biotls_problem::build_fix_stress_preconditioner(double dt, double time_ls){
     std::cout<< "biotls_problem::build_fix_stress_preconditioner" <<std::endl;
+    assembly_p(dt,time_ls);assembly_u(dt,time_ls);
     bPR_ = new biot_precond<sparse_matrix_type> (Ku,Kp);
     }
 //=======================================================
@@ -901,8 +902,8 @@ void biotls_problem::solve(double time){
   iter.set_noisy(1);               // output of iterations (2: sub-iteration)
   iter.set_maxiter(1000); // maximum number of iterations
   gmm::diagonal_precond<sparse_matrix_type> PR(K);
-  // gmm::gmres(K, UP, B, PR, restart, iter);
-  gmm::SuperLU_solve(K, UP , B, cond);
+  gmm::gmres(K, UP, B, *bPR_, restart, iter);
+  // gmm::SuperLU_solve(K, UP , B, cond);
   std::cout << "  Condition number momentum: " << cond << std::endl;
   getfem::size_type nb_dof_u = mf_u.nb_dof();
   getfem::size_type nb_dof_p = mf_p.nb_dof();
@@ -1615,8 +1616,8 @@ void biotls_problem::update_u_index(double time_ls){
 // routine for the generation of coeffient
 //============================================
     void biotls_problem::gen_coefficient(){ // creating a coefficient
-       gmm::resize(Kr_, mf_coef.nb_dof()); gmm::clear(Kr_);    // rhs monolithic problem
-       gmm::resize(Er_, mf_coef.nb_dof()); gmm::clear(Er_);    // rhs monolithic problem
+       gmm::resize(Kr_, mf_coef.nb_dof()); gmm::fill(Kr_,1);    // rhs monolithic problem
+       gmm::resize(Er_, mf_coef.nb_dof()); gmm::fill(Er_,1);    // rhs monolithic problem
        std::vector<int> material; material.push_back(50);material.push_back(60);
        std::vector<double> k; k.push_back(1);k.push_back(1.e+2);
        std::vector<double> E; E.push_back(1);E.push_back(5.e-1);

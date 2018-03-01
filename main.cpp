@@ -19,7 +19,6 @@ int main(int argc, char *argv[]) {
      double dt=4e+6;
    //    p.assembly_p(dt,0); 
    //    p.assembly_u(dt);
-     // p.build_fix_stress_preconditioner();
      int n_step=80;int erosion_limit=20;
      double time=0*dt;
      double time_ls  =0;
@@ -32,9 +31,13 @@ int main(int argc, char *argv[]) {
                  time_ls  =istep*dt;
                  p.update_ls(time_ls, istep);
                 }
-             p.solve_fix_stress(dt, 2000,time_ls);
-            //    p.assembly(dt,time_ls);
-            //    p.solve(time_ls);
+           //   p.solve_fix_stress(dt, 2000,time_ls);
+           
+        p.build_fix_stress_preconditioner(dt,time_ls);
+       // ===============================
+        p.assembly(dt,time_ls);
+        p.solve(time_ls);
+       // ===========================
         p.print(istep*dt,istep,time_ls);      
         p.print_crop(istep*dt,istep,time_ls);
         } // endl of lev_set biot
