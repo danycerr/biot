@@ -49,7 +49,7 @@ void biot_problem::init(void) {
     gmm::clear(U);gmm::clear(U_old);gmm::clear(U_iter);
     // pressure
     gmm::resize(P, nb_dof_p); gmm::resize(P_old, nb_dof_p); gmm::resize(P_iter, nb_dof_p); 
-    std::fill(P.begin(), P.end(), 1);
+    std::fill(P.begin(), P.end(), 0);
     gmm::copy(P,P_old);gmm::copy(P,P_iter);
     // iteration matrix monolithic
     gmm::resize(K, nb_dof_u + nb_dof_p, nb_dof_u + nb_dof_p); gmm::clear(K);
@@ -142,8 +142,9 @@ void biot_problem::configure_workspace(getfem::ga_workspace & workspace,double d
 // Build fix stress preconditioner 
 // for the monolithic problem
 //=======================================================
-void biot_problem::build_fix_stress_preconditioner(){
+void biot_problem::build_fix_stress_preconditioner(double dt){
     std::cout<< "biot_problem::build_fix_stress_preconditioner" <<std::endl;
+    assembly_p(dt);assembly_u(dt);
     bPR_ = new biot_precond<sparse_matrix_type> (Ku,Kp);
     }
 //=======================================================
@@ -158,8 +159,8 @@ void biot_problem::assembly(double dt) {
     getfem::size_type nb_dof_p = mf_p.nb_dof();
     gmm::resize(B, nb_dof_u + nb_dof_p); gmm::clear(B);
     gmm::resize(UP, nb_dof_u + nb_dof_p); //gmm::clear(UP);
-    gmm::resize(U, nb_dof_u); gmm::resize(U_old, nb_dof_u); 
-    gmm::resize(P, nb_dof_p); gmm::resize(P_old, nb_dof_p);
+    gmm::resize(U, nb_dof_u); // gmm::resize(U_old, nb_dof_u); 
+    gmm::resize(P, nb_dof_p); // gmm::resize(P_old, nb_dof_p);
     gmm::resize(K, nb_dof_u + nb_dof_p, nb_dof_u + nb_dof_p); gmm::clear(K);
  	
 	getfem::ga_workspace workspace; // generic workspace for the solution
@@ -183,8 +184,8 @@ void biot_problem::assembly(double dt) {
    
 
 	//======= RHS =====================
-    if(N_== 2 )	workspace.add_expression("[0,-0].Test_u", mim);
-    else        workspace.add_expression("[0,0,-1].Test_u", mim);
+	if(N_==2) workspace.add_expression("(2200*0.8 + 1000*0.2 -1000 )*[0,-1].Test_u", mim);
+    if(N_==3) workspace.add_expression("(2200*0.8 + 1000*0.2 -1000 )*[0,0,-1].Test_u", mim);
     workspace.add_expression("+[+0.0].Test_p*tau + (1/bm)*p_old.Test_p + alpha*Test_p*Div_u_old", mim);
     workspace.set_assembled_vector(B);
     workspace.assembly(1);
@@ -195,10 +196,13 @@ void biot_problem::assembly(double dt) {
 	getfem::base_vector penalty(1); penalty[0] = 2e+4; // 1---10
 	workspace.add_fixed_size_constant("penalty", penalty);
 	//Matrix term
+    workspace.add_expression("penalty/element_size*p*Test_p", mim, TOP);
+	workspace.add_expression("-permeability*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, TOP); 	
 	workspace.add_expression("penalty/element_size*p*Test_p", mim, LEFT);
     workspace.add_expression("penalty/element_size*p*Test_p", mim, RIGHT);// 1 is the region	
 	workspace.add_expression("-permeability*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, LEFT); 	
 	workspace.add_expression("-permeability*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p", mim, RIGHT); 
+    workspace.add_expression("penalty*u.Test_u" , mim, BOTTOM); //neumann disp
 	workspace.assembly(2);
     gmm::add(workspace.assembled_matrix(), K);
 	workspace.clear_expressions();
@@ -206,9 +210,9 @@ void biot_problem::assembly(double dt) {
 	//rhs term
     if(N_ == 2){
        // workspace.add_expression("0*penalty*u.Test_u" "+ penalty*0*p*Test_p", mim, TOP); // 1 is the region
-       workspace.add_expression("[0,-2*force].Test_u" , mim, TOP); //neumann disp
+       // workspace.add_expression("[0,-2*force].Test_u" , mim, TOP); //neumann disp
 	   // workspace.add_expression("0*penalty*u.Test_u" "+ 0*penalty*0*p*Test_p", mim, BOTTOM); // 1 is the region
-	   workspace.add_expression("[0,+2*force].Test_u" , mim, BOTTOM); //neumann disp
+	   // workspace.add_expression("[0,+2*force].Test_u" , mim, BOTTOM); //neumann disp
     }
 	else if(N_== 3){
        // workspace.add_expression("0*penalty*u.Test_u" "+ penalty*0*p*Test_p", mim, TOP); // 1 is the region
@@ -233,7 +237,7 @@ void biot_problem::assembly(double dt) {
 // -------------------------------------------------
 
 void biot_problem::assembly_p(double dt){
-    
+
     // gmm::clean(P_old, 1E-10);gmm::clean(U_old, 1E-10);
 	gmm::clean(P, 1E-10);gmm::clean(U, 1E-10);
     gmm::clear(Bp); gmm::clear(Kp);
@@ -304,6 +308,7 @@ void biot_problem::assembly_p(double dt){
 // -------------------------------------------------
 void biot_problem::assembly_u(double dt){
 	std::cout<<"biot_assembler::assembly_u(double dt)" <<std::endl;
+
    	getfem::size_type nb_dof_u = mf_u.nb_dof();
     getfem::size_type nb_dof_p = mf_p.nb_dof();
     gmm::clear(Bu);  gmm::clear(Ku);
@@ -357,12 +362,16 @@ void biot_problem::solve(){
   // biot_precond<sparse_matrix_type> bPR(Ku,Kp);
   size_type restart = 50;
 
-  // gmm::identity_matrix PM; // no precond
-  // gmm::diagonal_precond<sparse_matrix_type> PR(K);
+  gmm::identity_matrix PM; // no precond
+  gmm::diagonal_precond<sparse_matrix_type> PR(K);
   gmm::iteration iter(1.e-8);  // iteration object with the max residu
   iter.set_noisy(1);               // output of iterations (2: sub-iteration)
   iter.set_maxiter(1000); // maximum number of iterations
   gmm::gmres(K, UP, B, *bPR_, restart, iter);
+  // gmm::gmres(K, UP, B, PM, restart, iter);
+  scalar_type cond;
+  // gmm::SuperLU_solve(K, UP , B, cond);
+  std::cout<<"condition number "<< cond<< std::endl;
   getfem::size_type nb_dof_u = mf_u.nb_dof();
   getfem::size_type nb_dof_p = mf_p.nb_dof();
   gmm::copy(gmm::sub_vector(UP,gmm::sub_interval(0, nb_dof_u)), U);				

@@ -12,10 +12,10 @@
 
 // preconditioning strategies SOLVE invert by solving Ax=b
 // LUMP mass lumping
- #define SOLVE_A 
-// #define SOLVE_SHUR
-// #define LUMP_A
- #define LUMP_SHUR
+  #define SOLVE_A 
+  #define SOLVE_SHUR
+//    #define LUMP_A
+//   #define LUMP_SHUR
 
 
 #ifdef USE_SAMG
@@ -29,7 +29,7 @@ class biot_precond
 {
 public:
     // TODO boundary conditions (Dirichlet, Robin) and coefficient (kappa, beta)
-    biot_precond(MATRIX &A,MATRIX &C);
+    biot_precond(MATRIX &A,MATRIX &C, int nx1=0, int nx2=0);
 
     getfem::size_type nrows() const {
         return gmm::mat_nrows(A_) + gmm::mat_nrows(S_);
@@ -50,16 +50,29 @@ public:
         {
             bgeot::size_type restart = 50;
             std::vector<double> x(n1),b(n1);
-            gmm::copy(gmm::sub_vector(src, gmm::sub_interval(0, n1)),b);
+            if (n1_x==0) gmm::copy(gmm::sub_vector(src, gmm::sub_interval(0, n1)),b);
+            else {
+                gmm::copy(gmm::sub_vector(src, gmm::sub_interval(0, n1-n1_x)),
+                          gmm::sub_vector(b,   gmm::sub_interval(0, n1-n1_x)));
+                gmm::copy(gmm::sub_vector(src, gmm::sub_interval(n1-n1_x+n2,n1_x)),
+                          gmm::sub_vector(b,   gmm::sub_interval(n1-n1_x,n1_x)));
+                }
             gmm::clear(x);                       
             gmm::identity_matrix PM; // no precond
             // gmm::diagonal_precond<sparse_matrix_type> PR(A_);
             gmm::iteration iter(1.e-12);  // iteration object with the max residu
             iter.set_noisy(0);               // output of iterations (2: sub-iteration)
             iter.set_maxiter(1000); // maximum number of iterations
-            gmm::gmres(A_, x, b, PM, restart, iter);
-            // slu_.solve(x,b);
-            gmm::copy(x,gmm::sub_vector(dst, gmm::sub_interval(0, n1)));
+            // gmm::gmres(A_, x, b, PM, restart, iter);
+             slu_.solve(x,b);
+            if (n1_x==0) gmm::copy(x,gmm::sub_vector(dst, gmm::sub_interval(0, n1)));
+            else{
+                gmm::copy(gmm::sub_vector(x, gmm::sub_interval(0, n1-n1_x)),
+                         gmm::sub_vector(dst, gmm::sub_interval(0, n1-n1_x)));
+                         
+                gmm::copy(gmm::sub_vector(x, gmm::sub_interval(n1-n1_x,n1_x)),
+                         gmm::sub_vector(dst, gmm::sub_interval(n1-n1_x+n2,n1_x)));
+                }
         } 
         #endif
          #ifdef SOLVE_SHUR
@@ -67,24 +80,51 @@ public:
             bgeot::size_type restart = 50;
             std::vector<double> x(n2),b(n2);
             // gmm::diagonal_precond<sparse_matrix_type> PR(S_);
-            gmm::copy(gmm::sub_vector(src, gmm::sub_interval(n1, n2)),b);
+            gmm::copy(gmm::sub_vector(src, gmm::sub_interval(n1-n1_x, n2))
+                     ,gmm::sub_vector(b, gmm::sub_interval(0, n2))
+                    );
             gmm::clear(x);                       
             gmm::identity_matrix PM; // no precond
             gmm::iteration iter(1.e-12);  // iteration object with the max residu
             iter.set_noisy(0);               // output of iterations (2: sub-iteration)
             iter.set_maxiter(1000); // maximum number of iterations
-            gmm::gmres(S_, x, b, PM, restart, iter);
-            // slup_.solve(x,b);
-            gmm::copy(x,gmm::sub_vector(dst, gmm::sub_interval(n1, n2)));
+            // gmm::gmres(S_, x, b, PM, restart, iter);
+            slup_.solve(x,b);
+            gmm::copy(gmm::sub_vector(x, gmm::sub_interval(0, n2)),
+                      gmm::sub_vector(dst, gmm::sub_interval(n1-n1_x, n2))
+                      );
         }
         #endif
         #ifdef LUMP_A
-        gmm::mult(pA_, gmm::sub_vector(src, gmm::sub_interval(0, n1)),
-                  gmm::sub_vector(dst, gmm::sub_interval(0, n1)));
+        
+        if(n1_x==0) gmm::mult(pA_, gmm::sub_vector(src, gmm::sub_interval(0, n1)),
+                                   gmm::sub_vector(dst, gmm::sub_interval(0, n1)));
+        else{ 
+                    std::vector<double> src1(n1);
+                    std::vector<double> dst1(n1);
+                    gmm::copy(
+                              gmm::sub_vector(src, gmm::sub_interval(0, n1-n1_x)),
+                              gmm::sub_vector(src1, gmm::sub_interval(0, n1-n1_x))
+                              );
+                    gmm::copy(
+                              gmm::sub_vector(src, gmm::sub_interval(n1+n2-n1_x, n1_x)),
+                              gmm::sub_vector(src1, gmm::sub_interval(n1-n1_x,n1_x))
+                              );
+                    gmm::mult(pA_, src1,dst1);
+                    gmm::copy(
+                              gmm::sub_vector(dst1, gmm::sub_interval(0, n1-n1_x)),
+                              gmm::sub_vector(dst, gmm::sub_interval(0, n1-n1_x))
+                              );
+                    gmm::copy(
+                              gmm::sub_vector(dst1, gmm::sub_interval(n1-n1_x,n1_x)),
+                              gmm::sub_vector(dst, gmm::sub_interval(n1+n2-n1_x, n1_x))
+                              );
+
+            }
         #endif
         #ifdef LUMP_SHUR
-        gmm::mult(pS_, gmm::sub_vector(src, gmm::sub_interval(n1, n2)),
-                  gmm::sub_vector(dst, gmm::sub_interval(n1, n2)));
+        gmm::mult(pS_, gmm::sub_vector(src, gmm::sub_interval(n1-n1_x, n2)),
+                  gmm::sub_vector(dst, gmm::sub_interval(n1-n1_x, n2)));
         #endif
 //#ifdef USE_SAMG
         //std::vector<double> x(n2),b(n2);
@@ -111,6 +151,7 @@ private:
     gmm::diagonal_precond<MATRIX> pA_;
     gmm::diagonal_precond<MATRIX> pS_;
     MATRIX &S_;
+    int n1_x, n2_x;
 #ifdef USE_SAMG
     mutable AMG amg_;
 
@@ -135,8 +176,8 @@ namespace gmm {
 
 
 template <class MATRIX>
-biot_precond<MATRIX>::biot_precond(MATRIX &A, MATRIX &C)
-: A_(A),S_(C)
+biot_precond<MATRIX>::biot_precond(MATRIX &A, MATRIX &C, int nx1, int nx2)
+: A_(A),S_(C), n1_x(nx1), n2_x(nx2)
 #ifdef LUMP_A
 ,pA_(A)
 #endif
@@ -149,7 +190,7 @@ biot_precond<MATRIX>::biot_precond(MATRIX &A, MATRIX &C)
 {
     
     std::cout<<"Building biot preconditioner"<<std::endl;
-    // slu_.build_with(A_);    slup_.build_with(S_);
+    slu_.build_with(A_);    slup_.build_with(S_);
 
     //const getfem::size_type nb_dof_p = mf_p.nb_dof();
     //const getfem::mesh &mesh = mf_p.linked_mesh();
