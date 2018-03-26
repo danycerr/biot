@@ -17,6 +17,7 @@ int main(int argc, char *argv[]) {
 
 
      double dt=4e+6;
+     // p.build_fix_stress_preconditioner(dt,0);
    //    p.assembly_p(dt,0); 
    //    p.assembly_u(dt);
      int n_step=80;int erosion_limit=20;
@@ -30,23 +31,25 @@ int main(int argc, char *argv[]) {
              if (istep<erosion_limit){ 
                  time_ls  =istep*dt;
                  p.update_ls(time_ls, istep);
+                 
+                 p.build_fix_stress_preconditioner(dt,time_ls);
                 }
-           //   p.solve_fix_stress(dt, 2000,time_ls);
+            p.solve_fix_stress(dt, 2000,time_ls);
            
-        p.build_fix_stress_preconditioner(dt,time_ls);
+        // p.build_fix_stress_preconditioner(dt,time_ls);
        // ===============================
-        p.assembly(dt,time_ls);
-        p.solve(time_ls);
+         // p.assembly(dt,time_ls);
+        //  p.solve(time_ls);
        // ===========================
         p.print(istep*dt,istep,time_ls);      
         p.print_crop(istep*dt,istep,time_ls);
         } // endl of lev_set biot
-        //if (1)  { // classic biot
-             //p.solve_fix_stress(dt, 2000);
-            ////p.assembly(dt,time_ls);
-            ////p.solve(time_ls);
-            //p.print(istep);
-                //}
+         { // classic biot
+            //   p.solve_fix_stress(dt, 2000);
+             // p.assembly(dt);
+             // p.solve();
+             // p.print(istep);
+            }
     }
   }
   GMM_STANDARD_CATCH_ERROR;

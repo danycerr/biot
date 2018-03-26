@@ -62,7 +62,7 @@ struct problem_descriptor_tri{
 	std::string INTEGRATION =       "IM_TRIANGLE(6)";
     std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; 
     std::string datafilename="resu/laplace"; 
-    int nsubdiv=5; // subdivision of the sqaured mesh
+    int nsubdiv=40; // subdivision of the sqaured mesh
     double E=1.e+10;
 	double poisson =0.3;
 	double mu_s = E/( 2 * ( 1 + poisson) ) ;
@@ -147,7 +147,8 @@ class biot_problem {
       getfem::mesh_fem mf_u;    /// the main mesh_fem, for the displacement solution
       getfem::mesh_fem mf_p;    /// the main mesh_fem, for the pressure solution
       getfem::mesh_fem mf_rhs;  /// the mesh_fem for the right hand side(f(x),..)
-      problem_descriptor_tetra_3d p_des;
+      // problem_descriptor_tetra_3d p_des;
+      problem_descriptor_tri p_des;
       enum { DIRICHLET_BOUNDARY_NUM = 10, NEUMANN_BOUNDARY_NUM = 11}; // descriptor for bcs flag
       enum { BOTTOM = 2, TOP = 1 , LEFT = 3, RIGHT =4, LEFTX = 5, RIGHTX =6}; // descriptor for zones
       size_type N_;             /// dimension of the problem
@@ -172,7 +173,7 @@ class biot_problem {
       void assembly(double dt);                         /// assemble the monolithic iteration matrix for the problem
       void assembly_p(double dt);                       /// assemble the iteration matrix for pressure, can be used as preconditioner
       void assembly_u(double dt);                       /// assemble the iteration matrix for pressure, can be used as preconditioner
-      void build_fix_stress_preconditioner();
+      void build_fix_stress_preconditioner(double dt);
       void solve(void);                                 /// solves the monolithic system 
       void solve_fix_stress(double dt, int max_iter);   /// solves the system with classic fixed stress approach
       void init(void);                                  /// initial configuration for the problem 
