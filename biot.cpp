@@ -13,7 +13,17 @@ void biot_problem::init(void) {
 	int NX=p_des.nsubdiv;
 	std::fill(nsubdiv.begin(),nsubdiv.end(),NX);
 	// getfem::regular_unit_mesh(mesh, nsubdiv, pgt, 0);
-        getfem::import_mesh("gmsh:mesh/basin.msh",mesh);
+        // getfem::import_mesh("gmsh:mesh/basin.msh",mesh);
+        // getfem::import_mesh("gmsh:mesh/3dbasin_mult_dom.msh",mesh);
+//         getfem::import_mesh("gmsh:mesh/3dbasin_dom_monomat.msh",mesh);
+        getfem::import_mesh("gmsh:mesh/patch_6_glued.msh",mesh);
+        //refinement
+// 	{
+// 		// dal::bit_vector b; b.add(0);
+// 		mesh.Bank_refin(mesh.convex_index());
+// 	}
+
+
 	// A trasformation for the squarred mesh
 	bgeot::base_matrix M(N_,N_);
 	for (size_type i=0; i < N_; ++i) {
@@ -35,9 +45,16 @@ void biot_problem::init(void) {
 	mf_u.set_qdim(N_);
 	mf_u.set_finite_element(mesh.convex_index(), pf_u); // finite element for displacement
 	mf_p.set_finite_element(mesh.convex_index(), pf_p); //  finite element for pressure
+
+  mf_coef.set_finite_element(mesh.convex_index(),
+      getfem::classical_fem(pgt,0));         // p0 for coefficient
+ 
+
 	// boundary conditions zones
 	gen_bc();
-
+	
+        mesh_labeling();
+        gen_coefficient();/// Generation of coefficient for different materials
 	// init vector
 	getfem::size_type nb_dof_u = mf_u.nb_dof();
 	getfem::size_type nb_dof_p = mf_p.nb_dof();
@@ -77,7 +94,7 @@ void biot_problem::gen_bc(){
 
 		if ((un[N_-1] ) > 1.0E-1) { // new Neumann face
 			mesh.region(TOP).add(i.cv(), i.f());
-		} else if ((un[N_-1] ) < -1.0E-1) {
+		} else if ((un[N_-1] ) < -9.0E-1) {  //the bottom surface is the most sharp
 			mesh.region(BOTTOM).add(i.cv(), i.f());
 		} else if ((un[N_-2] ) < -1.0E-1) {
 			mesh.region(LEFT).add(i.cv(), i.f());
@@ -134,6 +151,8 @@ void biot_problem::configure_workspace(getfem::ga_workspace & workspace,double d
 	workspace.add_fixed_size_constant("penalty", penalty_);
 
 
+  workspace.add_fem_constant("Kr", mf_coef, Kr_);
+  workspace.add_fem_constant("Er", mf_coef, Er_);
 	// workspace.add_fem_constant("f", mf_data, F);
 }
 // 
@@ -177,8 +196,8 @@ void biot_problem::assembly(double dt) {
 	workspace.add_fem_variable("u_old", mf_u, gmm::sub_interval(0, nb_dof_u), U_old);
 	workspace.add_fem_variable("p_old", mf_p, gmm::sub_interval(nb_dof_u,nb_dof_p), P);
 	// ------------------ expressions --------------------------
-	workspace.add_expression("2*mu*Sym(Grad_u):Grad_Test_u + lambda*Div_u*Div_Test_u- alpha*p.Div_Test_u ", mim);
-	workspace.add_expression( "+(1/bm)*p.Test_p + tau*permeability*Grad_p.Grad_Test_p+ alpha*Test_p*Div_u", mim);
+	workspace.add_expression("2*mu*Er*Sym(Grad_u):Grad_Test_u + lambda*Er*Div_u*Div_Test_u- alpha*p.Div_Test_u ", mim);
+	workspace.add_expression( "+(1/bm)*p.Test_p + tau*Kr*permeability*Grad_p.Grad_Test_p+ alpha*Test_p*Div_u", mim);
 	workspace.assembly(2);
 	gmm::copy(workspace.assembled_matrix(), K);
 	workspace.clear_expressions();
@@ -269,7 +288,7 @@ void biot_problem::assembly_p(double dt){
 	workspace.add_fem_variable("u_iter", mf_u, gmm::sub_interval(0, nb_dof_u), U_iter);
 
 	// Pressure equation
-	workspace.add_expression("(1/bm + beta)*p.Test_p + tau*permeability*Grad_p.Grad_Test_p", mim); // tau
+	workspace.add_expression("(1/bm + beta)*p.Test_p + tau*permeability*Kr*Grad_p.Grad_Test_p", mim); // tau
 	// workspace.set_assembled_matrix(Kp);
 	workspace.assembly(2);
 	gmm::copy(workspace.assembled_matrix(), Kp);
@@ -279,7 +298,7 @@ void biot_problem::assembly_p(double dt){
 	//  workspace.add_expression("[+0.0].Test_p + (1/bm)*invdt*p_old.Test_p + invdt*alpha*Test_p*Trace((Grad_u_old))", mim);// 1/dt
 	//  workspace.add_expression("(beta)*invdt*p_iter.Test_p - invdt*alpha*Test_p*Trace((Grad_u_iter))", mim);// 1/dt
 	// tau
-	workspace.add_expression("[+1.0e-6]*Test_p + (1/bm)*p_old.Test_p + alpha*Test_p*Trace(Sym(Grad_u_old))", mim); // tau
+	workspace.add_expression("[+0.0e-6]*Test_p + (1/bm)*p_old.Test_p + alpha*Test_p*Trace(Sym(Grad_u_old))", mim); // tau
 	workspace.add_expression("(beta)*p_iter.Test_p - alpha*Test_p*Trace(Sym(Grad_u_iter))", mim); // tau
 	workspace.set_assembled_vector(Bp);
 	workspace.assembly(1);
@@ -288,16 +307,16 @@ void biot_problem::assembly_p(double dt){
 
 	//Matrix term
 	workspace.add_expression("penalty/element_size*p*Test_p", mim, TOP);
-	workspace.add_expression("-permeability*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, TOP); 	
+	workspace.add_expression("-permeability*Kr*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, TOP); 	
 	workspace.add_expression("penalty/element_size*p*Test_p", mim, LEFT);
-	workspace.add_expression("-permeability*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, LEFT); 	
+	workspace.add_expression("-permeability*Kr*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, LEFT); 	
 	workspace.add_expression("penalty/element_size*p*Test_p", mim, RIGHT);
-	workspace.add_expression("-permeability*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, RIGHT);
+	workspace.add_expression("-permeability*Kr*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, RIGHT);
 	if(N_==3){	 	
 		workspace.add_expression("penalty/element_size*p*Test_p", mim, LEFTX);
-		workspace.add_expression("-permeability*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, LEFTX);
+		workspace.add_expression("-permeability*Kr*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, LEFTX);
 		workspace.add_expression("penalty/element_size*p*Test_p", mim, RIGHTX);
-		workspace.add_expression("-permeability*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, RIGHTX);    
+		workspace.add_expression("-permeability*Kr*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, RIGHTX);    
 	}
 
 	workspace.assembly(2);
@@ -347,7 +366,7 @@ void biot_problem::assembly_p(double dt){
 		workspace.clear_expressions();
 
 		// ----- momentum equation
-		workspace.add_expression("2*mu*Sym(Grad_u):Grad_Test_u + lambda*Div_u*Div_Test_u", mim); // stress tensor 
+		workspace.add_expression("2*mu*Er*Sym(Grad_u):Grad_Test_u + lambda*Er*Div_u*Div_Test_u", mim); // stress tensor 
 		workspace.add_expression("penalty*u.Test_u" , mim, BOTTOM); //neumann disp
 		workspace.assembly(2);
 		gmm::copy(workspace.assembled_matrix(), Ku);
@@ -376,10 +395,10 @@ void biot_problem::solve(){
 	gmm::iteration iter(1.e-8);  // iteration object with the max residu
 	iter.set_noisy(1);               // output of iterations (2: sub-iteration)
 	iter.set_maxiter(1000); // maximum number of iterations
-	// gmm::gmres(K, UP, B, PR, restart, iter);
+	gmm::gmres(K, UP, B, PR, restart, iter);
 	// gmm::gmres(K, UP, B, PM, restart, iter);
 	scalar_type cond;
-	gmm::SuperLU_solve(K, UP , B, cond);
+	// gmm::SuperLU_solve(K, UP , B, cond);
 	std::cout<<"condition number "<< cond<< std::endl;
 	getfem::size_type nb_dof_u = mf_u.nb_dof();
 	getfem::size_type nb_dof_p = mf_p.nb_dof();
@@ -441,7 +460,8 @@ void biot_problem::solve_fix_stress(double dt, int max_iter){
 		assembly_u(dt);
 		//solving u
 		std::cout<< " \033[1;31m Start solving momentum balance"<<std::endl;
-		gmm::diagonal_precond<sparse_matrix_type> PRu(Ku);
+		// gmm::diagonal_precond<sparse_matrix_type> PRu(Ku);
+	// 	gmm::ilu_precond<sparse_matrix_type> PRu(Ku); 
 		{
 			size_type restart = 50;
 			gmm::iteration iter(1.e-8);  // iteration object with the max residu
@@ -449,7 +469,11 @@ void biot_problem::solve_fix_stress(double dt, int max_iter){
 			iter.set_maxiter(1000); // maximum number of iterations
 			// gmm::MatrixMarket_load("km",Ku);
 			// gmm::clear(U);
-			gmm::gmres(Ku, U, Bu, PRu, restart, iter);
+			// gmm::gmres(Ku, U, Bu, PRu, restart, iter);
+		        
+	                scalar_type cond;
+	               gmm::SuperLU_solve(Ku, U , Bu, cond);
+	std::cout<<"condition number "<< cond<< std::endl;
 		}
 		//--------------------------------------------------------------
 #ifdef PRINT_MATRIX
@@ -485,4 +509,48 @@ void biot_problem::print(int time){
 	getfem::vtk_export exp(p_des.datafilename + "." +  std::to_string(time) + ".vtk");
 	exp.exporting(mf_u);  	exp.write_point_data(mf_u, U, "u"); 
 	exp.write_point_data(mf_p, P, "p"); 
+// 	getfem::vtk_export exp_data(p_des.datafilename + ".data." +  std::to_string(time) + ".vtk");
+// 	exp_data.exporting(mf_coef);  	exp_data.write_cell_data(mf_coef, Er_, "E"); 
+
+{ // Just to see what elements are cut by the level set ls:
+    getfem::vtk_export vtk_data("data.vtk");
+    vtk_data.exporting(mf_u);
+    vtk_data.write_mesh();
+    vtk_data.write_cell_data(Kr_, "K");
+  }
+
+
+}
+
+
+
+//============================================
+// routine for the generation of coeffient
+//============================================
+void biot_problem::gen_coefficient(){ // creating a coefficient
+  std::cout<<"Generating materials coefficients"<<std::endl;
+  std::cout<<"Dof num  "<< mf_coef.nb_dof()<<std::endl;
+	
+	gmm::resize(Kr_, mf_coef.nb_dof()); gmm::fill(Kr_,1);    // rhs monolithic problem
+  gmm::resize(Er_, mf_coef.nb_dof()); gmm::fill(Er_,1);    // rhs monolithic problem
+  std::vector<int> material; 
+  material.push_back(1);material.push_back(2);
+  // std::vector<double> k; k.push_back(1);k.push_back(1.e+2);
+  // std::vector<double> E; E.push_back(1);E.push_back(5.e-1);
+  
+  std::vector<double> k; k.push_back(1);k.push_back(1.e+0);
+  std::vector<double> E; E.push_back(1);E.push_back(1.e+0);
+  for (int imat=0; imat< material.size();imat++){
+    dal::bit_vector bv_cv = mesh.region(material[imat]).index();
+    size_type i_cv = 0;
+    for (i_cv << bv_cv; i_cv != size_type(-1); i_cv << bv_cv) {
+      
+	  //   std::cout<<"Material  "<<material[imat]<<std::endl;
+	    getfem::mesh_fem::ind_dof_ct idofs = mf_coef.ind_basic_dof_of_element(i_cv);
+      for (size_type i=0; i < idofs.size(); ++i) {
+        Kr_[idofs[i]]=k[imat];
+        Er_[idofs[i]]=E[imat];
+      }
+    }
+  }
 }

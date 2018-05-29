@@ -1,0 +1,63 @@
+biot_problem::init 
+Level 3 Warning in getfem_import.cc, line 234:   All regions must have different number!
+biot_problem::gen_bc()
+Generating materials coefficients
+Dof num  26868
+number of dof 139752 and 7316
+[1;34m***** iteration 1 norm p 1 norm u 1
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+condition number 2.17628e-07
+[1;34m***** iteration 2 norm p 1 norm u 24.0083
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual            1
+ iter  33 residual  6.40211e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+condition number 2.17628e-07
+[1;34m***** iteration 3 norm p 2.90952e+24 norm u 0.0148142
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual     0.140728
+ iter  29 residual  8.74769e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+condition number 2.17628e-07
+[1;34m***** iteration 4 norm p 0.154312 norm u 0.00238446
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual    0.0227953
+ iter  25 residual  9.59628e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+condition number 2.17628e-07
+[1;34m***** iteration 5 norm p 0.0212592 norm u 0.000381821
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual    0.0038038
+ iter  22 residual   7.8894e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
