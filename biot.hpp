@@ -148,10 +148,11 @@ class biot_problem {
 		getfem::mesh_fem mf_u;    /// the main mesh_fem, for the displacement solution
 		getfem::mesh_fem mf_p;    /// the main mesh_fem, for the pressure solution
 		getfem::mesh_fem mf_rhs;  /// the mesh_fem for the right hand side(f(x),..)
+		getfem::mesh_fem mf_coef; /* the mesh_fem to represent pde coefficients    */
 		problem_descriptor_tetra_3d p_des;
 		// problem_descriptor_tri p_des;
 		enum { DIRICHLET_BOUNDARY_NUM = 10, NEUMANN_BOUNDARY_NUM = 11}; // descriptor for bcs flag
-		enum { BOTTOM = 2, TOP = 1 , LEFT = 3, RIGHT =4, LEFTX = 5, RIGHTX =6}; // descriptor for zones
+		enum { BOTTOM = 200, TOP = 100 , LEFT = 300, RIGHT =400, LEFTX = 500, RIGHTX =600}; // descriptor for zones
 		size_type N_;             /// dimension of the problem
 
 		///  workspace configuration parameters---------------------
@@ -165,11 +166,15 @@ class biot_problem {
 		std::vector<scalar_type> U_iter, P_iter, Bp, Bu;     /// main unknown, and right hand side
 		biot_precond<sparse_matrix_type> *bPR_;               /// preconditioner based on fixed stress
 
+		std::vector<scalar_type> Kr_; // permeability ratio
+		std::vector<scalar_type> Er_; // young ratio
 		/// Methods
 		void gen_bc(void);                                /// create zones for boundary conditions
 		void configure_workspace                          /// configure the workspace add constants
 			(getfem::ga_workspace & workspace,                /// the workspace
 			 double dt);                                      /// timestep
+		void gen_coefficient();                         /// generate coefficient p0
+		void mesh_labeling();                           /// generate volume labels for mesh
 	public:
 		void assembly(double dt);                         /// assemble the monolithic iteration matrix for the problem
 		void assembly_p(double dt);                       /// assemble the iteration matrix for pressure, can be used as preconditioner
@@ -179,7 +184,7 @@ class biot_problem {
 		void solve_fix_stress(double dt, int max_iter);   /// solves the system with classic fixed stress approach
 		void init(void);                                  /// initial configuration for the problem 
 		void print(int time=0);
-		biot_problem(void): mim(mesh), mf_u(mesh), mf_rhs(mesh), mf_p(mesh)
+		biot_problem(void): mim(mesh), mf_u(mesh), mf_rhs(mesh), mf_p(mesh), mf_coef(mesh)
 				    ,tau_(1), vmu_(1), bm_(1), lambda_(1),alpha_(1), permeability_(1), force_(1), beta_(1),penalty_(1)
 	{}
 };
