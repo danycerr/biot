@@ -40,6 +40,9 @@
 
 // Preconditioner
 #include "biot_precond.hpp" 
+// Horizon
+#include "horizon.hpp"
+
 
 /* some GetFEM++ types that we will be using */
 using bgeot::base_small_vector; /* special class for small (dim<16) vectors */
@@ -69,7 +72,7 @@ struct problem_descriptor_tri{
 	double mu_s = E/( 2 * ( 1 + poisson) ) ;
 	double lambda_l= E*poisson/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;
 	double biot_modulus=1.e+9;
-	double k =1.e-10; //permeability
+	double k =1.e-14; //permeability
 	double alpha=1; // Biot coefficient
 };
 
@@ -121,7 +124,7 @@ struct problem_descriptor_tetra_3d{
 	std::string FEM_TYPE_P  =         "FEM_PK(3,1)";
 	std::string INTEGRATION =       "IM_TETRAHEDRON(6)";
 	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; 
-	std::string datafilename="resu/laplace"; 
+	std::string datafilename="resu/frompoly"; 
 	int nsubdiv=6; // subdivision of the sqaured mesh
 	double E=1.e+10;
 	double poisson =0.3;
@@ -168,6 +171,8 @@ class biot_problem {
 
 		std::vector<scalar_type> Kr_; // permeability ratio
 		std::vector<scalar_type> Er_; // young ratio
+		std::vector<scalar_type> Kr_print_; // permeability ratio
+		std::vector<scalar_type> Er_print_; // young ratio
 		/// Methods
 		void gen_bc(void);                                /// create zones for boundary conditions
 		void configure_workspace                          /// configure the workspace add constants

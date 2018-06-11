@@ -12,12 +12,22 @@ void biot_problem::init(void) {
 	std::vector<size_type> nsubdiv(N_);
 	int NX=p_des.nsubdiv;
 	std::fill(nsubdiv.begin(),nsubdiv.end(),NX);
+	// import labeled mesh
+	int labeled_domain=0;
 	// getfem::regular_unit_mesh(mesh, nsubdiv, pgt, 0);
         // getfem::import_mesh("gmsh:mesh/basin.msh",mesh);
         // getfem::import_mesh("gmsh:mesh/3dbasin_mult_dom.msh",mesh);
 //         getfem::import_mesh("gmsh:mesh/3dbasin_dom_monomat.msh",mesh);
-        getfem::import_mesh("gmsh:mesh/patch_6_glued.msh",mesh);
-        //refinement
+//         getfem::import_mesh("gmsh:mesh/patch_6_glued.msh",mesh);
+// =============================================================
+//         getfem::import_mesh("gmsh:mesh/patch_7light.msh",mesh);
+        getfem::import_mesh("gmsh:mesh/layer_cake/bounding.msh",mesh);
+// 	=============================================
+	if(0){
+	mesh.read_from_file("labeled_mesh");
+        labeled_domain=1;
+	}
+	//refinement
 // 	{
 // 		// dal::bit_vector b; b.add(0);
 // 		mesh.Bank_refin(mesh.convex_index());
@@ -27,11 +37,12 @@ void biot_problem::init(void) {
 	// A trasformation for the squarred mesh
 	bgeot::base_matrix M(N_,N_);
 	for (size_type i=0; i < N_; ++i) {
-		M(i,i) = 4000.0;
+// 		M(i,i) = 4000.0;
+		M(i,i) = 1.e+4;
 	}
 	//  if (N>1) { M(0,1) = 0; }
 	//
-	// mesh.transformation(M);
+	mesh.transformation(M);
 	// // End of mesh generation
 
 
@@ -51,9 +62,9 @@ void biot_problem::init(void) {
  
 
 	// boundary conditions zones
-	gen_bc();
+	if(!labeled_domain) gen_bc();
 	
-        mesh_labeling();
+        if(!labeled_domain) mesh_labeling();
         gen_coefficient();/// Generation of coefficient for different materials
 	// init vector
 	getfem::size_type nb_dof_u = mf_u.nb_dof();
@@ -460,7 +471,7 @@ void biot_problem::solve_fix_stress(double dt, int max_iter){
 		assembly_u(dt);
 		//solving u
 		std::cout<< " \033[1;31m Start solving momentum balance"<<std::endl;
-		// gmm::diagonal_precond<sparse_matrix_type> PRu(Ku);
+		gmm::diagonal_precond<sparse_matrix_type> PRu(Ku);
 	// 	gmm::ilu_precond<sparse_matrix_type> PRu(Ku); 
 		{
 			size_type restart = 50;
@@ -469,7 +480,7 @@ void biot_problem::solve_fix_stress(double dt, int max_iter){
 			iter.set_maxiter(1000); // maximum number of iterations
 			// gmm::MatrixMarket_load("km",Ku);
 			// gmm::clear(U);
-			// gmm::gmres(Ku, U, Bu, PRu, restart, iter);
+// 			gmm::gmres(Ku, U, Bu, PRu, restart, iter);
 		        
 	                scalar_type cond;
 	               gmm::SuperLU_solve(Ku, U , Bu, cond);
@@ -531,26 +542,80 @@ void biot_problem::gen_coefficient(){ // creating a coefficient
   std::cout<<"Generating materials coefficients"<<std::endl;
   std::cout<<"Dof num  "<< mf_coef.nb_dof()<<std::endl;
 	
-	gmm::resize(Kr_, mf_coef.nb_dof()); gmm::fill(Kr_,1);    // rhs monolithic problem
+  gmm::resize(Kr_, mf_coef.nb_dof()); gmm::fill(Kr_,1);    // rhs monolithic problem
   gmm::resize(Er_, mf_coef.nb_dof()); gmm::fill(Er_,1);    // rhs monolithic problem
+  gmm::resize(Kr_print_, mf_coef.nb_dof()); gmm::fill(Kr_print_,1);    // rhs monolithic problem
+  gmm::resize(Er_print_, mf_coef.nb_dof()); gmm::fill(Er_print_,1);    // rhs monolithic problem
   std::vector<int> material; 
-  material.push_back(1);material.push_back(2);
-  // std::vector<double> k; k.push_back(1);k.push_back(1.e+2);
-  // std::vector<double> E; E.push_back(1);E.push_back(5.e-1);
+  material.push_back(1);material.push_back(2);material.push_back(3);
+  std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+2);k.push_back(1.e-0);
+  std::vector<double> E; E.push_back(1);E.push_back(1.e-1);E.push_back(1.e+0);
   
-  std::vector<double> k; k.push_back(1);k.push_back(1.e+0);
-  std::vector<double> E; E.push_back(1);E.push_back(1.e+0);
+//   std::vector<double> k; k.push_back(1);k.push_back(1.e+0);
+//   std::vector<double> E; E.push_back(1);E.push_back(1.e+0);
   for (int imat=0; imat< material.size();imat++){
     dal::bit_vector bv_cv = mesh.region(material[imat]).index();
     size_type i_cv = 0;
     for (i_cv << bv_cv; i_cv != size_type(-1); i_cv << bv_cv) {
-      
 	  //   std::cout<<"Material  "<<material[imat]<<std::endl;
 	    getfem::mesh_fem::ind_dof_ct idofs = mf_coef.ind_basic_dof_of_element(i_cv);
       for (size_type i=0; i < idofs.size(); ++i) {
-        Kr_[idofs[i]]=k[imat];
-        Er_[idofs[i]]=E[imat];
+        Kr_[idofs[i]]=k[imat];// Kr_print_[i_cv]=k[imat];
+        Er_[idofs[i]]=E[imat];// Er_print_[i_cv]=E[imat];
       }
     }
   }
+     if(0){ // Just to see what elements are cut by the level set ls:
+    getfem::vtk_export vtk_data("data_gen_3mat.vtk");
+    vtk_data.exporting(mf_coef);
+//     vtk_data.write_mesh();
+    vtk_data.write_cell_data(Kr_print_, "K");
+  }
+}
+
+
+
+//============================================
+// routine for the labeling mesh
+//============================================
+void biot_problem::mesh_labeling(){
+  horizon h  ("mesh/layer_cake/mesh_horizon_2.msh");
+  horizon h3 ("mesh/layer_cake/mesh_horizon_3.msh");
+   dal::bit_vector bv_cv = mesh.convex_index();
+   size_type i_cv = 0;
+     std::cout<<"Looping internal element "<< i_cv <<std::endl;
+   for (i_cv << bv_cv; i_cv != size_type(-1); i_cv << bv_cv) {
+     int dof_el=mesh.structure_of_convex(i_cv)->nb_points();
+//      std::cout<< mf_coef.ind_basic_dof_of_element(i_cv)[0]<<" <-> "<< i_cv<<std::endl;
+       const std::vector<long unsigned int> indicies(
+// 	 mesh.ind_points_of_convex(mf_coef.ind_basic_dof_of_element(i_cv)[0]) // wrong inside correct visualization
+	 mesh.ind_points_of_convex(i_cv)                                      // correct inside wrong visualization
+       );
+	  std::vector<double> bc={0.,0.,0.};
+          for(int idof=0;idof < dof_el; idof++ ){
+	    for(int idir=0; idir<3; idir++)
+	       bc[idir] += mesh.points()[indicies[idof]][idir]/dof_el;
+    }
+	    int el_on_h=h.find_element(bc);
+// 	    std::cout<< "barcenter at " << bc[0]<< " "<<bc[1]<< " "<<bc[2]<< 
+// 	    "and corresponding element is "<< el_on_h << std::endl;
+	    int group =  h.up_down(bc,el_on_h); //1 under 2 above
+	    std::cout<< "Group h1 is "<<  group<<std::endl;
+	    
+	    int el_on_h3=h3.find_element(bc);
+	    int group_h3=  h3.up_down(bc,el_on_h3);
+	    std::cout<< "Group h2 is "<<  group_h3<<std::endl;
+	    
+// 	    mesh.region(group).add(i_cv);
+	    
+            if (group_h3==2 && group ==2) mesh.region(1).add(i_cv);
+	    if (group_h3==1 && group ==2) mesh.region(2).add(i_cv);
+	    if (group_h3==1 && group ==1) mesh.region(3).add(i_cv);
+// // 	    if (mesh.points()[indicies[0]][2]<2000) mesh.region(1).add(i_cv);
+//        std::cout<< indicies[0] <<" "<< indicies[1] <<" "<< indicies[2] <<" "<< indicies[3] <<std::endl;
+//        std::cout<< "zed is " <<mesh.points()[mesh.ind_points_of_convex(i_cv)[0]][2]<<std::endl;
+// 	    if (mesh.points()[indicies[0]][2]>2000) mesh.region(14).add(i_cv);
+   }
+   mesh.write_to_file("mesh/layer_cake/labeled_mesh");
+   
 }
