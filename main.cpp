@@ -46,7 +46,8 @@ int main(int argc, char *argv[]) {
 	// 			p.print_crop(istep*dt,istep,time_ls);
 	// 		} // endl of lev_set biot
 				{ // classic biot
-					   p.solve_fix_stress(dt, 2000);
+					  if(istep!=0) p.solve_fix_stress(dt, 100);
+					  else  p.solve_fix_stress(dt, 5);
 					 //  p.assembly(dt);
 					 //  p.solve();
 					 p.print(istep);

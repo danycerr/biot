@@ -23,7 +23,7 @@ cd ${PBS_O_WORKDIR}
 # YOUR LAUNCH COMMAND BELOW completed with I/O redirection if needed
 
 source ./configure.sh
-./lev_set > cerbero_output 2>&1
+make > cerbero_compile_log && ./lev_set > cerbero_output_fpoly 2>&1
 
 #source tester.sh > gigat_output 2>&1
 
