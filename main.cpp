@@ -3,6 +3,7 @@
 /**************************************************************************/
 // #include "biot_ls.hpp"
  #include "biot.hpp"
+ #include "temp.hpp"
 
 
 int main(int argc, char *argv[]) {
@@ -15,9 +16,10 @@ int main(int argc, char *argv[]) {
 		 biot_problem p;
 		p.init();
 
-
+                temperature_problem t;
+		t.init();
 		// double dt=1e-3;
-		double dt=1e+6;
+		double dt=1e+8;
 		// p.build_fix_stress_preconditioner(dt,0);
 		//    p.assembly_p(dt,0); 
 		//    p.assembly_u(dt);
@@ -46,6 +48,9 @@ int main(int argc, char *argv[]) {
 	// 			p.print_crop(istep*dt,istep,time_ls);
 	// 		} // endl of lev_set biot
 				{ // classic biot
+				          t.assembly(dt, p.get_pressure_fem(), p.get_pressure());
+				          t.solve();
+					  t.print(istep);
 					  if(istep!=0) p.solve_fix_stress(dt, 100);
 					  else  p.solve_fix_stress(dt, 5);
 					 //  p.assembly(dt);

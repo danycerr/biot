@@ -14,17 +14,24 @@ void biot_problem::init(void) {
 	std::fill(nsubdiv.begin(),nsubdiv.end(),NX);
 	// import labeled mesh
 	int labeled_domain=0;
-	// getfem::regular_unit_mesh(mesh, nsubdiv, pgt, 0);
+// 	getfem::regular_unit_mesh(mesh, nsubdiv, pgt, 0);
         // getfem::import_mesh("gmsh:mesh/basin.msh",mesh);
         // getfem::import_mesh("gmsh:mesh/3dbasin_mult_dom.msh",mesh);
 //         getfem::import_mesh("gmsh:mesh/3dbasin_dom_monomat.msh",mesh);
 //         getfem::import_mesh("gmsh:mesh/patch_6_glued.msh",mesh);
 // =============================================================
 //         getfem::import_mesh("gmsh:mesh/patch_7light.msh",mesh);
-        getfem::import_mesh("gmsh:mesh/layer_cake/bounding.msh",mesh);
+//         getfem::import_mesh("gmsh:mesh/layer_cake/bounding.msh",mesh);
+//         getfem::import_mesh("gmsh:mesh/patch_6fp2.msh",mesh);
+// 	getfem::import_mesh("gmsh:mesh/pichout/patch_6.msh",mesh);
+// 	getfem::import_mesh("gmsh:mesh/pinchout2/patch_6e.msh",mesh);
+	getfem::import_mesh("gmsh:mesh/pinchout3/patch_7.msh",mesh);
 // 	=============================================
-	if(0){
-	mesh.read_from_file("labeled_mesh");
+	if(1){
+	mesh.read_from_file("mesh/pinchout3/labeled_mesh_fp2");
+// 	mesh.read_from_file("mesh/pinchout2/labeled_mesh_fp2");
+// 	mesh.read_from_file("mesh/pichout/labeled_mesh_fp2");
+// 	mesh.read_from_file("mesh/labeled_mesh_fp2");// layar cake
         labeled_domain=1;
 	}
 	//refinement
@@ -42,7 +49,7 @@ void biot_problem::init(void) {
 	}
 	//  if (N>1) { M(0,1) = 0; }
 	//
-	mesh.transformation(M);
+// 	mesh.transformation(M);
 	// // End of mesh generation
 
 
@@ -57,13 +64,15 @@ void biot_problem::init(void) {
 	mf_u.set_finite_element(mesh.convex_index(), pf_u); // finite element for displacement
 	mf_p.set_finite_element(mesh.convex_index(), pf_p); //  finite element for pressure
 
-  mf_coef.set_finite_element(mesh.convex_index(),
-      getfem::classical_fem(pgt,0));         // p0 for coefficient
+        mf_coef.set_finite_element(mesh.convex_index(),
+        getfem::classical_fem(pgt,0));         // p0 for coefficient
  
 
 	// boundary conditions zones
-	if(!labeled_domain) gen_bc();
-	
+// 	if(!labeled_domain)
+	  gen_bc();
+        gmm::resize(Kr_, mf_coef.nb_dof()); gmm::fill(Kr_,1);    // rhs monolithic problem
+        gmm::resize(Er_, mf_coef.nb_dof()); gmm::fill(Er_,1);    // rhs monolithic problem
         if(!labeled_domain) mesh_labeling();
         gen_coefficient();/// Generation of coefficient for different materials
 	// init vector
@@ -103,7 +112,7 @@ void biot_problem::gen_bc(){
 		base_node un = mesh.normal_of_face_of_convex(i.cv(), i.f());
 		un /= gmm::vect_norm2(un);
 
-		if ((un[N_-1] ) > 1.0E-1) { // new Neumann face
+		if ((un[N_-1] ) > 1.0E-1  && (mesh.points_of_convex(i.cv())[0])[2]>3500. ) { // new Neumann face
 			mesh.region(TOP).add(i.cv(), i.f());
 		} else if ((un[N_-1] ) < -9.0E-1) {  //the bottom surface is the most sharp
 			mesh.region(BOTTOM).add(i.cv(), i.f());
@@ -428,7 +437,21 @@ void biot_problem::solve_fix_stress(double dt, int max_iter){
 	double rel_unorm=1; double rel_pnorm=1; int fix_count=0;
 	double old_unorm=1; double new_unorm=1;
 	double old_pnorm=1; double new_pnorm=1;
-
+        assembly_u(dt);
+        assembly_p(dt);
+	AMG amg_("momentum");
+	gmm::csr_matrix<scalar_type> ku_csr;
+//      gmm::clean(ku_csr, 1E-12);
+        gmm::copy(Ku, ku_csr);
+	amg_.convert_matrix(ku_csr);
+	std::cout<<"End samg conversion"<<std::endl;
+	
+	AMG amg_p_("Pressure");
+	gmm::csr_matrix<scalar_type> kp_csr;
+//      gmm::clean(ku_csr, 1E-12);
+        gmm::copy(Kp, kp_csr);
+	amg_p_.convert_matrix(kp_csr);
+	std::cout<<"End samg conversion"<<std::endl;
 	while(fix_count < max_iter && ( rel_unorm>epsu ||  rel_pnorm > epsp) )
 	{
 		fix_count++; 
@@ -448,6 +471,8 @@ void biot_problem::solve_fix_stress(double dt, int max_iter){
 			iter.set_noisy(1);               // output of iterations (2: sub-iteration)
 			iter.set_maxiter(1000); // maximum number of iterations
 			gmm::gmres(Kp, P, Bp, PRp, restart, iter);
+// 			amg_p_.solve(kp_csr, P , Bp , 1);
+// 			gmm::copy(amg_p_.getsol(), P);
 
 		}
 		//--------------------------------------------------------------
@@ -483,7 +508,9 @@ void biot_problem::solve_fix_stress(double dt, int max_iter){
 // 			gmm::gmres(Ku, U, Bu, PRu, restart, iter);
 		        
 	                scalar_type cond;
-	               gmm::SuperLU_solve(Ku, U , Bu, cond);
+// 			amg_.solve(ku_csr, U , Bu , 1);
+// 			gmm::copy(amg_.getsol(), U);
+			gmm::SuperLU_solve(Ku, U , Bu, cond);
 	std::cout<<"condition number "<< cond<< std::endl;
 		}
 		//--------------------------------------------------------------
@@ -549,7 +576,7 @@ void biot_problem::gen_coefficient(){ // creating a coefficient
   std::vector<int> material; 
   material.push_back(1);material.push_back(2);material.push_back(3);
   std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+2);k.push_back(1.e-0);
-  std::vector<double> E; E.push_back(1);E.push_back(1.e-1);E.push_back(1.e+0);
+  std::vector<double> E; E.push_back(1);E.push_back(2.e+0);E.push_back(1.e+0);
   
 //   std::vector<double> k; k.push_back(1);k.push_back(1.e+0);
 //   std::vector<double> E; E.push_back(1);E.push_back(1.e+0);
@@ -560,15 +587,15 @@ void biot_problem::gen_coefficient(){ // creating a coefficient
 	  //   std::cout<<"Material  "<<material[imat]<<std::endl;
 	    getfem::mesh_fem::ind_dof_ct idofs = mf_coef.ind_basic_dof_of_element(i_cv);
       for (size_type i=0; i < idofs.size(); ++i) {
-        Kr_[idofs[i]]=k[imat];// Kr_print_[i_cv]=k[imat];
+        Kr_[idofs[i]]=k[imat]; Kr_print_[(int) i_cv]=k[imat];
         Er_[idofs[i]]=E[imat];// Er_print_[i_cv]=E[imat];
       }
     }
   }
-     if(0){ // Just to see what elements are cut by the level set ls:
-    getfem::vtk_export vtk_data("data_gen_3mat.vtk");
+     if(1){ // Just to see what elements are cut by the level set ls:
+    getfem::vtk_export vtk_data("data_gen_3mat_pinch.vtk");
     vtk_data.exporting(mf_coef);
-//     vtk_data.write_mesh();
+    vtk_data.write_mesh();
     vtk_data.write_cell_data(Kr_print_, "K");
   }
 }
@@ -579,8 +606,17 @@ void biot_problem::gen_coefficient(){ // creating a coefficient
 // routine for the labeling mesh
 //============================================
 void biot_problem::mesh_labeling(){
-  horizon h  ("mesh/layer_cake/mesh_horizon_2.msh");
-  horizon h3 ("mesh/layer_cake/mesh_horizon_3.msh");
+//   horizon h  ("mesh/layer_cake/mesh_horizon_2.msh");
+//   horizon h3 ("mesh/layer_cake/mesh_horizon_3.msh");
+//=======================================================
+//   horizon h  ("mesh/pichout/pinched_horizon_2.msh");
+//   horizon h3 ("mesh/pichout/pinched_horizon_3.msh");
+//=======================================================
+//   horizon h  ("mesh/pinchout2/mesh_pinched_horizon_1.msh");
+//=======================================================
+  horizon h3  ("mesh/pinchout3/pinched_horizon_0.msh");
+  horizon h ("mesh/pinchout3/pinched_crop_large_horizon_1.msh");
+//=======================================================
    dal::bit_vector bv_cv = mesh.convex_index();
    size_type i_cv = 0;
      std::cout<<"Looping internal element "<< i_cv <<std::endl;
@@ -605,9 +641,12 @@ void biot_problem::mesh_labeling(){
 	    int el_on_h3=h3.find_element(bc);
 	    int group_h3=  h3.up_down(bc,el_on_h3);
 	    std::cout<< "Group h2 is "<<  group_h3<<std::endl;
-	    
+	    //////////////////////////////////
+// 	    if (group ==1 ) mesh.region(1).add(i_cv);
+// 	    if (group ==2 ) mesh.region(2).add(i_cv);
+// 	    int group_h3=2;
 // 	    mesh.region(group).add(i_cv);
-	    
+	    /////////////////////////////////
             if (group_h3==2 && group ==2) mesh.region(1).add(i_cv);
 	    if (group_h3==1 && group ==2) mesh.region(2).add(i_cv);
 	    if (group_h3==1 && group ==1) mesh.region(3).add(i_cv);
@@ -616,6 +655,7 @@ void biot_problem::mesh_labeling(){
 //        std::cout<< "zed is " <<mesh.points()[mesh.ind_points_of_convex(i_cv)[0]][2]<<std::endl;
 // 	    if (mesh.points()[indicies[0]][2]>2000) mesh.region(14).add(i_cv);
    }
-   mesh.write_to_file("mesh/layer_cake/labeled_mesh");
+//    mesh.write_to_file("mesh/pichout/labeled_mesh_fp2");
+   mesh.write_to_file("mesh/pinchout3/labeled_mesh_fp2");
    
 }
