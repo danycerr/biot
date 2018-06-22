@@ -1,0 +1,715 @@
+biot_problem::init 
+biot_problem::gen_bc()
+Generating materials coefficients
+Dof num  100001
+number of dof 67449 and 22483
+temperature_problem::init 
+temperature_problem::gen_bc()
+Generating materials coefficients
+Dof num  100001
+number of dof 22483
+temperature_problem::assembly
+temperature_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+Detected wrong equivalent nodes: (Grad_Test2_p.Grad_T)*Test_T and ((Grad_p.Grad_Test2_T)*Test_T) (no problem, but hash code would be adapted) 
+Detected wrong equivalent nodes: (Grad_Test2_p.Grad_T) and (Grad_p.Grad_Test2_T) (no problem, but hash code would be adapted) 
+Detected wrong equivalent nodes: (((1e-15*Grad_Test_T).Normal)*Test2_T) and (((-1e-15*Grad_Test2_T).Normal)*Test_T) (no problem, but hash code would be adapted) 
+Detected wrong equivalent nodes: ((1e-15*Grad_Test_T).Normal) and ((-1e-15*Grad_Test2_T).Normal) (no problem, but hash code would be adapted) 
+Detected wrong equivalent nodes: (1e-15*Grad_Test_T) and (-1e-15*Grad_Test2_T) (no problem, but hash code would be adapted) 
+ iter   0 residual            1
+ iter  50 residual  0.000470261
+ iter 100 residual  4.47816e-05
+ iter 150 residual  1.96109e-06
+ iter 200 residual  2.81208e-07
+ iter 250 residual  2.08466e-08
+ iter 275 residual  9.86686e-09
+condition number 2.19705e-314
+temperature_problem::print  resu/laplacetemp_pinch.0.vtk
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+Build class AMG for momentum
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   67449
+*** parameters SAMG matrix   67449
+ AMG::convert_matrix:: end matrix conversion 
+End samg conversion
+Build class AMG for Pressure
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   22483
+*** parameters SAMG matrix   22483
+ AMG::convert_matrix:: end matrix conversion 
+End samg conversion
+[1;34m***** iteration 1 norm p 1 norm u 1
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 2 norm p 1 norm u 1.52909e+09
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual            1
+ iter  50 residual  4.46608e-08
+ iter  57 residual  7.69383e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 3 norm p 7.5027e+24 norm u 0.000886613
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual     0.146632
+ iter  48 residual  8.82747e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 4 norm p 0.160255 norm u 0.000761263
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual    0.0250823
+ iter  42 residual  9.70887e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 5 norm p 0.0238187 norm u 5.77942e-05
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual   0.00444153
+ iter  35 residual  9.41598e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** last iteration 5 norm p 0.0041025 norm u 0.000248074
+AMG deleted
+AMG deleted
+biot_problem::print  resu/laplacedisp_pinch.0.vtk
+temperature_problem::assembly
+temperature_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+Detected wrong equivalent nodes: (Grad_Test2_p.Grad_T)*Test_T and ((Grad_p.Grad_Test2_T)*Test_T) (no problem, but hash code would be adapted) 
+Detected wrong equivalent nodes: (Grad_Test2_p.Grad_T) and (Grad_p.Grad_Test2_T) (no problem, but hash code would be adapted) 
+Detected wrong equivalent nodes: (((1e-15*Grad_Test_T).Normal)*Test2_T) and (((-1e-15*Grad_Test2_T).Normal)*Test_T) (no problem, but hash code would be adapted) 
+Detected wrong equivalent nodes: ((1e-15*Grad_Test_T).Normal) and ((-1e-15*Grad_Test2_T).Normal) (no problem, but hash code would be adapted) 
+Detected wrong equivalent nodes: (1e-15*Grad_Test_T) and (-1e-15*Grad_Test2_T) (no problem, but hash code would be adapted) 
+ iter   0 residual   0.00176675
+ iter  50 residual  0.000269722
+ iter 100 residual  2.52506e-05
+ iter 150 residual  3.95694e-06
+ iter 200 residual  3.25402e-07
+ iter 250 residual   3.5587e-08
+ iter 276 residual  9.54195e-09
+condition number 0.0041025
+temperature_problem::print  resu/laplacetemp_pinch.1.vtk
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+Build class AMG for momentum
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   67449
+*** parameters SAMG matrix   67449
+ AMG::convert_matrix:: end matrix conversion 
+End samg conversion
+Build class AMG for Pressure
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   22483
+*** parameters SAMG matrix   22483
+ AMG::convert_matrix:: end matrix conversion 
+End samg conversion
+[1;34m***** iteration 1 norm p 1 norm u 1
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual      10.3131
+ iter  50 residual  5.69609e-07
+ iter  66 residual  9.01144e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 2 norm p 2.09637e+06 norm u 1.52933e+09
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual      1.01628
+ iter  50 residual  4.43143e-08
+ iter  56 residual  9.90414e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 3 norm p 2.17768 norm u 0.000107301
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual     0.148669
+ iter  48 residual  8.80709e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 4 norm p 0.183024 norm u 0.000243285
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual    0.0254206
+ iter  42 residual  9.73471e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 5 norm p 0.0271441 norm u 0.000499445
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual   0.00450109
+ iter  35 residual  9.45429e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 6 norm p 0.00470238 norm u 0.000105088
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual  0.000810623
+ iter  23 residual  8.08203e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 7 norm p 0.000842162 norm u 0.000437502
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual  0.000148063
+ iter  17 residual  8.18336e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 8 norm p 0.000153003 norm u 0.000288541
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual  2.74238e-05
+ iter  11 residual  9.06487e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 9 norm p 2.8107e-05 norm u 0.00120735
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual  5.15304e-06
+ iter   7 residual  9.40678e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 10 norm p 5.21741e-06 norm u 0.000753273
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual  9.82995e-07
+ iter   5 residual  9.35495e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 11 norm p 9.77771e-07 norm u 0.000418586
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual  1.90659e-07
+ iter   3 residual  8.24281e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 12 norm p 1.86314e-07 norm u 0.000139652
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual  3.84098e-08
+ iter   2 residual  6.88109e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 13 norm p 3.70259e-08 norm u 0.000150035
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual  1.01229e-08
+ iter   1 residual  6.48449e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 14 norm p 6.07762e-09 norm u 0.000765883
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual  7.01596e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** last iteration 14 norm p 0 norm u 0
+AMG deleted
+AMG deleted
+biot_problem::print  resu/laplacedisp_pinch.1.vtk
+temperature_problem::assembly
+temperature_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+Detected wrong equivalent nodes: (Grad_Test2_p.Grad_T)*Test_T and ((Grad_p.Grad_Test2_T)*Test_T) (no problem, but hash code would be adapted) 
+Detected wrong equivalent nodes: (Grad_Test2_p.Grad_T) and (Grad_p.Grad_Test2_T) (no problem, but hash code would be adapted) 
+Detected wrong equivalent nodes: (((1e-15*Grad_Test_T).Normal)*Test2_T) and (((-1e-15*Grad_Test2_T).Normal)*Test_T) (no problem, but hash code would be adapted) 
+Detected wrong equivalent nodes: ((1e-15*Grad_Test_T).Normal) and ((-1e-15*Grad_Test2_T).Normal) (no problem, but hash code would be adapted) 
+Detected wrong equivalent nodes: (1e-15*Grad_Test_T) and (-1e-15*Grad_Test2_T) (no problem, but hash code would be adapted) 
+ iter   0 residual   0.00148307
+ iter  50 residual  0.000192072
+ iter 100 residual  1.09689e-05
+ iter 150 residual  1.64009e-06
+ iter 200 residual  1.05644e-07
+ iter 250 residual  1.31083e-08
+ iter 254 residual  9.34968e-09
+condition number 0
+temperature_problem::print  resu/laplacetemp_pinch.2.vtk
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+Build class AMG for momentum
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   67449
+*** parameters SAMG matrix   67449
+ AMG::convert_matrix:: end matrix conversion 
+End samg conversion
+Build class AMG for Pressure
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   22483
+*** parameters SAMG matrix   22483
+ AMG::convert_matrix:: end matrix conversion 
+End samg conversion
+[1;34m***** iteration 1 norm p 1 norm u 1
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual      8.17673
+ iter  50 residual  3.64379e-07
+ iter  64 residual  9.85075e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 2 norm p 2.69651e+06 norm u 1.52896e+09
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual      1.02025
+ iter  50 residual  4.40489e-08
+ iter  56 residual  9.81954e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 3 norm p 1.37929 norm u 0.000249287
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual     0.149218
+ iter  48 residual  8.77573e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 4 norm p 0.18709 norm u 0.000109927
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual    0.0255131
+ iter  42 residual  9.70664e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 5 norm p 0.0278962 norm u 0.000799601
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual   0.00451735
+ iter  35 residual  9.43042e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 6 norm p 0.00484936 norm u 0.00016272
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual  0.000813526
+ iter  22 residual   9.9349e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 7 norm p 0.000871031 norm u 0.000139519
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual  0.000148588
+ iter  17 residual  8.25194e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 8 norm p 0.000158663 norm u 0.000557843
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual  2.75201e-05
+ iter  11 residual  9.04273e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 9 norm p 2.92194e-05 norm u 0.000395753
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual  5.17092e-06
+ iter   7 residual  9.30889e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 10 norm p 5.43776e-06 norm u 0.00058819
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual  9.86364e-07
+ iter   5 residual  9.28337e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 11 norm p 1.02161e-06 norm u 0.000270874
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual  1.91301e-07
+ iter   3 residual  8.32305e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 12 norm p 1.94622e-07 norm u 0.0008321
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual  3.85528e-08
+ iter   2 residual  6.93077e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 13 norm p 3.8598e-08 norm u 0.00106403
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual  1.01758e-08
+ iter   1 residual  6.53134e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 14 norm p 6.21473e-09 norm u 0.000669262
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual  7.06734e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** last iteration 14 norm p 0 norm u 0
+AMG deleted
+AMG deleted
+biot_problem::print  resu/laplacedisp_pinch.2.vtk
+temperature_problem::assembly
+temperature_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+Detected wrong equivalent nodes: (Grad_Test2_p.Grad_T)*Test_T and ((Grad_p.Grad_Test2_T)*Test_T) (no problem, but hash code would be adapted) 
+Detected wrong equivalent nodes: (Grad_Test2_p.Grad_T) and (Grad_p.Grad_Test2_T) (no problem, but hash code would be adapted) 
+Detected wrong equivalent nodes: (((1e-15*Grad_Test_T).Normal)*Test2_T) and (((-1e-15*Grad_Test2_T).Normal)*Test_T) (no problem, but hash code would be adapted) 
+Detected wrong equivalent nodes: ((1e-15*Grad_Test_T).Normal) and ((-1e-15*Grad_Test2_T).Normal) (no problem, but hash code would be adapted) 
+Detected wrong equivalent nodes: (1e-15*Grad_Test_T) and (-1e-15*Grad_Test2_T) (no problem, but hash code would be adapted) 
+ iter   0 residual   0.00176079
+ iter  50 residual  0.000202647
+ iter 100 residual  1.01359e-05
+ iter 150 residual  1.48915e-06
+ iter 200 residual  9.49192e-08
+ iter 250 residual  1.37572e-08
+ iter 255 residual   9.6546e-09
+condition number 0
+temperature_problem::print  resu/laplacetemp_pinch.3.vtk
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+Build class AMG for momentum
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   67449
+*** parameters SAMG matrix   67449
+ AMG::convert_matrix:: end matrix conversion 
+End samg conversion
+Build class AMG for Pressure
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   22483
+*** parameters SAMG matrix   22483
+ AMG::convert_matrix:: end matrix conversion 
+End samg conversion
+[1;34m***** iteration 1 norm p 1 norm u 1
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual      7.50559
+ iter  50 residual  3.15715e-07
+ iter  64 residual   8.5557e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 2 norm p 2.99373e+06 norm u 1.52885e+09
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual       1.0229
+ iter  50 residual  4.39179e-08
+ iter  56 residual  9.76883e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 3 norm p 1.09606 norm u 0.000238844
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual      0.14958
+ iter  48 residual  8.75756e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 4 norm p 0.188583 norm u 0.000277282
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual    0.0255735
+ iter  42 residual  9.67965e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 5 norm p 0.0282254 norm u 0.00051529
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual   0.00452786
+ iter  35 residual  9.40976e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 6 norm p 0.00491641 norm u 7.15451e-05
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual  0.000815385
+ iter  22 residual  9.78815e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 7 norm p 0.000884593 norm u 0.000345057
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual  0.000148921
+ iter  17 residual   8.2129e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 8 norm p 0.000161394 norm u 0.000145815
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual  2.75805e-05
+ iter  11 residual  8.99527e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 9 norm p 2.97698e-05 norm u 0.000306825
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;32m Start solving pressure
+ iter   0 residual  5.18203e-06
+ iter   7 residual  9.21425e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ [1;31m Start solving momentum balance
+Level 1 Warning in getfem_superlu.cc, line 217: SuperLU solve failed: info =67450
+condition number 1.06473e-18
+[1;34m***** iteration 10 norm p 5.54958e-06 norm u 9.99427e-05
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 

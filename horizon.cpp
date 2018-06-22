@@ -14,13 +14,30 @@ for (bgeot::size_type i=0; i < 3; ++i) {
 }
 //  if (N>1) { M(0,1) = 0; }
 //
-mesh_.transformation(M);
+// mesh_.transformation(M);
+
+    b_box_.resize(4);
+    b_box_[0]=1.e+10;b_box_[2]=1.e+10;
+    b_box_[1]=-1.e+10;b_box_[3]=-1.e+10;
+    std::vector<bgeot::base_node> pts;
+      bgeot::size_type i_cv = 0;
+  dal::bit_vector bv_cv = mesh_.convex_index();
+    for (i_cv << bv_cv; i_cv !=bgeot::size_type(-1); i_cv << bv_cv) 
+      for (int i = 0; i < mesh_.points_of_convex(i_cv).size(); i++)
+	for (int idim=0; idim<2; idim++){
+	  // pts.push_back(mesh_.points_of_convex(i_cv)[i]);
+	  if((mesh_.points_of_convex(i_cv)[i])[idim] < b_box_[2*idim])b_box_[2*idim]= mesh_.points_of_convex(i_cv)[i][idim];     /// min 
+	  if(mesh_.points_of_convex(i_cv)[i][idim] > b_box_[2*idim+1])b_box_[2*idim+1]= mesh_.points_of_convex(i_cv)[i][idim]; /// max
+	}
+
 }
 /////////////////////////////////////////////
 int horizon::find_element(std::vector<double>& pt){
 //   std::cout<<"Finding elemet"<<std::endl;
   std::vector<int> maybe_element;
   quick_search(pt, maybe_element);
+  if(pt[0] > b_box_[1] )return 0; //out of the bounding box
+  else{
   if(maybe_element.empty()){
     double eps=1.e-2;
     while (maybe_element.empty()){
@@ -37,6 +54,7 @@ int horizon::find_element(std::vector<double>& pt){
 
   }
  return found;
+  }
 }
 /////////////////////////////////////////////
 void horizon::quick_search(std::vector<double>&pt,std::vector<int>& maybe_element, double eps){
@@ -74,8 +92,8 @@ int horizon::fine_search(std::vector<double>&pt,std::vector<int>& maybe_element)
 	p.push_back(mesh_.points_of_convex(maybe_element[i_el])[ipt][idim]);
 //       std::cout<< "Points dimesnion "<< p.size()<<std::endl;
       if (is_in(pt, {p[0 + shift_p0],p[1 + shift_p0],p[2 + shift_p0]} , 
-		  {p[0 + shift_p1],p[1 + shift_p1],p[2 + shift_p1]} , 
-		  {p[0 + shift_p2],p[1 + shift_p2],p[2 + shift_p2]})){
+		    {p[0 + shift_p1],p[1 + shift_p1],p[2 + shift_p1]} , 
+		    {p[0 + shift_p2],p[1 + shift_p2],p[2 + shift_p2]})){
                   element=maybe_element[i_el];
 // 		  std::cout<<"Found element "<<   maybe_element[i_el]<<std::endl;
 		  }
@@ -123,7 +141,7 @@ bool horizon::is_in (std::vector<double>  pt, std::vector<double>  v1, std::vect
 //     return 1;
 //    else
 //     return 2;
-   
+   if(pt[0] > b_box_[1] ) return 1;
    if(pt[2]< p[2])
     return 1;
    else

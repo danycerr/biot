@@ -12,6 +12,7 @@ public:
   int find_element(std::vector<double>& pt);
   int up_down(std::vector<double>& pt, int el);
 private:
+  std::vector<double> b_box_;
   getfem::mesh mesh_;
   void quick_search(std::vector<double>&pt,std::vector<int>& maybe_element, double eps=0.0);
   int fine_search(std::vector<double>&pt,std::vector<int>& maybe_element);
