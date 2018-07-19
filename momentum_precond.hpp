@@ -4,6 +4,7 @@
 #include "gmm_fix.hpp"
 #include <vector>
 #include <getfem/getfem_generic_assembly.h>
+
 #include "gmm/gmm.h"
 #include <gmm/gmm_precond_diagonal.h>
 #include <gmm/gmm_superlu_interface.h>
@@ -24,8 +25,8 @@
 #endif
 typedef gmm::rsvector<bgeot::scalar_type> sparse_vector_type;
 typedef gmm::row_matrix<sparse_vector_type> sparse_matrix_type;
-using bgeot::scalar_type; 
 
+using bgeot::scalar_type; 
 
 template <class MATRIX>
 class momentum_precond
@@ -104,7 +105,7 @@ public:
         gmm::mult(pS_, gmm::sub_vector(src, gmm::sub_interval(n1, n2)),
                   gmm::sub_vector(dst, gmm::sub_interval(n1, n2)));
         #endif
-    }
+
 
 private:
     MATRIX &A_;
