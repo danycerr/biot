@@ -174,7 +174,7 @@ gmm::MatrixMarket_IO::write("Ku_x",S_);
   pS_.build_with(S_);
  #endif
 
-#ifdef USE_SAMG
+#ifdef USE_SAMG 
     gmm::copy(A_, Ku_csr_);
     amg_.convert_matrix(Ku_csr_);
     amg_.setid(idx_);
