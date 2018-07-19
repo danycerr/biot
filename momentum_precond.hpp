@@ -4,7 +4,6 @@
 #include "gmm_fix.hpp"
 #include <vector>
 #include <getfem/getfem_generic_assembly.h>
-
 #include "gmm/gmm.h"
 #include <gmm/gmm_precond_diagonal.h>
 #include <gmm/gmm_superlu_interface.h>
@@ -74,6 +73,7 @@ public:
 
           
         }
+
         #endif
          #ifdef SOLVE_SHUR_MOMENTUM
           {
@@ -106,10 +106,10 @@ public:
                   gmm::sub_vector(dst, gmm::sub_interval(n1, n2)));
         #endif
 
+    }
 
 private:
     MATRIX &A_;
-//     MATRIX &A_c_;
     gmm::diagonal_precond<MATRIX> pA_;
     gmm::diagonal_precond<MATRIX> pS_;
     MATRIX &S_;
