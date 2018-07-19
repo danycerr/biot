@@ -1,0 +1,4154 @@
+biotls_problem::init 
+biotls_problem::gen_bc()
+number of dof level set 4225
+End of ls evaluation
+# Cut Elements      = 64
+# dof to extend are  for pressure   = 66
+# dof to extend are  for displacement   = 132
+set integration method
+set integration method simp
+set integration adapt
+end
+laplace cut fem::save_mesh  
+*** Time step 0/1
+laplacian_problem::update_ls
+# Cut Elements      = 64
+# dof to extend are  for pressure   = 66
+# dof to extend are  for displacement   = 132
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 2310
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 3e-06 seconds
+... time to map dipl no if : 0.02718 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 2178
+nb_dof 2178
+nb_dof A_ 2178
+nb_dof S_ 132
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   2178
+*** parameters SAMG matrix   2178
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 1089normal dof1089
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 2e-06 seconds
+... time to map pressure no if : 0.005661 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 2.27244e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 2310
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 3e-06 seconds
+... time to map dipl no if : 0.023013 seconds
+nb_dof_u 2178
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+
+*** time to solve the system using SAMG with gmm time: 0.143288 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+
+*** time to solve the system using SAMG with gmm time: 0.080201 seconds
+ iter   0 residual            1
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+
+*** time to solve the system using SAMG with gmm time: 0.092514 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+
+*** time to solve the system using SAMG with gmm time: 0.087991 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+
+*** time to solve the system using SAMG with gmm time: 0.085417 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+
+*** time to solve the system using SAMG with gmm time: 0.079058 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+
+*** time to solve the system using SAMG with gmm time: 0.077473 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+
+*** time to solve the system using SAMG with gmm time: 0.076441 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+
+*** time to solve the system using SAMG with gmm time: 0.076183 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+
+*** time to solve the system using SAMG with gmm time: 0.075097 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+
+*** time to solve the system using SAMG with gmm time: 0.081294 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+
+*** time to solve the system using SAMG with gmm time: 0.06722 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+
+*** time to solve the system using SAMG with gmm time: 0.085334 seconds
+ iter  10 residual  9.89328e-08
+  Condition number momentum: 2.27172e-316
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 0.128061
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 1089normal dof1089
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 3e-06 seconds
+... time to map pressure no if : 0.006478 seconds
+ [1;32m Start solving pressure
+ iter   0 residual            1
+ iter  50 residual  2.11177e-05
+ iter  93 residual  8.55937e-09
+  Condition number pressure: 2.27244e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 2310
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 3e-06 seconds
+... time to map dipl no if : 0.026837 seconds
+nb_dof_u 2178
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+
+*** time to solve the system using SAMG with gmm time: 0.081764 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+
+*** time to solve the system using SAMG with gmm time: 0.086729 seconds
+ iter   0 residual    0.0345696
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+
+*** time to solve the system using SAMG with gmm time: 0.094987 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+
+*** time to solve the system using SAMG with gmm time: 0.100879 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+
+*** time to solve the system using SAMG with gmm time: 0.078846 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+
+*** time to solve the system using SAMG with gmm time: 0.096608 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+
+*** time to solve the system using SAMG with gmm time: 0.076954 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+
+*** time to solve the system using SAMG with gmm time: 0.08833 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+
+*** time to solve the system using SAMG with gmm time: 0.079762 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+
+*** time to solve the system using SAMG with gmm time: 0.082057 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+
+*** time to solve the system using SAMG with gmm time: 0.094828 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+
+*** time to solve the system using SAMG with gmm time: 0.079813 seconds
+ iter   9 residual  7.31057e-09
+  Condition number momentum: 2.27172e-316
+ Updating U_iter
+[1;34m***** iteration 3 norm p 1.38575e+18 norm u 0.0257248
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 1089normal dof1089
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 3e-06 seconds
+... time to map pressure no if : 0.006539 seconds
+ [1;32m Start solving pressure
+ iter   0 residual    0.0570185
+ iter  50 residual  4.17475e-07
+ iter  69 residual  9.94268e-09
+  Condition number pressure: 2.27244e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 2310
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 3e-06 seconds
+... time to map dipl no if : 0.026878 seconds
+nb_dof_u 2178
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+
+*** time to solve the system using SAMG with gmm time: 0.090877 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+ +++ WARNG: norm of quasi q2-residual = 0.693D-17
+ +++ WARNG: norm of real  L2-residual = 0.111D-16
+ +++ WARNG: BiCGstab stop: quasi and real residual too different (cgstab)!
+
+*** time to solve the system using SAMG with gmm time: 0.08172 seconds
+ iter   0 residual   0.00202496
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+
+*** time to solve the system using SAMG with gmm time: 0.080093 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+
+*** time to solve the system using SAMG with gmm time: 0.095985 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+
+*** time to solve the system using SAMG with gmm time: 0.094929 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+
+*** time to solve the system using SAMG with gmm time: 0.087047 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+
+*** time to solve the system using SAMG with gmm time: 0.091384 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+
+*** time to solve the system using SAMG with gmm time: 0.099509 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+
+*** time to solve the system using SAMG with gmm time: 0.085392 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+
+*** time to solve the system using SAMG with gmm time: 0.077726 seconds
+ iter   7 residual  4.89857e-08
+  Condition number momentum: 2.27172e-316
+ Updating U_iter
+[1;34m***** iteration 4 norm p 0.0573497 norm u 0.00148694
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 1089normal dof1089
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 2e-06 seconds
+... time to map pressure no if : 0.006485 seconds
+ [1;32m Start solving pressure
+ iter   0 residual   0.00334471
+ iter  50 residual  2.57176e-08
+ iter  56 residual  9.73294e-09
+  Condition number pressure: 2.27244e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 2310
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 3e-06 seconds
+... time to map dipl no if : 0.026964 seconds
+nb_dof_u 2178
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+
+*** time to solve the system using SAMG with gmm time: 0.09444 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+
+*** time to solve the system using SAMG with gmm time: 0.081623 seconds
+ iter   0 residual  0.000120213
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+
+*** time to solve the system using SAMG with gmm time: 0.085779 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+
+*** time to solve the system using SAMG with gmm time: 0.104626 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+
+*** time to solve the system using SAMG with gmm time: 0.091614 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+
+*** time to solve the system using SAMG with gmm time: 0.09247 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+
+*** time to solve the system using SAMG with gmm time: 0.079545 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+
+*** time to solve the system using SAMG with gmm time: 0.077938 seconds
+ iter   5 residual  7.64167e-08
+  Condition number momentum: 2.27172e-316
+ Updating U_iter
+[1;34m***** iteration 5 norm p 0.00356117 norm u 8.66247e-05
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 1089normal dof1089
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 3e-06 seconds
+... time to map pressure no if : 0.006543 seconds
+ [1;32m Start solving pressure
+ iter   0 residual  0.000199544
+ iter  46 residual  6.99609e-09
+  Condition number pressure: 2.27244e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 2310
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 4e-06 seconds
+... time to map dipl no if : 0.026864 seconds
+nb_dof_u 2178
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+
+*** time to solve the system using SAMG with gmm time: 0.107107 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+
+*** time to solve the system using SAMG with gmm time: 0.087278 seconds
+ iter   0 residual   7.1654e-06
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+
+*** time to solve the system using SAMG with gmm time: 0.084787 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+
+*** time to solve the system using SAMG with gmm time: 0.111069 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+
+*** time to solve the system using SAMG with gmm time: 0.074349 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+
+*** time to solve the system using SAMG with gmm time: 0.087108 seconds
+ iter   3 residual  8.86728e-08
+  Condition number momentum: 2.27172e-316
+ Updating U_iter
+[1;34m***** iteration 6 norm p 0.00021 norm u 5.06883e-06
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 1089normal dof1089
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 3e-06 seconds
+... time to map pressure no if : 0.006511 seconds
+ [1;32m Start solving pressure
+ iter   0 residual  1.19221e-05
+ iter  35 residual  9.64725e-09
+  Condition number pressure: 2.27244e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 2310
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 2e-06 seconds
+... time to map dipl no if : 0.026869 seconds
+nb_dof_u 2178
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+
+*** time to solve the system using SAMG with gmm time: 0.10261 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+
+*** time to solve the system using SAMG with gmm time: 0.090724 seconds
+ iter   0 residual  4.35458e-07
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+
+*** time to solve the system using SAMG with gmm time: 0.096253 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+
+*** time to solve the system using SAMG with gmm time: 0.081994 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+
+*** time to solve the system using SAMG with gmm time: 0.099196 seconds
+ iter   2 residual  5.14719e-08
+  Condition number momentum: 2.27172e-316
+ Updating U_iter
+[1;34m***** iteration 7 norm p 1.2483e-05 norm u 2.31135e-07
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 1089normal dof1089
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 2e-06 seconds
+... time to map pressure no if : 0.006539 seconds
+ [1;32m Start solving pressure
+ iter   0 residual  6.96477e-07
+ iter  22 residual  9.00086e-09
+  Condition number pressure: 2.27244e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 2310
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 2e-06 seconds
+... time to map dipl no if : 0.026846 seconds
+nb_dof_u 2178
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+
+*** time to solve the system using SAMG with gmm time: 0.101192 seconds
+My mult
+nnu is 2178
+start solving with samg 
+ 
+ AMG setup information
+ =====================
+ 
+ Approach: variable-based. Details:
+           methodology      - classical AMG
+           strong couplings - based on full matrix A
+           interpolation    - SW-pattern of full matrix A
+                            - weights based on entries of A
+ 
+ Galerkin: truncation:        no
+           block-diagonal:    no
+           variant:           standard
+ Coordinates available:       no,   dim = 0
+ Schwarz variables:           not set
+ Optimization level:          0
+ 
+ 
+ creating level # 2 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 762
+                                     ineffective                 676
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                729
+ pcol(1):       gratio= 0.69 FF/XF/FC=         0/        0/      858
+ pwint_aa(2):   gratio= 0.69 avrg wghts=  4.52   #vars->C=         0
+                ndima increased by     7088  (incore)
+ opdfn:         ok on level  2  #rows=        1500
+ 
+ creating level # 3 using STANDARD COARSENING
+ 
+ rwsrt(4):      # Dirichlet:           0 # strong diagdom:        32
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                 610
+                                     ineffective                 570
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                610
+ pcol(1):       gratio= 0.67 FF/XF/FC=        32/        0/      858
+ pwint_aa(2):   gratio= 0.67 avrg wghts=  4.31   #vars->C=         0
+                ndimu increased by     1283  (incore)
+                ndima increased by    12440  (incore)
+ opdfn:         ok on level  3  #rows=        1009
+ 
+ creating level # 4 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ rwsrt(4):      # rows with positive elimination                  95
+                                     ineffective                  79
+                                     failed                        0
+ rwsrt(4):      # rows with large weak couplings:                 71
+ pcol(1):       gratio= 0.88 FF/XF/FC=         0/        0/      858
+ +++ WARNG: Inefficient coarsening! (split_3)
+ pwint_aa(2):   gratio= 0.88 avrg wghts=  3.37   #vars->C=         0
+                ndimu increased by      845  (incore)
+ opdfn:         ok on level  4  #rows=         883
+ 
+ creating level # 5 using STANDARD COARSENING
+ 
+ rwsrt(4):      # (remaining!) rows with ONLY pos entries:       858
+ pcol(1):       gratio= 0.98 FF/XF/FC=         0/        0/      858
+ 
+ +++ WARNG: Coarsening terminated: inefficient grid reduction! (split_3)
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+
+*** time to solve the system using SAMG with gmm time: 0.075828 seconds
+ iter   0 residual   5.4647e-08
+  Condition number momentum: 2.27172e-316
+ Updating U_iter
+[1;34m***** last iteration 7 norm p 7.28724e-07 norm u 0
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+end print numerical pressure
+end print numerical pressure
+end pressure projection
+start interpolation of velocity
+end interpolation of velocity
+end printing
+biotls_problem::print crop
+end print numerical pressure
+end cropping
+end printing
+skipping fort.1 for pattern generation

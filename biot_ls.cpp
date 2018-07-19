@@ -678,7 +678,7 @@ void biotls_problem::assembly_p(double dt, double time){
     gmm::add(workspace.assembled_matrix(),K_in);
     workspace.clear_expressions();
     //pstab stabilization term
- if(0) {
+ if(1) {
     getfem::mesh_region  inner_faces;
     inner_faces = getfem::inner_faces_of_mesh(mesh, CUT_REGION);
 
@@ -1049,16 +1049,25 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
 
    assembly_u(dt,time);
    
-		 sparse_matrix_type Ku_x;                                /// iteration matrix
+   sparse_matrix_type Ku_x;                                /// iteration matrix
    gmm::resize(Ku_x, nb_x_dof_u, nb_x_dof_u);
    gmm::copy(gmm::sub_matrix(Ku,
         gmm::sub_interval(nb_dof_u, nb_x_dof_u)), Ku_x); 
    
-		 sparse_matrix_type Ku_s;                                /// iteration matrix
+   sparse_matrix_type Ku_s;                                /// iteration matrix
    gmm::resize(Ku_s, nb_dof_u, nb_dof_u);
    gmm::copy(gmm::sub_matrix(Ku,
         gmm::sub_interval(0,nb_dof_u)), Ku_s); 
-  momentum_precond<sparse_matrix_type> mPR (Ku_s,Ku_x); 
+   
+   //amg conversion
+//    	gmm::csr_matrix<scalar_type> Ku_s_csr;
+//         gmm::copy(Ku_s, Ku_s_csr);
+// 	gmm::csr_matrix<scalar_type> Ku_x_csr;
+//         gmm::copy(Ku_x, Ku_x_csr);
+// 	//amg conversion
+//   momentum_precond<sparse_matrix_type> mPR (Ku_s_csr,Ku_x_csr); 
+  
+  momentum_precond<sparse_matrix_type> mPR (Ku_s,Ku_x, (int) (time/dt)); //classic precond
   
   while( ( fix_count < max_iter  && ( rel_unorm>epsu ||  rel_pnorm > epsp)) ||  fix_count < min_iter  )
   {
@@ -1151,7 +1160,8 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
           gmm::MatrixMarket_IO::write(ku_fname.str().c_str(),Ku);
         }
 
-        gmm::gmres(Ku, U, Bu,PRu, restart, iter);
+         gmm::gmres(Ku, U, Bu,PRu, restart, iter);
+// 	 gmm::gmres(Ku, U, Bu,mPR, restart, iter);
         scalar_type cond;
         // gmm::SuperLU_solve(Ku, U , Bu, cond);
         std::cout << "  Condition number momentum: " << cond << std::endl;
@@ -1394,11 +1404,11 @@ base_small_vector biotls_problem::ls_function(const base_node P, double time,int
   base_small_vector res(2);
   switch (num) {
     case 0: {
-              res[0] = y-2440.;
+              res[0] = y-2376.;
               res[1] = -.5 + x;
             } break;
     case 1: {
-              res[0] = y - 2400.01 - 200*time/(20*1e+6);
+              res[0] = y - 2400.01 - 200*time/(20*1e+8);
               res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.27;
             } break;
     case 2: {
@@ -1750,3 +1760,68 @@ void biotls_problem::gen_coefficient(){ // creating a coefficient
     }
   }
 }
+
+//============================================
+// routine for printing spasity pattern
+//============================================
+void biotls_problem::print_pattern(int iter){
+  std::ifstream myfile ("fort." +  std::to_string(iter+1));
+  if (myfile.good()){
+    std::cout<<"Reading "<< "fort." +  std::to_string(iter+1) <<" for pattern generation"<<std::endl;
+    std::string line;
+    std::vector<scalar_type> color;
+    // 	Read cvs
+    if (myfile.is_open())
+    {
+      while ( getline (myfile,line) )
+      {
+	std::istringstream iss(line);
+	double a;
+	iss>>a;color.push_back(a);
+      }
+      myfile.close();
+    }
+    
+    bgeot::base_matrix M(N_,N_);
+    bgeot::base_matrix Mm1(N_,N_);
+    for (size_type i=0; i < N_; ++i) {
+      M(i,i) = p_des.l_ref;
+      Mm1(i,i) = 1/p_des.l_ref;
+    }
+    //   mesh_dim.transformation(M);
+    mesh.transformation(M);
+    
+    //sl.build(mesh, , -1),2);
+    std::cout<<"end cropping"<< std::endl;
+    {  
+      //// Export discontinuous solution
+      std::cout<<"Size of dof"<< color.size()<<" and mf_u "<< mf_u.nb_dof()<< std::endl;
+      std::string namefile= p_des.datafilename +".pattern." +  std::to_string(iter) +".vtk";
+      getfem::vtk_export vtkd(namefile);
+      vtkd.exporting(mf_u);
+      vtkd.write_mesh();
+      vtkd.write_point_data(mf_u, color, "c");
+      std::cout<<"end printing pattern in "<< namefile <<std::endl;
+      
+    }
+    
+    mesh.transformation(Mm1); 
+  }//end if file exist
+  else {std::cout<<
+    "skipping "<< "fort." +  std::to_string(iter+1)
+    <<" for pattern generation"<<std::endl;}
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

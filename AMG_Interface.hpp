@@ -24,6 +24,7 @@ int _q_dof;              /// quadratic dof
 int _l_dof;				/// linear dof
 int _Pt, _Ut, _Pv, _Uv;
 int _npts;
+int idx_=0;
 bool first_=true;
 double * a_samg_;
 APPL_INT *ja_samg_;
@@ -44,6 +45,10 @@ APPL_INT nnu_,nna_;
   
     // =========== return the solution ========================
   std::vector<scalar_type> getsol(){return sol_vec;}
+  // =================== set id =======================
+  inline void setid(int id){idx_=id; 
+    std::cout<<"********************id is "<<idx_<<std::endl;}
+  
 };
 
 #endif

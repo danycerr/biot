@@ -25,10 +25,10 @@ void biot_problem::init(void) {
 //         getfem::import_mesh("gmsh:mesh/patch_6fp2.msh",mesh);
 // 	getfem::import_mesh("gmsh:mesh/pichout/patch_6.msh",mesh);
 // 	getfem::import_mesh("gmsh:mesh/pinchout2/patch_6e.msh",mesh);
-	getfem::import_mesh("gmsh:mesh/pinchout3/patch_7.msh",mesh);
+// 	getfem::import_mesh("gmsh:mesh/pinchout3/patch_7.msh",mesh);
 // 	=============================================
 	if(1){
-	mesh.read_from_file("mesh/pinchout3/labeled_mesh_fp2");
+	mesh.read_from_file("mesh/pinchout3/labeled_mesh_fp2"); //good pinchout
 // 	mesh.read_from_file("mesh/pinchout2/labeled_mesh_fp2");
 // 	mesh.read_from_file("mesh/pichout/labeled_mesh_fp2");
 // 	mesh.read_from_file("mesh/labeled_mesh_fp2");// layar cake
@@ -328,16 +328,16 @@ void biot_problem::assembly_p(double dt){
 	//Matrix term
 	workspace.add_expression("penalty/element_size*p*Test_p", mim, TOP);
 	workspace.add_expression("-permeability*Kr*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, TOP); 	
-	workspace.add_expression("penalty/element_size*p*Test_p", mim, LEFT);
-	workspace.add_expression("-permeability*Kr*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, LEFT); 	
-	workspace.add_expression("penalty/element_size*p*Test_p", mim, RIGHT);
-	workspace.add_expression("-permeability*Kr*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, RIGHT);
-	if(N_==3){	 	
-		workspace.add_expression("penalty/element_size*p*Test_p", mim, LEFTX);
-		workspace.add_expression("-permeability*Kr*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, LEFTX);
-		workspace.add_expression("penalty/element_size*p*Test_p", mim, RIGHTX);
-		workspace.add_expression("-permeability*Kr*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, RIGHTX);    
-	}
+// 	workspace.add_expression("penalty/element_size*p*Test_p", mim, LEFT);
+// 	workspace.add_expression("-permeability*Kr*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, LEFT); 	
+// 	workspace.add_expression("penalty/element_size*p*Test_p", mim, RIGHT);
+// 	workspace.add_expression("-permeability*Kr*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, RIGHT);
+// 	if(N_==3){	 	
+// 		workspace.add_expression("penalty/element_size*p*Test_p", mim, LEFTX);
+// 		workspace.add_expression("-permeability*Kr*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, LEFTX);
+// 		workspace.add_expression("penalty/element_size*p*Test_p", mim, RIGHTX);
+// 		workspace.add_expression("-permeability*Kr*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, RIGHTX);    
+// 	}
 
 	workspace.assembly(2);
 	gmm::add(workspace.assembled_matrix(), Kp);

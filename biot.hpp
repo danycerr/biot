@@ -103,7 +103,7 @@ struct problem_descriptor_quad_3d{
 	std::string INTEGRATION =       "IM_GAUSS_PARALLELEPIPED(3,6)";
 	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; 
 	std::string datafilename="resu/laplacedisp"; 
-	int nsubdiv=6; // subdivision of the sqaured mesh
+	int nsubdiv=128; // subdivision of the sqaured mesh
 	double E=1.e+10;
 	double poisson =0.3;
 	double mu_s = E/( 2 * ( 1 + poisson) ) ;
@@ -129,7 +129,8 @@ struct problem_descriptor_tetra_3d{
 	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; 
 // 	std::string datafilename="resu/gigat_fp2"; 
 	std::string datafilename="resu/laplacedisp_pinch"; 
-	int nsubdiv=6; // subdivision of the sqaured mesh
+// 	std::string datafilename="resu/laplacedisp"; 
+	int nsubdiv=128; // subdivision of the sqaured mesh
 	double E=1.e+10;
 	double poisson =0.3;
 	double mu_s = E/( 2 * ( 1 + poisson) ) ;

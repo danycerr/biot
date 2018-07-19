@@ -4,10 +4,11 @@
 #include "gmm_fix.hpp"
 #include <vector>
 #include <getfem/getfem_generic_assembly.h>
+#include "gmm/gmm.h"
 #include <gmm/gmm_precond_diagonal.h>
 #include <gmm/gmm_superlu_interface.h>
-
-//#define USE_SAMG 1
+// #include "getfem/getfem_mesher.h"
+// #define USE_SAMG 1
 //#define USE_MP
 
 // preconditioning strategies SOLVE invert by solving Ax=b
@@ -23,13 +24,15 @@
 #endif
 typedef gmm::rsvector<bgeot::scalar_type> sparse_vector_type;
 typedef gmm::row_matrix<sparse_vector_type> sparse_matrix_type;
+using bgeot::scalar_type; 
+
 
 template <class MATRIX>
 class momentum_precond
 {
 public:
     // TODO boundary conditions (Dirichlet, Robin) and coefficient (kappa, beta)
-    momentum_precond(MATRIX &A, MATRIX &B);
+    momentum_precond(MATRIX &A, MATRIX &B, int ind=0);
 
      getfem::size_type nrows() const {
          return gmm::mat_nrows(A_) + gmm::mat_nrows(S_);
@@ -43,7 +46,7 @@ public:
     void mult(const L2 &src, L3 &dst) const
     {
 
-        // std::cout<<"My mult"<<std::endl;
+        std::cout<<"My mult"<<std::endl;
         const getfem::size_type n1 =nb_dof_, // gmm::mat_ncols(A_),
                                 n2 =nb_dof_x_; // gmm::mat_ncols(S_);
        #ifdef SOLVE_A_MOMENTUM
@@ -58,10 +61,18 @@ public:
             iter.set_noisy(0);               // output of iterations (2: sub-iteration)
             iter.set_maxiter(1000); // maximum number of iterations
             // gmm::gmres(A_, x, b, PM, restart, iter);
+#ifdef USE_SAMG
+	    gmm::clear(x);
+            amg_.solve(Ku_csr_, x , b , 1);
+// 	    std::cout<<"my mult"<<std::endl;
+            gmm::copy(amg_.getsol(),gmm::sub_vector(dst, gmm::sub_interval(0, n1)));
+#else
             slu_.solve(x,b);
             gmm::copy(x,gmm::sub_vector(dst, gmm::sub_interval(0, n1)));
+#endif
+
           
-        } 
+        }
         #endif
          #ifdef SOLVE_SHUR_MOMENTUM
           {
@@ -93,32 +104,17 @@ public:
         gmm::mult(pS_, gmm::sub_vector(src, gmm::sub_interval(n1, n2)),
                   gmm::sub_vector(dst, gmm::sub_interval(n1, n2)));
         #endif
-//#ifdef USE_SAMG
-        //std::vector<double> x(n2),b(n2);
-        //gmm::copy(gmm::sub_vector(src, gmm::sub_interval(n1, n2)),b);
-        //gmm::clear(x);
-        //amg_.solve(S_, x , b , 1);
-        //gmm::copy(amg_.getsol(),gmm::sub_vector(dst, gmm::sub_interval(n1, n2)));
-//#else
-        //slu_.solve(gmm::sub_vector(dst, gmm::sub_interval(n1, n2)),
-                   //gmm::sub_vector(src, gmm::sub_interval(n1, n2)));
-//#endif
-        //// gmm::copy(gmm::sub_vector(src, gmm::sub_interval(n1, n2)),gmm::sub_vector(dst, gmm::sub_interval(n1, n2)));
-        //gmm::mult(pAv_, gmm::sub_vector(src, gmm::sub_interval(n1+n2, n3)),
-        //gmm::sub_vector(dst, gmm::sub_interval(n1+n2, n3)));
-
-        //sluv_.solve(gmm::sub_vector(dst, gmm::sub_interval(n1+n2+n3, n4)),
-                   //gmm::sub_vector(src, gmm::sub_interval(n1+n2+n3, n4)));
-
-    // gmm::copy(src,dst);
     }
 
 private:
     MATRIX &A_;
+//     MATRIX &A_c_;
     gmm::diagonal_precond<MATRIX> pA_;
     gmm::diagonal_precond<MATRIX> pS_;
     MATRIX &S_;
     bgeot::size_type nb_dof_, nb_dof_x_;
+    int idx_;
+    gmm::csr_matrix<scalar_type> Ku_csr_;
 #ifdef USE_SAMG
     mutable AMG amg_;
 
@@ -143,9 +139,9 @@ namespace gmm {
 
 
 template <class MATRIX>
-momentum_precond<MATRIX>::momentum_precond(MATRIX &A, MATRIX &B)
+momentum_precond<MATRIX>::momentum_precond(MATRIX &A, MATRIX &B, int ind)
 // :nb_dof_(nb_dof), nb_dof_x_(nb_dof_x)
-: A_(A),S_(B)
+: A_(A),S_(B), idx_(ind)
 // :A_(sub_matrix( A ,
 //         gmm::sub_interval(0, nb_dof),
 //         gmm::sub_interval(0, nb_dof) )),
@@ -177,7 +173,13 @@ gmm::MatrixMarket_IO::write("Ku_x",S_);
   pS_.build_with(S_);
  #endif
 
+#ifdef USE_SAMG
+    gmm::copy(A_, Ku_csr_);
+    amg_.convert_matrix(Ku_csr_);
+    amg_.setid(idx_);
+    #else
     slu_.build_with(A_);    slup_.build_with(S_);
+#endif
 }
 
 

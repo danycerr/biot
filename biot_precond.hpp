@@ -29,7 +29,7 @@ class biot_precond
 {
 public:
     // TODO boundary conditions (Dirichlet, Robin) and coefficient (kappa, beta)
-    biot_precond(MATRIX &A,MATRIX &C, int nx1=0, int nx2=0);
+    biot_precond(MATRIX &A,MATRIX &C, int nx1=0, int nx2=0, int ind=0);
 
     getfem::size_type nrows() const {
         return gmm::mat_nrows(A_) + gmm::mat_nrows(S_);
@@ -152,6 +152,7 @@ private:
     gmm::diagonal_precond<MATRIX> pS_;
     MATRIX &S_;
     int n1_x, n2_x;
+    int idx;
 #ifdef USE_SAMG
     mutable AMG amg_;
 
@@ -176,8 +177,8 @@ namespace gmm {
 
 
 template <class MATRIX>
-biot_precond<MATRIX>::biot_precond(MATRIX &A, MATRIX &C, int nx1, int nx2)
-: A_(A),S_(C), n1_x(nx1), n2_x(nx2)
+biot_precond<MATRIX>::biot_precond(MATRIX &A, MATRIX &C, int nx1, int nx2, int ind)
+: A_(A),S_(C), n1_x(nx1), n2_x(nx2), idx(ind)
 #ifdef LUMP_A
 ,pA_(A)
 #endif

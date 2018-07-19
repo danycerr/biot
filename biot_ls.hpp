@@ -59,7 +59,7 @@ typedef gmm::row_matrix<sparse_vector_type> sparse_matrix_type;
 typedef gmm::col_matrix<sparse_vector_type> col_sparse_matrix_type;
 typedef std::vector<scalar_type> plain_vector;
 
-#define LS_TYPE 1
+#define LS_TYPE 0
 // Right hand side. Allows an interpolation for the source term.
 // scalar_type sol_f(const base_node &x) { return 10.; }
 
@@ -69,9 +69,9 @@ struct problem_descriptor_tri{
 	std::string FEM_TYPE_P  =         "FEM_PK(2,1)";
 	std::string INTEGRATION =       "IM_TRIANGLE(6)";
 	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; 
-	std::string datafilename="resu/laplace"; 
+	std::string datafilename="resu/laplace2"; 
 	int noised =0;  // noise on mesh
-	int nsubdiv=160; // subdivision of the sqaured mesh
+	int nsubdiv=32; // subdivision of the sqaured mesh
 	double E=1.e+10;
 	double poisson =0.3;
 	double mu_s = E/( 2 * ( 1 + poisson) ) ;
@@ -230,7 +230,7 @@ class biotls_problem {
 		void print(double time=0,int istep=0,double time_ls=0);
 
 		void print_crop(double time=0,int istep=0,double time_ls=0);
-
+                void print_pattern(int istep=0);
 		void update_ls(double time=0, int iter=0);
 		void update_p_index(double timels=0);
 		void update_u_index(double timels=0);

@@ -14,7 +14,10 @@ AMG::~AMG(void) {
 		
 }
 
-void AMG::solve(gmm::csr_matrix<scalar_type> A_csr, std::vector<scalar_type> U, std::vector<scalar_type> B, int solver_type)
+void AMG::solve(gmm::csr_matrix<scalar_type> A_csr,
+		std::vector<scalar_type> U,
+		std::vector<scalar_type> B,
+		int solver_type)
 {
 	APPL_INT npnt,nsys,matrix;
 	matrix=22; nsys=1;npnt= 0;   //_q_dof + _l_dof;
@@ -24,6 +27,7 @@ void AMG::solve(gmm::csr_matrix<scalar_type> A_csr, std::vector<scalar_type> U, 
 	float told,tnew,tamg;
 	//SAMG configuration
 		
+	std::cout<< "nnu is "<<nnu_<<std::endl; 
 	APPL_INT * iu;
 	if (nsys==1) iu= new APPL_INT[1];
 	else {
@@ -63,14 +67,9 @@ void AMG::solve(gmm::csr_matrix<scalar_type> A_csr, std::vector<scalar_type> U, 
 		// 11  Sparse direct solver (Intel’s pardiso) if MKL has been linked 
 		// 99  Another instance of SAMG 
 		// ================================
-
-
-
 		//==================================================	
 
-
-
-		if (solver_type==2){			
+		if (solver_type==2){
 			int levelx;	SAMG_GET_LEVELX(&levelx); // retreive levelx=number of maximum coarsening levels 
 			std::cout<<"..value of levelx======"<<levelx<<std::endl;
 			levelx=3;SAMG_SET_LEVELX(&levelx);// change levelx=number of maximum coarsening levels 
@@ -122,7 +121,7 @@ void AMG::solve(gmm::csr_matrix<scalar_type> A_csr, std::vector<scalar_type> U, 
 		
 	APPL_INT nsolve    = 2;        // results in scalar approach (current system is scalar)
 	APPL_INT ifirst    = 1;        // first approximation = zero
-	double  eps       = 1.0e-12;   // required (relative) residual reduction
+	double  eps        = 1.0e-12;   // required (relative) residual reduction
 	
 	//ncyc      = 50050;
 	APPL_INT n_default = 20;       // select default settings for secondary parameters
@@ -133,9 +132,19 @@ void AMG::solve(gmm::csr_matrix<scalar_type> A_csr, std::vector<scalar_type> U, 
 	// the expense of slower convergence)
 	APPL_INT iswtch    = 4100+n_default; // complete SAMG run ....
 	if (first_){
+	//Coarsening pattern display
+// 	call samg_set_lastgrid(L) and call samg_set_iogrid(io).
+//      Print sparsity pattern
+//                 int L=4;  int grid=idx_+1;
+//                 SAMG_SET_LASTGRID(&L);
+// 		SAMG_SET_IOGRID(&grid);
+//      End print sparsity
 		first_=false;
 		}
 	else{
+// 	        int L=0;
+// 		 int grid=0;
+//                 SAMG_SET_LASTGRID(&L);
 		iswtch    = 1100+n_default; // complete SAMG run ....
 	}
 	
@@ -161,7 +170,7 @@ void AMG::solve(gmm::csr_matrix<scalar_type> A_csr, std::vector<scalar_type> U, 
 	// 7  Write matrices to disk: level 2 up to the coarsest level. 
 	// 8  Write finest‐level matrix to disk (incl. right hand side etc.). 
 	// 9  Write all matrices to disk. 
-	APPL_INT idump     = 1;       // minimum output during setup
+	APPL_INT idump     = 0;       // minimum output during setup
 	//============================================
 	// iout page 44 Userguide. it controls display outpu. default 2 very verbose 43
 	APPL_INT iout      = -1;        // display residuals per iteration and work statistics
@@ -192,6 +201,7 @@ void AMG::solve(gmm::csr_matrix<scalar_type> A_csr, std::vector<scalar_type> U, 
 			&chktol,&idump,&iout);
 //=======================================================================================
 	std::cout << std::endl<<"*** time to solve the system using SAMG with gmm time: " << gmm::uclock_sec() - time_SAMG << " seconds\n";
+// 	std::cin.get();
 	gmm::resize(sol_vec,nnu_);
 	for(int i = 0 ; i < nnu_ ; i++ ){sol_vec[i]=U[i];}
 	return;
