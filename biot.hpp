@@ -128,8 +128,8 @@ struct problem_descriptor_tetra_3d{
 	std::string INTEGRATION =       "IM_TETRAHEDRON(6)";
 	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; 
 // 	std::string datafilename="resu/gigat_fp2"; 
-	std::string datafilename="resu/laplacedisp_pinch"; 
-// 	std::string datafilename="resu/laplacedisp"; 
+// 	std::string datafilename="resu/laplacedisp_pinch"; 
+	std::string datafilename="resu/lk_disp"; 
 	int nsubdiv=128; // subdivision of the sqaured mesh
 	double E=1.e+10;
 	double poisson =0.3;
@@ -160,12 +160,12 @@ class biot_problem {
 		problem_descriptor_tetra_3d p_des;
 		// problem_descriptor_tri p_des;
 		enum { DIRICHLET_BOUNDARY_NUM = 10, NEUMANN_BOUNDARY_NUM = 11}; // descriptor for bcs flag
-		enum { BOTTOM = 200, TOP = 100 , LEFT = 300, RIGHT =400, LEFTX = 500, RIGHTX =600}; // descriptor for zones
+		enum { BOTTOM = 200, TOP = 100, TOP_P = 110 , LEFT = 300, RIGHT =400,RIGHTP =440, LEFTX = 500, RIGHTX =600}; // descriptor for zones
 		size_type N_;             /// dimension of the problem
 
 		///  workspace configuration parameters---------------------
 		std::vector<scalar_type> tau_, vmu_, bm_ ,lambda_, beta_,
-			alpha_, permeability_, force_,penalty_;
+			alpha_, permeability_, force_,overpres_,penalty_;
 		// ---------------------------------------------------------
 		sparse_matrix_type K;                                /// iteration matrix
 		std::vector<scalar_type> U, U_old, P,                /// diplacement, disp old, pressure
@@ -178,6 +178,7 @@ class biot_problem {
 		std::vector<scalar_type> Er_; // young ratio
 		std::vector<scalar_type> Kr_print_; // permeability ratio
 		std::vector<scalar_type> Er_print_; // young ratio
+		int iter_;
 		/// Methods
 		void gen_bc(void);                                /// create zones for boundary conditions
 		void configure_workspace                          /// configure the workspace add constants
@@ -194,10 +195,11 @@ class biot_problem {
 		void solve_fix_stress(double dt, int max_iter);   /// solves the system with classic fixed stress approach
 		void init(void);                                  /// initial configuration for the problem 
 		void print(int time=0);
+		inline void set_iter(int iteration){iter_=iteration;} //iteration numeber timestep
 		inline getfem::mesh_fem& get_pressure_fem(){return mf_p;}
                 inline std::vector<scalar_type>& get_pressure(){return P;}
 		biot_problem(void): mim(mesh), mf_u(mesh), mf_rhs(mesh), mf_p(mesh), mf_coef(mesh)
-				    ,tau_(1), vmu_(1), bm_(1), lambda_(1),alpha_(1), permeability_(1), force_(1), beta_(1),penalty_(1)
+				    ,tau_(1), vmu_(1), bm_(1), lambda_(1),alpha_(1), permeability_(1), force_(1), overpres_(1), beta_(1),penalty_(1)
 	{}
 };
 

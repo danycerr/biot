@@ -26,10 +26,11 @@ void temperature_problem::init(void) {
 // 	 getfem::import_mesh("gmsh:mesh/pichout/patch_6.msh",mesh);
 // 	=============================================
 	if(1){
-	mesh.read_from_file("mesh/pinchout3/labeled_mesh_fp2");
+// 	mesh.read_from_file("mesh/pinchout3/labeled_mesh_fp2");
 // 	mesh.read_from_file("mesh/labeled_mesh_fp2");// layar cake
 // 	mesh.read_from_file("mesh/pichout/labeled_mesh_fp2");
 // 	mesh.read_from_file("mesh/pinchout2/labeled_mesh_fp2");
+	getfem::import_mesh("gmsh:mesh/layer_cake/lk_fs.msh",mesh);labeled_domain=1;
         labeled_domain=1;
 	}
 	//refinement
@@ -130,8 +131,8 @@ void temperature_problem::configure_workspace(getfem::ga_workspace & workspace,d
 	tau_[0] = dt; // dt into  the workspace
 	workspace.add_fixed_size_constant("tau", tau_);
 
-	vmu_[0] = p_des.mu_s;
-	workspace.add_fixed_size_constant("mu", vmu_);
+	vmu_[0] = p_des.diff;
+	workspace.add_fixed_size_constant("diffusivity", vmu_);
 	//---------------------------------------------------------
 	bm_[0] =  p_des.biot_modulus; //biot modoulus
 	workspace.add_fixed_size_constant("bm", bm_);
@@ -185,8 +186,8 @@ void temperature_problem::assembly(double dt, getfem::mesh_fem& mf_pressure, std
 	workspace.add_fem_variable("p", mf_u, gmm::sub_interval(0, nb_dof_u), p);
 	// ------------------ expressions --------------------------
 // 	workspace.add_expression("tau*Kr*permeability*Grad_T.Grad_Test_T", mim);
-	workspace.add_expression("tau*1*Grad_T.Grad_Test_T", mim);
-	workspace.add_expression( "T.Test_T + tau*Grad_p.Grad_T*Test_T", mim);
+	workspace.add_expression("tau*Er*diffusivity*Grad_T.Grad_Test_T", mim);
+	workspace.add_expression( "T.Test_T + tau*Kr*permeability*Grad_p.Grad_T*Test_T", mim);
 	workspace.add_expression("tau*penalty*T*Test_T", mim, TOP);
 	workspace.assembly(2);
 	gmm::copy(workspace.assembled_matrix(), K);
@@ -273,9 +274,10 @@ void temperature_problem::gen_coefficient(){ // creating a coefficient
   gmm::resize(Kr_print_, mf_coef.nb_dof()); gmm::fill(Kr_print_,1);    // rhs monolithic problem
   gmm::resize(Er_print_, mf_coef.nb_dof()); gmm::fill(Er_print_,1);    // rhs monolithic problem
   std::vector<int> material; 
-  material.push_back(1);material.push_back(2);material.push_back(3);
-  std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+2);k.push_back(1.e-0);
-  std::vector<double> E; E.push_back(1);E.push_back(2.e+0);E.push_back(1.e+0);
+//   material.push_back(1);material.push_back(2);material.push_back(3);
+  material.push_back(1);material.push_back(5);material.push_back(3);
+  std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+3);k.push_back(1.e-2);
+  std::vector<double> E; E.push_back(1.e+0);E.push_back(2.e+0);E.push_back(1.e+1);
   
 //   std::vector<double> k; k.push_back(1);k.push_back(1.e+0);
 //   std::vector<double> E; E.push_back(1);E.push_back(1.e+0);

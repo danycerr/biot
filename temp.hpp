@@ -128,9 +128,11 @@ struct problem_T_descriptor_tetra_3d{
 	std::string INTEGRATION =       "IM_TETRAHEDRON(6)";
 	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; 
 // 	std::string datafilename="resu/cerbero_fp"; 
-	std::string datafilename="resu/laplacetemp_pinch"; 
+// 	std::string datafilename="resu/laplacetemp_pinch"; 
+	std::string datafilename="resu/lk_temp"; 
 	int nsubdiv=6; // subdivision of the sqaured mesh
-	double E=1.e+10;
+	double diff=1.e+10;
+	double E=1.e-15;
 	double poisson =0.3;
 	double mu_s = E/( 2 * ( 1 + poisson) ) ;
 	double lambda_l= E*poisson/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;

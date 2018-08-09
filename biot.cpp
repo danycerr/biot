@@ -23,21 +23,22 @@ void biot_problem::init(void) {
 //         getfem::import_mesh("gmsh:mesh/patch_7light.msh",mesh);
 //         getfem::import_mesh("gmsh:mesh/layer_cake/bounding.msh",mesh);
 //         getfem::import_mesh("gmsh:mesh/patch_6fp2.msh",mesh);
+        getfem::import_mesh("gmsh:mesh/layer_cake/lk_fs.msh",mesh);labeled_domain=1;
 // 	getfem::import_mesh("gmsh:mesh/pichout/patch_6.msh",mesh);
 // 	getfem::import_mesh("gmsh:mesh/pinchout2/patch_6e.msh",mesh);
 // 	getfem::import_mesh("gmsh:mesh/pinchout3/patch_7.msh",mesh);
 // 	=============================================
-	if(1){
-	mesh.read_from_file("mesh/pinchout3/labeled_mesh_fp2"); //good pinchout
-// 	mesh.read_from_file("mesh/pinchout2/labeled_mesh_fp2");
-// 	mesh.read_from_file("mesh/pichout/labeled_mesh_fp2");
-// 	mesh.read_from_file("mesh/labeled_mesh_fp2");// layar cake
-        labeled_domain=1;
-	}
+// 	if(1){
+// 	mesh.read_from_file("mesh/pinchout3/labeled_mesh_fp2"); //good pinchout
+// // 	mesh.read_from_file("mesh/pinchout2/labeled_mesh_fp2");
+// // 	mesh.read_from_file("mesh/pichout/labeled_mesh_fp2");
+// // 	mesh.read_from_file("mesh/labeled_mesh_fp2");// layar cake
+//         labeled_domain=1;
+// 	}
 	//refinement
 // 	{
 // 		// dal::bit_vector b; b.add(0);
-// 		mesh.Bank_refin(mesh.convex_index());
+// 		mesh.Bank_refine(mesh.convex_index());
 // 	}
 
 
@@ -113,16 +114,23 @@ void biot_problem::gen_bc(){
 		un /= gmm::vect_norm2(un);
 
 		if ((un[N_-1] ) > 1.0E-1  && (mesh.points_of_convex(i.cv())[0])[2]>3500. ) { // new Neumann face
-			mesh.region(TOP).add(i.cv(), i.f());
+			if ((mesh.points_of_convex(i.cv())[0])[0]>5000. )
+			  mesh.region(TOP).add(i.cv(), i.f());
+			else
+			  mesh.region(TOP_P).add(i.cv(), i.f());
 		} else if ((un[N_-1] ) < -9.0E-1) {  //the bottom surface is the most sharp
 			mesh.region(BOTTOM).add(i.cv(), i.f());
 		} else if ((un[N_-2] ) < -1.0E-1) {
 			mesh.region(LEFT).add(i.cv(), i.f());
 		} else if ((un[N_-2] ) > 1.0E-1) {
-			mesh.region(RIGHT).add(i.cv(), i.f());
+		   mesh.region(RIGHT).add(i.cv(), i.f());
 		}
 		else if(N_=3){
 			if ((un[N_-3] ) < -1.0E-1) {
+			  if ((mesh.points_of_convex(i.cv())[0])[2]>2000. 
+		               && 
+		             (mesh.points_of_convex(i.cv())[0])[2]<2300.)
+			mesh.region(RIGHTP).add(i.cv(), i.f());
 				mesh.region(LEFTX).add(i.cv(), i.f());
 			} else if ((un[N_-3] ) > 1.0E-1) {
 				mesh.region(RIGHTX).add(i.cv(), i.f());
@@ -169,10 +177,23 @@ void biot_problem::configure_workspace(getfem::ga_workspace & workspace,double d
 
 	penalty_[0] = 1.e+12; // 1---10
 	workspace.add_fixed_size_constant("penalty", penalty_);
-
-
-  workspace.add_fem_constant("Kr", mf_coef, Kr_);
-  workspace.add_fem_constant("Er", mf_coef, Er_);
+//         std::vector<scalar_type> ice_force(1);ice_force[0] = 1.e+0;
+	if(iter_<10)       force_[0]= 0.;
+	else if(iter_<20)  force_[0]= (iter_ -10.)/(20.-10.)* 1000*9.81*1700;
+	else if(iter_<30)  force_[0]= 1000*9.81*1700;
+	else if(iter_<35)  force_[0]= (iter_ -35.)/(30.-35.)*1000*9.81*1700;
+	else               force_[0]= 0.;
+	workspace.add_fixed_size_constant("topload",force_);
+	
+	if(iter_<10)       overpres_[0]= 0.;
+	else if(iter_<20)  overpres_[0]= (iter_ -10.)/(20.-10.)* 1000*9.81*4000;
+	else if(iter_<30)  overpres_[0]= 1000*9.81*4000;
+	else if(iter_<35)  overpres_[0]= (iter_ -35.)/(30.-35.)*1000*9.81*4000;
+	else               overpres_[0]= 0.;
+	workspace.add_fixed_size_constant("overpres",overpres_);
+        std::cout<<"ssssssss iter is " <<iter_<< "  and force is "<<force_[0]<<std::endl;
+	workspace.add_fem_constant("Kr", mf_coef, Kr_);
+        workspace.add_fem_constant("Er", mf_coef, Er_);
 	// workspace.add_fem_constant("f", mf_data, F);
 }
 // 
@@ -327,7 +348,21 @@ void biot_problem::assembly_p(double dt){
 
 	//Matrix term
 	workspace.add_expression("penalty/element_size*p*Test_p", mim, TOP);
-	workspace.add_expression("-permeability*Kr*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, TOP); 	
+	workspace.add_expression("-permeability*Kr*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, TOP); 
+	workspace.add_expression("penalty/element_size*p*Test_p", mim, TOP_P);
+	workspace.add_expression("-permeability*Kr*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, TOP_P); 
+	
+	
+	
+	workspace.add_expression("penalty*p*Test_p", mim, RIGHTP);
+// 	workspace.add_expression("-permeability*Kr*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, RIGHTP); 	
+// 	
+	
+	
+	
+	
+	
+	
 // 	workspace.add_expression("penalty/element_size*p*Test_p", mim, LEFT);
 // 	workspace.add_expression("-permeability*Kr*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, LEFT); 	
 // 	workspace.add_expression("penalty/element_size*p*Test_p", mim, RIGHT);
@@ -344,6 +379,8 @@ void biot_problem::assembly_p(double dt){
 	workspace.clear_expressions();
 	//rhs term
 	workspace.add_expression("0*penalty*p*Test_p", mim, TOP); 
+	workspace.add_expression("0.1*overpres*penalty*Test_p", mim, RIGHTP); 
+// 	workspace.add_expression("0.4*1000*9.81*4000*penalty*Test_p", mim, TOP_P); 
 	workspace.assembly(1);
 	workspace.clear_expressions();
 	return;}
@@ -353,7 +390,7 @@ void biot_problem::assembly_p(double dt){
 	// -------------------------------------------------
 	// Assembling displacement matrix for fixed stress
 	// -------------------------------------------------
-	void biot_problem::assembly_u(double dt){
+void biot_problem::assembly_u(double dt){
 		std::cout<<"biot_assembler::assembly_u(double dt)" <<std::endl;
 
 		getfem::size_type nb_dof_u = mf_u.nb_dof();
@@ -388,12 +425,19 @@ void biot_problem::assembly_p(double dt){
 		// ----- momentum equation
 		workspace.add_expression("2*mu*Er*Sym(Grad_u):Grad_Test_u + lambda*Er*Div_u*Div_Test_u", mim); // stress tensor 
 		workspace.add_expression("penalty*u.Test_u" , mim, BOTTOM); //neumann disp
+		workspace.add_expression("penalty*u(2).Test_u(2)" , mim, LEFT); //neumann disp
+		workspace.add_expression("penalty*u(2).Test_u(2)" , mim, RIGHT); //neumann disp
+		workspace.add_expression("penalty*u(1).Test_u(1)" , mim, LEFTX); //neumann disp
+		workspace.add_expression("penalty*u(1).Test_u(1)" , mim, RIGHTX); //neumann disp
+// 		workspace.add_expression("penalty*u.Test_u" , mim, TOP_P); //Height og the ice disp
 		workspace.assembly(2);
 		gmm::copy(workspace.assembled_matrix(), Ku);
 		workspace.clear_expressions();
 		if(N_==2) workspace.add_expression("(2200*0.8 + 1000*0.2 -1000 )*[0,-1].Test_u", mim);
 		if(N_==3) workspace.add_expression("(2200*0.8 + 1000*0.2 -1000 )*[0,0,-1].Test_u", mim);
 		workspace.add_expression("alpha*p*Div_Test_u ", mim);
+		if(N_==3)workspace.add_expression("topload*[0,0,-1].Test_u" , mim, TOP_P); //Height og the ice disp
+		if(N_==3)workspace.add_expression("overpres*[1,0,0].Test_u" , mim, RIGHTP); //Height og the ice disp
 		workspace.assembly(1);
 		workspace.clear_expressions();
 		// std::cout<< Bu<< std::endl; 
@@ -505,12 +549,12 @@ void biot_problem::solve_fix_stress(double dt, int max_iter){
 			iter.set_maxiter(1000); // maximum number of iterations
 			// gmm::MatrixMarket_load("km",Ku);
 			// gmm::clear(U);
-// 			gmm::gmres(Ku, U, Bu, PRu, restart, iter);
+			gmm::gmres(Ku, U, Bu, PRu, restart, iter);
 		        
 	                scalar_type cond;
 // 			amg_.solve(ku_csr, U , Bu , 1);
 // 			gmm::copy(amg_.getsol(), U);
-			gmm::SuperLU_solve(Ku, U , Bu, cond);
+// 			gmm::SuperLU_solve(Ku, U , Bu, cond);
 	std::cout<<"condition number "<< cond<< std::endl;
 		}
 		//--------------------------------------------------------------
@@ -574,18 +618,21 @@ void biot_problem::gen_coefficient(){ // creating a coefficient
   gmm::resize(Kr_print_, mf_coef.nb_dof()); gmm::fill(Kr_print_,1);    // rhs monolithic problem
   gmm::resize(Er_print_, mf_coef.nb_dof()); gmm::fill(Er_print_,1);    // rhs monolithic problem
   std::vector<int> material; 
-  material.push_back(1);material.push_back(2);material.push_back(3);
-  std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+2);k.push_back(1.e-0);
-  std::vector<double> E; E.push_back(1);E.push_back(2.e+0);E.push_back(1.e+0);
+  material.push_back(1);material.push_back(5);material.push_back(3);
+  std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+3);k.push_back(1.e-2);
+  std::vector<double> E; E.push_back(1.e+0);E.push_back(2.e+0);E.push_back(1.e+1);
   
 //   std::vector<double> k; k.push_back(1);k.push_back(1.e+0);
 //   std::vector<double> E; E.push_back(1);E.push_back(1.e+0);
-  for (int imat=0; imat< material.size();imat++){
+  for (int imat=0; imat< material.size();imat++)
+//   int imat=2;
+  {
+   
     dal::bit_vector bv_cv = mesh.region(material[imat]).index();
     size_type i_cv = 0;
     for (i_cv << bv_cv; i_cv != size_type(-1); i_cv << bv_cv) {
-	  //   std::cout<<"Material  "<<material[imat]<<std::endl;
 	    getfem::mesh_fem::ind_dof_ct idofs = mf_coef.ind_basic_dof_of_element(i_cv);
+// 	    std::cout<<"Material  "<<material[imat] << " with "<< idofs.size()<<std::endl;
       for (size_type i=0; i < idofs.size(); ++i) {
         Kr_[idofs[i]]=k[imat]; Kr_print_[(int) i_cv]=k[imat];
         Er_[idofs[i]]=E[imat];// Er_print_[i_cv]=E[imat];

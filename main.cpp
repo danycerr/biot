@@ -2,9 +2,9 @@
 /*  main program.                                                         */
 /**************************************************************************/
 
-// #define BIOT
+#define BIOT
 
-#define BIOT_LS
+// #define BIOT_LS
 
 #ifdef BIOT_LS
 #include "biot_ls.hpp"
@@ -12,7 +12,7 @@
 #ifdef BIOT
 #include "biot.hpp"
 #endif
-//  #include "temp.hpp"
+ #include "temp.hpp"
 
 
 int main(int argc, char *argv[]) {
@@ -29,14 +29,14 @@ int main(int argc, char *argv[]) {
 #endif
 		 p.init();
 
-//                 temperature_problem t;
-// 		t.init();
+                temperature_problem t;
+		t.init();
 		// double dt=1e-3;
-		double dt=1e+8;
+		double dt=1e+10;
 		// p.build_fix_stress_preconditioner(dt,0);
 		//    p.assembly_p(dt,0); 
 		//    p.assembly_u(dt);
-		int n_step=1;int erosion_limit=20; // usually 80 steps
+		int n_step=60;int erosion_limit=20; // usually 80 steps
 		double time=0*dt;
 		double time_ls  =0;
 		for(int istep=0; istep<n_step; istep++)
@@ -67,9 +67,10 @@ int main(int argc, char *argv[]) {
 // //==================================================//
 #ifdef BIOT
 				{ // classic biot
-// 				          t.assembly(dt, p.get_pressure_fem(), p.get_pressure());
-// 				          t.solve();
-// 					  t.print(istep);
+				          t.assembly(dt, p.get_pressure_fem(), p.get_pressure());
+				          t.solve();
+					  t.print(istep);
+				          p.set_iter(istep);
 					  if(istep!=0) p.solve_fix_stress(dt, 100);
 					  else  p.solve_fix_stress(dt, 5);
 					 //  p.assembly(dt);

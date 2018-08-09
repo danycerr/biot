@@ -1,0 +1,897 @@
+biot_problem::init 
+Level 3 Warning in getfem_import.cc, line 234:   All regions must have different number!
+biot_problem::gen_bc()
+Generating materials coefficients
+Dof num  406744
+number of dof 227484 and 75828
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 0  and force is 0
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 0  and force is 0
+Build class AMG for momentum
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   227484
+*** parameters SAMG matrix   227484
+ AMG::convert_matrix:: end matrix conversion 
+End samg conversion
+Build class AMG for Pressure
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   75828
+*** parameters SAMG matrix   75828
+ AMG::convert_matrix:: end matrix conversion 
+End samg conversion
+[1;34m***** iteration 1 norm p 1 norm u 1
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 0  and force is 0
+ [1;32m Start solving pressure
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 0  and force is 0
+ [1;31m Start solving momentum balance
+ iter   0 residual            1
+ iter  50 residual     0.205483
+ iter 100 residual     0.039216
+ iter 150 residual    0.0135694
+ iter 200 residual   0.00369615
+ iter 250 residual   0.00130203
+ iter 300 residual  0.000357754
+ iter 350 residual  0.000119915
+ iter 400 residual  3.37991e-05
+ iter 450 residual  1.06902e-05
+ iter 500 residual  3.21326e-06
+ iter 550 residual  1.05135e-06
+ iter 600 residual  3.43974e-07
+ iter 650 residual  1.14238e-07
+ iter 700 residual  3.81035e-08
+ iter 750 residual  1.24011e-08
+ iter 763 residual  9.87922e-09
+condition number 8.8537e-316
+[1;34m***** iteration 2 norm p 1 norm u 10.3827
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 0  and force is 0
+ [1;32m Start solving pressure
+ iter   0 residual            1
+ iter  50 residual   5.7539e-05
+ iter 100 residual  3.88241e-05
+ iter 150 residual   3.0433e-05
+ iter 200 residual    1.628e-05
+ iter 250 residual  1.03245e-05
+ iter 300 residual  5.45819e-06
+ iter 350 residual  2.88286e-06
+ iter 400 residual  1.83341e-06
+ iter 450 residual  1.26906e-06
+ iter 500 residual  7.39871e-07
+ iter 550 residual   4.8868e-07
+ iter 600 residual  2.56736e-07
+ iter 650 residual  1.51155e-07
+ iter 700 residual  5.81575e-08
+ iter 750 residual  2.50673e-08
+ iter 800 residual  1.69657e-08
+ iter 850 residual  1.18658e-08
+ iter 889 residual  9.91694e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 0  and force is 0
+ [1;31m Start solving momentum balance
+ iter   0 residual    0.0154771
+ iter  50 residual    0.0016583
+ iter 100 residual  0.000328732
+ iter 150 residual  9.41818e-05
+ iter 200 residual  2.47416e-05
+ iter 250 residual   8.4785e-06
+ iter 300 residual  2.29055e-06
+ iter 350 residual  7.28684e-07
+ iter 400 residual  2.17988e-07
+ iter 450 residual  7.18599e-08
+ iter 500 residual  2.27344e-08
+ iter 542 residual  9.95155e-09
+condition number 8.8537e-316
+[1;34m***** iteration 3 norm p 1.74254e+24 norm u 0.00335588
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 0  and force is 0
+ [1;32m Start solving pressure
+ iter   0 residual     0.186709
+ iter  50 residual  2.59523e-06
+ iter 100 residual   7.1189e-07
+ iter 150 residual  5.03536e-07
+ iter 200 residual  3.16299e-07
+ iter 250 residual  2.57953e-07
+ iter 300 residual  1.76176e-07
+ iter 350 residual  1.36486e-07
+ iter 400 residual  9.37499e-08
+ iter 450 residual  6.79361e-08
+ iter 500 residual   3.9732e-08
+ iter 550 residual  2.52008e-08
+ iter 600 residual  1.16249e-08
+ iter 611 residual  9.87382e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 0  and force is 0
+ [1;31m Start solving momentum balance
+ iter   0 residual   0.00108359
+ iter  50 residual  0.000194528
+ iter 100 residual  3.87836e-05
+ iter 150 residual  6.61828e-06
+ iter 200 residual  2.53621e-06
+ iter 250 residual  6.16948e-07
+ iter 300 residual  2.37485e-07
+ iter 350 residual  6.35725e-08
+ iter 400 residual  2.28107e-08
+ iter 437 residual  9.88011e-09
+condition number 8.8537e-316
+[1;34m***** iteration 4 norm p 0.202341 norm u 0.000313981
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 0  and force is 0
+ [1;32m Start solving pressure
+ iter   0 residual     0.041139
+ iter  50 residual  3.87314e-07
+ iter 100 residual  2.81548e-08
+ iter 150 residual  1.10584e-08
+ iter 160 residual  9.94112e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 0  and force is 0
+ [1;31m Start solving momentum balance
+ iter   0 residual  0.000159503
+ iter  50 residual  3.96804e-05
+ iter 100 residual  7.44895e-06
+ iter 150 residual  1.36362e-06
+ iter 200 residual  3.56321e-07
+ iter 250 residual  1.01821e-07
+ iter 300 residual  3.58042e-08
+ iter 350 residual  1.14196e-08
+ iter 356 residual  9.98082e-09
+condition number 8.8537e-316
+[1;34m***** iteration 5 norm p 0.0381625 norm u 5.89831e-05
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 0  and force is 0
+ [1;32m Start solving pressure
+ iter   0 residual   0.00937769
+ iter  50 residual   5.3402e-08
+ iter  72 residual  9.52684e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 0  and force is 0
+ [1;31m Start solving momentum balance
+ iter   0 residual  3.41971e-05
+ iter  50 residual  8.88338e-06
+ iter 100 residual   2.0816e-06
+ iter 150 residual  3.50301e-07
+ iter 200 residual  1.12034e-07
+ iter 250 residual  3.15807e-08
+ iter 300 residual  1.14304e-08
+ iter 308 residual  9.96947e-09
+condition number 8.8537e-316
+[1;34m***** last iteration 5 norm p 0.00842077 norm u 1.29769e-05
+AMG deleted
+AMG deleted
+biot_problem::print  resu/lk_ovpu_ns_trimat_fine.0.vtk
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 1  and force is 0
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 1  and force is 0
+Build class AMG for momentum
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   227484
+*** parameters SAMG matrix   227484
+ AMG::convert_matrix:: end matrix conversion 
+End samg conversion
+Build class AMG for Pressure
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   75828
+*** parameters SAMG matrix   75828
+ AMG::convert_matrix:: end matrix conversion 
+End samg conversion
+[1;34m***** iteration 1 norm p 1 norm u 1
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 1  and force is 0
+ [1;32m Start solving pressure
+ iter   0 residual      22.0693
+ iter  50 residual   0.00183266
+ iter 100 residual    0.0012535
+ iter 150 residual  0.000966586
+ iter 200 residual  0.000558546
+ iter 250 residual  0.000339509
+ iter 300 residual  0.000155002
+ iter 350 residual  7.71307e-05
+ iter 400 residual  4.88604e-05
+ iter 450 residual   3.3346e-05
+ iter 500 residual  2.13384e-05
+ iter 550 residual  1.56057e-05
+ iter 600 residual  8.41356e-06
+ iter 650 residual  4.53723e-06
+ iter 700 residual  2.79317e-06
+ iter 750 residual  1.88667e-06
+ iter 800 residual  1.31197e-06
+ iter 850 residual  9.57646e-07
+ iter 900 residual  6.23083e-07
+ iter 950 residual  4.04619e-07
+ iter 1000 residual  2.68435e-07
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 1  and force is 0
+ [1;31m Start solving momentum balance
+ iter   0 residual    0.0275316
+ iter  50 residual   0.00265193
+ iter 100 residual  0.000590101
+ iter 150 residual  0.000142006
+ iter 200 residual  4.35278e-05
+ iter 250 residual  1.32212e-05
+ iter 300 residual  4.25399e-06
+ iter 350 residual  1.39223e-06
+ iter 400 residual  4.72475e-07
+ iter 450 residual  1.63302e-07
+ iter 500 residual  5.63198e-08
+ iter 550 residual   1.9749e-08
+ iter 586 residual  9.75295e-09
+condition number 8.8537e-316
+[1;34m***** iteration 2 norm p 561792 norm u 10.4055
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 1  and force is 0
+ [1;32m Start solving pressure
+ iter   0 residual      1.01691
+ iter  50 residual  5.78063e-05
+ iter 100 residual   3.9086e-05
+ iter 150 residual  3.06435e-05
+ iter 200 residual  1.66508e-05
+ iter 250 residual  1.06072e-05
+ iter 300 residual  4.96896e-06
+ iter 350 residual  2.63864e-06
+ iter 400 residual  1.83076e-06
+ iter 450 residual  1.38354e-06
+ iter 500 residual  8.99869e-07
+ iter 550 residual     6.19e-07
+ iter 600 residual  4.02508e-07
+ iter 650 residual  2.81065e-07
+ iter 700 residual  1.67253e-07
+ iter 750 residual  1.09482e-07
+ iter 800 residual  6.92282e-08
+ iter 850 residual  4.55937e-08
+ iter 900 residual  2.87081e-08
+ iter 950 residual  1.82709e-08
+ iter 1000 residual  1.14408e-08
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 1  and force is 0
+ [1;31m Start solving momentum balance
+ iter   0 residual    0.0148047
+ iter  50 residual   0.00162477
+ iter 100 residual    0.0003221
+ iter 150 residual  9.39794e-05
+ iter 200 residual  2.44712e-05
+ iter 250 residual  8.38373e-06
+ iter 300 residual  2.27185e-06
+ iter 350 residual  7.25935e-07
+ iter 400 residual  2.17335e-07
+ iter 450 residual  7.27762e-08
+ iter 500 residual  2.32006e-08
+ iter 543 residual  9.91309e-09
+condition number 8.8537e-316
+[1;34m***** iteration 3 norm p 1.79626 norm u 0.00328915
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 1  and force is 0
+ [1;32m Start solving pressure
+ iter   0 residual     0.189336
+ iter  50 residual  2.62303e-06
+ iter 100 residual  7.09104e-07
+ iter 150 residual  4.97144e-07
+ iter 200 residual  3.05426e-07
+ iter 250 residual  2.49879e-07
+ iter 300 residual  1.72367e-07
+ iter 350 residual  1.32681e-07
+ iter 400 residual  8.38679e-08
+ iter 450 residual   5.7764e-08
+ iter 500 residual  3.13276e-08
+ iter 550 residual  1.68953e-08
+ iter 596 residual  9.67379e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 1  and force is 0
+ [1;31m Start solving momentum balance
+ iter   0 residual   0.00104847
+ iter  50 residual  0.000192259
+ iter 100 residual  3.85377e-05
+ iter 150 residual  6.57385e-06
+ iter 200 residual  2.52434e-06
+ iter 250 residual  6.13147e-07
+ iter 300 residual  2.35744e-07
+ iter 350 residual  6.28846e-08
+ iter 400 residual  2.25258e-08
+ iter 437 residual  9.78237e-09
+condition number 8.8537e-316
+[1;34m***** iteration 4 norm p 0.233874 norm u 0.000310176
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 1  and force is 0
+ [1;32m Start solving pressure
+ iter   0 residual    0.0417045
+ iter  50 residual  3.92498e-07
+ iter 100 residual  2.82308e-08
+ iter 149 residual  9.95371e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 1  and force is 0
+ [1;31m Start solving momentum balance
+ iter   0 residual  0.000156609
+ iter  50 residual  3.93815e-05
+ iter 100 residual  7.48801e-06
+ iter 150 residual  1.35765e-06
+ iter 200 residual  3.64792e-07
+ iter 250 residual  1.05193e-07
+ iter 300 residual  3.71542e-08
+ iter 350 residual  1.17557e-08
+ iter 358 residual   9.9347e-09
+condition number 8.8537e-316
+[1;34m***** iteration 5 norm p 0.0432989 norm u 5.85895e-05
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 1  and force is 0
+ [1;32m Start solving pressure
+ iter   0 residual   0.00950727
+ iter  50 residual  5.32768e-08
+ iter  71 residual  9.49217e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 1  and force is 0
+ [1;31m Start solving momentum balance
+ iter   0 residual  3.37247e-05
+ iter  50 residual  8.81914e-06
+ iter 100 residual  2.06694e-06
+ iter 150 residual  3.49443e-07
+ iter 200 residual  1.11088e-07
+ iter 250 residual  3.12734e-08
+ iter 300 residual   1.1291e-08
+ iter 308 residual  9.87652e-09
+condition number 8.8537e-316
+[1;34m***** iteration 6 norm p 0.00952612 norm u 1.28955e-05
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 1  and force is 0
+ [1;32m Start solving pressure
+ iter   0 residual   0.00218518
+ iter  49 residual   9.4946e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 1  and force is 0
+ [1;31m Start solving momentum balance
+ iter   0 residual  7.54467e-06
+ iter  50 residual  2.02052e-06
+ iter 100 residual  4.88984e-07
+ iter 150 residual  8.33734e-08
+ iter 200 residual  2.64323e-08
+ iter 239 residual  9.54845e-09
+condition number 8.8537e-316
+[1;34m***** iteration 7 norm p 0.00216994 norm u 2.94987e-06
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 1  and force is 0
+ [1;32m Start solving pressure
+ iter   0 residual  0.000503392
+ iter  43 residual  9.82425e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 1  and force is 0
+ [1;31m Start solving momentum balance
+ iter   0 residual  1.70208e-06
+ iter  50 residual   4.6975e-07
+ iter 100 residual  1.13079e-07
+ iter 150 residual  1.94532e-08
+ iter 185 residual  9.73938e-09
+condition number 8.8537e-316
+[1;34m***** iteration 8 norm p 0.00049843 norm u 6.80982e-07
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 1  and force is 0
+ [1;32m Start solving pressure
+ iter   0 residual  0.000116061
+ iter  34 residual  8.67988e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 1  and force is 0
+ [1;31m Start solving momentum balance
+ iter   0 residual  3.86615e-07
+ iter  50 residual  1.12686e-07
+ iter 100 residual  2.67031e-08
+ iter 128 residual  9.79985e-09
+condition number 8.8537e-316
+[1;34m***** iteration 9 norm p 0.000114777 norm u 1.61594e-07
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 1  and force is 0
+ [1;32m Start solving pressure
+ iter   0 residual  2.67659e-05
+ iter  24 residual   8.5012e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 1  and force is 0
+ [1;31m Start solving momentum balance
+ iter   0 residual  8.84796e-08
+ iter  50 residual  2.88562e-08
+ iter  95 residual  9.64338e-09
+condition number 8.8537e-316
+[1;34m***** iteration 10 norm p 2.64488e-05 norm u 4.16994e-08
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 1  and force is 0
+ [1;32m Start solving pressure
+ iter   0 residual  6.17105e-06
+ iter  13 residual  9.57066e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 1  and force is 0
+ [1;31m Start solving momentum balance
+ iter   0 residual  2.51035e-08
+ iter  25 residual  9.83741e-09
+condition number 8.8537e-316
+[1;34m***** iteration 11 norm p 6.08786e-06 norm u 1.31635e-09
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 1  and force is 0
+ [1;32m Start solving pressure
+ iter   0 residual  1.44181e-06
+ iter   9 residual  9.72571e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 1  and force is 0
+ [1;31m Start solving momentum balance
+ iter   0 residual  1.88406e-08
+ iter  18 residual  9.99571e-09
+condition number 8.8537e-316
+[1;34m***** iteration 12 norm p 1.42309e-06 norm u 1.23973e-09
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 1  and force is 0
+ [1;32m Start solving pressure
+ iter   0 residual  3.31685e-07
+ iter   7 residual  9.00762e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 1  and force is 0
+ [1;31m Start solving momentum balance
+ iter   0 residual  1.74415e-08
+ iter  11 residual  9.96989e-09
+condition number 8.8537e-316
+[1;34m***** last iteration 12 norm p 3.28869e-07 norm u 2.69051e-10
+AMG deleted
+AMG deleted
+biot_problem::print  resu/lk_ovpu_ns_trimat_fine.1.vtk
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 2  and force is 0
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 2  and force is 0
+Build class AMG for momentum
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   227484
+*** parameters SAMG matrix   227484
+ AMG::convert_matrix:: end matrix conversion 
+End samg conversion
+Build class AMG for Pressure
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   75828
+*** parameters SAMG matrix   75828
+ AMG::convert_matrix:: end matrix conversion 
+End samg conversion
+[1;34m***** iteration 1 norm p 1 norm u 1
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 2  and force is 0
+ [1;32m Start solving pressure
+ iter   0 residual      13.3787
+ iter  50 residual  0.000642547
+ iter 100 residual  0.000426689
+ iter 150 residual  0.000335535
+ iter 200 residual  0.000177395
+ iter 250 residual   0.00011439
+ iter 300 residual  5.02545e-05
+ iter 350 residual  2.38114e-05
+ iter 400 residual  1.24342e-05
+ iter 450 residual  8.30326e-06
+ iter 500 residual  5.66577e-06
+ iter 550 residual  4.00365e-06
+ iter 600 residual  2.58008e-06
+ iter 650 residual  1.80595e-06
+ iter 700 residual  1.12239e-06
+ iter 750 residual  7.56122e-07
+ iter 800 residual  3.44354e-07
+ iter 850 residual  1.97444e-07
+ iter 900 residual  1.34341e-07
+ iter 950 residual  8.62623e-08
+ iter 1000 residual  6.75655e-08
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 2  and force is 0
+ [1;31m Start solving momentum balance
+ iter   0 residual     0.018621
+ iter  50 residual    0.0020052
+ iter 100 residual  0.000376779
+ iter 150 residual  0.000108858
+ iter 200 residual  2.87251e-05
+ iter 250 residual  1.00635e-05
+ iter 300 residual  2.67918e-06
+ iter 350 residual  8.67729e-07
+ iter 400 residual  2.55248e-07
+ iter 450 residual  8.43576e-08
+ iter 500 residual  2.68828e-08
+ iter 548 residual  9.80184e-09
+condition number 8.8537e-316
+[1;34m***** iteration 2 norm p 661359 norm u 10.4085
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 2  and force is 0
+ [1;32m Start solving pressure
+ iter   0 residual      1.02867
+ iter  50 residual  5.85397e-05
+ iter 100 residual  3.95944e-05
+ iter 150 residual  3.10356e-05
+ iter 200 residual  1.69085e-05
+ iter 250 residual  1.07705e-05
+ iter 300 residual  4.97215e-06
+ iter 350 residual  2.72606e-06
+ iter 400 residual  2.02988e-06
+ iter 450 residual  1.51468e-06
+ iter 500 residual  1.11891e-06
+ iter 550 residual  8.55801e-07
+ iter 600 residual  5.66771e-07
+ iter 650 residual  4.29842e-07
+ iter 700 residual  1.88306e-07
+ iter 750 residual   9.7769e-08
+ iter 800 residual   5.8749e-08
+ iter 850 residual  3.55872e-08
+ iter 900 residual  2.15477e-08
+ iter 950 residual   1.3379e-08
+ iter 989 residual    9.896e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 2  and force is 0
+ [1;31m Start solving momentum balance
+ iter   0 residual    0.0146532
+ iter  50 residual   0.00161699
+ iter 100 residual  0.000320704
+ iter 150 residual  9.38772e-05
+ iter 200 residual  2.44409e-05
+ iter 250 residual   8.3408e-06
+ iter 300 residual  2.25919e-06
+ iter 350 residual  7.20417e-07
+ iter 400 residual   2.1515e-07
+ iter 450 residual  7.20534e-08
+ iter 500 residual   2.2981e-08
+ iter 543 residual  9.83831e-09
+condition number 8.8537e-316
+[1;34m***** iteration 3 norm p 1.32923 norm u 0.00327537
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 2  and force is 0
+ [1;32m Start solving pressure
+ iter   0 residual      0.19121
+ iter  50 residual  2.64398e-06
+ iter 100 residual  7.10943e-07
+ iter 150 residual  5.10828e-07
+ iter 200 residual  3.23021e-07
+ iter 250 residual  2.65485e-07
+ iter 300 residual  1.80977e-07
+ iter 350 residual  1.38673e-07
+ iter 400 residual  8.79204e-08
+ iter 450 residual  5.94476e-08
+ iter 500 residual  2.81624e-08
+ iter 550 residual  1.48012e-08
+ iter 596 residual  9.76874e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 2  and force is 0
+ [1;31m Start solving momentum balance
+ iter   0 residual   0.00103692
+ iter  50 residual  0.000191449
+ iter 100 residual  3.84592e-05
+ iter 150 residual  6.55806e-06
+ iter 200 residual  2.51727e-06
+ iter 250 residual  6.10739e-07
+ iter 300 residual  2.34484e-07
+ iter 350 residual  6.25511e-08
+ iter 400 residual   2.2356e-08
+ iter 437 residual  9.71778e-09
+condition number 8.8537e-316
+[1;34m***** iteration 4 norm p 0.237123 norm u 0.000308871
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 2  and force is 0
+ [1;32m Start solving pressure
+ iter   0 residual      0.04211
+ iter  50 residual  3.96483e-07
+ iter 100 residual  2.83531e-08
+ iter 150 residual  1.05005e-08
+ iter 156 residual  9.99041e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 2  and force is 0
+ [1;31m Start solving momentum balance
+ iter   0 residual  0.000154975
+ iter  50 residual  3.92243e-05
+ iter 100 residual   7.4992e-06
+ iter 150 residual  1.35642e-06
+ iter 200 residual  3.68242e-07
+ iter 250 residual   1.0668e-07
+ iter 300 residual  3.76973e-08
+ iter 350 residual  1.18714e-08
+ iter 359 residual  9.81064e-09
+condition number 8.8537e-316
+[1;34m***** iteration 5 norm p 0.0440034 norm u 5.83562e-05
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 2  and force is 0
+ [1;32m Start solving pressure
+ iter   0 residual   0.00960042
+ iter  50 residual   5.4627e-08
+ iter  71 residual   9.9121e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 2  and force is 0
+ [1;31m Start solving momentum balance
+ iter   0 residual  3.34293e-05
+ iter  50 residual  8.78356e-06
+ iter 100 residual   2.0707e-06
+ iter 150 residual  3.50008e-07
+ iter 200 residual  1.11302e-07
+ iter 250 residual   3.1068e-08
+ iter 300 residual  1.12336e-08
+ iter 307 residual  9.98726e-09
+condition number 8.8537e-316
+[1;34m***** iteration 6 norm p 0.00969024 norm u 1.28565e-05
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 2  and force is 0
+ [1;32m Start solving pressure
+ iter   0 residual   0.00220682
+ iter  49 residual  9.89496e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 2  and force is 0
+ [1;31m Start solving momentum balance
+ iter   0 residual  7.48888e-06
+ iter  50 residual  2.01478e-06
+ iter 100 residual  4.84757e-07
+ iter 150 residual  8.28528e-08
+ iter 200 residual  2.60011e-08
+ iter 238 residual  9.95093e-09
+condition number 8.8537e-316
+[1;34m***** iteration 7 norm p 0.00220904 norm u 2.94191e-06
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 2  and force is 0
+ [1;32m Start solving pressure
+ iter   0 residual  0.000508426
+ iter  44 residual  9.12426e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 2  and force is 0
+ [1;31m Start solving momentum balance
+ iter   0 residual  1.69099e-06
+ iter  50 residual   4.6878e-07
+ iter 100 residual  1.13118e-07
+ iter 150 residual  1.93561e-08
+ iter 185 residual  9.72724e-09
+condition number 8.8537e-316
+[1;34m***** iteration 8 norm p 0.000507742 norm u 6.8087e-07
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 2  and force is 0
+ [1;32m Start solving pressure
+ iter   0 residual  0.000117231
+ iter  34 residual  9.36511e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 2  and force is 0
+ [1;31m Start solving momentum balance
+ iter   0 residual   3.8431e-07
+ iter  50 residual  1.12542e-07
+ iter 100 residual  2.68705e-08
+ iter 128 residual  9.81172e-09
+condition number 8.8537e-316
+[1;34m***** iteration 9 norm p 0.000116976 norm u 1.61737e-07
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 2  and force is 0
+ [1;32m Start solving pressure
+ iter   0 residual  2.70374e-05
+ iter  24 residual  9.18689e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 2  and force is 0
+ [1;31m Start solving momentum balance
+ iter   0 residual  8.80454e-08
+ iter  50 residual  2.89924e-08
+ iter  95 residual  9.65155e-09
+condition number 8.8537e-316
+[1;34m***** iteration 10 norm p 2.6963e-05 norm u 4.19662e-08
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 2  and force is 0
+ [1;32m Start solving pressure
+ iter   0 residual  6.23406e-06
+ iter  14 residual  9.63281e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 2  and force is 0
+ [1;31m Start solving momentum balance
+ iter   0 residual  2.53059e-08
+ iter  25 residual  9.89779e-09
+condition number 8.8537e-316
+[1;34m***** iteration 11 norm p 6.21006e-06 norm u 1.32381e-09
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 2  and force is 0
+ [1;32m Start solving pressure
+ iter   0 residual  1.45679e-06
+ iter  10 residual  9.40574e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 2  and force is 0
+ [1;31m Start solving momentum balance
+ iter   0 residual  1.92314e-08
+ iter  19 residual  9.88555e-09
+condition number 8.8537e-316
+[1;34m***** iteration 12 norm p 1.4522e-06 norm u 1.40205e-09
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 2  and force is 0
+ [1;32m Start solving pressure
+ iter   0 residual  3.34257e-07
+ iter   7 residual  9.44781e-09
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 2  and force is 0
+ [1;31m Start solving momentum balance
+ iter   0 residual  1.78798e-08
+ iter  10 residual  9.97857e-09
+condition number 8.8537e-316
+[1;34m***** last iteration 12 norm p 3.33858e-07 norm u 1.84415e-10
+AMG deleted
+AMG deleted
+biot_problem::print  resu/lk_ovpu_ns_trimat_fine.2.vtk
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 3  and force is 0
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 3  and force is 0
+Build class AMG for momentum
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   227484
+*** parameters SAMG matrix   227484
+ AMG::convert_matrix:: end matrix conversion 
+End samg conversion
+Build class AMG for Pressure
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   75828
+*** parameters SAMG matrix   75828
+ AMG::convert_matrix:: end matrix conversion 
+End samg conversion
+[1;34m***** iteration 1 norm p 1 norm u 1
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 3  and force is 0
+ [1;32m Start solving pressure
+ iter   0 residual      10.5818
+ iter  50 residual  0.000482623
+ iter 100 residual  0.000321968
+ iter 150 residual  0.000253525
+ iter 200 residual   0.00014126
+ iter 250 residual  9.47918e-05
+ iter 300 residual  4.61662e-05
+ iter 350 residual  2.46979e-05
+ iter 400 residual  1.41804e-05
+ iter 450 residual  1.02925e-05
+ iter 500 residual  5.38927e-06
+ iter 550 residual   2.8951e-06
+ iter 600 residual  1.99737e-06
+ iter 650 residual  1.51268e-06
+ iter 700 residual  7.39694e-07
+ iter 750 residual  4.35064e-07
+ iter 800 residual  2.14073e-07
+ iter 850 residual   7.7672e-08
+ iter 900 residual  5.81253e-08
+ iter 950 residual  4.19113e-08
+ iter 1000 residual  3.39445e-08
+biot_assembler::assembly_u(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 3  and force is 0
+ [1;31m Start solving momentum balance
+ iter   0 residual    0.0162338
+ iter  50 residual   0.00191122
+ iter 100 residual  0.000358637
+ iter 150 residual  0.000108268
+ iter 200 residual  2.83027e-05
+ iter 250 residual  9.91225e-06
+ iter 300 residual  2.60133e-06
+ iter 350 residual  8.47029e-07
+ iter 400 residual   2.4582e-07
+ iter 450 residual  8.08677e-08
+ iter 500 residual  2.59265e-08
+ iter 548 residual  9.70247e-09
+condition number 8.8537e-316
+[1;34m***** iteration 2 norm p 691331 norm u 10.4092
+biot_assembler::assembly_p(double dt)
+biot_problem::configure_workspace::Configuring workspace 
+end of Configuring workspace 
+ssssssss iter is 3  and force is 0
