@@ -67,6 +67,7 @@ int main(int argc, char *argv[]) {
 // //==================================================//
 #ifdef BIOT
 				{ // classic biot
+				          t.set_iter(istep);
 				          t.assembly(dt, p.get_pressure_fem(), p.get_pressure());
 				          t.solve();
 					  t.print(istep);

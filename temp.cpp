@@ -60,8 +60,8 @@ void temperature_problem::init(void) {
 	mim.set_integration_method(mesh.convex_index(), ppi);
 	mf_u.set_finite_element(mesh.convex_index(), pf_u); // finite element for displacement
 
-  mf_coef.set_finite_element(mesh.convex_index(),
-      getfem::classical_fem(pgt,0));         // p0 for coefficient
+        mf_coef.set_finite_element(mesh.convex_index(),
+        getfem::classical_fem(pgt,0));         // p0 for coefficient
  
 
 	// boundary conditions zones
@@ -78,7 +78,8 @@ void temperature_problem::init(void) {
 	// displacement
 	gmm::resize(U, nb_dof_u); gmm::resize(U_old, nb_dof_u); gmm::resize(U_iter, nb_dof_u); 
 	gmm::clear(U);gmm::clear(U_old);gmm::clear(U_iter);
-	std::fill(U.begin(), U.end(), 0);
+	std::fill(U.begin(), U.end(), 0.);
+	std::fill(U_old.begin(), U_old.end(), 10.);
 	// iteration matrix monolithic
 	gmm::resize(K, nb_dof_u , nb_dof_u ); gmm::clear(K);
 	std::cout<<"number of dof "<< nb_dof_u<<std::endl;
@@ -98,8 +99,11 @@ void temperature_problem::gen_bc(){
 		base_node un = mesh.normal_of_face_of_convex(i.cv(), i.f());
 		un /= gmm::vect_norm2(un);
 
-		if ((un[N_-1] ) > 8.0E-1 && (mesh.points_of_convex(i.cv())[0])[2]>3600) { // new Neumann face
-			mesh.region(TOP).add(i.cv(), i.f());
+		if ((un[N_-1] ) > 4.0E-1 && (mesh.points_of_convex(i.cv())[0])[2]>3500) { // new Neumann face
+			if ((mesh.points_of_convex(i.cv())[0])[0]>5000. )
+			  mesh.region(TOP).add(i.cv(), i.f());
+			else
+			  mesh.region(TOP_P).add(i.cv(), i.f());
 		} 
 // 			else if ((un[N_-1] ) < -9.0E-1) {  //the bottom surface is the most sharp
 // 			mesh.region(BOTTOM).add(i.cv(), i.f());
@@ -154,12 +158,19 @@ void temperature_problem::configure_workspace(getfem::ga_workspace & workspace,d
 	beta_[0] = 1*(alpha_[0] * alpha_[0]  ) / (-2 * p_des.mu_s / 3 + p_des.lambda_l);
 	workspace.add_fixed_size_constant("beta", beta_);
 
-	penalty_[0] = 1.e+4; // 1---10
+	penalty_[0] = 1.e+5; // 1---10
 	workspace.add_fixed_size_constant("penalty", penalty_);
-
+	
+	if(iter_<10)       temp_bc_[0]= 10.;
+	else if(iter_<20)  temp_bc_[0]= (iter_ -20.)/(10.-20.)*10;
+	else if(iter_<30)  temp_bc_[0]= 0;
+	else if(iter_<35)  temp_bc_[0]= (iter_ -30.)/(35.-30.)*10;
+	else               temp_bc_[0]= 10.;
+	std::cout << "Temperature is " <<temp_bc_[0] << std::endl;
+	workspace.add_fixed_size_constant("temp_bc",temp_bc_);
 
   workspace.add_fem_constant("Kr", mf_coef, Kr_);
-  workspace.add_fem_constant("Er", mf_coef, Er_);
+  workspace.add_fem_constant("lr", mf_coef, Er_);
 	// workspace.add_fem_constant("f", mf_data, F);
 }
 // 
@@ -186,9 +197,10 @@ void temperature_problem::assembly(double dt, getfem::mesh_fem& mf_pressure, std
 	workspace.add_fem_variable("p", mf_u, gmm::sub_interval(0, nb_dof_u), p);
 	// ------------------ expressions --------------------------
 // 	workspace.add_expression("tau*Kr*permeability*Grad_T.Grad_Test_T", mim);
-	workspace.add_expression("tau*Er*diffusivity*Grad_T.Grad_Test_T", mim);
-	workspace.add_expression( "T.Test_T + tau*Kr*permeability*Grad_p.Grad_T*Test_T", mim);
+	workspace.add_expression("tau*lr*diffusivity*Grad_T.Grad_Test_T", mim);
+	workspace.add_expression( "T.Test_T - tau*Kr*permeability*Grad_p.Grad_Test_T", mim);
 	workspace.add_expression("tau*penalty*T*Test_T", mim, TOP);
+	workspace.add_expression("tau*penalty*T*Test_T", mim, TOP_P);
 	workspace.assembly(2);
 	gmm::copy(workspace.assembled_matrix(), K);
 	workspace.clear_expressions();
@@ -211,10 +223,11 @@ void temperature_problem::assembly(double dt, getfem::mesh_fem& mf_pressure, std
 // 	workspace.add_expression(" 0*penalty/element_size*Test_p - permeability*Grad_Test_p.Normal*0 ", mim, LEFT);
 // 	workspace.add_expression(" 0*penalty/element_size*Test_p - permeability*Grad_Test_p.Normal*0 ", mim, RIGHT);
 	workspace.set_assembled_vector(B);
-	workspace.add_expression(" tau*20*penalty*Test_T", mim, TOP);
-	workspace.add_expression("+tau*[+1.0e-6].Test_T + T_old.Test_T", mim);
+	workspace.add_expression(" tau*10*penalty*Test_T", mim, TOP);
+	workspace.add_expression(" tau*temp_bc*penalty*Test_T", mim, TOP_P);
+	workspace.add_expression("+tau*[+1.0e-5].Test_T + T_old.Test_T", mim);
 	workspace.assembly(1);
-// 	gmm::add(workspace.assembled_vector(),B);
+// // 	gmm::add(workspace.assembled_vector(),B);
 	workspace.clear_expressions();
 	/// end boundary contions
 } // end assembly
@@ -277,7 +290,7 @@ void temperature_problem::gen_coefficient(){ // creating a coefficient
 //   material.push_back(1);material.push_back(2);material.push_back(3);
   material.push_back(1);material.push_back(5);material.push_back(3);
   std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+3);k.push_back(1.e-2);
-  std::vector<double> E; E.push_back(1.e+0);E.push_back(2.e+0);E.push_back(1.e+1);
+  std::vector<double> E; E.push_back(1.2e+0);E.push_back(2.e+0);E.push_back(1.1e+0);
   
 //   std::vector<double> k; k.push_back(1);k.push_back(1.e+0);
 //   std::vector<double> E; E.push_back(1);E.push_back(1.e+0);

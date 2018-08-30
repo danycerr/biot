@@ -354,7 +354,7 @@ void biot_problem::assembly_p(double dt){
 	
 	
 	
-	workspace.add_expression("penalty*p*Test_p", mim, RIGHTP);
+// 	workspace.add_expression("penalty*p*Test_p", mim, RIGHTP);
 // 	workspace.add_expression("-permeability*Kr*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, RIGHTP); 	
 // 	
 	
@@ -379,7 +379,7 @@ void biot_problem::assembly_p(double dt){
 	workspace.clear_expressions();
 	//rhs term
 	workspace.add_expression("0*penalty*p*Test_p", mim, TOP); 
-	workspace.add_expression("0.1*overpres*penalty*Test_p", mim, RIGHTP); 
+// 	workspace.add_expression("0.1*overpres*penalty*Test_p", mim, RIGHTP); 
 // 	workspace.add_expression("0.4*1000*9.81*4000*penalty*Test_p", mim, TOP_P); 
 	workspace.assembly(1);
 	workspace.clear_expressions();
@@ -437,7 +437,7 @@ void biot_problem::assembly_u(double dt){
 		if(N_==3) workspace.add_expression("(2200*0.8 + 1000*0.2 -1000 )*[0,0,-1].Test_u", mim);
 		workspace.add_expression("alpha*p*Div_Test_u ", mim);
 		if(N_==3)workspace.add_expression("topload*[0,0,-1].Test_u" , mim, TOP_P); //Height og the ice disp
-		if(N_==3)workspace.add_expression("overpres*[1,0,0].Test_u" , mim, RIGHTP); //Height og the ice disp
+// 		if(N_==3)workspace.add_expression("overpres*[1,0,0].Test_u" , mim, RIGHTP); //Height og the ice disp
 		workspace.assembly(1);
 		workspace.clear_expressions();
 		// std::cout<< Bu<< std::endl; 
