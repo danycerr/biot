@@ -4,7 +4,7 @@
 # Put here the requests for the desired hardware
 # number of nodes (nodes), cores per node (ppn), maximum time of execution (HH:MM:SS) queue (name_of_the_queue)
 
-#PBS -l nodes=1:ppn=1,walltime=60:00:00 -q cerbero
+#PBS -l nodes=1:ppn=1,walltime=80:00:00 -q cerbero
 
 # Set the job name
 #PBS -N biot 
@@ -24,7 +24,7 @@ cd ${PBS_O_WORKDIR}
 # YOUR LAUNCH COMMAND BELOW completed with I/O redirection if needed
 
 source ./configure.sh
-make > cerbero_compile_log && ./lev_set > cerbero_output1_fpoly 2>&1
+make > cerbero_compile_log && ./lev_set > cerbero_output_fpoly 2>&1
 
 #source tester.sh > gigat_output 2>&1
 

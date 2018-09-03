@@ -36,7 +36,7 @@ int main(int argc, char *argv[]) {
 		// p.build_fix_stress_preconditioner(dt,0);
 		//    p.assembly_p(dt,0); 
 		//    p.assembly_u(dt);
-		int n_step=1;int erosion_limit=20; // usually 80 steps
+		int n_step=80;int erosion_limit=40; // usually 80 steps
 		double time=0*dt;
 		double time_ls  =0;
 		for(int istep=0; istep<n_step; istep++)
