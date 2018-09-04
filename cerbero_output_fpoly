@@ -70874,3 +70874,315 @@ biotls_problem::configure_workspace::Configuring workspace
 dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
 end of Configuring workspace 
 end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 3.01555 seconds
+nb_dof_u 6591
+nnu is 6591
+nnu is 6591
+ iter   0 residual   0.00172675
+nnu is 6591
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+nnu is 6591
+nnu is 6591
+nnu is 6591
+nnu is 6591
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+nnu is 6591
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+ iter  50 residual  1.36936e-06
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+nnu is 6591
+nnu is 6591
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+ iter 100 residual  2.30268e-07
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+ iter 150 residual  1.32259e-07
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+ >>> MESSG: q2-Residual(1) already fulfills termination criterion!
+nnu is 6591
+nnu is 6591
