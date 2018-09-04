@@ -6,6 +6,8 @@
 // fix cut height 
 #define H_PARAM 2666.67
 
+#define STAB_P 1
+
 void biotls_problem::init(void) {
 
   std::cout<< "biotls_problem::init "  << std::endl;
@@ -424,7 +426,7 @@ void biotls_problem::assembly(double dt,double time) {
   gmm::add(workspace.assembled_matrix(),K_in);
     workspace.clear_expressions();
   // stabilization term
-    if(0){
+    if(STAB_P){
     getfem::mesh_region  inner_faces;
     inner_faces = getfem::inner_faces_of_mesh(mesh, CUT_REGION);
 
@@ -684,7 +686,7 @@ void biotls_problem::assembly_p(double dt, double time){
     gmm::add(workspace.assembled_matrix(),K_in);
     workspace.clear_expressions();
     //pstab stabilization term
- if(0) {
+ if(STAB_P) {
     getfem::mesh_region  inner_faces;
     inner_faces = getfem::inner_faces_of_mesh(mesh, CUT_REGION);
 
