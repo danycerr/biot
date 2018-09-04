@@ -5,6 +5,7 @@
 #define DISP_PRECOND_PARAM PRu
 // fix cut height 
 #define H_PARAM 2666.67
+#define STAB_P 1
 
 void biotls_problem::init(void) {
 
@@ -424,7 +425,7 @@ void biotls_problem::assembly(double dt,double time) {
   gmm::add(workspace.assembled_matrix(),K_in);
     workspace.clear_expressions();
   // stabilization term
-    if(0){
+    if(STAB_P){
     getfem::mesh_region  inner_faces;
     inner_faces = getfem::inner_faces_of_mesh(mesh, CUT_REGION);
 
@@ -684,7 +685,7 @@ void biotls_problem::assembly_p(double dt, double time){
     gmm::add(workspace.assembled_matrix(),K_in);
     workspace.clear_expressions();
     //pstab stabilization term
- if(0) {
+ if(STAB_P) {
     getfem::mesh_region  inner_faces;
     inner_faces = getfem::inner_faces_of_mesh(mesh, CUT_REGION);
 
@@ -1419,7 +1420,7 @@ base_small_vector biotls_problem::ls_function(const base_node P, double time,int
               res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.27;
             } break;
     case 2: {
-              res[0] = y - (8.e+2 * time / (1.e+8) * sin(2 * 3.14 *x/4000) + 3300);
+              res[0] = y - (2.e+2 * (40  - time / (1.e+8) )/40* sin(2 * 3.14 *x/4000) + 3300);
               res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.35;
             } break;
     case 3: {

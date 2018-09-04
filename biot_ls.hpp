@@ -59,7 +59,7 @@ typedef gmm::row_matrix<sparse_vector_type> sparse_matrix_type;
 typedef gmm::col_matrix<sparse_vector_type> col_sparse_matrix_type;
 typedef std::vector<scalar_type> plain_vector;
 
-#define LS_TYPE 5
+#define LS_TYPE 2
 // Right hand side. Allows an interpolation for the source term.
 // scalar_type sol_f(const base_node &x) { return 10.; }
 
@@ -184,8 +184,8 @@ class biotls_problem {
 		std::vector<size_type> pin_index_, pout_index_;  // The extended dofs
 		std::vector<size_type> uin_index_, uout_index_;  // The extended dofs
 		size_type nb_x_dof_p, nb_x_dof_u;
-// 		problem_descriptor_tri p_des;
-		problem_descriptor_tetra_3d p_des;
+		problem_descriptor_tri p_des;
+// 		problem_descriptor_tetra_3d p_des;
 		// problem_descriptor_tetra_3d p_des;
 		enum { DIRICHLET_BOUNDARY_NUM = 10, NEUMANN_BOUNDARY_NUM = 11}; // descriptor for bcs flag
 		enum { BOTTOM = 2, TOP = 1 , LEFT = 3, RIGHT =4, LEFTX = 5, RIGHTX =6}; // descriptor for zones
