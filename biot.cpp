@@ -177,11 +177,16 @@ void biot_problem::configure_workspace(getfem::ga_workspace & workspace,double d
 
 	penalty_[0] = 1.e+12; // 1---10
 	workspace.add_fixed_size_constant("penalty", penalty_);
+	int t1=10*2; int t2=20*2;
+	int t3=30*2; int t4=35*2;
+	
 //         std::vector<scalar_type> ice_force(1);ice_force[0] = 1.e+0;
-	if(iter_<10)       force_[0]= 0.;
-	else if(iter_<20)  force_[0]= (iter_ -10.)/(20.-10.)* 1000*9.81*1700;
-	else if(iter_<30)  force_[0]= 1000*9.81*1700;
-	else if(iter_<35)  force_[0]= (iter_ -35.)/(30.-35.)*1000*9.81*1700;
+	if(iter_<t1)       force_[0]= 0.;
+	else if(iter_<t2)  force_[0]= (iter_ -((double) t1) )/(((double) t2)-((double) t1))
+	                              *1000*9.81*1700;
+	else if(iter_<t3)  force_[0]= 1000*9.81*1700;
+	else if(iter_<t4)  force_[0]= (iter_ -((double) t4))/(((double) t3)-((double) t4))
+	                              *1000*9.81*1700;
 	else               force_[0]= 0.;
 	workspace.add_fixed_size_constant("topload",force_);
 	

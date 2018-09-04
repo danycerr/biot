@@ -129,7 +129,7 @@ struct problem_descriptor_tetra_3d{
 	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; 
 // 	std::string datafilename="resu/gigat_fp2"; 
 // 	std::string datafilename="resu/laplacedisp_pinch"; 
-	std::string datafilename="resu/lk_disp"; 
+	std::string datafilename="resu/lk_hdt_disp"; 
 	int nsubdiv=128; // subdivision of the sqaured mesh
 	double E=1.e+10;
 	double poisson =0.3;

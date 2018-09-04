@@ -32,11 +32,11 @@ int main(int argc, char *argv[]) {
                 temperature_problem t;
 		t.init();
 		// double dt=1e-3;
-		double dt=1e+10;
+		double dt=0.5e+10;
 		// p.build_fix_stress_preconditioner(dt,0);
 		//    p.assembly_p(dt,0); 
 		//    p.assembly_u(dt);
-		int n_step=60;int erosion_limit=20; // usually 80 steps
+		int n_step=120;int erosion_limit=40; // usually 80 steps
 		double time=0*dt;
 		double time_ls  =0;
 		for(int istep=0; istep<n_step; istep++)

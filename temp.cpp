@@ -161,10 +161,13 @@ void temperature_problem::configure_workspace(getfem::ga_workspace & workspace,d
 	penalty_[0] = 1.e+5; // 1---10
 	workspace.add_fixed_size_constant("penalty", penalty_);
 	
-	if(iter_<10)       temp_bc_[0]= 10.;
-	else if(iter_<20)  temp_bc_[0]= (iter_ -20.)/(10.-20.)*10;
-	else if(iter_<30)  temp_bc_[0]= 0;
-	else if(iter_<35)  temp_bc_[0]= (iter_ -30.)/(35.-30.)*10;
+	int t1=10*2; int t2=20*2;
+	int t3=30*2; int t4=35*2;
+	
+	if(iter_<t1)       temp_bc_[0]= 10.;
+	else if(iter_<t2)  temp_bc_[0]= (iter_ -((double) t2))/(((double) t1)-((double) t2))*10;
+	else if(iter_<t3)  temp_bc_[0]= 0;
+	else if(iter_<t4)  temp_bc_[0]= (iter_ -((double) t3))/(((double) t4)-((double) t3))*10;
 	else               temp_bc_[0]= 10.;
 	std::cout << "Temperature is " <<temp_bc_[0] << std::endl;
 	workspace.add_fixed_size_constant("temp_bc",temp_bc_);
