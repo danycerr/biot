@@ -592,7 +592,7 @@ void biot_problem::gen_coefficient(){ // creating a coefficient
       }
     }
   }
-     if(1){ // Just to see what elements are cut by the level set ls:
+  if(1){ // Just to see what elements are cut by the level set ls:
     getfem::vtk_export vtk_data("data_gen_3mat_pinch.vtk");
     vtk_data.exporting(mf_coef);
     vtk_data.write_mesh();

@@ -102,7 +102,9 @@ void biotls_problem::init(void) {
 
   gmm::resize(normal_ls_v, mf_coef_v.nb_dof()); gmm::clear(normal_ls_v);    // rhs monolithic problem
 
-
+  //routine for labeling internal materials
+  gen_mat();
+  //routine for assignment of material propeties
   gen_coefficient();
 
   {
@@ -243,6 +245,29 @@ void biotls_problem::gen_bc(){
       mesh.region(DIRICHLET_BOUNDARY_NUM).add(i.cv(), i.f());
     }
   }
+}
+// end bc generations
+// =======================================================
+// ===========================================
+// method for generation of bcs zones
+// ===========================================
+void biotls_problem::gen_mat(){
+  std::cout << "biotls_problem::gen_intmat()"<< std::endl;
+  dal::bit_vector bv_cv = mesh.convex_index();
+  size_type i_cv = 0;
+  for (i_cv << bv_cv; i_cv != size_type(-1); i_cv << bv_cv) {
+    double zc=0.;
+    for (int inode=0; inode< mesh.structure_of_convex(i_cv)->nb_points(); inode++)
+      zc+=(mesh.points_of_convex(i_cv)[inode])[2] / mesh.structure_of_convex(i_cv)->nb_points();
+    if (zc>1./3. && zc< 2./3.) {
+      mesh.region(MAT_2).add(i_cv);
+    }
+    else 
+      mesh.region(MAT_1).add(i_cv);
+  }
+
+  
+  std::cout << "Finish biotls_problem::gen_intmat()"<< std::endl;
 }
 // end bc generations
 // =======================================================
@@ -588,16 +613,16 @@ void biotls_problem::assembly_p(double dt, double time){
   //Matrix term
   workspace.add_expression("2*penalty/element_size*p*Test_p", mim, TOP);
   workspace.add_expression("-Grad_p.Normal*Test_p - Grad_Test_p.Normal*p ", mim, TOP); 	
-  workspace.add_expression("2*penalty/element_size*p*Test_p", mim, LEFT);
-  workspace.add_expression("-Grad_p.Normal*Test_p*tau- Grad_Test_p.Normal*p*tau ", mim, LEFT); 	
-  workspace.add_expression("2*penalty/element_size*p*Test_p", mim, RIGHT);
-  workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, RIGHT); 	
-  if (N_== 3 ){
-    workspace.add_expression("2*penalty/element_size*p*Test_p", mim, LEFTX);
-    workspace.add_expression("-Grad_p.Normal*Test_p*tau- Grad_Test_p.Normal*p*tau ", mim, LEFTX); 	
-    workspace.add_expression("2*penalty/element_size*p*Test_p", mim, RIGHTX);
-    workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, RIGHTX); 	
-  }
+//   workspace.add_expression("2*penalty/element_size*p*Test_p", mim, LEFT);
+//   workspace.add_expression("-Grad_p.Normal*Test_p*tau- Grad_Test_p.Normal*p*tau ", mim, LEFT); 	
+//   workspace.add_expression("2*penalty/element_size*p*Test_p", mim, RIGHT);
+//   workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, RIGHT); 	
+//   if (N_== 3 ){
+//     workspace.add_expression("2*penalty/element_size*p*Test_p", mim, LEFTX);
+//     workspace.add_expression("-Grad_p.Normal*Test_p*tau- Grad_Test_p.Normal*p*tau ", mim, LEFTX); 	
+//     workspace.add_expression("2*penalty/element_size*p*Test_p", mim, RIGHTX);
+//     workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, RIGHTX); 	
+//   }
 
   workspace.assembly(2);
   gmm::add(workspace.assembled_matrix(), gmm::sub_matrix(Kp,
@@ -671,20 +696,20 @@ void biotls_problem::assembly_p(double dt, double time){
     workspace.set_assembled_vector(Bp_in);
     workspace.assembly(1);
     workspace.clear_expressions();
-    workspace.add_expression("2/element_size*p*Test_p", mim, LEFT);
-    workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, LEFT); 	
-    workspace.add_expression("2/element_size*p*Test_p", mim, RIGHT);
-    workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, RIGHT);
-    if (N_==3){
-      workspace.add_expression("2/element_size*p*Test_p", mim, LEFTX);
-      workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, LEFTX); 	
-      workspace.add_expression("2/element_size*p*Test_p", mim, RIGHTX);
-      workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, RIGHTX);
-    }
-
-    workspace.assembly(2);
-    gmm::add(workspace.assembled_matrix(),K_in);
-    workspace.clear_expressions();
+//     workspace.add_expression("2/element_size*p*Test_p", mim, LEFT);
+//     workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, LEFT); 	
+//     workspace.add_expression("2/element_size*p*Test_p", mim, RIGHT);
+//     workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, RIGHT);
+//     if (N_==3){
+//       workspace.add_expression("2/element_size*p*Test_p", mim, LEFTX);
+//       workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, LEFTX); 	
+//       workspace.add_expression("2/element_size*p*Test_p", mim, RIGHTX);
+//       workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, RIGHTX);
+//     }
+// 
+//     workspace.assembly(2);
+//     gmm::add(workspace.assembled_matrix(),K_in);
+//     workspace.clear_expressions();
     //pstab stabilization term
  if(STAB_P) {
     getfem::mesh_region  inner_faces;
@@ -1763,21 +1788,31 @@ void biotls_problem::update_u_index(double time_ls){
 // routine for the generation of coeffient
 //============================================
 void biotls_problem::gen_coefficient(){ // creating a coefficient
+  
+  std::vector<scalar_type> Kr_print; // permeability ratio
+  gmm::resize(Kr_print, mf_coef.nb_dof()); gmm::fill(Kr_print,1);    // rhs monolithic problem
   gmm::resize(Kr_, mf_coef.nb_dof()); gmm::fill(Kr_,1);    // rhs monolithic problem
   gmm::resize(Er_, mf_coef.nb_dof()); gmm::fill(Er_,1);    // rhs monolithic problem
-  std::vector<int> material; material.push_back(50);material.push_back(60);
+  std::vector<int> material; material.push_back(MAT_1);material.push_back(MAT_2);
   std::vector<double> k; k.push_back(1);k.push_back(1.e+2);
-  std::vector<double> E; E.push_back(1);E.push_back(5.e-1);
+  std::vector<double> E; E.push_back(1);E.push_back(2.e+0);
   for (int imat=0; imat< material.size();imat++){
     dal::bit_vector bv_cv = mesh.region(material[imat]).index();
     size_type i_cv = 0;
     for (i_cv << bv_cv; i_cv != size_type(-1); i_cv << bv_cv) {
       getfem::mesh_fem::ind_dof_ct idofs = mf_coef.ind_basic_dof_of_element(i_cv);
       for (size_type i=0; i < idofs.size(); ++i) {
-        Kr_[idofs[i]]=k[imat];
+        Kr_[idofs[i]]=k[imat]; Kr_print[(int) i_cv]=k[imat];
         Er_[idofs[i]]=E[imat];
       }
     }
+  }
+  if(1){ // Just to see what elements are cut by the level set ls:
+    std::string namefile= p_des.datafilename +".materials.vtk";
+    getfem::vtk_export vtk_data(namefile);
+    vtk_data.exporting(mf_coef);
+    vtk_data.write_mesh();
+    vtk_data.write_cell_data(Kr_print, "K");
   }
 }
 

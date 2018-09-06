@@ -141,7 +141,7 @@ struct problem_descriptor_tetra_3d{
 	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TETRAHEDRON(6),3)"; 
 	std::string datafilename="resu/laplace"; 
 	int noised =0;  // noise on mesh
-	int nsubdiv=6; // subdivision of the sqaured mesh
+	int nsubdiv=9; // subdivision of the sqaured mesh
 	double E=1.e+10;
 	double poisson =0.3;
 	double mu_s = E/( 2 * ( 1 + poisson) ) ;
@@ -190,6 +190,7 @@ class biotls_problem {
 		enum { DIRICHLET_BOUNDARY_NUM = 10, NEUMANN_BOUNDARY_NUM = 11}; // descriptor for bcs flag
 		enum { BOTTOM = 2, TOP = 1 , LEFT = 3, RIGHT =4, LEFTX = 5, RIGHTX =6}; // descriptor for zones
 		enum { CUT_REGION = 100, UNCUT_REGION = 200, UNCUT_REGION_IN = 201, UNCUT_REGION_OUT = 202, CUT_EDGE=203};
+		enum { MAT_1 = 50,MAT_2=60};
 		size_type N_;             /// dimension of the problem
 
 		///  workspace configuration parameters---------------------
@@ -208,6 +209,7 @@ class biotls_problem {
 		std::vector<scalar_type> normal_ls_v;
 		/// Methods
 		void gen_bc(void);                                /// create zones for boundary conditions
+		void gen_mat(void);                                /// create zones for internal conditions
 		void compute_normal_2_ls(void);                   /// create normal to ls as a cell field
 		void gen_coefficient();                         /// generate coefficient p0
 
