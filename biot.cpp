@@ -190,10 +190,10 @@ void biot_problem::configure_workspace(getfem::ga_workspace & workspace,double d
 	else               force_[0]= 0.;
 	workspace.add_fixed_size_constant("topload",force_);
 	
-	if(iter_<10)       overpres_[0]= 0.;
-	else if(iter_<20)  overpres_[0]= (iter_ -10.)/(20.-10.)* 1000*9.81*4000;
-	else if(iter_<30)  overpres_[0]= 1000*9.81*4000;
-	else if(iter_<35)  overpres_[0]= (iter_ -35.)/(30.-35.)*1000*9.81*4000;
+	if(iter_<t1)       overpres_[0]= 0.;
+	else if(iter_<t2)  overpres_[0]= (iter_ -((double) t1))/(((double) t2)-((double) t1))* 1000*9.81*4000;
+	else if(iter_<t3)  overpres_[0]= 1000*9.81*4000;
+	else if(iter_<t4)  overpres_[0]= (iter_ -((double) t4))/(((double) t3)-((double) t4))*1000*9.81*4000;
 	else               overpres_[0]= 0.;
 	workspace.add_fixed_size_constant("overpres",overpres_);
         std::cout<<"ssssssss iter is " <<iter_<< "  and force is "<<force_[0]<<std::endl;
@@ -359,8 +359,8 @@ void biot_problem::assembly_p(double dt){
 	
 	
 	
-// 	workspace.add_expression("penalty*p*Test_p", mim, RIGHTP);
-// 	workspace.add_expression("-permeability*Kr*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, RIGHTP); 	
+	workspace.add_expression("penalty*p*Test_p", mim, RIGHTP);
+	workspace.add_expression("-permeability*Kr*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, RIGHTP); 	
 // 	
 	
 	
@@ -384,7 +384,7 @@ void biot_problem::assembly_p(double dt){
 	workspace.clear_expressions();
 	//rhs term
 	workspace.add_expression("0*penalty*p*Test_p", mim, TOP); 
-// 	workspace.add_expression("0.1*overpres*penalty*Test_p", mim, RIGHTP); 
+	workspace.add_expression("0.1*overpres*penalty*Test_p", mim, RIGHTP); 
 // 	workspace.add_expression("0.4*1000*9.81*4000*penalty*Test_p", mim, TOP_P); 
 	workspace.assembly(1);
 	workspace.clear_expressions();
@@ -442,7 +442,7 @@ void biot_problem::assembly_u(double dt){
 		if(N_==3) workspace.add_expression("(2200*0.8 + 1000*0.2 -1000 )*[0,0,-1].Test_u", mim);
 		workspace.add_expression("alpha*p*Div_Test_u ", mim);
 		if(N_==3)workspace.add_expression("topload*[0,0,-1].Test_u" , mim, TOP_P); //Height og the ice disp
-// 		if(N_==3)workspace.add_expression("overpres*[1,0,0].Test_u" , mim, RIGHTP); //Height og the ice disp
+		if(N_==3)workspace.add_expression("overpres*[1,0,0].Test_u" , mim, RIGHTP); //Height og the ice disp
 		workspace.assembly(1);
 		workspace.clear_expressions();
 		// std::cout<< Bu<< std::endl; 
