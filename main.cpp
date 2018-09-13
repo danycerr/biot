@@ -36,9 +36,9 @@ int main(int argc, char *argv[]) {
 		// p.build_fix_stress_preconditioner(dt,0);
 		//    p.assembly_p(dt,0); 
 		//    p.assembly_u(dt);
-		int n_step=80;int erosion_limit=40; // usually 80 steps
+		int n_step=80;int erosion_limit=50; // usually 50 steps
 		double time=0*dt;
-		double time_ls  =0;
+		double time_ls  =0;p.update_ls(time_ls, 0);
 		for(int istep=0; istep<n_step; istep++)
 		{
 #ifdef BIOT_LS
@@ -46,22 +46,23 @@ int main(int argc, char *argv[]) {
 			time=istep*dt;
 			std::cout<< "*** Time step "<< istep << "/"<<n_step<<std::endl;
 			{ // level set
-				if (istep<erosion_limit){ 
+				if (istep<erosion_limit && istep > 30){ 
 					time_ls  =istep*dt;
 					p.update_ls(time_ls, istep);
-
 					// p.build_fix_stress_preconditioner(dt,time_ls);
 				}
 		  	   	 p.solve_fix_stress(dt, 2000,time_ls);
 
 			 	//  p.build_fix_stress_preconditioner(dt,time_ls);
 				// ===============================
-			 	//   p.assembly(dt,time_ls);
+// 			 	  p.assembly(dt,time_ls);
 				//   p.solve(time_ls);
 				// ===========================
 				p.print(istep*dt,istep,time_ls);      
 				p.print_crop(istep*dt,istep,time_ls);
-				p.print_pattern(istep);
+				p.print_ls(istep*dt,istep,time_ls); //pint the ls slice
+// 				p.print_pattern(istep);
+				p.update_time_iter(istep);
 			} // endl of lev_set biot
 #endif
 // //==================================================//

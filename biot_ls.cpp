@@ -2,7 +2,7 @@
 // Preconditioner for dispacement problem
 // mPR Bu diag(exdof) 
 // PRu diagonal
-#define DISP_PRECOND_PARAM mPR
+#define DISP_PRECOND_PARAM PRu
 // fix cut height 
 #define H_PARAM 2666.67
 
@@ -315,6 +315,15 @@ void biotls_problem::configure_workspace(getfem::ga_workspace & workspace,double
   workspace.add_fem_constant("Er", mf_coef, Er_);
 
   workspace.add_fem_constant("nlsv", mf_coef_v, normal_ls_v);
+  over_p_[0]=0.;
+  if(time_iter_ > 10 && time_iter_ < 30 ) 
+    over_p_[0] = 1000.*9.81*4000.*(time_iter_ - 10. )/(30.-10.);
+  else if( time_iter_ < 50 && time_iter_ > 29.5 ) 
+    over_p_[0] = 1000.*9.81*4000.*(50-time_iter_ )/(50-30.);
+  else
+    over_p_[0]=0.;
+ over_p_[0]=over_p_[0]/p_des.p_ref;
+  workspace.add_fixed_size_constant("over_p", over_p_);
 }
 // 
 
@@ -900,6 +909,7 @@ void biotls_problem::assembly_p(double dt, double time){
     workspace.set_assembled_vector(B_in);
     if(N_==2) workspace.add_expression("[0,-1].Test_u", mim_ls_in,CUT_REGION);
     if(N_==3) workspace.add_expression("[0,0,-1].Test_u", mim_ls_in,CUT_REGION);
+    if(N_==3) workspace.add_expression("over_p*[0,0,-1].Test_u" , mim_ls_bd, CUT_REGION);    //neumann disp
     workspace.add_expression("C1*p_iter*Div_Test_u ",  mim_ls_in, CUT_REGION);
     workspace.assembly(1);
     //workspace.clear_expressions();
@@ -1468,6 +1478,20 @@ base_small_vector biotls_problem::ls_function(const base_node P, double time,int
 		      * time/((1.e+8)*40);
               res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.35;
             } break;
+    case 6: {
+              if (time/(1.e+8) > 30)
+		res[0] = (z - (0.7+0.25*((y/p_des.l_ref)*(y/p_des.l_ref)-1)
+				      *((x/p_des.l_ref)*(x/p_des.l_ref)-1)
+			      )*p_des.l_ref
+			)*(50.-time/(1.e+8))/(50.-30.)
+			+(z-0.844*p_des.l_ref)
+			* (time/(1.e+8)-30.)/(50.-30.);
+		else
+		 res[0] = (z - (0.7+0.25*((y/p_des.l_ref)*(y/p_des.l_ref)-1)
+				      *((x/p_des.l_ref)*(x/p_des.l_ref)-1)
+			      )*p_des.l_ref);
+              res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.35;
+            } break;
     default: assert(0);
   }
   return res;
@@ -1867,3 +1891,33 @@ void biotls_problem::print_pattern(int iter){
     <<" for pattern generation"<<std::endl;}
   }
 
+void biotls_problem::print_ls(double time,int istep,double time_ls){
+  
+  std::cout<<"Start printing ls function"<< std::endl;
+  std::vector<scalar_type> ls_value_print(mf_p.nb_dof(), 0.0);
+  {
+    for (size_type i = 0; i < mf_p.nb_dof(); ++i)
+    {
+      ls_value_print[i]  = ls_function(mf_p.point_of_basic_dof(i),time_ls, LS_TYPE)[0];
+    }
+  }
+  
+  bgeot::base_matrix M(N_,N_);
+  bgeot::base_matrix Mm1(N_,N_);
+  for (size_type i=0; i < N_; ++i) {
+    M(i,i) = p_des.l_ref;
+    Mm1(i,i) = 1/p_des.l_ref;
+  }
+//   mesh_dim.transformation(M);
+  mesh.transformation(M);
+  std::vector<scalar_type> over_p; // permeability ratio
+  gmm::resize(over_p, mf_coef.nb_dof()); gmm::fill(over_p,over_p_[0]);    // rhs monolithic problem
+  std::string namefile= p_des.datafilename +".ls." +  std::to_string(istep) +".vtk";
+  getfem::vtk_export vtkd(namefile);
+  vtkd.exporting(mf_p);vtkd.write_mesh();
+  vtkd.write_point_data(mf_p, ls_value_print, "ls");
+  vtkd.write_cell_data(over_p, "h_ice");
+  std::cout<<"end printing ls function"<< std::endl;
+
+  mesh.transformation(Mm1); 
+}
