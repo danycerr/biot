@@ -8,7 +8,7 @@
 #include <gmm/gmm_precond_diagonal.h>
 #include <gmm/gmm_superlu_interface.h>
 // #include "getfem/getfem_mesher.h"
-// #define USE_SAMG 1
+#define USE_SAMG 1
 //#define USE_MP
 
 // preconditioning strategies SOLVE invert by solving Ax=b
@@ -46,7 +46,7 @@ public:
     void mult(const L2 &src, L3 &dst) const
     {
 
-        std::cout<<"My mult"<<std::endl;
+//         std::cout<<"My mult"<<std::endl;
         const getfem::size_type n1 =nb_dof_, // gmm::mat_ncols(A_),
                                 n2 =nb_dof_x_; // gmm::mat_ncols(S_);
        #ifdef SOLVE_A_MOMENTUM
@@ -174,7 +174,7 @@ gmm::MatrixMarket_IO::write("Ku_x",S_);
   pS_.build_with(S_);
  #endif
 
-#ifdef USE_SAMG
+#ifdef USE_SAMG 
     gmm::copy(A_, Ku_csr_);
     amg_.convert_matrix(Ku_csr_);
     amg_.setid(idx_);

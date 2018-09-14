@@ -59,7 +59,7 @@ typedef gmm::row_matrix<sparse_vector_type> sparse_matrix_type;
 typedef gmm::col_matrix<sparse_vector_type> col_sparse_matrix_type;
 typedef std::vector<scalar_type> plain_vector;
 
-#define LS_TYPE 0
+#define LS_TYPE 6
 // Right hand side. Allows an interpolation for the source term.
 // scalar_type sol_f(const base_node &x) { return 10.; }
 
@@ -116,7 +116,7 @@ struct problem_descriptor_quad_3d{
 	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TETRAHEDRON(6),3)"; 
 	std::string datafilename="resu/laplace"; 
 	int noised =0;  // noise on mesh
-	int nsubdiv=10; // subdivision of the sqaured mesh
+	int nsubdiv=6; // subdivision of the sqaured mesh
 	double E=1.e+10;
 	double poisson =0.3;
 	double mu_s = E/( 2 * ( 1 + poisson) ) ;
@@ -139,9 +139,9 @@ struct problem_descriptor_tetra_3d{
 	std::string FEM_TYPE_P  =         "FEM_PK(3,1)";
 	std::string INTEGRATION =       "IM_TETRAHEDRON(6)";
 	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TETRAHEDRON(6),3)"; 
-	std::string datafilename="resu/laplace"; 
+	std::string datafilename="resu/lk_ls_ovp"; 
 	int noised =0;  // noise on mesh
-	int nsubdiv=13; // subdivision of the sqaured mesh
+	int nsubdiv=5; // subdivision of the sqaured mesh
 	double E=1.e+10;
 	double poisson =0.3;
 	double mu_s = E/( 2 * ( 1 + poisson) ) ;
@@ -184,17 +184,18 @@ class biotls_problem {
 		std::vector<size_type> pin_index_, pout_index_;  // The extended dofs
 		std::vector<size_type> uin_index_, uout_index_;  // The extended dofs
 		size_type nb_x_dof_p, nb_x_dof_u;
-		problem_descriptor_tri p_des;
-		// problem_descriptor_tetra_3d p_des;
+// 		problem_descriptor_tri p_des;
+		problem_descriptor_tetra_3d p_des;
 		// problem_descriptor_tetra_3d p_des;
 		enum { DIRICHLET_BOUNDARY_NUM = 10, NEUMANN_BOUNDARY_NUM = 11}; // descriptor for bcs flag
 		enum { BOTTOM = 2, TOP = 1 , LEFT = 3, RIGHT =4, LEFTX = 5, RIGHTX =6}; // descriptor for zones
 		enum { CUT_REGION = 100, UNCUT_REGION = 200, UNCUT_REGION_IN = 201, UNCUT_REGION_OUT = 202, CUT_EDGE=203};
+		enum { MAT_1 = 50,MAT_2=60};
 		size_type N_;             /// dimension of the problem
-
+		int time_iter_=0;
 		///  workspace configuration parameters---------------------
 		std::vector<scalar_type> tau_, vmu_, bm_ ,lambda_, beta_,
-			alpha_, permeability_, force_,penalty_, c1_, c2_;
+			alpha_, permeability_, force_,penalty_, c1_, c2_,over_p_;
 		// ---------------------------------------------------------
 		sparse_matrix_type K;                                /// iteration matrix
 		std::vector<scalar_type> U, U_old, P,  Px,           /// diplacement, disp old, pressure
@@ -208,6 +209,7 @@ class biotls_problem {
 		std::vector<scalar_type> normal_ls_v;
 		/// Methods
 		void gen_bc(void);                                /// create zones for boundary conditions
+		void gen_mat(void);                                /// create zones for internal conditions
 		void compute_normal_2_ls(void);                   /// create normal to ls as a cell field
 		void gen_coefficient();                         /// generate coefficient p0
 
@@ -230,13 +232,15 @@ class biotls_problem {
 		void print(double time=0,int istep=0,double time_ls=0);
 
 		void print_crop(double time=0,int istep=0,double time_ls=0);
+		void print_ls(double time=0,int istep=0,double time_ls=0);
                 void print_pattern(int istep=0);
 		void update_ls(double time=0, int iter=0);
 		void update_p_index(double timels=0);
 		void update_u_index(double timels=0);
+		void update_time_iter(int a){time_iter_=a;}
 		biotls_problem(void): mim(mesh), mf_u(mesh), mf_rhs(mesh), mf_p(mesh),mf_coef(mesh),mf_coef_v(mesh)
 				      ,tau_(1), vmu_(1), bm_(1), lambda_(1),alpha_(1), permeability_(1), force_(1), beta_(1),penalty_(1),
-				      c1_(1),c2_(1)
+				      c1_(1),c2_(1),over_p_(1)
 						   // level set 
 						   ,ls(mesh,2),mls(mesh),
 						   mim_ls_all(mls, getfem::mesh_im_level_set::INTEGRATE_ALL),

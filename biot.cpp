@@ -1,5 +1,6 @@
 #include "biot.hpp" 
 
+// #define LATERAL_INJECTION
 void biot_problem::init(void) {
 
 	std::cout<< "biot_problem::init "  << std::endl;
@@ -384,7 +385,9 @@ void biot_problem::assembly_p(double dt){
 	workspace.clear_expressions();
 	//rhs term
 	workspace.add_expression("0*penalty*p*Test_p", mim, TOP); 
+#ifdef LATERAL_INJECTION
 	workspace.add_expression("0.1*overpres*penalty*Test_p", mim, RIGHTP); 
+#endif
 // 	workspace.add_expression("0.4*1000*9.81*4000*penalty*Test_p", mim, TOP_P); 
 	workspace.assembly(1);
 	workspace.clear_expressions();
@@ -442,7 +445,9 @@ void biot_problem::assembly_u(double dt){
 		if(N_==3) workspace.add_expression("(2200*0.8 + 1000*0.2 -1000 )*[0,0,-1].Test_u", mim);
 		workspace.add_expression("alpha*p*Div_Test_u ", mim);
 		if(N_==3)workspace.add_expression("topload*[0,0,-1].Test_u" , mim, TOP_P); //Height og the ice disp
+#ifdef LATERAL_INJECTION
 		if(N_==3)workspace.add_expression("overpres*[1,0,0].Test_u" , mim, RIGHTP); //Height og the ice disp
+#endif
 		workspace.assembly(1);
 		workspace.clear_expressions();
 		// std::cout<< Bu<< std::endl; 
@@ -644,7 +649,7 @@ void biot_problem::gen_coefficient(){ // creating a coefficient
       }
     }
   }
-     if(1){ // Just to see what elements are cut by the level set ls:
+  if(1){ // Just to see what elements are cut by the level set ls:
     getfem::vtk_export vtk_data("data_gen_3mat_pinch.vtk");
     vtk_data.exporting(mf_coef);
     vtk_data.write_mesh();
@@ -703,11 +708,40 @@ void biot_problem::mesh_labeling(){
 	    if (group_h3==1 && group ==2) mesh.region(2).add(i_cv);
 	    if (group_h3==1 && group ==1) mesh.region(3).add(i_cv);
 // // 	    if (mesh.points()[indicies[0]][2]<2000) mesh.region(1).add(i_cv);
-//        std::cout<< indicies[0] <<" "<< indicies[1] <<" "<< indicies[2] <<" "<< indicies[3] <<std::endl;
 //        std::cout<< "zed is " <<mesh.points()[mesh.ind_points_of_convex(i_cv)[0]][2]<<std::endl;
 // 	    if (mesh.points()[indicies[0]][2]>2000) mesh.region(14).add(i_cv);
    }
 //    mesh.write_to_file("mesh/pichout/labeled_mesh_fp2");
    mesh.write_to_file("mesh/pinchout3/labeled_mesh_fp2");
-   
 }
+
+// Method for printing auxiliar data
+void biot_problem::print_aux_data(int istep){
+  std::cout<<"Start printing auxiliar data function"<< std::endl;
+  bgeot::pgeometric_trans pgt = 
+    bgeot::geometric_trans_descriptor("GT_PK(2,1)");
+  getfem::mesh mesh_htop;
+  getfem::import_mesh("gmsh:mesh/layer_cake/horizons/horizon_4.msh",mesh_htop);
+  getfem::mesh_fem mf_top(mesh_htop);    /// the main mesh_fem, for the pressure solution
+  mf_top.set_finite_element(mesh_htop.convex_index(),
+      getfem::classical_fem(pgt,1));  
+  {
+  std::vector<scalar_type> over_p; // permeability ratio
+  gmm::resize(over_p, mf_p.nb_dof()); gmm::fill(over_p,overpres_[0]);    // rhs monolithic problem
+  std::string namefile= p_des.datafilename +".aux." +  std::to_string(istep) +".vtk";
+  getfem::vtk_export vtkd(namefile);
+  vtkd.exporting(mf_p);vtkd.write_mesh();
+  vtkd.write_point_data(mf_p, over_p, "h_ice");
+  vtkd.write_cell_data(Kr_print_, "kr");
+  }  
+  {
+  std::vector<scalar_type> over_p; // permeability ratio
+  gmm::resize(over_p, mf_top.nb_dof()); gmm::fill(over_p,overpres_[0]);    // rhs monolithic problem
+  std::string namefile= p_des.datafilename +".topaux." +  std::to_string(istep) +".vtk";
+  getfem::vtk_export vtkd(namefile);
+  vtkd.exporting(mf_top);vtkd.write_mesh();
+  vtkd.write_point_data(mf_top, over_p, "h_ice");
+  }
+  std::cout<<"end printing auziliar function function"<< std::endl;
+}
+

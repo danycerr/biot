@@ -14,6 +14,6 @@ module load superlu
 #export LAPACK_DIR=/u/archive/agip/cerroni/software/lapack/
 export SAMG=/opt/lib/samg
 export OMP_NUM_THREADS=1
-##
+
 export LD_LIBRARY_PATH=$SAMG:$LD_LIBRARY_PATH
 export SVD_LICENSE_FILE=@nisserver.mate.polimi.iexport SVD_LICENSE_FILE=@nisserver.mate.polimi.it

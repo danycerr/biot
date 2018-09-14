@@ -170,7 +170,7 @@ void AMG::solve(gmm::csr_matrix<scalar_type> A_csr,
 	// 7  Write matrices to disk: level 2 up to the coarsest level. 
 	// 8  Write finest‐level matrix to disk (incl. right hand side etc.). 
 	// 9  Write all matrices to disk. 
-	APPL_INT idump     = 0;       // minimum output during setup
+	APPL_INT idump     = -1;       // minimum output during setup
 	//============================================
 	// iout page 44 Userguide. it controls display outpu. default 2 very verbose 43
 	APPL_INT iout      = -1;        // display residuals per iteration and work statistics
@@ -187,7 +187,7 @@ void AMG::solve(gmm::csr_matrix<scalar_type> A_csr,
 	// for(int xx=0;xx<200;xx++)std::cout<<a_samg[xx]<<" "<<a[xx]<< " -- "<<ja_samg[xx]<<" "<<ja[xx] <<std::endl;
 	SAMG_CTIME(&told);
 	double time_SAMG=gmm::uclock_sec();
-	std::cout<<"start solving with samg " << std::endl;
+// 	std::cout<<"start solving with samg " << std::endl;
 //=======================================================================================
 	SAMG(&nnu_,&nna_,&nsys,&ia_samg_[0],&ja_samg_[0],
 			&a_samg_[0],
@@ -200,7 +200,7 @@ void AMG::solve(gmm::csr_matrix<scalar_type> A_csr,
 			&a_cmplx,&g_cmplx,&p_cmplx,&w_avrge,
 			&chktol,&idump,&iout);
 //=======================================================================================
-	std::cout << std::endl<<"*** time to solve the system using SAMG with gmm time: " << gmm::uclock_sec() - time_SAMG << " seconds\n";
+// 	std::cout << std::endl<<"*** time to solve the system using SAMG with gmm time: " << gmm::uclock_sec() - time_SAMG << " seconds\n";
 // 	std::cin.get();
 	gmm::resize(sol_vec,nnu_);
 	for(int i = 0 ; i < nnu_ ; i++ ){sol_vec[i]=U[i];}

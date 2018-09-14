@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 biot_problem::init 
 Level 3 Warning in getfem_import.cc, line 234:   All regions must have different number!
 biot_problem::gen_bc()
@@ -8781,3 +8782,243 @@ condition number 2.68235e-07
 AMG deleted
 AMG deleted
 biot_problem::print  resu/layer_cake_ovp.59.vtk
+=======
+biotls_problem::init 
+biotls_problem::gen_bc()
+number of dof level set 2197
+End of ls evaluation
+# Cut Elements      = 216
+# dof to extend are  for pressure   = 98
+# dof to extend are  for displacement   = 1521
+set integration method
+set integration method simp
+set integration adapt
+end
+laplace cut fem::save_mesh  
+*** Time step 0/1
+laplacian_problem::update_ls
+# Cut Elements      = 216
+# dof to extend are  for pressure   = 98
+# dof to extend are  for displacement   = 1521
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 8112
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.09279 seconds
+Building biot preconditioner
+nb_dof 6591
+nb_dof 6591
+nb_dof A_ 6591
+nb_dof S_ 1521
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 343normal dof343
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008007 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 2.92119e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 8112
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.05932 seconds
+nb_dof_u 6591
+My mult
+My mult
+ iter   0 residual            1
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+ iter  50 residual  2.45821e-06
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+ iter 100 residual  3.41648e-07
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+My mult
+ iter 135 residual  8.50724e-08
+  Condition number momentum: 3.32601e-316
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1.61878
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 343normal dof343
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 2e-06 seconds
+... time to map pressure no if : 0.007926 seconds
+ [1;32m Start solving pressure
+ iter   0 residual            1
+ iter  21 residual  5.73336e-09
+  Condition number pressure: 2.92119e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 8112
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+>>>>>>> lev_set_ovp

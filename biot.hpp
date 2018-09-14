@@ -129,7 +129,8 @@ struct problem_descriptor_tetra_3d{
 	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; 
 // 	std::string datafilename="resu/gigat_fp2"; 
 // 	std::string datafilename="resu/laplacedisp_pinch"; 
-	std::string datafilename="resu/lk_hdt_ovp_disp"; 
+//	std::string datafilename="resu/lk_hdt_ovp_disp"; //ice load and lateral injection
+	std::string datafilename="resu/lk_hdt_disp";     //ice load
 	int nsubdiv=128; // subdivision of the sqaured mesh
 	double E=1.e+10;
 	double poisson =0.3;
@@ -195,7 +196,8 @@ class biot_problem {
 		void solve_fix_stress(double dt, int max_iter);   /// solves the system with classic fixed stress approach
 		void init(void);                                  /// initial configuration for the problem 
 		void print(int time=0);
-		inline void set_iter(int iteration){iter_=iteration;} //iteration numeber timestep
+		void print_aux_data(int istep=0);
+                inline void set_iter(int iteration){iter_=iteration;} //iteration numeber timestep
 		inline getfem::mesh_fem& get_pressure_fem(){return mf_p;}
                 inline std::vector<scalar_type>& get_pressure(){return P;}
 		biot_problem(void): mim(mesh), mf_u(mesh), mf_rhs(mesh), mf_p(mesh), mf_coef(mesh)
