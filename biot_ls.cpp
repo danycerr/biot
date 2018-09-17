@@ -1133,16 +1133,10 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
       gmm::iteration iter(1.e-8);  // iteration object with the max residu
       iter.set_noisy(1);               // output of iterations (2: sub-iteration)
       iter.set_maxiter(1000); // maximum number of iterations
-     if(0) {  
-        std::cout<<"!!!!!! Printing Matrix !!!!!"<<std::endl;
-        std::stringstream kp_fname;
-        kp_fname<<"kp."<<fix_count<<".mm";
-        gmm::MatrixMarket_IO::write(kp_fname.str().c_str(),Kp);
-      }
 
       // std::cout<<P.size()<<std::endl;
       // std::cout<<Bp.size()<<std::endl;std::cin.get();
-      gmm::gmres(Kp, P, Bp, PRp, restart, iter);
+      // gmm::gmres(Kp, P, Bp, PRp, restart, iter);
       scalar_type cond;
       //  gmm::SuperLU_solve(Kp, P , Bp, cond);
       std::cout << "  Condition number pressure: " << cond << std::endl;
@@ -1196,16 +1190,10 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
         iter.set_maxiter(1000); // maximum number of iterations
         // gmm::MatrixMarket_load("km",Ku);
         // gmm::clear(U);
-        if(0){
-          std::cout<<"!!!!!! Printing Matrix !!!!!"<<std::endl;
-          std::stringstream ku_fname;
-          ku_fname<<"ku."<<fix_count<<".mm";
-          gmm::MatrixMarket_IO::write(ku_fname.str().c_str(),Ku);
-        }
 
 //          gmm::gmres(Ku, U, Bu,PRu, restart, iter);
 // 	 gmm::gmres(Ku, U, Bu,mPR, restart, iter);
-	 gmm::gmres(Ku, U, Bu,DISP_PRECOND_PARAM, restart, iter);
+//	gmm::gmres(Ku, U, Bu,DISP_PRECOND_PARAM, restart, iter);
         scalar_type cond;
         // gmm::SuperLU_solve(Ku, U , Bu, cond);
         std::cout << "  Condition number momentum: " << cond << std::endl;
@@ -1241,9 +1229,24 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
       old_unorm = new_unorm;
     }
   }
+
   std::cout<<"\033[1;34m***** last iteration " << fix_count 
     << " norm p " <<  rel_pnorm 
     << " norm u " <<  rel_unorm << std::endl;
+
+// printing matrix
+ if(1){
+  std::cout<<"!!!!!! Printing Matrix !!!!!"<<std::endl;
+  std::stringstream ku_fname;
+  ku_fname<< p_des.datafilename <<".ku_n."<<std::to_string( (int) (time/dt) )<<".mm";
+  gmm::MatrixMarket_IO::write(ku_fname.str().c_str(),Ku_s);
+  std::stringstream kux_fname;
+  kux_fname<< p_des.datafilename <<".ku_x."<<std::to_string( (int) (time/dt) )<<".mm";
+  gmm::MatrixMarket_IO::write(ku_fname.str().c_str(),Ku_x);
+  std::stringstream kp_fname;
+  kp_fname<< p_des.datafilename <<".kp."<<std::to_string( (int) (time/dt) )<<".mm";
+  gmm::MatrixMarket_IO::write(kp_fname.str().c_str(),Kp);
+ }
 
 
   std::cout<<"\033[1;34m updating old vectors "<< std::endl;
