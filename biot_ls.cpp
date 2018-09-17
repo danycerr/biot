@@ -105,7 +105,7 @@ void biotls_problem::init(void) {
   //routine for labeling internal materials
   gen_mat();
   //routine for assignment of material propeties
-  gen_coefficient();
+//   gen_coefficient();
 
   {
     dal::bit_vector bv_cv = mesh.convex_index();
@@ -1492,6 +1492,15 @@ base_small_vector biotls_problem::ls_function(const base_node P, double time,int
 			      )*p_des.l_ref);
               res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.35;
             } break;
+    case 7: {
+              if (P[2] < 0.6)
+		res[0] = -((
+                            (P[0]*3-1)*(P[0]*3-1)
+                           +(P[1]*3-1)*(P[1]*3-1))/(0.5*0.5) - (P[2]*3-1)*(P[2]*3-1)/(0.5*0.5)-1);
+		else
+		 res[0] = (-((P[0]*3-1)*(P[0]*3-1)+(P[1]*3-1)*(P[1]*3-1)+((P[2]*3-1)-0.6) * ((P[2]*3-1)-0.6))-0.93);
+              res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.35;
+            } break;
     default: assert(0);
   }
   return res;
@@ -1818,8 +1827,10 @@ void biotls_problem::gen_coefficient(){ // creating a coefficient
   gmm::resize(Kr_, mf_coef.nb_dof()); gmm::fill(Kr_,1);    // rhs monolithic problem
   gmm::resize(Er_, mf_coef.nb_dof()); gmm::fill(Er_,1);    // rhs monolithic problem
   std::vector<int> material; material.push_back(MAT_1);material.push_back(MAT_2);
-  std::vector<double> k; k.push_back(1);k.push_back(1.e+2);
-  std::vector<double> E; E.push_back(1);E.push_back(2.e+0);
+  //std::vector<double> k; k.push_back(1);k.push_back(1.e+2);
+  //std::vector<double> E; E.push_back(1);E.push_back(2.e+0);
+  std::vector<double> k; k.push_back(1);k.push_back(1.e+0);
+  std::vector<double> E; E.push_back(1);E.push_back(1.e+0);
   for (int imat=0; imat< material.size();imat++){
     dal::bit_vector bv_cv = mesh.region(material[imat]).index();
     size_type i_cv = 0;
