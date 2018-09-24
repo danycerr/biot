@@ -81,8 +81,8 @@ int main(int argc, char *argv[]) {
 					  t.print(istep);
 #endif
 				          p.set_iter(istep);
-					  if(istep!=0) p.solve_fix_stress(dt, 100);
-					  else  p.solve_fix_stress(dt, 5);
+					  if(istep!=0) p.solve_fix_stress(dt, 1); // 100
+					  else  p.solve_fix_stress(dt, 1); //5
 					 //  p.assembly(dt);
 					 //  p.solve();
 					 // p.print(istep);

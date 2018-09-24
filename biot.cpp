@@ -524,7 +524,7 @@ void biot_problem::solve_fix_stress(double dt, int max_iter){
 			gmm::iteration iter(1.e-8);  // iteration object with the max residu
 			iter.set_noisy(1);               // output of iterations (2: sub-iteration)
 			iter.set_maxiter(1000); // maximum number of iterations
-			gmm::gmres(Kp, P, Bp, PRp, restart, iter);
+			// gmm::gmres(Kp, P, Bp, PRp, restart, iter);
 // 			amg_p_.solve(kp_csr, P , Bp , 1);
 // 			gmm::copy(amg_p_.getsol(), P);
 
@@ -559,7 +559,7 @@ void biot_problem::solve_fix_stress(double dt, int max_iter){
 			iter.set_maxiter(1000); // maximum number of iterations
 			// gmm::MatrixMarket_load("km",Ku);
 			// gmm::clear(U);
-			gmm::gmres(Ku, U, Bu, PRu, restart, iter);
+			// gmm::gmres(Ku, U, Bu, PRu, restart, iter);
 		        
 	                scalar_type cond;
 // 			amg_.solve(ku_csr, U , Bu , 1);
