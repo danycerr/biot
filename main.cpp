@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
 					p.update_ls(time_ls, istep);
 					// p.build_fix_stress_preconditioner(dt,time_ls);
 				}
-		  	   	 p.solve_fix_stress(dt, 2000,time_ls);
+		  	   	  p.solve_fix_stress(dt, 2000,time_ls);
 
 			 	//  p.build_fix_stress_preconditioner(dt,time_ls);
 				// ===============================

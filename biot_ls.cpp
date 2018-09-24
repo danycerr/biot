@@ -87,12 +87,13 @@ void biotls_problem::init(void) {
       // std::cout<< "creating cut and uncut region ls is"<<
       //         ls_function(ls.get_mesh_fem().point_of_basic_dof(ls.get_mesh_fem().ind_basic_dof_of_element(i_cv)[0]),0, LS_TYPE)[0]<<std::endl;  
       if (ls_function(mf_p.point_of_basic_dof(mf_p.ind_basic_dof_of_element(i_cv)[0]),0, LS_TYPE)[0]<0) 
-        mesh.region(UNCUT_REGION_IN).add(i_cv);
+      { mesh.region(UNCUT_REGION_IN).add(i_cv);phicell[i_cv] = 0.4;}
       else mesh.region(UNCUT_REGION_OUT).add(i_cv);
     }
   }
 
   { // Just to see what elements are cut by the level set ls:
+    std::cout<<"printin cut elements"<<std::endl;
     getfem::vtk_export vtke("cut_elements.vtk");
     vtke.exporting(ls.get_mesh_fem());
     vtke.write_mesh();
@@ -1493,12 +1494,12 @@ base_small_vector biotls_problem::ls_function(const base_node P, double time,int
               res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.35;
             } break;
     case 7: {
-              if (P[2] < 0.6)
+               if (P[2] < 0.6)
 		res[0] = -((
                             (P[0]*3-1)*(P[0]*3-1)
                            +(P[1]*3-1)*(P[1]*3-1))/(0.5*0.5) - (P[2]*3-1)*(P[2]*3-1)/(0.5*0.5)-1);
 		else
-		 res[0] = (-(
+                res[0] = (-(
                               (P[0]*3-1)*(P[0]*3-1) 
                             + (P[1]*3-1)*(P[1]*3-1)
                             + ((P[2]*3-1)-0.6)*((P[2]*3-1)-0.6)
@@ -1539,12 +1540,13 @@ void biotls_problem::update_ls(double time, int iter){
     else {
       mesh.region(UNCUT_REGION).add(i_cv);
       if (ls_function(mf_p.point_of_basic_dof(mf_p.ind_basic_dof_of_element(i_cv)[0]),time, LS_TYPE)[0]<0) 
-        mesh.region(UNCUT_REGION_IN).add(i_cv);
+        {mesh.region(UNCUT_REGION_IN).add(i_cv);phicell[i_cv] = 0.1;}
       else mesh.region(UNCUT_REGION_OUT).add(i_cv);
     }
   }
 
   { // Just to see what elements are cut by the level set ls:
+    std::cout<<"printin cut elements"<<std::endl;
     getfem::vtk_export vtke(p_des.datafilename + ".cut_elements."+std::to_string(iter)+".vtk");
     vtke.exporting(mf_p);
     vtke.write_mesh();
