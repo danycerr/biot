@@ -2,11 +2,11 @@
 // Preconditioner for dispacement problem
 // mPR Bu diag(exdof) 
 // PRu diagonal
-#define DISP_PRECOND_PARAM PRu
+#define DISP_PRECOND_PARAM mPR
 // fix cut height 
 #define H_PARAM 2666.67
 
-#define STAB_P 1
+#define STAB_P (0)
 
 void biotls_problem::init(void) {
 
