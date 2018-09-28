@@ -547,3 +547,68 @@ biotls_problem::configure_workspace::Configuring workspace
 dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
 end of Configuring workspace 
 end kout
+end kin
+start mapping displacement
+... time to map disp with if : 2e-06 seconds
+... time to map dipl no if : 4.06458 seconds
+nb_dof_u 6591
+ iter   0 residual     0.426614
+ iter  50 residual  7.81777e-05
+ iter 100 residual  9.25269e-06
+ iter 150 residual  1.99563e-06
+ iter 200 residual  9.89267e-07
+ iter 250 residual  8.61516e-07
+ iter 300 residual  8.13768e-07
+ iter 350 residual  7.84864e-07
+ iter 400 residual  7.61293e-07
+ iter 450 residual   7.4189e-07
+ iter 500 residual  7.23347e-07
+ iter 550 residual  7.09446e-07
+ iter 600 residual  6.95425e-07
+ iter 650 residual  6.80468e-07
+ iter 700 residual  6.65219e-07
+ iter 750 residual  6.52773e-07
+ iter 800 residual  6.28234e-07
+ iter 850 residual  6.06519e-07
+ iter 900 residual  5.90338e-07
+ iter 950 residual  5.77579e-07
+ iter 1000 residual  5.65432e-07
+  Condition number momentum: 2.07009e-316
+ Updating U_iter
+[1;34m***** iteration 2 norm p 0.991202 norm u 0.918364
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 343normal dof343
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.014472 seconds
+ [1;32m Start solving pressure
+ iter   0 residual      1.16389
+ iter  50 residual  9.05495e-06
+ iter 100 residual  1.12927e-08
+ iter 103 residual   9.7613e-09
+  Condition number pressure: 2.9857e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 8454
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 4.0663 seconds
+nb_dof_u 6591
+ iter   0 residual     0.059633
+ iter  50 residual  4.72397e-05
