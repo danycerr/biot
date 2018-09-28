@@ -139,9 +139,9 @@ struct problem_descriptor_tetra_3d{
 	std::string FEM_TYPE_P  =         "FEM_PK(3,1)";
 	std::string INTEGRATION =       "IM_TETRAHEDRON(6)";
 	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TETRAHEDRON(6),3)"; 
-	std::string datafilename="resu/laplace_p40"; 
+	std::string datafilename="resu/laplace_p20_stpr"; 
 	int noised =0;  // noise on mesh
-	int nsubdiv=9; // subdivision of the sqaured mesh
+	int nsubdiv=6; //9 // subdivision of the sqaured mesh
 	double E=1.e+10;
 	double poisson =0.3;
 	double mu_s = E/( 2 * ( 1 + poisson) ) ;

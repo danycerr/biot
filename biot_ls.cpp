@@ -6,7 +6,9 @@
 // fix cut height 
 #define H_PARAM 2666.67
 
-#define STAB_P 1
+#define STAB_P (1)
+
+#define L2_NORM
 
 void biotls_problem::init(void) {
 
@@ -449,9 +451,10 @@ void biotls_problem::assembly(double dt,double time) {
   workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, RIGHT);
   workspace.assembly(2);
   gmm::add(workspace.assembled_matrix(),K_in);
-    workspace.clear_expressions();
+  workspace.clear_expressions();
   // stabilization term
-    if(STAB_P){
+#ifdef  STAB_P
+{
     getfem::mesh_region  inner_faces;
     inner_faces = getfem::inner_faces_of_mesh(mesh, CUT_REGION);
 
@@ -460,8 +463,8 @@ void biotls_problem::assembly(double dt,double time) {
     gmm::add(workspace.assembled_matrix(), K_in);
     workspace.clear_expressions();
 
-  }
-
+ }
+#endif
 
   std::cout<< "end kin"<< std::endl; 
 
@@ -682,10 +685,10 @@ void biotls_problem::assembly_p(double dt, double time){
   std::vector<scalar_type> Bp_in(nb_dof_p, 0.0);
   {
     // workspace.set_assembled_vector(Bp_in); 
-    // NICHE
-    workspace.add_expression("2/element_size*p*Test_p*40", mim_ls_bd, CUT_REGION);// 1 is the region		
+    // NITSCHE
+    workspace.add_expression("2/element_size*p*Test_p", mim_ls_bd, CUT_REGION);// 1 is the region		
     workspace.add_expression("-nlsv.Grad_p*Test_p*tau- nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION); 
-    //NICHE
+    //NITSCHE
     //  workspace.add_expression( "permeability*tau*[0,1].Grad_p*Test_p ", mim_ls_bd, CUT_REGION);
     workspace.add_expression( "(1+beta)*p.Test_p + tau*Kr*Grad_p.Grad_Test_p", mim_ls_in, CUT_REGION);
     workspace.assembly(2);
@@ -711,20 +714,18 @@ void biotls_problem::assembly_p(double dt, double time){
 //     gmm::add(workspace.assembled_matrix(),K_in);
 //     workspace.clear_expressions();
     //pstab stabilization term
- if(STAB_P) {
+#ifdef STAB_P 
+{
     getfem::mesh_region  inner_faces;
     inner_faces = getfem::inner_faces_of_mesh(mesh, CUT_REGION);
 
-    workspace.add_expression("2*element_size*Grad_p.Normal*Grad_Test_p.Normal", mim, inner_faces);// 1 is the region		
+    workspace.add_expression("2*element_size*Grad_p.Normal*Grad_Test_p.Normal*0.1", mim, inner_faces);// 1 is the region		
     workspace.assembly(2);
     gmm::add(workspace.assembled_matrix(), K_in);
     workspace.clear_expressions();
 
-  }
-
-
-    
-    
+}
+#endif
     std::cout<< "end kin"<< std::endl; 
     //gmm::copy(gmm::sub_matrix(Kp,
     //gmm::sub_interval(0, nb_dof_p),
@@ -802,16 +803,6 @@ void biotls_problem::assembly_p(double dt, double time){
       // std::cin.ignore();
     }
   }
-
-
-
-
-
-
-
-
-
-
   //dummy part of the matrix
   // workspace.add_expression("-200*1.e+12*Test_p "	, mim_ls_out);
   // workspace.add_expression("-200*1.e+12*Test_p "	, mim_ls_bd);
@@ -1076,6 +1067,8 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
   double rel_unorm=1; double rel_pnorm=1; int fix_count=0;
   double old_unorm=1; double new_unorm=1;
   double old_pnorm=1; double new_pnorm=1;
+  double old_unorml2=1; double new_unorml2=1;
+  double old_pnorml2=1; double new_pnorml2=1;
   getfem::size_type nb_dof_u = mf_u.nb_dof();
   getfem::size_type nb_dof_p = mf_p.nb_dof();
   int min_iter=2;
@@ -1137,6 +1130,7 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
       //  gmm::SuperLU_solve(Kp, P , Bp, cond);
       std::cout << "  Condition number pressure: " << cond << std::endl;
       std::vector<scalar_type> PIn(mf_p.nb_dof(), 0.0);
+      
       std::cout<<"Updating P_iter"<<std::endl;
       int nb_exdof_p=eXt_dof.size();
       {  
@@ -1154,6 +1148,14 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
         gmm::copy(PIn,P_iter);
       } 
       // updating p_iter
+      new_pnorml2 = getfem::asm_L2_norm(mim_ls_in, mf_p, P_iter);
+      new_pnorm = gmm::vect_norm2(P);
+      rel_pnorm=fabs(new_pnorm - old_pnorm)/ (old_pnorm+1.e-18);
+      #ifdef L2_NORM
+      rel_pnorm=fabs(new_pnorml2 - old_pnorml2)/ (old_pnorml2+1.e-18);
+      #endif
+      old_pnorm = new_pnorm;
+      old_pnorml2 = new_pnorml2;
     }
     //--------------------------------------------------------------
 #ifdef PRINT_MATRIX
@@ -1167,11 +1169,6 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
 
 
     { // for displacement
-      new_pnorm = gmm::vect_norm2(P);
-      rel_pnorm=fabs(new_pnorm - old_pnorm)/ (old_pnorm+1.e-18);
-      old_pnorm = new_pnorm;
-      // updating u
-      //////warrnincg
       // gmm::copy(P,P_iter);
       std::cout<< " \033[1;31m Start solving momentum balance"<<std::endl;
       std::cout<<"assembling"<<std::endl;
@@ -1227,8 +1224,13 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
 #endif // PRINT_MATRIX
       //----------------------------------------------------------------
       new_unorm = gmm::vect_norm2(U);
+      new_unorml2 = getfem::asm_L2_norm(mim_ls_in, mf_u, U_iter);
       rel_unorm=fabs(new_unorm - old_unorm)/ (old_unorm+1e-20);
+      #ifdef L2_NORM
+      rel_unorm=fabs(new_unorml2 - old_unorml2)/ (old_unorml2+1e-20);
+      #endif
       old_unorm = new_unorm;
+      old_unorml2 = new_unorml2;
     }
   }
   std::cout<<"\033[1;34m***** last iteration " << fix_count 
@@ -1794,8 +1796,10 @@ void biotls_problem::gen_coefficient(){ // creating a coefficient
   gmm::resize(Kr_, mf_coef.nb_dof()); gmm::fill(Kr_,1);    // rhs monolithic problem
   gmm::resize(Er_, mf_coef.nb_dof()); gmm::fill(Er_,1);    // rhs monolithic problem
   std::vector<int> material; material.push_back(MAT_1);material.push_back(MAT_2);
-  std::vector<double> k; k.push_back(1);k.push_back(1.e+2);
-  std::vector<double> E; E.push_back(1);E.push_back(2.e+0);
+  // std::vector<double> k; k.push_back(1);k.push_back(1.e+2);
+  // std::vector<double> E; E.push_back(1);E.push_back(2.e+0);
+  std::vector<double> k; k.push_back(1);k.push_back(1.e+0);
+  std::vector<double> E; E.push_back(1);E.push_back(1.e+0);
   for (int imat=0; imat< material.size();imat++){
     dal::bit_vector bv_cv = mesh.region(material[imat]).index();
     size_type i_cv = 0;

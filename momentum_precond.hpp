@@ -8,7 +8,7 @@
 #include <gmm/gmm_precond_diagonal.h>
 #include <gmm/gmm_superlu_interface.h>
 // #include "getfem/getfem_mesher.h"
-#define USE_SAMG 1
+// #define USE_SAMG 1
 //#define USE_MP
 
 // preconditioning strategies SOLVE invert by solving Ax=b
