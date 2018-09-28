@@ -1,0 +1,5910 @@
+biotls_problem::init 
+biotls_problem::gen_bc()
+number of dof level set 1331
+End of ls evaluation
+biotls_problem::gen_intmat()
+Finish biotls_problem::gen_intmat()
+# Cut Elements      = 192
+# dof to extend are  for pressure   = 88
+# dof to extend are  for displacement   = 1359
+set integration method
+set integration method simp
+set integration adapt
+end
+laplace cut fem::save_mesh  
+laplacian_problem::update_ls
+# Cut Elements      = 192
+# dof to extend are  for pressure   = 88
+# dof to extend are  for displacement   = 1359
+*** Time step 0/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 0 seconds
+... time to map dipl no if : 2.09048 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008699 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 2e-06 seconds
+... time to map dipl no if : 2.18803 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008176 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.15978 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 1/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.00305 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 5e-06 seconds
+... time to map pressure no if : 0.007344 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 0 seconds
+... time to map dipl no if : 1.91477 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.007694 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.16647 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 2/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.24063 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008044 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 0 seconds
+... time to map dipl no if : 2.04906 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.007779 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.9488 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 3/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.63121 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008096 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.1812 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008394 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.15796 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 4/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.11624 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008287 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.13128 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008069 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.05097 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 5/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.06797 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.007743 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.11583 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 5e-06 seconds
+... time to map pressure no if : 0.008107 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 0 seconds
+... time to map dipl no if : 1.62931 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 6/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.23861 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008116 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 0 seconds
+... time to map dipl no if : 2.14704 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008316 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.20138 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 7/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.17982 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.006347 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 0 seconds
+... time to map dipl no if : 2.18812 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 2e-06 seconds
+... time to map pressure no if : 0.008176 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.18631 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 8/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.16516 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008966 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.03174 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008461 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.16358 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 9/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.11327 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.007952 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.23301 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.006218 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.30237 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 10/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.21109 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008508 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.21015 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008025 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.63934 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 11/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.15997 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008003 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.23023 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008259 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.1789 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 12/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.33461 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008621 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.20544 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.009041 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.35757 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 13/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.4373 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.006539 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.20681 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 0 seconds
+... time to map pressure no if : 0.008446 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.17381 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 14/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.13537 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.00805 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.08493 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 2e-06 seconds
+... time to map pressure no if : 0.008513 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 0 seconds
+... time to map dipl no if : 2.09014 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 15/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.24038 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.009188 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.31236 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.009453 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.16935 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 16/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.21066 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008729 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.37666 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.0086 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.32004 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 17/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.02422 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008703 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.18299 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008518 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 2e-06 seconds
+... time to map dipl no if : 2.14096 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 18/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.15402 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008293 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.2724 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008603 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.20674 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 19/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.25802 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008513 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 2e-06 seconds
+... time to map dipl no if : 1.64096 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.007958 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 2e-06 seconds
+... time to map dipl no if : 2.13677 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 20/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.09198 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.00766 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.16135 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008635 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.95792 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 21/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.18004 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.007441 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.01066 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.007678 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.13249 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 22/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 8e-06 seconds
+... time to map dipl no if : 1.86979 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008844 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 2e-06 seconds
+... time to map dipl no if : 2.17736 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.009422 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.22984 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 23/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 0 seconds
+... time to map dipl no if : 2.11523 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 0 seconds
+... time to map pressure no if : 0.00894 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.19533 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008216 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.22206 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 24/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.14627 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008437 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.17901 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.006191 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.12368 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 25/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.18554 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.00851 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.2367 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.0087 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.14594 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 26/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.16829 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008454 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.39961 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.009307 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.28289 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 27/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.27851 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.006156 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.20813 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008049 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.24458 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 28/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.15895 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008213 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.11828 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.006167 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.16599 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 29/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.20054 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008169 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.13922 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 2e-06 seconds
+... time to map pressure no if : 0.008268 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.34165 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 30/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.32479 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 0
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008888 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.36144 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008791 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.35147 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 31/80
+laplacian_problem::update_ls
+# Cut Elements      = 192
+# dof to extend are  for pressure   = 88
+# dof to extend are  for displacement   = 1359
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.22173 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 31
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008175 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 3.47635e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.23335 seconds
+nb_dof_u 3993
+  Condition number momentum: 1.46126e-316
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008248 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 3.47635e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.73797 seconds
+nb_dof_u 3993
+  Condition number momentum: 1.46126e-316
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 32/80
+laplacian_problem::update_ls
+# Cut Elements      = 192
+# dof to extend are  for pressure   = 88
+# dof to extend are  for displacement   = 1359
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.33282 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 32
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008868 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 2.63628e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.19091 seconds
+nb_dof_u 3993
+  Condition number momentum: 3.52902e-316
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 0 seconds
+... time to map pressure no if : 0.00854 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 2.63628e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.13482 seconds
+nb_dof_u 3993
+  Condition number momentum: 3.52902e-316
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 33/80
+laplacian_problem::update_ls
+# Cut Elements      = 192
+# dof to extend are  for pressure   = 88
+# dof to extend are  for displacement   = 1359
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.2677 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1359
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 33
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 0 seconds
+... time to map pressure no if : 0.008467 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 1.42019e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.22512 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.72323e-316
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.006323 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 1.42019e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5352
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 0 seconds
+... time to map dipl no if : 2.21098 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.72323e-316
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 34/80
+laplacian_problem::update_ls
+# Cut Elements      = 204
+# dof to extend are  for pressure   = 92
+# dof to extend are  for displacement   = 1431
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5424
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 9.99999e-07 seconds
+... time to map dipl no if : 2.40678 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1431
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 34
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.009117 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 8.1249e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5424
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.53107 seconds
+nb_dof_u 3993
+  Condition number momentum: 1.44547e-316
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 9.99999e-07 seconds
+... time to map pressure no if : 0.009794 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 8.1249e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5424
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 9.99999e-07 seconds
+... time to map dipl no if : 2.43026 seconds
+nb_dof_u 3993
+  Condition number momentum: 1.44547e-316
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 35/80
+laplacian_problem::update_ls
+# Cut Elements      = 204
+# dof to extend are  for pressure   = 92
+# dof to extend are  for displacement   = 1431
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5424
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 9.99999e-07 seconds
+... time to map dipl no if : 1.84132 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1431
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 35
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 0 seconds
+... time to map pressure no if : 0.009202 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 1.39647e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5424
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.52284 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.6954e-316
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.009931 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 1.39647e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5424
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 0 seconds
+... time to map dipl no if : 2.56378 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.6954e-316
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 36/80
+laplacian_problem::update_ls
+# Cut Elements      = 204
+# dof to extend are  for pressure   = 92
+# dof to extend are  for displacement   = 1431
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5424
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.39318 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1431
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 36
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 9.99999e-07 seconds
+... time to map pressure no if : 0.009304 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 2.18823e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5424
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 0 seconds
+... time to map dipl no if : 2.38585 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.50491e-316
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 0 seconds
+... time to map pressure no if : 0.008626 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 2.18823e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5424
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 0 seconds
+... time to map dipl no if : 2.48718 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.50491e-316
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 37/80
+laplacian_problem::update_ls
+# Cut Elements      = 204
+# dof to extend are  for pressure   = 92
+# dof to extend are  for displacement   = 1431
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5424
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.47602 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1431
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 37
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 9.99999e-07 seconds
+... time to map pressure no if : 0.008804 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 4.83201e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5424
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.34126 seconds
+nb_dof_u 3993
+  Condition number momentum: 4.87829e-316
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 9.99999e-07 seconds
+... time to map pressure no if : 0.008819 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 4.83201e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5424
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 9.99999e-07 seconds
+... time to map dipl no if : 2.26168 seconds
+nb_dof_u 3993
+  Condition number momentum: 4.87829e-316
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 38/80
+laplacian_problem::update_ls
+# Cut Elements      = 204
+# dof to extend are  for pressure   = 92
+# dof to extend are  for displacement   = 1431
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5424
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.25068 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1431
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 38
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 0 seconds
+... time to map pressure no if : 0.009114 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 2.58655e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5424
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.47251 seconds
+nb_dof_u 3993
+  Condition number momentum: 6.57284e-316
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 9.99999e-07 seconds
+... time to map pressure no if : 0.008743 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 2.58655e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5424
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.79907 seconds
+nb_dof_u 3993
+  Condition number momentum: 6.57284e-316
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 39/80
+laplacian_problem::update_ls
+# Cut Elements      = 204
+# dof to extend are  for pressure   = 92
+# dof to extend are  for displacement   = 1431
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5424
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 0 seconds
+... time to map dipl no if : 2.24902 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1431
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 39
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 0 seconds
+... time to map pressure no if : 0.008576 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 2.39384e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5424
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 0 seconds
+... time to map dipl no if : 2.20581 seconds
+nb_dof_u 3993
+  Condition number momentum: 1.26832e-315
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008842 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 2.39384e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5424
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 9.99999e-07 seconds
+... time to map dipl no if : 2.14933 seconds
+nb_dof_u 3993
+  Condition number momentum: 1.26832e-315
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 40/80
+laplacian_problem::update_ls
+# Cut Elements      = 204
+# dof to extend are  for pressure   = 92
+# dof to extend are  for displacement   = 1431
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5424
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 0 seconds
+... time to map dipl no if : 2.19991 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1431
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 40
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008555 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 2.21759e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5424
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 0 seconds
+... time to map dipl no if : 2.25151 seconds
+nb_dof_u 3993
+  Condition number momentum: 7.75812e-316
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.007573 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 2.21759e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5424
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 9.99999e-07 seconds
+... time to map dipl no if : 2.3284 seconds
+nb_dof_u 3993
+  Condition number momentum: 7.75812e-316
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 41/80
+laplacian_problem::update_ls
+# Cut Elements      = 204
+# dof to extend are  for pressure   = 92
+# dof to extend are  for displacement   = 1431
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5424
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 9.99999e-07 seconds
+... time to map dipl no if : 2.34873 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1431
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 41
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 9.99999e-07 seconds
+... time to map pressure no if : 0.006731 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 2.14842e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5424
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.28708 seconds
+nb_dof_u 3993
+  Condition number momentum: 4.33847e-316
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 0 seconds
+... time to map pressure no if : 0.008554 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 2.14842e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5424
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 9.99999e-07 seconds
+... time to map dipl no if : 2.3143 seconds
+nb_dof_u 3993
+  Condition number momentum: 4.33847e-316
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 42/80
+laplacian_problem::update_ls
+# Cut Elements      = 204
+# dof to extend are  for pressure   = 92
+# dof to extend are  for displacement   = 1431
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5424
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.11003 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1431
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 42
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 9.99999e-07 seconds
+... time to map pressure no if : 0.00881 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.84902e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5424
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.22192 seconds
+nb_dof_u 3993
+  Condition number momentum: 4.36438e-316
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 9.99999e-07 seconds
+... time to map pressure no if : 0.008493 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.84902e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5424
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 9.99999e-07 seconds
+... time to map dipl no if : 2.21835 seconds
+nb_dof_u 3993
+  Condition number momentum: 4.36438e-316
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 43/80
+laplacian_problem::update_ls
+# Cut Elements      = 204
+# dof to extend are  for pressure   = 92
+# dof to extend are  for displacement   = 1431
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5424
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.12628 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1431
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 43
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008428 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 1.33815e-315
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5424
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 9.99999e-07 seconds
+... time to map dipl no if : 2.19906 seconds
+nb_dof_u 3993
+  Condition number momentum: 7.2469e-316
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.008509 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 1.33815e-315
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5424
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 2.18863 seconds
+nb_dof_u 3993
+  Condition number momentum: 7.2469e-316
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 44/80
+laplacian_problem::update_ls
+# Cut Elements      = 150
+# dof to extend are  for pressure   = 72
+# dof to extend are  for displacement   = 1089
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 0 seconds
+... time to map dipl no if : 1.27179 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1089
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 44
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 9.99999e-07 seconds
+... time to map pressure no if : 0.004976 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 7.47611e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 2e-06 seconds
+... time to map dipl no if : 1.3608 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.76749e-316
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 2e-06 seconds
+... time to map pressure no if : 0.005664 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 7.47611e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.35525 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.76749e-316
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 45/80
+laplacian_problem::update_ls
+# Cut Elements      = 150
+# dof to extend are  for pressure   = 72
+# dof to extend are  for displacement   = 1089
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 9.99999e-07 seconds
+... time to map dipl no if : 1.50858 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1089
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 45
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.00572 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 7.64032e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 9.99999e-07 seconds
+... time to map dipl no if : 1.30607 seconds
+nb_dof_u 3993
+  Condition number momentum: 1.39515e-315
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.004234 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 7.64032e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.40891 seconds
+nb_dof_u 3993
+  Condition number momentum: 1.39515e-315
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 46/80
+laplacian_problem::update_ls
+# Cut Elements      = 150
+# dof to extend are  for pressure   = 72
+# dof to extend are  for displacement   = 1089
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 9.99999e-07 seconds
+... time to map dipl no if : 1.45153 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1089
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 46
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.005681 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 1.36961e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 0 seconds
+... time to map dipl no if : 1.4237 seconds
+nb_dof_u 3993
+  Condition number momentum: 1.93105e-316
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 9.99999e-07 seconds
+... time to map pressure no if : 0.004471 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 1.36961e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 9.99999e-07 seconds
+... time to map dipl no if : 1.27755 seconds
+nb_dof_u 3993
+  Condition number momentum: 1.93105e-316
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 47/80
+laplacian_problem::update_ls
+# Cut Elements      = 150
+# dof to extend are  for pressure   = 72
+# dof to extend are  for displacement   = 1089
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 0 seconds
+... time to map dipl no if : 1.28531 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1089
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 47
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.005488 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 5.34481e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.43221 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.5067e-316
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.006082 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 5.34481e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.30591 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.5067e-316
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 48/80
+laplacian_problem::update_ls
+# Cut Elements      = 150
+# dof to extend are  for pressure   = 72
+# dof to extend are  for displacement   = 1089
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.28649 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1089
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 48
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 0 seconds
+... time to map pressure no if : 0.005199 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 3.73276e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.21076 seconds
+nb_dof_u 3993
+  Condition number momentum: 1.62865e-316
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.0053 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 3.73276e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 9.99999e-07 seconds
+... time to map dipl no if : 1.034 seconds
+nb_dof_u 3993
+  Condition number momentum: 1.62865e-316
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 49/80
+laplacian_problem::update_ls
+# Cut Elements      = 150
+# dof to extend are  for pressure   = 72
+# dof to extend are  for displacement   = 1089
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 9.99999e-07 seconds
+... time to map dipl no if : 1.28387 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1089
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 49
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.005316 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 3.997e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 9.99999e-07 seconds
+... time to map dipl no if : 1.29398 seconds
+nb_dof_u 3993
+  Condition number momentum: 4.21836e-316
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 9.99999e-07 seconds
+... time to map pressure no if : 0.005364 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 3.997e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.04614 seconds
+nb_dof_u 3993
+  Condition number momentum: 4.21836e-316
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 50/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.22531 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1089
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 49
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 9.99999e-07 seconds
+... time to map pressure no if : 0.005232 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.25582 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.005558 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.29205 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 51/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.27456 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1089
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 49
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 0 seconds
+... time to map pressure no if : 0.005509 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.29243 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.00515 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 0 seconds
+... time to map dipl no if : 1.27326 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 52/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.24327 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1089
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 49
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 0 seconds
+... time to map pressure no if : 0.00521 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.23968 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 9.99999e-07 seconds
+... time to map pressure no if : 0.005206 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 9.99999e-07 seconds
+... time to map dipl no if : 1.24986 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 53/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.37658 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1089
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 49
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.005618 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.38521 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.005496 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 2e-06 seconds
+... time to map dipl no if : 1.36716 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 54/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 9.99999e-07 seconds
+... time to map dipl no if : 1.42002 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1089
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 49
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 9.99999e-07 seconds
+... time to map pressure no if : 0.00555 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.27378 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 0 seconds
+... time to map pressure no if : 0.005866 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 9.99999e-07 seconds
+... time to map dipl no if : 1.3937 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 55/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.32654 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1089
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 49
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 9.99999e-07 seconds
+... time to map pressure no if : 0.006232 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.41558 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.005689 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.17309 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 56/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 9.99999e-07 seconds
+... time to map dipl no if : 1.35825 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1089
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 49
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 9.99999e-07 seconds
+... time to map pressure no if : 0.004242 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.36681 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.005629 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 9.99999e-07 seconds
+... time to map dipl no if : 1.36979 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 57/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.38967 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1089
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 49
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.00541 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 0 seconds
+... time to map dipl no if : 1.37866 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 9.99999e-07 seconds
+... time to map pressure no if : 0.00565 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.03821 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 58/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.35066 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1089
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 49
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.005632 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 9.99999e-07 seconds
+... time to map dipl no if : 1.39031 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.005445 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.31897 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 59/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.38158 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1089
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 49
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.005834 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.14985 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 0 seconds
+... time to map pressure no if : 0.00564 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.38012 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 60/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 0 seconds
+... time to map dipl no if : 1.33942 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1089
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 49
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 9.99999e-07 seconds
+... time to map pressure no if : 0.006056 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.38685 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 9.99999e-07 seconds
+... time to map pressure no if : 0.005669 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.19545 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** last iteration 2 norm p 0 norm u 0
+!!!!!! Printing Matrix !!!!!
+[1;34m updating old vectors 
+end updating old
+AMG deleted
+*** Time step 61/80
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 9.99999e-07 seconds
+... time to map dipl no if : 1.34882 seconds
+Build class AMG for Schur
+Building biot preconditioner
+nb_dof 3993
+nb_dof 3993
+nb_dof A_ 3993
+nb_dof S_ 1089
+ AMG::convert_matrix::Start building the matrix
+*** parameters SAMG matrix   3993
+*** parameters SAMG matrix   3993
+ AMG::convert_matrix:: end matrix conversion 
+********************id is 49
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.005409 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 1.47023 seconds
+nb_dof_u 3993
+  Condition number momentum: 2.11586e-76
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 216normal dof216
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 9.99999e-07 seconds
+... time to map pressure no if : 0.006102 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 6.92827e-310
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 5082
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout

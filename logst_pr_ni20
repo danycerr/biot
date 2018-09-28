@@ -1,0 +1,549 @@
+biotls_problem::init 
+biotls_problem::gen_bc()
+number of dof level set 2197
+End of ls evaluation
+biotls_problem::gen_intmat()
+Finish biotls_problem::gen_intmat()
+# Cut Elements      = 270
+# dof to extend are  for pressure   = 118
+# dof to extend are  for displacement   = 1863
+set integration method
+set integration method simp
+set integration adapt
+end
+laplace cut fem::save_mesh  
+*** Time step 0/80
+laplacian_problem::update_ls
+# Cut Elements      = 270
+# dof to extend are  for pressure   = 118
+# dof to extend are  for displacement   = 1863
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 8454
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 2e-06 seconds
+... time to map dipl no if : 4.07627 seconds
+Building biot preconditioner
+nb_dof 6591
+nb_dof 6591
+nb_dof A_ 6591
+nb_dof S_ 1863
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 343normal dof343
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 2e-06 seconds
+... time to map pressure no if : 0.014574 seconds
+ [1;32m Start solving pressure
+  Condition number pressure: 2.84071e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 8454
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 4.04718 seconds
+nb_dof_u 6591
+ iter   0 residual            1
+ iter  50 residual   0.00201974
+ iter 100 residual  0.000340572
+ iter 150 residual  6.94122e-05
+ iter 200 residual  2.82038e-05
+ iter 250 residual  2.31104e-05
+ iter 300 residual  2.18539e-05
+ iter 350 residual  2.04395e-05
+ iter 400 residual  1.94677e-05
+ iter 450 residual  1.84606e-05
+ iter 500 residual  1.75149e-05
+ iter 550 residual  1.62471e-05
+ iter 600 residual  1.50791e-05
+ iter 650 residual   1.4032e-05
+ iter 700 residual  1.31962e-05
+ iter 750 residual   1.2562e-05
+ iter 800 residual  1.19881e-05
+ iter 850 residual  1.14316e-05
+ iter 900 residual  1.09447e-05
+ iter 950 residual  1.04428e-05
+ iter 1000 residual  9.95723e-06
+  Condition number momentum: 5.19445e-316
+ Updating U_iter
+[1;34m***** iteration 2 norm p 1 norm u 0.918552
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 343normal dof343
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.014353 seconds
+ [1;32m Start solving pressure
+ iter   0 residual            1
+ iter  50 residual  6.09856e-06
+ iter  93 residual  8.66039e-09
+  Condition number pressure: 2.84071e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 8454
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 2e-06 seconds
+... time to map dipl no if : 4.04576 seconds
+nb_dof_u 6591
+ iter   0 residual    0.0597422
+ iter  50 residual  4.92943e-05
+ iter 100 residual  1.14026e-05
+ iter 150 residual  9.29496e-06
+ iter 200 residual  8.60294e-06
+ iter 250 residual  8.12398e-06
+ iter 300 residual   7.7584e-06
+ iter 350 residual  7.47197e-06
+ iter 400 residual  7.16211e-06
+ iter 450 residual  6.91354e-06
+ iter 500 residual  6.42939e-06
+ iter 550 residual  6.07184e-06
+ iter 600 residual  5.77581e-06
+ iter 650 residual  5.51398e-06
+ iter 700 residual  5.16764e-06
+ iter 750 residual  4.86013e-06
+ iter 800 residual  4.31109e-06
+ iter 850 residual  3.90322e-06
+ iter 900 residual  2.54621e-06
+ iter 950 residual  2.02482e-06
+ iter 1000 residual  1.81069e-06
+  Condition number momentum: 5.19445e-316
+ Updating U_iter
+[1;34m***** iteration 3 norm p 7.70641e+16 norm u 0.023262
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 343normal dof343
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.014292 seconds
+ [1;32m Start solving pressure
+ iter   0 residual     0.094058
+ iter  50 residual  7.78736e-07
+ iter  78 residual  9.87003e-09
+  Condition number pressure: 2.84071e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 8454
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 4.04455 seconds
+nb_dof_u 6591
+ iter   0 residual   0.00561266
+ iter  50 residual  4.73072e-06
+ iter 100 residual  1.80172e-06
+ iter 150 residual   1.6348e-06
+ iter 200 residual  1.59192e-06
+ iter 250 residual   1.5545e-06
+ iter 300 residual  1.52129e-06
+ iter 350 residual    1.498e-06
+ iter 400 residual  1.47111e-06
+ iter 450 residual  1.44731e-06
+ iter 500 residual  1.42008e-06
+ iter 550 residual  1.39591e-06
+ iter 600 residual  1.37328e-06
+ iter 650 residual  1.34936e-06
+ iter 700 residual  1.32815e-06
+ iter 750 residual  1.30558e-06
+ iter 800 residual  1.28807e-06
+ iter 850 residual  1.27063e-06
+ iter 900 residual  1.25607e-06
+ iter 950 residual  1.24023e-06
+ iter 1000 residual  1.22888e-06
+  Condition number momentum: 5.19445e-316
+ Updating U_iter
+[1;34m***** iteration 4 norm p 0.0918834 norm u 0.00215529
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 343normal dof343
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 2e-06 seconds
+... time to map pressure no if : 0.014298 seconds
+ [1;32m Start solving pressure
+ iter   0 residual   0.00884126
+ iter  50 residual  8.57993e-08
+ iter  61 residual  9.89621e-09
+  Condition number pressure: 2.84071e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 8454
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 4.05596 seconds
+nb_dof_u 6591
+ iter   0 residual  0.000540378
+ iter  50 residual  1.33591e-06
+ iter 100 residual  1.22217e-06
+ iter 150 residual  1.20309e-06
+ iter 200 residual   1.1848e-06
+ iter 250 residual  1.17523e-06
+ iter 300 residual  1.15938e-06
+ iter 350 residual  1.14362e-06
+ iter 400 residual  1.12812e-06
+ iter 450 residual  1.11361e-06
+ iter 500 residual  1.09741e-06
+ iter 550 residual  1.08435e-06
+ iter 600 residual  1.06446e-06
+ iter 650 residual  1.04643e-06
+ iter 700 residual   1.0143e-06
+ iter 750 residual  9.93763e-07
+ iter 800 residual  9.84726e-07
+ iter 850 residual  9.72133e-07
+ iter 900 residual  9.66642e-07
+ iter 950 residual  9.54211e-07
+ iter 1000 residual  9.47542e-07
+  Condition number momentum: 5.19445e-316
+ Updating U_iter
+[1;34m***** iteration 5 norm p 0.00956588 norm u 0.000203059
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 343normal dof343
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.014304 seconds
+ [1;32m Start solving pressure
+ iter   0 residual  0.000851546
+ iter  49 residual  9.66223e-09
+  Condition number pressure: 2.84071e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 8454
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 2e-06 seconds
+... time to map dipl no if : 4.04809 seconds
+nb_dof_u 6591
+ iter   0 residual  5.23544e-05
+ iter  50 residual   9.5958e-07
+ iter 100 residual  9.49192e-07
+ iter 150 residual    9.373e-07
+ iter 200 residual  9.31857e-07
+ iter 250 residual  9.20609e-07
+ iter 300 residual  9.09005e-07
+ iter 350 residual  9.00666e-07
+ iter 400 residual    8.915e-07
+ iter 450 residual  8.85235e-07
+ iter 500 residual  8.78742e-07
+ iter 550 residual  8.71188e-07
+ iter 600 residual  8.64524e-07
+ iter 650 residual  8.52565e-07
+ iter 700 residual  8.41949e-07
+ iter 750 residual  8.24348e-07
+ iter 800 residual  8.08291e-07
+ iter 850 residual  7.82537e-07
+ iter 900 residual  7.61429e-07
+ iter 950 residual  7.39273e-07
+ iter 1000 residual  7.20965e-07
+  Condition number momentum: 5.19445e-316
+ Updating U_iter
+[1;34m***** iteration 6 norm p 0.000908574 norm u 1.9592e-05
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 343normal dof343
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.014359 seconds
+ [1;32m Start solving pressure
+ iter   0 residual  8.24254e-05
+ iter  41 residual  8.22419e-09
+  Condition number pressure: 2.84071e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 8454
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 2e-06 seconds
+... time to map dipl no if : 4.04943 seconds
+nb_dof_u 6591
+ iter   0 residual  5.14218e-06
+ iter  50 residual  7.29555e-07
+ iter 100 residual  7.16938e-07
+ iter 150 residual  7.07545e-07
+ iter 200 residual  7.02898e-07
+ iter 250 residual  6.99251e-07
+ iter 300 residual  6.96213e-07
+ iter 350 residual  6.92194e-07
+ iter 400 residual  6.89102e-07
+ iter 450 residual  6.85671e-07
+ iter 500 residual  6.83271e-07
+ iter 550 residual  6.77895e-07
+ iter 600 residual   6.7374e-07
+ iter 650 residual   6.6817e-07
+ iter 700 residual  6.62474e-07
+ iter 750 residual  6.59235e-07
+ iter 800 residual   6.5581e-07
+ iter 850 residual  6.52935e-07
+ iter 900 residual   6.4949e-07
+ iter 950 residual  6.47426e-07
+ iter 1000 residual   6.4534e-07
+  Condition number momentum: 5.19445e-316
+ Updating U_iter
+[1;34m***** iteration 7 norm p 8.78267e-05 norm u 1.81594e-06
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 343normal dof343
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.014318 seconds
+ [1;32m Start solving pressure
+ iter   0 residual  7.96159e-06
+ iter  28 residual  8.54912e-09
+  Condition number pressure: 2.84071e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 8454
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 2e-06 seconds
+... time to map dipl no if : 4.05237 seconds
+nb_dof_u 6591
+ iter   0 residual  8.11568e-07
+ iter  50 residual  6.46743e-07
+ iter 100 residual  6.42185e-07
+ iter 150 residual  6.39598e-07
+ iter 200 residual  6.37265e-07
+ iter 250 residual  6.35544e-07
+ iter 300 residual  6.33267e-07
+ iter 350 residual  6.30943e-07
+ iter 400 residual  6.26987e-07
+ iter 450 residual  6.23826e-07
+ iter 500 residual  6.16914e-07
+ iter 550 residual  6.11101e-07
+ iter 600 residual  6.03788e-07
+ iter 650 residual   5.9415e-07
+ iter 700 residual  5.91442e-07
+ iter 750 residual  5.87987e-07
+ iter 800 residual  5.84987e-07
+ iter 850 residual  5.82521e-07
+ iter 900 residual  5.77719e-07
+ iter 950 residual  5.74335e-07
+ iter 1000 residual  5.64556e-07
+  Condition number momentum: 5.19445e-316
+ Updating U_iter
+[1;34m***** iteration 8 norm p 8.44433e-06 norm u 1.69803e-07
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 343normal dof343
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.014358 seconds
+ [1;32m Start solving pressure
+ iter   0 residual  7.45958e-07
+ iter   7 residual  9.82367e-09
+  Condition number pressure: 2.84071e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 8454
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 2e-06 seconds
+... time to map dipl no if : 4.05567 seconds
+nb_dof_u 6591
+ iter   0 residual  5.65998e-07
+ iter  50 residual  5.57391e-07
+ iter 100 residual   5.3268e-07
+ iter 150 residual  5.11393e-07
+ iter 200 residual  5.06523e-07
+ iter 250 residual  5.02212e-07
+ iter 300 residual  5.01238e-07
+ iter 350 residual  4.98962e-07
+ iter 400 residual  4.97457e-07
+ iter 450 residual  4.87501e-07
+ iter 500 residual  4.78166e-07
+ iter 550 residual  4.51871e-07
+ iter 600 residual  4.27438e-07
+ iter 650 residual  4.24473e-07
+ iter 700 residual  4.21776e-07
+ iter 750 residual   4.2089e-07
+ iter 800 residual  4.19369e-07
+ iter 850 residual  4.18189e-07
+ iter 900 residual   4.1681e-07
+ iter 950 residual  4.15585e-07
+ iter 1000 residual  4.13369e-07
+  Condition number momentum: 5.19445e-316
+ Updating U_iter
+[1;34m***** last iteration 8 norm p 7.4284e-07 norm u 1.41336e-08
+[1;34m updating old vectors 
+end updating old
+end print numerical pressure
+end print numerical pressure
+end pressure projection
+start interpolation of velocity
+end interpolation of velocity
+end printing
+biotls_problem::print crop
+end print numerical pressure
+end cropping
+end printing
+skipping fort.1 for pattern generation
+*** Time step 1/80
+laplacian_problem::update_ls
+# Cut Elements      = 270
+# dof to extend are  for pressure   = 118
+# dof to extend are  for displacement   = 1863
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 8454
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+end kin
+start mapping displacement
+... time to map disp with if : 1e-06 seconds
+... time to map dipl no if : 4.05408 seconds
+Building biot preconditioner
+nb_dof 6591
+nb_dof 6591
+nb_dof A_ 6591
+nb_dof S_ 1863
+[1;34m***** iteration 1 norm p 1 norm u 1
+ [1;32m Assembling pressure
+biot_assembler::assembly_p(double dt)
+total dofs 343normal dof343
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout
+start kin
+end kin
+start mapping pressure
+... time to map pressure with if : 1e-06 seconds
+... time to map pressure no if : 0.014336 seconds
+ [1;32m Start solving pressure
+ iter   0 residual      5.18669
+ iter  50 residual  3.62482e-05
+ iter 100 residual   3.5245e-08
+ iter 116 residual  8.67039e-09
+  Condition number pressure: 2.9857e-316
+Updating P_iter
+ [1;31m Start solving momentum balance
+assembling
+biot_assembler::assembly_u(double dt)
+nb_dof_u_x 8454
+biotls_problem::configure_workspace::Configuring workspace 
+***Non dimensional parameters***
+dt 0.025 t_ref 4e+09 u_ref 48.9715 p_ref 1.22429e+07
+end of Configuring workspace 
+end kout

@@ -686,7 +686,7 @@ void biotls_problem::assembly_p(double dt, double time){
   {
     // workspace.set_assembled_vector(Bp_in); 
     // NITSCHE
-    workspace.add_expression("2/element_size*p*Test_p", mim_ls_bd, CUT_REGION);// 1 is the region		
+    workspace.add_expression("2/element_size*p*Test_p*20", mim_ls_bd, CUT_REGION);// 1 is the region		
     workspace.add_expression("-nlsv.Grad_p*Test_p*tau- nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION); 
     //NITSCHE
     //  workspace.add_expression( "permeability*tau*[0,1].Grad_p*Test_p ", mim_ls_bd, CUT_REGION);
@@ -719,7 +719,7 @@ void biotls_problem::assembly_p(double dt, double time){
     getfem::mesh_region  inner_faces;
     inner_faces = getfem::inner_faces_of_mesh(mesh, CUT_REGION);
 
-    workspace.add_expression("2*element_size*Grad_p.Normal*Grad_Test_p.Normal*0.1", mim, inner_faces);// 1 is the region		
+    workspace.add_expression("2*element_size*Grad_p.Normal*Grad_Test_p.Normal*0.001", mim, inner_faces);// 1 is the region		
     workspace.assembly(2);
     gmm::add(workspace.assembled_matrix(), K_in);
     workspace.clear_expressions();
