@@ -1136,7 +1136,7 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
 
       // std::cout<<P.size()<<std::endl;
       // std::cout<<Bp.size()<<std::endl;std::cin.get();
-      // gmm::gmres(Kp, P, Bp, PRp, restart, iter);
+      gmm::gmres(Kp, P, Bp, PRp, restart, iter);
       scalar_type cond;
       //  gmm::SuperLU_solve(Kp, P , Bp, cond);
       std::cout << "  Condition number pressure: " << cond << std::endl;
@@ -1193,7 +1193,7 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
 
 //          gmm::gmres(Ku, U, Bu,PRu, restart, iter);
 // 	 gmm::gmres(Ku, U, Bu,mPR, restart, iter);
-//	gmm::gmres(Ku, U, Bu,DISP_PRECOND_PARAM, restart, iter);
+	gmm::gmres(Ku, U, Bu,DISP_PRECOND_PARAM, restart, iter);
         scalar_type cond;
         // gmm::SuperLU_solve(Ku, U , Bu, cond);
         std::cout << "  Condition number momentum: " << cond << std::endl;
@@ -1235,7 +1235,8 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
     << " norm u " <<  rel_unorm << std::endl;
 
 // printing matrix
- if(1){
+#ifdef PRINT_MATRIX
+{
   std::cout<<"!!!!!! Printing Matrix !!!!!"<<std::endl;
   std::stringstream ku_fname;
   ku_fname<< p_des.datafilename <<".ku_n."<<std::to_string( (int) (time/dt) )<<".mm";
@@ -1247,6 +1248,7 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
   kp_fname<< p_des.datafilename <<".kp."<<std::to_string( (int) (time/dt) )<<".mm";
   gmm::MatrixMarket_IO::write(kp_fname.str().c_str(),Kp);
  }
+#endif
 
 
   std::cout<<"\033[1;34m updating old vectors "<< std::endl;
