@@ -59,8 +59,8 @@ int main(int argc, char *argv[]) {
 				//   p.solve(time_ls);
 				// ===========================
 				// p.print(istep*dt,istep,time_ls);      
-				// p.print_crop(istep*dt,istep,time_ls);
-				// p.print_ls(istep*dt,istep,time_ls); //pint the ls slice
+				p.print_crop(istep*dt,istep,time_ls);
+				p.print_ls(istep*dt,istep,time_ls); //pint the ls slice
 // 				p.print_pattern(istep);
 				p.update_time_iter(istep);
 			} // endl of lev_set biot
