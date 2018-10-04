@@ -24,7 +24,7 @@ cd ${PBS_O_WORKDIR}
 # YOUR LAUNCH COMMAND BELOW completed with I/O redirection if needed
 
 source ./configure.sh
-make > crb_cmp_log && ./lev_set > crb_levset_ni20_nop_noprecl2>&1
+make > crb_cmp_log && ./lev_set > crb_ls_ni1_nostab_noprec_eucl>&1
 
 #source tester.sh > gigat_output 2>&1
 

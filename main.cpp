@@ -52,6 +52,7 @@ int main(int argc, char *argv[]) {
 
 					// p.build_fix_stress_preconditioner(dt,time_ls);
 				}
+                                 p.set_step(istep);
 		  	   	 p.solve_fix_stress(dt, 2000,time_ls);
 
 			 	//  p.build_fix_stress_preconditioner(dt,time_ls);
@@ -59,7 +60,7 @@ int main(int argc, char *argv[]) {
 			 	//   p.assembly(dt,time_ls);
 				//   p.solve(time_ls);
 				// ===========================
-				p.print(istep*dt,istep,time_ls);      
+				// p.print(istep*dt,istep,time_ls);      
 				p.print_crop(istep*dt,istep,time_ls);
 				p.print_pattern(istep);
 			} // endl of lev_set biot

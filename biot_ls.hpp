@@ -139,7 +139,7 @@ struct problem_descriptor_tetra_3d{
 	std::string FEM_TYPE_P  =         "FEM_PK(3,1)";
 	std::string INTEGRATION =       "IM_TETRAHEDRON(6)";
 	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TETRAHEDRON(6),3)"; 
-	std::string datafilename="resu/laplace_p20_stpr"; 
+	std::string datafilename="resu/laplace_p1_stpr"; 
 	int noised =0;  // noise on mesh
 	int nsubdiv=6; //9 // subdivision of the sqaured mesh
 	double E=1.e+10;
@@ -207,6 +207,7 @@ class biotls_problem {
 		std::vector<scalar_type> Kr_; // permeability ratio
 		std::vector<scalar_type> Er_; // young ratio
 		std::vector<scalar_type> normal_ls_v;
+                int step_=0;
 		/// Methods
 		void gen_bc(void);                                /// create zones for boundary conditions
 		void gen_mat(void);                                /// create zones for internal conditions
@@ -236,6 +237,7 @@ class biotls_problem {
 		void update_ls(double time=0, int iter=0);
 		void update_p_index(double timels=0);
 		void update_u_index(double timels=0);
+                void set_step(int step){step_=step;}
 		biotls_problem(void): mim(mesh), mf_u(mesh), mf_rhs(mesh), mf_p(mesh),mf_coef(mesh),mf_coef_v(mesh)
 				      ,tau_(1), vmu_(1), bm_(1), lambda_(1),alpha_(1), permeability_(1), force_(1), beta_(1),penalty_(1),
 				      c1_(1),c2_(1)

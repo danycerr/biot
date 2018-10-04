@@ -2,13 +2,13 @@
 // Preconditioner for dispacement problem
 // mPR Bu diag(exdof) 
 // PRu diagonal
-#define DISP_PRECOND_PARAM mPR
+#define DISP_PRECOND_PARAM PRu
 // fix cut height 
 #define H_PARAM 2666.67
 
-#define STAB_P (1)
+#define STAB_P (0)
 
-#define L2_NORM
+// #define L2_NORM
 
 void biotls_problem::init(void) {
 
@@ -686,7 +686,7 @@ void biotls_problem::assembly_p(double dt, double time){
   {
     // workspace.set_assembled_vector(Bp_in); 
     // NITSCHE
-    workspace.add_expression("2/element_size*p*Test_p*20", mim_ls_bd, CUT_REGION);// 1 is the region		
+    workspace.add_expression("2/element_size*p*Test_p*1", mim_ls_bd, CUT_REGION);// 1 is the region		
     workspace.add_expression("-nlsv.Grad_p*Test_p*tau- nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION); 
     //NITSCHE
     //  workspace.add_expression( "permeability*tau*[0,1].Grad_p*Test_p ", mim_ls_bd, CUT_REGION);
@@ -1069,6 +1069,8 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
   double old_pnorm=1; double new_pnorm=1;
   double old_unorml2=1; double new_unorml2=1;
   double old_pnorml2=1; double new_pnorml2=1;
+  double initial_pnorm=1;double initial_unorm=1;
+  int iter_p=0; int iter_u=0;
   getfem::size_type nb_dof_u = mf_u.nb_dof();
   getfem::size_type nb_dof_p = mf_p.nb_dof();
   int min_iter=2;
@@ -1098,9 +1100,13 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
   while( ( fix_count < max_iter  && ( rel_unorm>epsu ||  rel_pnorm > epsp)) ||  fix_count < min_iter  )
   {
     fix_count++; 
-    std::cout<<"\033[1;34m***** iteration " << fix_count 
+    std::cout<<"\033[1;34m*****" 
+      << " time step "<< step_
+      << " fix stress iteration " << fix_count 
       << " norm p " <<  rel_pnorm 
-      << " norm u " <<  rel_unorm << std::endl;
+      << " norm u " <<  rel_unorm  
+      << " iter p " <<  iter_p 
+      << " iter u " <<  iter_u << std::endl;
 
 
     std::cout<< " \033[1;32m Assembling pressure"<<std::endl;
@@ -1128,7 +1134,8 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
       gmm::gmres(Kp, P, Bp, PRp, restart, iter);
       scalar_type cond;
       //  gmm::SuperLU_solve(Kp, P , Bp, cond);
-      std::cout << "  Condition number pressure: " << cond << std::endl;
+      std::cout << "  Condition number pressure: " << cond << " itaration "<< iter.get_iteration() << std::endl;
+      iter_p=iter.get_iteration();
       std::vector<scalar_type> PIn(mf_p.nb_dof(), 0.0);
       
       std::cout<<"Updating P_iter"<<std::endl;
@@ -1148,10 +1155,11 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
         gmm::copy(PIn,P_iter);
       } 
       // updating p_iter
-      new_pnorml2 = getfem::asm_L2_norm(mim_ls_in, mf_p, P_iter);
       new_pnorm = gmm::vect_norm2(P);
-      rel_pnorm=fabs(new_pnorm - old_pnorm)/ (old_pnorm+1.e-18);
+      if(fix_count<1+1 || (initial_pnorm  < 1.e-16 && fix_count<4) ) initial_pnorm=new_pnorm;
+      rel_pnorm=fabs(new_pnorm - old_pnorm)/ (initial_pnorm+1.e-18);
       #ifdef L2_NORM
+      new_pnorml2 = getfem::asm_L2_norm(mim_ls_in, mf_p, P_iter);
       rel_pnorm=fabs(new_pnorml2 - old_pnorml2)/ (old_pnorml2+1.e-18);
       #endif
       old_pnorm = new_pnorm;
@@ -1193,9 +1201,11 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
 //          gmm::gmres(Ku, U, Bu,PRu, restart, iter);
 // 	 gmm::gmres(Ku, U, Bu,mPR, restart, iter);
 	 gmm::gmres(Ku, U, Bu,DISP_PRECOND_PARAM, restart, iter);
-        scalar_type cond;
-        // gmm::SuperLU_solve(Ku, U , Bu, cond);
-        std::cout << "  Condition number momentum: " << cond << std::endl;
+         iter_u=iter.get_iteration();
+         scalar_type cond;
+         
+         // gmm::SuperLU_solve(Ku, U , Bu, cond);
+          std::cout << "  Condition number momentum: " << cond << std::endl;
         {
           std::cout << " Updating U_iter"<<std::endl;
           int nb_exdof_u=eXt_dof_u.size();        
@@ -1224,9 +1234,10 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
 #endif // PRINT_MATRIX
       //----------------------------------------------------------------
       new_unorm = gmm::vect_norm2(U);
-      new_unorml2 = getfem::asm_L2_norm(mim_ls_in, mf_u, U_iter);
+      if(fix_count<1+1 || (initial_unorm  < 1.e-16 && fix_count<4) ) initial_unorm=new_unorm;
       rel_unorm=fabs(new_unorm - old_unorm)/ (old_unorm+1e-20);
       #ifdef L2_NORM
+      new_unorml2 = getfem::asm_L2_norm(mim_ls_in, mf_u, U_iter);
       rel_unorm=fabs(new_unorml2 - old_unorml2)/ (old_unorml2+1e-20);
       #endif
       old_unorm = new_unorm;
