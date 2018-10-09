@@ -6,7 +6,7 @@
 // fix cut height 
 #define H_PARAM 2666.67
 
-// #define STAB_P (0)
+#define STAB_P (1)
 
 // #define L2_NORM
 
@@ -429,7 +429,7 @@ void biotls_problem::assembly(double dt,double time) {
   // Kin for enriched dof
   sparse_matrix_type K_in(nb_dof_u + nb_dof_p,nb_dof_u + nb_dof_p);
   // NICHE
-  workspace.add_expression("2/element_size*p*Test_p*20", mim_ls_bd, CUT_REGION);// 1 is the region		
+  workspace.add_expression("2/element_size*p*Test_p*1", mim_ls_bd, CUT_REGION);// 1 is the region		
   workspace.add_expression("-nlsv.Grad_p*Test_p*tau - nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION); 
   //NICHE
   // workspace.add_expression( "permeability*tau*[0,1].Grad_p*Test_p ", mim_ls_bd, CUT_REGION);
