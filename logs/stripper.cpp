@@ -43,13 +43,13 @@ public:
 
 };
 
-int main(){
+int main(int argc, char* argv[]){
    std::ifstream infile;
    std::string line;
    std::vector<time_step> ts;
    double buf;
    std::cout<<"Opening file"<<std::endl;
-   infile.open("ni1_ns_np");
+   infile.open(argv[1]);
    if(!infile) 
       {
       std::cout<<"Error reading"<<std::endl;
@@ -92,13 +92,13 @@ int main(){
    infile.close();
    std::cout<<"Number of time steps "<<ts.size()<<std::endl;
    std::ofstream outfile;
-   outfile.open ("out_n1_1.dat");
+   outfile.open (argv[2]);
    outfile << "# ts fsi iter_u iter_p"<<std::endl;
     for (int i=0; i < ts.size(); i++) 
       {  
           // ts[i].summary();
        outfile<< ts[i].get_ts()<<" "<< ts[i].get_fs() / 100.<<" " << ts[i].get_avg_u() / 1000.<<" "
-       << ts[i].get_avg_p() / 50. <<std::endl;
+       << ts[i].get_avg_p() / 100. <<std::endl;
       }
 
   outfile.close();
