@@ -25,6 +25,7 @@
   @brief Laplacian (Poisson) problem with generic assembly.
   */
 
+
 #include "getfem/getfem_generic_assembly.h"
 #include "getfem/getfem_export.h"
 #include "getfem/getfem_regular_meshes.h"
@@ -59,7 +60,7 @@ typedef gmm::row_matrix<sparse_vector_type> sparse_matrix_type;
 typedef gmm::col_matrix<sparse_vector_type> col_sparse_matrix_type;
 typedef std::vector<scalar_type> plain_vector;
 
-#define LS_TYPE 5
+#define LS_TYPE 7
 // Right hand side. Allows an interpolation for the source term.
 // scalar_type sol_f(const base_node &x) { return 10.; }
 
@@ -139,9 +140,11 @@ struct problem_descriptor_tetra_3d{
 	std::string FEM_TYPE_P  =         "FEM_PK(3,1)";
 	std::string INTEGRATION =       "IM_TETRAHEDRON(6)";
 	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TETRAHEDRON(6),3)"; 
-	std::string datafilename="resu/laplace_p1_stpr"; 
+
+	std::string datafilename="resu/lk_ls_dom"; 
 	int noised =0;  // noise on mesh
-	int nsubdiv=6; //9 // subdivision of the sqaured mesh
+	int nsubdiv=5; // subdivision of the sqaured mesh
+
 	double E=1.e+10;
 	double poisson =0.3;
 	double mu_s = E/( 2 * ( 1 + poisson) ) ;
@@ -192,10 +195,10 @@ class biotls_problem {
 		enum { CUT_REGION = 100, UNCUT_REGION = 200, UNCUT_REGION_IN = 201, UNCUT_REGION_OUT = 202, CUT_EDGE=203};
 		enum { MAT_1 = 50,MAT_2=60};
 		size_type N_;             /// dimension of the problem
-
+		int time_iter_=0;
 		///  workspace configuration parameters---------------------
 		std::vector<scalar_type> tau_, vmu_, bm_ ,lambda_, beta_,
-			alpha_, permeability_, force_,penalty_, c1_, c2_;
+			alpha_, permeability_, force_,penalty_, c1_, c2_,over_p_;
 		// ---------------------------------------------------------
 		sparse_matrix_type K;                                /// iteration matrix
 		std::vector<scalar_type> U, U_old, P,  Px,           /// diplacement, disp old, pressure
@@ -233,14 +236,17 @@ class biotls_problem {
 		void print(double time=0,int istep=0,double time_ls=0);
 
 		void print_crop(double time=0,int istep=0,double time_ls=0);
+		void print_ls(double time=0,int istep=0,double time_ls=0);
                 void print_pattern(int istep=0);
 		void update_ls(double time=0, int iter=0);
 		void update_p_index(double timels=0);
 		void update_u_index(double timels=0);
+
                 void set_step(int step){step_=step;}
+		void update_time_iter(int a){time_iter_=a;}
 		biotls_problem(void): mim(mesh), mf_u(mesh), mf_rhs(mesh), mf_p(mesh),mf_coef(mesh),mf_coef_v(mesh)
 				      ,tau_(1), vmu_(1), bm_(1), lambda_(1),alpha_(1), permeability_(1), force_(1), beta_(1),penalty_(1),
-				      c1_(1),c2_(1)
+				      c1_(1),c2_(1),over_p_(1)
 						   // level set 
 						   ,ls(mesh,2),mls(mesh),
 						   mim_ls_all(mls, getfem::mesh_im_level_set::INTEGRATE_ALL),
