@@ -95,8 +95,8 @@ void biotls_problem::init(void) {
   }
 
   { // Just to see what elements are cut by the level set ls:
-    std::cout<<"printin cut elements"<<std::endl;
-    getfem::vtk_export vtke("cut_elements.vtk");
+    std::cout<<"*** *** *** printin cut elements *** *** *** "<<std::endl;
+    getfem::vtk_export vtke(p_des.datafilename + ".cut_elements_0.vtk");
     vtke.exporting(ls.get_mesh_fem());
     vtke.write_mesh();
     vtke.write_cell_data(phicell, "CutEl");
@@ -108,7 +108,7 @@ void biotls_problem::init(void) {
   //routine for labeling internal materials
   gen_mat();
   //routine for assignment of material propeties
-//   gen_coefficient();
+   gen_coefficient();
 
   {
     dal::bit_vector bv_cv = mesh.convex_index();
@@ -1507,14 +1507,15 @@ base_small_vector biotls_problem::ls_function(const base_node P, double time,int
               res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.35;
             } break;
     case 7: {
+
                if (P[2] < 0.6)
 		res[0] = -((
-                            (P[0]*3-1)*(P[0]*3-1)
-                           +(P[1]*3-1)*(P[1]*3-1))/(0.5*0.5) - (P[2]*3-1)*(P[2]*3-1)/(0.5*0.5)-1);
+                            (P[0]-1/2.)*3*(P[0]-1/2.)*3
+                           +(P[1]-1/2.)*3*(P[1]-1/2.)*3      )/(0.5*0.5) - (P[2]*3-1)*(P[2]*3-1)/(0.5*0.5)-1);
 		else
                 res[0] = (-(
-                              (P[0]*3-1)*(P[0]*3-1) 
-                            + (P[1]*3-1)*(P[1]*3-1)
+                              (P[0]-1/2.)*3*(P[0]-1/2.)*3 
+                            + (P[1]-1/2.)*3*(P[1]-1/2.)*3
                             + ((P[2]*3-1)-0.6)*((P[2]*3-1)-0.6)
                             )+0.93);
               res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.35;
