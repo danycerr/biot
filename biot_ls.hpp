@@ -59,7 +59,7 @@ typedef gmm::row_matrix<sparse_vector_type> sparse_matrix_type;
 typedef gmm::col_matrix<sparse_vector_type> col_sparse_matrix_type;
 typedef std::vector<scalar_type> plain_vector;
 
-#define LS_TYPE 5
+#define LS_TYPE 1 // 5 classic
 // Right hand side. Allows an interpolation for the source term.
 // scalar_type sol_f(const base_node &x) { return 10.; }
 
@@ -135,11 +135,11 @@ struct problem_descriptor_quad_3d{
 };
 struct problem_descriptor_tetra_3d{    
 	std::string MESH_TYPE =         "GT_PK(3,1)" ; // triangular elements
-	std::string FEM_TYPE_U  =         "FEM_PK(3,2)";
+	std::string FEM_TYPE_U  =         "FEM_PK(3,1)";
 	std::string FEM_TYPE_P  =         "FEM_PK(3,1)";
 	std::string INTEGRATION =       "IM_TETRAHEDRON(6)";
 	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TETRAHEDRON(6),3)"; 
-	std::string datafilename="resu/laplace_p1_stpr"; 
+	std::string datafilename="resu/ls_hori_p20_stpr"; 
 	int noised =0;  // noise on mesh
 	int nsubdiv=6; //9 // subdivision of the sqaured mesh
 	double E=1.e+10;

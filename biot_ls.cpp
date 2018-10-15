@@ -2,7 +2,7 @@
 // Preconditioner for dispacement problem
 // mPR Bu diag(exdof) 
 // PRu diagonal
-#define DISP_PRECOND_PARAM PRu
+#define DISP_PRECOND_PARAM mPR
 // fix cut height 
 #define H_PARAM 2666.67
 
@@ -716,10 +716,11 @@ void biotls_problem::assembly_p(double dt, double time){
     //pstab stabilization term
 #ifdef STAB_P 
 {
+    std::cout<<"Stabilization term"<<std::endl;
     getfem::mesh_region  inner_faces;
     inner_faces = getfem::inner_faces_of_mesh(mesh, CUT_REGION);
 
-    workspace.add_expression("2*element_size*Grad_p.Normal*Grad_Test_p.Normal*0.001", mim, inner_faces);// 1 is the region		
+    workspace.add_expression("2*element_size*Grad_p.Normal*Grad_Test_p.Normal*1", mim, inner_faces);// 1 is the region		
     workspace.assembly(2);
     gmm::add(workspace.assembled_matrix(), K_in);
     workspace.clear_expressions();
@@ -1455,7 +1456,8 @@ base_small_vector biotls_problem::ls_function(const base_node P, double time,int
               res[1] = -.5 + x;
             } break;
     case 1: {
-              res[0] = y - 2400.01 - 200*time/(20*1e+8);
+              // res[0] = y - 2400.01 - 200*time/(20*1e+8);
+              res[0] = y - (2666.66+16.65*20) - 16.65*time/(1.e+8);
               res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.27;
             } break;
     case 2: {
