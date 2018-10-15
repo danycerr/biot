@@ -8,6 +8,7 @@
 
 #ifdef BIOT_LS
 #include "biot_ls.hpp"
+#include "temp_ls.hpp"
 #endif
 #ifdef BIOT
 #include "biot.hpp"
@@ -22,15 +23,16 @@ int main(int argc, char *argv[]) {
 
 	try {    
 #ifdef BIOT_LS
-		biotls_problem p;
+	//	biotls_problem p;
+		templs_problem t;
 #endif
 #ifdef BIOT
 		 biot_problem p;
 #endif
-		 p.init();
+	//	 p.init();
 
 //                 temperature_problem t;
-// 		t.init();
+ 		t.init();
 		// double dt=1e-3;
 		double dt=1e+8;
 		// p.build_fix_stress_preconditioner(dt,0);
@@ -38,7 +40,9 @@ int main(int argc, char *argv[]) {
 		//    p.assembly_u(dt);
 		int n_step=80;int erosion_limit=0; // usually 50 steps
 		double time=0*dt;
-		double time_ls  =0;p.update_ls(time_ls, 0);
+		double time_ls  =0;
+		// p.update_ls(time_ls, 0);
+		t.update_ls(time_ls, 0);
 		for(int istep=0; istep<n_step; istep++)
 		{
 #ifdef BIOT_LS
@@ -48,22 +52,28 @@ int main(int argc, char *argv[]) {
 			{ // level set
 				if (istep<erosion_limit && istep > 30){ 
 					time_ls  =istep*dt;
-					p.update_ls(time_ls, istep);
+				//	p.update_ls(time_ls, istep);
+					t.update_ls(time_ls, istep);
 					// p.build_fix_stress_preconditioner(dt,time_ls);
 				}
-                                 p.set_step(istep);
-		  	   	 p.solve_fix_stress(dt, 2000,time_ls);
-
+                                // p.set_step(istep);
+                                 t.set_step(istep);
+                                 t.assembly(dt,time_ls);
+		  	   	 t.solve(time_ls);
+				 // p.solve_fix_stress(dt, 2000,time_ls);
+                         
 			 	//  p.build_fix_stress_preconditioner(dt,time_ls);
 				// ===============================
 // 			 	  p.assembly(dt,time_ls);
 				//   p.solve(time_ls);
 				// ===========================
 				// p.print(istep*dt,istep,time_ls);      
-				p.print_crop(istep*dt,istep,time_ls);
-				p.print_ls(istep*dt,istep,time_ls); //pint the ls slice
+				// p.print_crop(istep*dt,istep,time_ls);
+			// 	t.print_crop(istep*dt,istep,time_ls);
+				t.print(istep*dt,istep,time_ls);      
+				// p.print_ls(istep*dt,istep,time_ls); //pint the ls slice
 // 				p.print_pattern(istep);
-				p.update_time_iter(istep);
+				// p.update_time_iter(istep);
 			} // endl of lev_set biot
 #endif
 // //==================================================//

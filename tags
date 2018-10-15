@@ -1,0 +1,1142 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AMG	AMG_Interface.cpp	/^AMG::AMG(std::string name)$/;"	f	class:AMG
+AMG	AMG_Interface.hpp	/^class AMG {$/;"	c
+APPL_INT	AMG_Interface.hpp	14;"	d
+ARCHITECTURE_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	396;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	399;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	402;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	406;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	408;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	410;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	414;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	417;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	420;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	425;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	428;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	431;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	435;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	391;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	394;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	397;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	401;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	403;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	405;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	409;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	412;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	415;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	420;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	423;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	426;"	d	file:
+ARCHITECTURE_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	430;"	d	file:
+A_	biot_precond.hpp	/^    MATRIX &A_;$/;"	m	class:biot_precond
+A_	momentum_precond.hpp	/^    MATRIX &A_;$/;"	m	class:momentum_precond
+B	biot.hpp	/^			P_old, B, UP;               \/\/\/ main unknown, and right hand side$/;"	m	class:biot_problem
+B	biot_ls.hpp	/^			P_old, B, UP;               \/\/\/ main unknown, and right hand side$/;"	m	class:biotls_problem
+B	temp.hpp	/^			P_old, B, UP;               \/\/\/ main unknown, and right hand side$/;"	m	class:temperature_problem
+B	temp_ls.hpp	/^			P_old, B, UP;               \/\/\/ main unknown, and right hand side$/;"	m	class:templs_problem
+BIOTLS_H	biot_ls.hpp	2;"	d
+BIOT_H	biot.hpp	2;"	d
+BIOT_LS	main.cpp	7;"	d	file:
+BIOT_PRECOND_HS	biot_precond.hpp	2;"	d
+BOTTOM	biot.hpp	/^		enum { BOTTOM = 200, TOP = 100 , LEFT = 300, RIGHT =400, LEFTX = 500, RIGHTX =600}; \/\/ descriptor for zones$/;"	e	enum:biot_problem::__anon2
+BOTTOM	biot_ls.hpp	/^		enum { BOTTOM = 2, TOP = 1 , LEFT = 3, RIGHT =4, LEFTX = 5, RIGHTX =6}; \/\/ descriptor for zones$/;"	e	enum:biotls_problem::__anon4
+BOTTOM	temp.hpp	/^		enum { BOTTOM = 200, TOP = 100 , LEFT = 300, RIGHT =400, LEFTX = 500, RIGHTX =600}; \/\/ descriptor for zones$/;"	e	enum:temperature_problem::__anon8
+BOTTOM	temp_ls.hpp	/^		enum { BOTTOM = 2, TOP = 1 , LEFT = 3, RIGHT =4, LEFTX = 5, RIGHTX =6}; \/\/ descriptor for zones$/;"	e	enum:templs_problem::__anon10
+Bp	biot.hpp	/^		std::vector<scalar_type> U_iter, P_iter, Bp, Bu;     \/\/\/ main unknown, and right hand side$/;"	m	class:biot_problem
+Bp	biot_ls.hpp	/^		std::vector<scalar_type> U_iter, P_iter, Bp, Bu;     \/\/\/ main unknown, and right hand side$/;"	m	class:biotls_problem
+Bp	temp.hpp	/^		std::vector<scalar_type> U_iter, P_iter, Bp, Bu;     \/\/\/ main unknown, and right hand side$/;"	m	class:temperature_problem
+Bp	temp_ls.hpp	/^		std::vector<scalar_type> U_iter, P_iter, Bp, Bu;     \/\/\/ main unknown, and right hand side$/;"	m	class:templs_problem
+Bu	biot.hpp	/^		std::vector<scalar_type> U_iter, P_iter, Bp, Bu;     \/\/\/ main unknown, and right hand side$/;"	m	class:biot_problem
+Bu	biot_ls.hpp	/^		std::vector<scalar_type> U_iter, P_iter, Bp, Bu;     \/\/\/ main unknown, and right hand side$/;"	m	class:biotls_problem
+Bu	temp.hpp	/^		std::vector<scalar_type> U_iter, P_iter, Bp, Bu;     \/\/\/ main unknown, and right hand side$/;"	m	class:temperature_problem
+Bu	temp_ls.hpp	/^		std::vector<scalar_type> U_iter, P_iter, Bp, Bu;     \/\/\/ main unknown, and right hand side$/;"	m	class:templs_problem
+CMAKE_BINARY_DIR	build/Makefile	/^CMAKE_BINARY_DIR = \/u\/archive\/agip\/cerroni\/software\/mygetfem\/biot\/build$/;"	m
+CMAKE_COMMAND	build/Makefile	/^CMAKE_COMMAND = \/u\/sw\/pkgs\/toolchains\/gcc-glibc\/5\/base\/bin\/cmake$/;"	m
+CMAKE_SOURCE_DIR	build/Makefile	/^CMAKE_SOURCE_DIR = \/u\/archive\/agip\/cerroni\/software\/mygetfem\/biot$/;"	m
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	103;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	110;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	117;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	124;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	132;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	137;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	144;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	147;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	14;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	150;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	153;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	168;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	182;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	192;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	210;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	219;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	222;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	237;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	244;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	262;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	265;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	268;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	37;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	45;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	51;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	57;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	66;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	75;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	89;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	96;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	101;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	108;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	115;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	122;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	129;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	137;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	13;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	142;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	149;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	152;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	155;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	170;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	184;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	194;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	19;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	212;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	221;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	224;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	239;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	257;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	260;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	263;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	42;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	50;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	56;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	62;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	71;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	80;"	d	file:
+COMPILER_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	94;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	105;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	112;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	119;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	125;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	133;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	139;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	157;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	172;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	183;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	194;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	19;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	213;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	225;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	230;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	239;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	247;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	252;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	38;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	46;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	53;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	59;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	68;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	78;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	83;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	91;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	98;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	103;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	110;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	117;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	124;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	130;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	138;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	144;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	159;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	15;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	174;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	185;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	196;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	215;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	227;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	232;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	242;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	247;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	24;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	43;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	51;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	58;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	64;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	73;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	83;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	88;"	d	file:
+COMPILER_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	96;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	106;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	113;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	120;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	126;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	134;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	140;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	158;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	173;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	185;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	195;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	20;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	214;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	226;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	231;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	240;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	248;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	253;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	39;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	47;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	54;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	60;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	69;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	79;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	84;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	92;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	99;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	104;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	111;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	118;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	125;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	131;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	139;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	145;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	160;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	16;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	175;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	187;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	197;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	216;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	228;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	233;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	243;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	248;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	25;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	44;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	52;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	59;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	65;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	74;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	84;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	89;"	d	file:
+COMPILER_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	97;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	100;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	107;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	114;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	121;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	128;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	141;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	159;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	174;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	188;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	199;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	202;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	215;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	227;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	22;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	232;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	241;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	249;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	24;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	254;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	41;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	48;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	62;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	71;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	80;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	85;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	93;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	105;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	112;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	119;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	126;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	133;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	146;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	161;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	176;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	190;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	201;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	204;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	217;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	229;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	234;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	244;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	249;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	27;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	29;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	46;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	53;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	67;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	76;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	85;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	90;"	d	file:
+COMPILER_VERSION_PATCH	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	98;"	d	file:
+COMPILER_VERSION_TWEAK	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	165;"	d	file:
+COMPILER_VERSION_TWEAK	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	206;"	d	file:
+COMPILER_VERSION_TWEAK	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	28;"	d	file:
+COMPILER_VERSION_TWEAK	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	167;"	d	file:
+COMPILER_VERSION_TWEAK	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	208;"	d	file:
+COMPILER_VERSION_TWEAK	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	33;"	d	file:
+CUT_EDGE	biot_ls.hpp	/^		enum { CUT_REGION = 100, UNCUT_REGION = 200, UNCUT_REGION_IN = 201, UNCUT_REGION_OUT = 202, CUT_EDGE=203};$/;"	e	enum:biotls_problem::__anon5
+CUT_EDGE	temp_ls.hpp	/^		enum { CUT_REGION = 100, UNCUT_REGION = 200, UNCUT_REGION_IN = 201, UNCUT_REGION_OUT = 202, CUT_EDGE=203};$/;"	e	enum:templs_problem::__anon11
+CUT_REGION	biot_ls.hpp	/^		enum { CUT_REGION = 100, UNCUT_REGION = 200, UNCUT_REGION_IN = 201, UNCUT_REGION_OUT = 202, CUT_EDGE=203};$/;"	e	enum:biotls_problem::__anon5
+CUT_REGION	temp_ls.hpp	/^		enum { CUT_REGION = 100, UNCUT_REGION = 200, UNCUT_REGION_IN = 201, UNCUT_REGION_OUT = 202, CUT_EDGE=203};$/;"	e	enum:templs_problem::__anon11
+DEC	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	439;"	d	file:
+DEC	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	434;"	d	file:
+DIRICHLET_BOUNDARY_NUM	biot.hpp	/^		enum { DIRICHLET_BOUNDARY_NUM = 10, NEUMANN_BOUNDARY_NUM = 11}; \/\/ descriptor for bcs flag$/;"	e	enum:biot_problem::__anon1
+DIRICHLET_BOUNDARY_NUM	biot_ls.hpp	/^		enum { DIRICHLET_BOUNDARY_NUM = 10, NEUMANN_BOUNDARY_NUM = 11}; \/\/ descriptor for bcs flag$/;"	e	enum:biotls_problem::__anon3
+DIRICHLET_BOUNDARY_NUM	temp.hpp	/^		enum { DIRICHLET_BOUNDARY_NUM = 10, NEUMANN_BOUNDARY_NUM = 11}; \/\/ descriptor for bcs flag$/;"	e	enum:temperature_problem::__anon7
+DIRICHLET_BOUNDARY_NUM	temp_ls.hpp	/^		enum { DIRICHLET_BOUNDARY_NUM = 10, NEUMANN_BOUNDARY_NUM = 11}; \/\/ descriptor for bcs flag$/;"	e	enum:templs_problem::__anon9
+DISP_PRECOND_PARAM	biot_ls.cpp	5;"	d	file:
+DISP_PRECOND_PARAM	temp_ls.cpp	5;"	d	file:
+E	biot.hpp	/^	double E=1.e+10;$/;"	m	struct:problem_descriptor_quad_3d
+E	biot.hpp	/^	double E=1.e+10;$/;"	m	struct:problem_descriptor_tetra_3d
+E	biot.hpp	/^	double E=1.e+10;$/;"	m	struct:problem_descriptor_tri
+E	biot.hpp	/^	double E=1.e+4;$/;"	m	struct:problem_descriptor_quad
+E	biot_ls.hpp	/^	double E=1.e+10;$/;"	m	struct:problem_descriptor_quad_3d
+E	biot_ls.hpp	/^	double E=1.e+10;$/;"	m	struct:problem_descriptor_tetra_3d
+E	biot_ls.hpp	/^	double E=1.e+10;$/;"	m	struct:problem_descriptor_tri
+E	biot_ls.hpp	/^	double E=1.e+4;$/;"	m	struct:problem_descriptor_quad
+E	prob_descriptor.hpp	/^	double E=1.e+10;$/;"	m	struct:generic_problem_descriptor_quad_3d
+E	prob_descriptor.hpp	/^	double E=1.e+10;$/;"	m	struct:generic_problem_descriptor_tetra_3d
+E	prob_descriptor.hpp	/^	double E=1.e+10;$/;"	m	struct:generic_problem_descriptor_tri
+E	prob_descriptor.hpp	/^	double E=1.e+4;$/;"	m	struct:generic_problem_descriptor_quad
+E	temp.hpp	/^	double E=1.e+10;$/;"	m	struct:problem_T_descriptor_quad_3d
+E	temp.hpp	/^	double E=1.e+10;$/;"	m	struct:problem_T_descriptor_tetra_3d
+E	temp.hpp	/^	double E=1.e+10;$/;"	m	struct:problem_T_descriptor_tri
+E	temp.hpp	/^	double E=1.e+4;$/;"	m	struct:problem_T_descriptor_quad
+EQUALS	build/Makefile	/^EQUALS = =$/;"	m
+Er_	biot.hpp	/^		std::vector<scalar_type> Er_; \/\/ young ratio$/;"	m	class:biot_problem
+Er_	biot_ls.hpp	/^		std::vector<scalar_type> Er_; \/\/ young ratio$/;"	m	class:biotls_problem
+Er_	temp.hpp	/^		std::vector<scalar_type> Er_; \/\/ young ratio$/;"	m	class:temperature_problem
+Er_	temp_ls.hpp	/^		std::vector<scalar_type> Er_; \/\/ young ratio$/;"	m	class:templs_problem
+Er_print_	biot.hpp	/^		std::vector<scalar_type> Er_print_; \/\/ young ratio$/;"	m	class:biot_problem
+Er_print_	temp.hpp	/^		std::vector<scalar_type> Er_print_; \/\/ young ratio$/;"	m	class:temperature_problem
+FEM_TYPE_P	biot.hpp	/^	std::string FEM_TYPE_P  =         "FEM_PK(2,1)";$/;"	m	struct:problem_descriptor_tri
+FEM_TYPE_P	biot.hpp	/^	std::string FEM_TYPE_P  =         "FEM_PK(3,1)";$/;"	m	struct:problem_descriptor_tetra_3d
+FEM_TYPE_P	biot.hpp	/^	std::string FEM_TYPE_P  =         "FEM_QK(2,1)";$/;"	m	struct:problem_descriptor_quad
+FEM_TYPE_P	biot.hpp	/^	std::string FEM_TYPE_P  =         "FEM_QK(3,1)";$/;"	m	struct:problem_descriptor_quad_3d
+FEM_TYPE_P	biot_ls.hpp	/^	std::string FEM_TYPE_P  =         "FEM_PK(2,1)";$/;"	m	struct:problem_descriptor_tri
+FEM_TYPE_P	biot_ls.hpp	/^	std::string FEM_TYPE_P  =         "FEM_PK(3,1)";$/;"	m	struct:problem_descriptor_tetra_3d
+FEM_TYPE_P	biot_ls.hpp	/^	std::string FEM_TYPE_P  =         "FEM_QK(2,1)";$/;"	m	struct:problem_descriptor_quad
+FEM_TYPE_P	biot_ls.hpp	/^	std::string FEM_TYPE_P  =         "FEM_QK(3,1)";$/;"	m	struct:problem_descriptor_quad_3d
+FEM_TYPE_P	prob_descriptor.hpp	/^	std::string FEM_TYPE_P  =         "FEM_PK(2,1)";$/;"	m	struct:generic_problem_descriptor_tri
+FEM_TYPE_P	prob_descriptor.hpp	/^	std::string FEM_TYPE_P  =         "FEM_PK(3,1)";$/;"	m	struct:generic_problem_descriptor_tetra_3d
+FEM_TYPE_P	prob_descriptor.hpp	/^	std::string FEM_TYPE_P  =         "FEM_QK(2,1)";$/;"	m	struct:generic_problem_descriptor_quad
+FEM_TYPE_P	prob_descriptor.hpp	/^	std::string FEM_TYPE_P  =         "FEM_QK(3,1)";$/;"	m	struct:generic_problem_descriptor_quad_3d
+FEM_TYPE_P	temp.hpp	/^	std::string FEM_TYPE_P  =         "FEM_PK(2,1)";$/;"	m	struct:problem_T_descriptor_tri
+FEM_TYPE_P	temp.hpp	/^	std::string FEM_TYPE_P  =         "FEM_PK(3,1)";$/;"	m	struct:problem_T_descriptor_tetra_3d
+FEM_TYPE_P	temp.hpp	/^	std::string FEM_TYPE_P  =         "FEM_QK(2,1)";$/;"	m	struct:problem_T_descriptor_quad
+FEM_TYPE_P	temp.hpp	/^	std::string FEM_TYPE_P  =         "FEM_QK(3,1)";$/;"	m	struct:problem_T_descriptor_quad_3d
+FEM_TYPE_U	biot.hpp	/^	std::string FEM_TYPE_U  =         "FEM_PK(2,2)";$/;"	m	struct:problem_descriptor_tri
+FEM_TYPE_U	biot.hpp	/^	std::string FEM_TYPE_U  =         "FEM_PK(3,1)";$/;"	m	struct:problem_descriptor_tetra_3d
+FEM_TYPE_U	biot.hpp	/^	std::string FEM_TYPE_U  =         "FEM_QK(2,2)";$/;"	m	struct:problem_descriptor_quad
+FEM_TYPE_U	biot.hpp	/^	std::string FEM_TYPE_U  =         "FEM_QK(3,2)";$/;"	m	struct:problem_descriptor_quad_3d
+FEM_TYPE_U	biot_ls.hpp	/^	std::string FEM_TYPE_U  =         "FEM_PK(2,1)";$/;"	m	struct:problem_descriptor_tri
+FEM_TYPE_U	biot_ls.hpp	/^	std::string FEM_TYPE_U  =         "FEM_PK(3,2)";$/;"	m	struct:problem_descriptor_tetra_3d
+FEM_TYPE_U	biot_ls.hpp	/^	std::string FEM_TYPE_U  =         "FEM_QK(2,2)";$/;"	m	struct:problem_descriptor_quad
+FEM_TYPE_U	biot_ls.hpp	/^	std::string FEM_TYPE_U  =         "FEM_QK(3,2)";$/;"	m	struct:problem_descriptor_quad_3d
+FEM_TYPE_U	prob_descriptor.hpp	/^	std::string FEM_TYPE_U  =         "FEM_PK(2,1)";$/;"	m	struct:generic_problem_descriptor_tri
+FEM_TYPE_U	prob_descriptor.hpp	/^	std::string FEM_TYPE_U  =         "FEM_PK(3,2)";$/;"	m	struct:generic_problem_descriptor_tetra_3d
+FEM_TYPE_U	prob_descriptor.hpp	/^	std::string FEM_TYPE_U  =         "FEM_QK(2,2)";$/;"	m	struct:generic_problem_descriptor_quad
+FEM_TYPE_U	prob_descriptor.hpp	/^	std::string FEM_TYPE_U  =         "FEM_QK(3,2)";$/;"	m	struct:generic_problem_descriptor_quad_3d
+FEM_TYPE_U	temp.hpp	/^	std::string FEM_TYPE_U  =         "FEM_PK(2,2)";$/;"	m	struct:problem_T_descriptor_tri
+FEM_TYPE_U	temp.hpp	/^	std::string FEM_TYPE_U  =         "FEM_PK(3,1)";$/;"	m	struct:problem_T_descriptor_tetra_3d
+FEM_TYPE_U	temp.hpp	/^	std::string FEM_TYPE_U  =         "FEM_QK(2,2)";$/;"	m	struct:problem_T_descriptor_quad
+FEM_TYPE_U	temp.hpp	/^	std::string FEM_TYPE_U  =         "FEM_QK(3,2)";$/;"	m	struct:problem_T_descriptor_quad_3d
+FIN_EXEC	Makefile	/^FIN_EXEC=lev_set$/;"	m
+GMM_FIX_HPP_	gmm_fix.hpp	2;"	d
+HDRS	Makefile	/^HDRS=$(wildcard *.hpp)$/;"	m
+HEX	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	450;"	d	file:
+HEX	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	445;"	d	file:
+HORIZONHF	horizon.hpp	2;"	d
+H_PARAM	biot_ls.cpp	7;"	d	file:
+H_PARAM	temp_ls.cpp	7;"	d	file:
+ID_VOID_MAIN	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	6;"	d	file:
+INTEGRATION	biot.hpp	/^	std::string INTEGRATION =       "IM_GAUSS_PARALLELEPIPED(2,6)";$/;"	m	struct:problem_descriptor_quad
+INTEGRATION	biot.hpp	/^	std::string INTEGRATION =       "IM_GAUSS_PARALLELEPIPED(3,6)";$/;"	m	struct:problem_descriptor_quad_3d
+INTEGRATION	biot.hpp	/^	std::string INTEGRATION =       "IM_TETRAHEDRON(6)";$/;"	m	struct:problem_descriptor_tetra_3d
+INTEGRATION	biot.hpp	/^	std::string INTEGRATION =       "IM_TRIANGLE(6)";$/;"	m	struct:problem_descriptor_tri
+INTEGRATION	biot_ls.hpp	/^	std::string INTEGRATION =       "IM_GAUSS_PARALLELEPIPED(2,6)";$/;"	m	struct:problem_descriptor_quad
+INTEGRATION	biot_ls.hpp	/^	std::string INTEGRATION =       "IM_GAUSS_PARALLELEPIPED(3,6)";$/;"	m	struct:problem_descriptor_quad_3d
+INTEGRATION	biot_ls.hpp	/^	std::string INTEGRATION =       "IM_TETRAHEDRON(6)";$/;"	m	struct:problem_descriptor_tetra_3d
+INTEGRATION	biot_ls.hpp	/^	std::string INTEGRATION =       "IM_TRIANGLE(6)";$/;"	m	struct:problem_descriptor_tri
+INTEGRATION	prob_descriptor.hpp	/^	std::string INTEGRATION =       "IM_GAUSS_PARALLELEPIPED(2,6)";$/;"	m	struct:generic_problem_descriptor_quad
+INTEGRATION	prob_descriptor.hpp	/^	std::string INTEGRATION =       "IM_GAUSS_PARALLELEPIPED(3,6)";$/;"	m	struct:generic_problem_descriptor_quad_3d
+INTEGRATION	prob_descriptor.hpp	/^	std::string INTEGRATION =       "IM_TETRAHEDRON(6)";$/;"	m	struct:generic_problem_descriptor_tetra_3d
+INTEGRATION	prob_descriptor.hpp	/^	std::string INTEGRATION =       "IM_TRIANGLE(6)";$/;"	m	struct:generic_problem_descriptor_tri
+INTEGRATION	temp.hpp	/^	std::string INTEGRATION =       "IM_GAUSS_PARALLELEPIPED(2,6)";$/;"	m	struct:problem_T_descriptor_quad
+INTEGRATION	temp.hpp	/^	std::string INTEGRATION =       "IM_GAUSS_PARALLELEPIPED(3,6)";$/;"	m	struct:problem_T_descriptor_quad_3d
+INTEGRATION	temp.hpp	/^	std::string INTEGRATION =       "IM_TETRAHEDRON(6)";$/;"	m	struct:problem_T_descriptor_tetra_3d
+INTEGRATION	temp.hpp	/^	std::string INTEGRATION =       "IM_TRIANGLE(6)";$/;"	m	struct:problem_T_descriptor_tri
+K	biot.hpp	/^		sparse_matrix_type K;                                \/\/\/ iteration matrix$/;"	m	class:biot_problem
+K	biot_ls.hpp	/^		sparse_matrix_type K;                                \/\/\/ iteration matrix$/;"	m	class:biotls_problem
+K	temp.hpp	/^		sparse_matrix_type K;                                \/\/\/ iteration matrix$/;"	m	class:temperature_problem
+K	temp_ls.hpp	/^		sparse_matrix_type K;                                \/\/\/ iteration matrix$/;"	m	class:templs_problem
+Kp	biot.hpp	/^		sparse_matrix_type Kp, Ku;                           \/\/\/ iteration matrix for fixed steres of tpreconditioner$/;"	m	class:biot_problem
+Kp	biot_ls.hpp	/^		sparse_matrix_type Kp, Ku;                           \/\/\/ iteration matrix for fixed steres of tpreconditioner$/;"	m	class:biotls_problem
+Kp	temp.hpp	/^		sparse_matrix_type Kp, Ku;                           \/\/\/ iteration matrix for fixed steres of tpreconditioner$/;"	m	class:temperature_problem
+Kp	temp_ls.hpp	/^		sparse_matrix_type Kp, Ku;                           \/\/\/ iteration matrix for fixed steres of tpreconditioner$/;"	m	class:templs_problem
+Kr_	biot.hpp	/^		std::vector<scalar_type> Kr_; \/\/ permeability ratio$/;"	m	class:biot_problem
+Kr_	biot_ls.hpp	/^		std::vector<scalar_type> Kr_; \/\/ permeability ratio$/;"	m	class:biotls_problem
+Kr_	temp.hpp	/^		std::vector<scalar_type> Kr_; \/\/ permeability ratio$/;"	m	class:temperature_problem
+Kr_	temp_ls.hpp	/^		std::vector<scalar_type> Kr_; \/\/ permeability ratio$/;"	m	class:templs_problem
+Kr_print_	biot.hpp	/^		std::vector<scalar_type> Kr_print_; \/\/ permeability ratio$/;"	m	class:biot_problem
+Kr_print_	temp.hpp	/^		std::vector<scalar_type> Kr_print_; \/\/ permeability ratio$/;"	m	class:temperature_problem
+Ku	biot.hpp	/^		sparse_matrix_type Kp, Ku;                           \/\/\/ iteration matrix for fixed steres of tpreconditioner$/;"	m	class:biot_problem
+Ku	biot_ls.hpp	/^		sparse_matrix_type Kp, Ku;                           \/\/\/ iteration matrix for fixed steres of tpreconditioner$/;"	m	class:biotls_problem
+Ku	temp.hpp	/^		sparse_matrix_type Kp, Ku;                           \/\/\/ iteration matrix for fixed steres of tpreconditioner$/;"	m	class:temperature_problem
+Ku	temp_ls.hpp	/^		sparse_matrix_type Kp, Ku;                           \/\/\/ iteration matrix for fixed steres of tpreconditioner$/;"	m	class:templs_problem
+Ku_csr_	momentum_precond.hpp	/^    gmm::csr_matrix<scalar_type> Ku_csr_;$/;"	m	class:momentum_precond
+LEFT	biot.hpp	/^		enum { BOTTOM = 200, TOP = 100 , LEFT = 300, RIGHT =400, LEFTX = 500, RIGHTX =600}; \/\/ descriptor for zones$/;"	e	enum:biot_problem::__anon2
+LEFT	biot_ls.hpp	/^		enum { BOTTOM = 2, TOP = 1 , LEFT = 3, RIGHT =4, LEFTX = 5, RIGHTX =6}; \/\/ descriptor for zones$/;"	e	enum:biotls_problem::__anon4
+LEFT	temp.hpp	/^		enum { BOTTOM = 200, TOP = 100 , LEFT = 300, RIGHT =400, LEFTX = 500, RIGHTX =600}; \/\/ descriptor for zones$/;"	e	enum:temperature_problem::__anon8
+LEFT	temp_ls.hpp	/^		enum { BOTTOM = 2, TOP = 1 , LEFT = 3, RIGHT =4, LEFTX = 5, RIGHTX =6}; \/\/ descriptor for zones$/;"	e	enum:templs_problem::__anon10
+LEFTX	biot.hpp	/^		enum { BOTTOM = 200, TOP = 100 , LEFT = 300, RIGHT =400, LEFTX = 500, RIGHTX =600}; \/\/ descriptor for zones$/;"	e	enum:biot_problem::__anon2
+LEFTX	biot_ls.hpp	/^		enum { BOTTOM = 2, TOP = 1 , LEFT = 3, RIGHT =4, LEFTX = 5, RIGHTX =6}; \/\/ descriptor for zones$/;"	e	enum:biotls_problem::__anon4
+LEFTX	temp.hpp	/^		enum { BOTTOM = 200, TOP = 100 , LEFT = 300, RIGHT =400, LEFTX = 500, RIGHTX =600}; \/\/ descriptor for zones$/;"	e	enum:temperature_problem::__anon8
+LEFTX	temp_ls.hpp	/^		enum { BOTTOM = 2, TOP = 1 , LEFT = 3, RIGHT =4, LEFTX = 5, RIGHTX =6}; \/\/ descriptor for zones$/;"	e	enum:templs_problem::__anon10
+LS_TYPE	biot_ls.hpp	63;"	d
+LS_TYPE	temp_ls.hpp	64;"	d
+LUMP_SHUR	momentum_precond.hpp	19;"	d
+MAT_1	biot_ls.hpp	/^		enum { MAT_1 = 50,MAT_2=60};$/;"	e	enum:biotls_problem::__anon6
+MAT_1	temp_ls.hpp	/^		enum { MAT_1 = 50,MAT_2=60};$/;"	e	enum:templs_problem::__anon12
+MAT_2	biot_ls.hpp	/^		enum { MAT_1 = 50,MAT_2=60};$/;"	e	enum:biotls_problem::__anon6
+MAT_2	temp_ls.hpp	/^		enum { MAT_1 = 50,MAT_2=60};$/;"	e	enum:templs_problem::__anon12
+MESH_TYPE	biot.hpp	/^	std::string MESH_TYPE =         "GT_LINEAR_QK(2)" ; \/\/ triangular elements$/;"	m	struct:problem_descriptor_quad
+MESH_TYPE	biot.hpp	/^	std::string MESH_TYPE =         "GT_LINEAR_QK(3)" ; \/\/ triangular elements$/;"	m	struct:problem_descriptor_quad_3d
+MESH_TYPE	biot.hpp	/^	std::string MESH_TYPE =         "GT_PK(2,1)" ; \/\/ triangular elements$/;"	m	struct:problem_descriptor_tri
+MESH_TYPE	biot.hpp	/^	std::string MESH_TYPE =         "GT_PK(3,1)" ; \/\/ triangular elements$/;"	m	struct:problem_descriptor_tetra_3d
+MESH_TYPE	biot_ls.hpp	/^	std::string MESH_TYPE =         "GT_LINEAR_QK(2)" ; \/\/ triangular elements$/;"	m	struct:problem_descriptor_quad
+MESH_TYPE	biot_ls.hpp	/^	std::string MESH_TYPE =         "GT_LINEAR_QK(3)" ; \/\/ triangular elements$/;"	m	struct:problem_descriptor_quad_3d
+MESH_TYPE	biot_ls.hpp	/^	std::string MESH_TYPE =         "GT_PK(2,1)" ; \/\/ triangular elements$/;"	m	struct:problem_descriptor_tri
+MESH_TYPE	biot_ls.hpp	/^	std::string MESH_TYPE =         "GT_PK(3,1)" ; \/\/ triangular elements$/;"	m	struct:problem_descriptor_tetra_3d
+MESH_TYPE	prob_descriptor.hpp	/^	std::string MESH_TYPE =         "GT_LINEAR_QK(2)" ; \/\/ triangular elements$/;"	m	struct:generic_problem_descriptor_quad
+MESH_TYPE	prob_descriptor.hpp	/^	std::string MESH_TYPE =         "GT_LINEAR_QK(3)" ; \/\/ triangular elements$/;"	m	struct:generic_problem_descriptor_quad_3d
+MESH_TYPE	prob_descriptor.hpp	/^	std::string MESH_TYPE =         "GT_PK(2,1)" ; \/\/ triangular elements$/;"	m	struct:generic_problem_descriptor_tri
+MESH_TYPE	prob_descriptor.hpp	/^	std::string MESH_TYPE =         "GT_PK(3,1)" ; \/\/ triangular elements$/;"	m	struct:generic_problem_descriptor_tetra_3d
+MESH_TYPE	temp.hpp	/^	std::string MESH_TYPE =         "GT_LINEAR_QK(2)" ; \/\/ triangular elements$/;"	m	struct:problem_T_descriptor_quad
+MESH_TYPE	temp.hpp	/^	std::string MESH_TYPE =         "GT_LINEAR_QK(3)" ; \/\/ triangular elements$/;"	m	struct:problem_T_descriptor_quad_3d
+MESH_TYPE	temp.hpp	/^	std::string MESH_TYPE =         "GT_PK(2,1)" ; \/\/ triangular elements$/;"	m	struct:problem_T_descriptor_tri
+MESH_TYPE	temp.hpp	/^	std::string MESH_TYPE =         "GT_PK(3,1)" ; \/\/ triangular elements$/;"	m	struct:problem_T_descriptor_tetra_3d
+MOMENUTM_PRECOND_HS	momentum_precond.hpp	2;"	d
+NEUMANN_BOUNDARY_NUM	biot.hpp	/^		enum { DIRICHLET_BOUNDARY_NUM = 10, NEUMANN_BOUNDARY_NUM = 11}; \/\/ descriptor for bcs flag$/;"	e	enum:biot_problem::__anon1
+NEUMANN_BOUNDARY_NUM	biot_ls.hpp	/^		enum { DIRICHLET_BOUNDARY_NUM = 10, NEUMANN_BOUNDARY_NUM = 11}; \/\/ descriptor for bcs flag$/;"	e	enum:biotls_problem::__anon3
+NEUMANN_BOUNDARY_NUM	temp.hpp	/^		enum { DIRICHLET_BOUNDARY_NUM = 10, NEUMANN_BOUNDARY_NUM = 11}; \/\/ descriptor for bcs flag$/;"	e	enum:temperature_problem::__anon7
+NEUMANN_BOUNDARY_NUM	temp_ls.hpp	/^		enum { DIRICHLET_BOUNDARY_NUM = 10, NEUMANN_BOUNDARY_NUM = 11}; \/\/ descriptor for bcs flag$/;"	e	enum:templs_problem::__anon9
+N_	biot.hpp	/^		size_type N_;             \/\/\/ dimension of the problem$/;"	m	class:biot_problem
+N_	biot_ls.hpp	/^		size_type N_;             \/\/\/ dimension of the problem$/;"	m	class:biotls_problem
+N_	temp.hpp	/^		size_type N_;             \/\/\/ dimension of the problem$/;"	m	class:temperature_problem
+N_	temp_ls.hpp	/^		size_type N_;             \/\/\/ dimension of the problem$/;"	m	class:templs_problem
+OBJS	Makefile	/^OBJS=$(SRCS:.cpp=.o)$/;"	m
+P	biot.hpp	/^		std::vector<scalar_type> U, U_old, P,                \/\/\/ diplacement, disp old, pressure$/;"	m	class:biot_problem
+P	biot_ls.hpp	/^		std::vector<scalar_type> U, U_old, P,  Px,           \/\/\/ diplacement, disp old, pressure$/;"	m	class:biotls_problem
+P	temp.hpp	/^		std::vector<scalar_type> U, U_old, P,                \/\/\/ diplacement, disp old, pressure$/;"	m	class:temperature_problem
+P	temp_ls.hpp	/^		std::vector<scalar_type> U, U_old, P,  Px,           \/\/\/ diplacement, disp old, pressure$/;"	m	class:templs_problem
+PDES_H	prob_descriptor.hpp	3;"	d
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	293;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	296;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	299;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	302;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	305;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	308;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	311;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	314;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	317;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	320;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	323;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	326;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	329;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	332;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	335;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	338;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	341;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	344;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	347;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	350;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	353;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	356;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	359;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	362;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	365;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	369;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	372;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	375;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	378;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	381;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	385;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	288;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	291;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	294;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	297;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	300;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	303;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	306;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	309;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	312;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	315;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	318;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	321;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	324;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	327;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	330;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	333;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	336;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	339;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	342;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	345;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	348;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	351;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	354;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	357;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	360;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	364;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	367;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	370;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	373;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	376;"	d	file:
+PLATFORM_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	380;"	d	file:
+P_iter	biot.hpp	/^		std::vector<scalar_type> U_iter, P_iter, Bp, Bu;     \/\/\/ main unknown, and right hand side$/;"	m	class:biot_problem
+P_iter	biot_ls.hpp	/^		std::vector<scalar_type> U_iter, P_iter, Bp, Bu;     \/\/\/ main unknown, and right hand side$/;"	m	class:biotls_problem
+P_iter	temp.hpp	/^		std::vector<scalar_type> U_iter, P_iter, Bp, Bu;     \/\/\/ main unknown, and right hand side$/;"	m	class:temperature_problem
+P_iter	temp_ls.hpp	/^		std::vector<scalar_type> U_iter, P_iter, Bp, Bu;     \/\/\/ main unknown, and right hand side$/;"	m	class:templs_problem
+P_old	biot.hpp	/^			P_old, B, UP;               \/\/\/ main unknown, and right hand side$/;"	m	class:biot_problem
+P_old	biot_ls.hpp	/^			P_old, B, UP;               \/\/\/ main unknown, and right hand side$/;"	m	class:biotls_problem
+P_old	temp.hpp	/^			P_old, B, UP;               \/\/\/ main unknown, and right hand side$/;"	m	class:temperature_problem
+P_old	temp_ls.hpp	/^			P_old, B, UP;               \/\/\/ main unknown, and right hand side$/;"	m	class:templs_problem
+Px	biot_ls.hpp	/^		std::vector<scalar_type> U, U_old, P,  Px,           \/\/\/ diplacement, disp old, pressure$/;"	m	class:biotls_problem
+Px	temp_ls.hpp	/^		std::vector<scalar_type> U, U_old, P,  Px,           \/\/\/ diplacement, disp old, pressure$/;"	m	class:templs_problem
+RIGHT	biot.hpp	/^		enum { BOTTOM = 200, TOP = 100 , LEFT = 300, RIGHT =400, LEFTX = 500, RIGHTX =600}; \/\/ descriptor for zones$/;"	e	enum:biot_problem::__anon2
+RIGHT	biot_ls.hpp	/^		enum { BOTTOM = 2, TOP = 1 , LEFT = 3, RIGHT =4, LEFTX = 5, RIGHTX =6}; \/\/ descriptor for zones$/;"	e	enum:biotls_problem::__anon4
+RIGHT	temp.hpp	/^		enum { BOTTOM = 200, TOP = 100 , LEFT = 300, RIGHT =400, LEFTX = 500, RIGHTX =600}; \/\/ descriptor for zones$/;"	e	enum:temperature_problem::__anon8
+RIGHT	temp_ls.hpp	/^		enum { BOTTOM = 2, TOP = 1 , LEFT = 3, RIGHT =4, LEFTX = 5, RIGHTX =6}; \/\/ descriptor for zones$/;"	e	enum:templs_problem::__anon10
+RIGHTX	biot.hpp	/^		enum { BOTTOM = 200, TOP = 100 , LEFT = 300, RIGHT =400, LEFTX = 500, RIGHTX =600}; \/\/ descriptor for zones$/;"	e	enum:biot_problem::__anon2
+RIGHTX	biot_ls.hpp	/^		enum { BOTTOM = 2, TOP = 1 , LEFT = 3, RIGHT =4, LEFTX = 5, RIGHTX =6}; \/\/ descriptor for zones$/;"	e	enum:biotls_problem::__anon4
+RIGHTX	temp.hpp	/^		enum { BOTTOM = 200, TOP = 100 , LEFT = 300, RIGHT =400, LEFTX = 500, RIGHTX =600}; \/\/ descriptor for zones$/;"	e	enum:temperature_problem::__anon8
+RIGHTX	temp_ls.hpp	/^		enum { BOTTOM = 2, TOP = 1 , LEFT = 3, RIGHT =4, LEFTX = 5, RIGHTX =6}; \/\/ descriptor for zones$/;"	e	enum:templs_problem::__anon10
+RM	build/Makefile	/^RM = \/u\/sw\/pkgs\/toolchains\/gcc-glibc\/5\/base\/bin\/cmake -E remove -f$/;"	m
+SHELL	build/Makefile	/^SHELL = \/bin\/sh$/;"	m
+SIMPLEX_INTEGRATION	biot.hpp	/^	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; $/;"	m	struct:problem_descriptor_quad
+SIMPLEX_INTEGRATION	biot.hpp	/^	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; $/;"	m	struct:problem_descriptor_quad_3d
+SIMPLEX_INTEGRATION	biot.hpp	/^	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; $/;"	m	struct:problem_descriptor_tetra_3d
+SIMPLEX_INTEGRATION	biot.hpp	/^	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; $/;"	m	struct:problem_descriptor_tri
+SIMPLEX_INTEGRATION	biot_ls.hpp	/^	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TETRAHEDRON(6),3)"; $/;"	m	struct:problem_descriptor_quad_3d
+SIMPLEX_INTEGRATION	biot_ls.hpp	/^	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TETRAHEDRON(6),3)"; $/;"	m	struct:problem_descriptor_tetra_3d
+SIMPLEX_INTEGRATION	biot_ls.hpp	/^	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; $/;"	m	struct:problem_descriptor_quad
+SIMPLEX_INTEGRATION	biot_ls.hpp	/^	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; $/;"	m	struct:problem_descriptor_tri
+SIMPLEX_INTEGRATION	prob_descriptor.hpp	/^	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TETRAHEDRON(6),3)"; $/;"	m	struct:generic_problem_descriptor_quad_3d
+SIMPLEX_INTEGRATION	prob_descriptor.hpp	/^	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TETRAHEDRON(6),3)"; $/;"	m	struct:generic_problem_descriptor_tetra_3d
+SIMPLEX_INTEGRATION	prob_descriptor.hpp	/^	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; $/;"	m	struct:generic_problem_descriptor_quad
+SIMPLEX_INTEGRATION	prob_descriptor.hpp	/^	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; $/;"	m	struct:generic_problem_descriptor_tri
+SIMPLEX_INTEGRATION	temp.hpp	/^	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; $/;"	m	struct:problem_T_descriptor_quad
+SIMPLEX_INTEGRATION	temp.hpp	/^	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; $/;"	m	struct:problem_T_descriptor_quad_3d
+SIMPLEX_INTEGRATION	temp.hpp	/^	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; $/;"	m	struct:problem_T_descriptor_tetra_3d
+SIMPLEX_INTEGRATION	temp.hpp	/^	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TRIANGLE(6),6)"; $/;"	m	struct:problem_T_descriptor_tri
+SIMULATE_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	155;"	d	file:
+SIMULATE_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	16;"	d	file:
+SIMULATE_ID	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	170;"	d	file:
+SIMULATE_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	157;"	d	file:
+SIMULATE_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	172;"	d	file:
+SIMULATE_ID	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	21;"	d	file:
+SIMULATE_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	162;"	d	file:
+SIMULATE_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	177;"	d	file:
+SIMULATE_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	32;"	d	file:
+SIMULATE_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	164;"	d	file:
+SIMULATE_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	179;"	d	file:
+SIMULATE_VERSION_MAJOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	37;"	d	file:
+SIMULATE_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	163;"	d	file:
+SIMULATE_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	178;"	d	file:
+SIMULATE_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	33;"	d	file:
+SIMULATE_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	165;"	d	file:
+SIMULATE_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	180;"	d	file:
+SIMULATE_VERSION_MINOR	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	38;"	d	file:
+SOLVE_A	biot_precond.hpp	15;"	d
+SOLVE_A_MOMENTUM	momentum_precond.hpp	16;"	d
+SOLVE_SHUR	biot_precond.hpp	16;"	d
+SRCS	Makefile	/^SRCS=$(wildcard *.cpp)$/;"	m
+STRINGIFY	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	289;"	d	file:
+STRINGIFY	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	284;"	d	file:
+STRINGIFY_HELPER	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	288;"	d	file:
+STRINGIFY_HELPER	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	283;"	d	file:
+SUFFIXES	build/Makefile	/^SUFFIXES =$/;"	m
+S_	biot_precond.hpp	/^    MATRIX &S_;$/;"	m	class:biot_precond
+S_	momentum_precond.hpp	/^    MATRIX &S_;$/;"	m	class:momentum_precond
+TEMPLS_H	temp_ls.hpp	2;"	d
+TEMP_H	temp.hpp	2;"	d
+TOP	biot.hpp	/^		enum { BOTTOM = 200, TOP = 100 , LEFT = 300, RIGHT =400, LEFTX = 500, RIGHTX =600}; \/\/ descriptor for zones$/;"	e	enum:biot_problem::__anon2
+TOP	biot_ls.hpp	/^		enum { BOTTOM = 2, TOP = 1 , LEFT = 3, RIGHT =4, LEFTX = 5, RIGHTX =6}; \/\/ descriptor for zones$/;"	e	enum:biotls_problem::__anon4
+TOP	temp.hpp	/^		enum { BOTTOM = 200, TOP = 100 , LEFT = 300, RIGHT =400, LEFTX = 500, RIGHTX =600}; \/\/ descriptor for zones$/;"	e	enum:temperature_problem::__anon8
+TOP	temp_ls.hpp	/^		enum { BOTTOM = 2, TOP = 1 , LEFT = 3, RIGHT =4, LEFTX = 5, RIGHTX =6}; \/\/ descriptor for zones$/;"	e	enum:templs_problem::__anon10
+U	biot.hpp	/^		std::vector<scalar_type> U, U_old, P,                \/\/\/ diplacement, disp old, pressure$/;"	m	class:biot_problem
+U	biot_ls.hpp	/^		std::vector<scalar_type> U, U_old, P,  Px,           \/\/\/ diplacement, disp old, pressure$/;"	m	class:biotls_problem
+U	temp.hpp	/^		std::vector<scalar_type> U, U_old, P,                \/\/\/ diplacement, disp old, pressure$/;"	m	class:temperature_problem
+U	temp_ls.hpp	/^		std::vector<scalar_type> U, U_old, P,  Px,           \/\/\/ diplacement, disp old, pressure$/;"	m	class:templs_problem
+UNCUT_REGION	biot_ls.hpp	/^		enum { CUT_REGION = 100, UNCUT_REGION = 200, UNCUT_REGION_IN = 201, UNCUT_REGION_OUT = 202, CUT_EDGE=203};$/;"	e	enum:biotls_problem::__anon5
+UNCUT_REGION	temp_ls.hpp	/^		enum { CUT_REGION = 100, UNCUT_REGION = 200, UNCUT_REGION_IN = 201, UNCUT_REGION_OUT = 202, CUT_EDGE=203};$/;"	e	enum:templs_problem::__anon11
+UNCUT_REGION_IN	biot_ls.hpp	/^		enum { CUT_REGION = 100, UNCUT_REGION = 200, UNCUT_REGION_IN = 201, UNCUT_REGION_OUT = 202, CUT_EDGE=203};$/;"	e	enum:biotls_problem::__anon5
+UNCUT_REGION_IN	temp_ls.hpp	/^		enum { CUT_REGION = 100, UNCUT_REGION = 200, UNCUT_REGION_IN = 201, UNCUT_REGION_OUT = 202, CUT_EDGE=203};$/;"	e	enum:templs_problem::__anon11
+UNCUT_REGION_OUT	biot_ls.hpp	/^		enum { CUT_REGION = 100, UNCUT_REGION = 200, UNCUT_REGION_IN = 201, UNCUT_REGION_OUT = 202, CUT_EDGE=203};$/;"	e	enum:biotls_problem::__anon5
+UNCUT_REGION_OUT	temp_ls.hpp	/^		enum { CUT_REGION = 100, UNCUT_REGION = 200, UNCUT_REGION_IN = 201, UNCUT_REGION_OUT = 202, CUT_EDGE=203};$/;"	e	enum:templs_problem::__anon11
+UP	biot.hpp	/^			P_old, B, UP;               \/\/\/ main unknown, and right hand side$/;"	m	class:biot_problem
+UP	biot_ls.hpp	/^			P_old, B, UP;               \/\/\/ main unknown, and right hand side$/;"	m	class:biotls_problem
+UP	temp.hpp	/^			P_old, B, UP;               \/\/\/ main unknown, and right hand side$/;"	m	class:temperature_problem
+UP	temp_ls.hpp	/^			P_old, B, UP;               \/\/\/ main unknown, and right hand side$/;"	m	class:templs_problem
+U_iter	biot.hpp	/^		std::vector<scalar_type> U_iter, P_iter, Bp, Bu;     \/\/\/ main unknown, and right hand side$/;"	m	class:biot_problem
+U_iter	biot_ls.hpp	/^		std::vector<scalar_type> U_iter, P_iter, Bp, Bu;     \/\/\/ main unknown, and right hand side$/;"	m	class:biotls_problem
+U_iter	temp.hpp	/^		std::vector<scalar_type> U_iter, P_iter, Bp, Bu;     \/\/\/ main unknown, and right hand side$/;"	m	class:temperature_problem
+U_iter	temp_ls.hpp	/^		std::vector<scalar_type> U_iter, P_iter, Bp, Bu;     \/\/\/ main unknown, and right hand side$/;"	m	class:templs_problem
+U_old	biot.hpp	/^		std::vector<scalar_type> U, U_old, P,                \/\/\/ diplacement, disp old, pressure$/;"	m	class:biot_problem
+U_old	biot_ls.hpp	/^		std::vector<scalar_type> U, U_old, P,  Px,           \/\/\/ diplacement, disp old, pressure$/;"	m	class:biotls_problem
+U_old	temp.hpp	/^		std::vector<scalar_type> U, U_old, P,                \/\/\/ diplacement, disp old, pressure$/;"	m	class:temperature_problem
+U_old	temp_ls.hpp	/^		std::vector<scalar_type> U, U_old, P,  Px,           \/\/\/ diplacement, disp old, pressure$/;"	m	class:templs_problem
+_Pt	AMG_Interface.hpp	/^int _Pt, _Ut, _Pv, _Uv;$/;"	m	class:AMG
+_Pv	AMG_Interface.hpp	/^int _Pt, _Ut, _Pv, _Uv;$/;"	m	class:AMG
+_Ut	AMG_Interface.hpp	/^int _Pt, _Ut, _Pv, _Uv;$/;"	m	class:AMG
+_Uv	AMG_Interface.hpp	/^int _Pt, _Ut, _Pv, _Uv;$/;"	m	class:AMG
+_l_dof	AMG_Interface.hpp	/^int _l_dof;				\/\/\/ linear dof$/;"	m	class:AMG
+_npts	AMG_Interface.hpp	/^int _npts;$/;"	m	class:AMG
+_pt2uk	AMG_Interface.hpp	/^std::vector<int> _pt2uk; \/\/\/ point to oknow vector$/;"	m	class:AMG
+_q_dof	AMG_Interface.hpp	/^int _q_dof;              \/\/\/ quadratic dof$/;"	m	class:AMG
+a_samg_	AMG_Interface.hpp	/^double * a_samg_;$/;"	m	class:AMG
+aamg	AMG_Interface.hpp	3;"	d
+add_subiter	logs/stripper.cpp	/^   void add_subiter(double norm_p, double norm_u, int iter_p, int iter_u){$/;"	f	class:time_step
+alpha	biot.hpp	/^	double alpha=1.; \/\/ Biot coefficient$/;"	m	struct:problem_descriptor_tetra_3d
+alpha	biot.hpp	/^	double alpha=1; \/\/ Biot coefficient$/;"	m	struct:problem_descriptor_quad
+alpha	biot.hpp	/^	double alpha=1; \/\/ Biot coefficient$/;"	m	struct:problem_descriptor_quad_3d
+alpha	biot.hpp	/^	double alpha=1; \/\/ Biot coefficient$/;"	m	struct:problem_descriptor_tri
+alpha	biot_ls.hpp	/^	double alpha=1; \/\/ Biot coefficient$/;"	m	struct:problem_descriptor_quad
+alpha	biot_ls.hpp	/^	double alpha=1; \/\/ Biot coefficient$/;"	m	struct:problem_descriptor_quad_3d
+alpha	biot_ls.hpp	/^	double alpha=1; \/\/ Biot coefficient$/;"	m	struct:problem_descriptor_tetra_3d
+alpha	biot_ls.hpp	/^	double alpha=1; \/\/ Biot coefficient$/;"	m	struct:problem_descriptor_tri
+alpha	prob_descriptor.hpp	/^	double alpha=1; \/\/ Biot coefficient$/;"	m	struct:generic_problem_descriptor_quad
+alpha	prob_descriptor.hpp	/^	double alpha=1; \/\/ Biot coefficient$/;"	m	struct:generic_problem_descriptor_quad_3d
+alpha	prob_descriptor.hpp	/^	double alpha=1; \/\/ Biot coefficient$/;"	m	struct:generic_problem_descriptor_tetra_3d
+alpha	prob_descriptor.hpp	/^	double alpha=1; \/\/ Biot coefficient$/;"	m	struct:generic_problem_descriptor_tri
+alpha	temp.hpp	/^	double alpha=1.; \/\/ Biot coefficient$/;"	m	struct:problem_T_descriptor_tetra_3d
+alpha	temp.hpp	/^	double alpha=1; \/\/ Biot coefficient$/;"	m	struct:problem_T_descriptor_quad
+alpha	temp.hpp	/^	double alpha=1; \/\/ Biot coefficient$/;"	m	struct:problem_T_descriptor_quad_3d
+alpha	temp.hpp	/^	double alpha=1; \/\/ Biot coefficient$/;"	m	struct:problem_T_descriptor_tri
+alpha_	biot.hpp	/^			alpha_, permeability_, force_,penalty_;$/;"	m	class:biot_problem
+alpha_	biot_ls.hpp	/^			alpha_, permeability_, force_,penalty_, c1_, c2_,over_p_;$/;"	m	class:biotls_problem
+alpha_	temp.hpp	/^			alpha_, permeability_, force_,penalty_;$/;"	m	class:temperature_problem
+alpha_	temp_ls.hpp	/^			alpha_, permeability_, force_,penalty_, c1_, c2_,over_p_;$/;"	m	class:templs_problem
+amg_	biot_precond.hpp	/^    mutable AMG amg_;$/;"	m	class:biot_precond
+amg_	momentum_precond.hpp	/^    mutable AMG amg_;$/;"	m	class:momentum_precond
+assembly	biot.cpp	/^void biot_problem::assembly(double dt) {$/;"	f	class:biot_problem
+assembly	biot_ls.cpp	/^void biotls_problem::assembly(double dt,double time) {$/;"	f	class:biotls_problem
+assembly	temp.cpp	/^void temperature_problem::assembly(double dt, getfem::mesh_fem& mf_pressure, std::vector<scalar_type>& p) {$/;"	f	class:temperature_problem
+assembly	temp_ls.cpp	/^void templs_problem::assembly(double dt,double time) {$/;"	f	class:templs_problem
+assembly_p	biot.cpp	/^void biot_problem::assembly_p(double dt){$/;"	f	class:biot_problem
+assembly_p	biot_ls.cpp	/^void biotls_problem::assembly_p(double dt, double time){$/;"	f	class:biotls_problem
+assembly_p	temp_ls.cpp	/^void templs_problem::assembly_p(double dt, double time){$/;"	f	class:templs_problem
+assembly_u	biot.cpp	/^	void biot_problem::assembly_u(double dt){$/;"	f	class:biot_problem
+assembly_u	biot_ls.cpp	/^  void biotls_problem::assembly_u(double dt,double time){$/;"	f	class:biotls_problem
+assembly_u	temp_ls.cpp	/^  void templs_problem::assembly_u(double dt,double time){$/;"	f	class:templs_problem
+avg_gmres_p_	logs/stripper.cpp	/^   double avg_gmres_p_;$/;"	m	class:time_step	file:
+avg_gmres_u_	logs/stripper.cpp	/^   double avg_gmres_u_;$/;"	m	class:time_step	file:
+bPR_	biot.hpp	/^		biot_precond<sparse_matrix_type> *bPR_;               \/\/\/ preconditioner based on fixed stress$/;"	m	class:biot_problem
+bPR_	biot_ls.hpp	/^		biot_precond<sparse_matrix_type> *bPR_;               \/\/\/ preconditioner based on fixed stress$/;"	m	class:biotls_problem
+bPR_	temp.hpp	/^		biot_precond<sparse_matrix_type> *bPR_;               \/\/\/ preconditioner based on fixed stress$/;"	m	class:temperature_problem
+bPR_	temp_ls.hpp	/^		biot_precond<sparse_matrix_type> *bPR_;               \/\/\/ preconditioner based on fixed stress$/;"	m	class:templs_problem
+b_box_	horizon.hpp	/^  std::vector<double> b_box_;$/;"	m	class:horizon
+beta_	biot.hpp	/^		std::vector<scalar_type> tau_, vmu_, bm_ ,lambda_, beta_,$/;"	m	class:biot_problem
+beta_	biot_ls.hpp	/^		std::vector<scalar_type> tau_, vmu_, bm_ ,lambda_, beta_,$/;"	m	class:biotls_problem
+beta_	temp.hpp	/^		std::vector<scalar_type> tau_, vmu_, bm_ ,lambda_, beta_,$/;"	m	class:temperature_problem
+beta_	temp_ls.hpp	/^		std::vector<scalar_type> tau_, vmu_, bm_ ,lambda_, beta_,$/;"	m	class:templs_problem
+biot_modulus	biot.hpp	/^	double biot_modulus=1.e+18;$/;"	m	struct:problem_descriptor_quad
+biot_modulus	biot.hpp	/^	double biot_modulus=1.e+9;$/;"	m	struct:problem_descriptor_quad_3d
+biot_modulus	biot.hpp	/^	double biot_modulus=1.e+9;$/;"	m	struct:problem_descriptor_tetra_3d
+biot_modulus	biot.hpp	/^	double biot_modulus=1.e+9;$/;"	m	struct:problem_descriptor_tri
+biot_modulus	biot_ls.hpp	/^	double biot_modulus=1.e+18;$/;"	m	struct:problem_descriptor_quad
+biot_modulus	biot_ls.hpp	/^	double biot_modulus=1.e+9;$/;"	m	struct:problem_descriptor_quad_3d
+biot_modulus	biot_ls.hpp	/^	double biot_modulus=1.e+9;$/;"	m	struct:problem_descriptor_tetra_3d
+biot_modulus	biot_ls.hpp	/^	double biot_modulus=1.e+9;$/;"	m	struct:problem_descriptor_tri
+biot_modulus	prob_descriptor.hpp	/^	double biot_modulus=1.e+18;$/;"	m	struct:generic_problem_descriptor_quad
+biot_modulus	prob_descriptor.hpp	/^	double biot_modulus=1.e+9;$/;"	m	struct:generic_problem_descriptor_quad_3d
+biot_modulus	prob_descriptor.hpp	/^	double biot_modulus=1.e+9;$/;"	m	struct:generic_problem_descriptor_tetra_3d
+biot_modulus	prob_descriptor.hpp	/^	double biot_modulus=1.e+9;$/;"	m	struct:generic_problem_descriptor_tri
+biot_modulus	temp.hpp	/^	double biot_modulus=1.e+18;$/;"	m	struct:problem_T_descriptor_quad
+biot_modulus	temp.hpp	/^	double biot_modulus=1.e+9;$/;"	m	struct:problem_T_descriptor_quad_3d
+biot_modulus	temp.hpp	/^	double biot_modulus=1.e+9;$/;"	m	struct:problem_T_descriptor_tetra_3d
+biot_modulus	temp.hpp	/^	double biot_modulus=1.e+9;$/;"	m	struct:problem_T_descriptor_tri
+biot_precond	biot_precond.hpp	/^biot_precond<MATRIX>::biot_precond(MATRIX &A, MATRIX &C, int nx1, int nx2, int ind)$/;"	f	class:biot_precond
+biot_precond	biot_precond.hpp	/^class biot_precond$/;"	c
+biot_problem	biot.hpp	/^		biot_problem(void): mim(mesh), mf_u(mesh), mf_rhs(mesh), mf_p(mesh), mf_coef(mesh)$/;"	f	class:biot_problem
+biot_problem	biot.hpp	/^class biot_problem {$/;"	c
+biotls_problem	biot_ls.hpp	/^		biotls_problem(void): mim(mesh), mf_u(mesh), mf_rhs(mesh), mf_p(mesh),mf_coef(mesh),mf_coef_v(mesh)$/;"	f	class:biotls_problem
+biotls_problem	biot_ls.hpp	/^class biotls_problem {$/;"	c
+bm_	biot.hpp	/^		std::vector<scalar_type> tau_, vmu_, bm_ ,lambda_, beta_,$/;"	m	class:biot_problem
+bm_	biot_ls.hpp	/^		std::vector<scalar_type> tau_, vmu_, bm_ ,lambda_, beta_,$/;"	m	class:biotls_problem
+bm_	temp.hpp	/^		std::vector<scalar_type> tau_, vmu_, bm_ ,lambda_, beta_,$/;"	m	class:temperature_problem
+bm_	temp_ls.hpp	/^		std::vector<scalar_type> tau_, vmu_, bm_ ,lambda_, beta_,$/;"	m	class:templs_problem
+build_fix_stress_preconditioner	biot.cpp	/^void biot_problem::build_fix_stress_preconditioner(double dt){$/;"	f	class:biot_problem
+build_fix_stress_preconditioner	biot_ls.cpp	/^void biotls_problem::build_fix_stress_preconditioner(double dt, double time_ls){$/;"	f	class:biotls_problem
+c1_	biot_ls.hpp	/^			alpha_, permeability_, force_,penalty_, c1_, c2_,over_p_;$/;"	m	class:biotls_problem
+c1_	temp_ls.hpp	/^			alpha_, permeability_, force_,penalty_, c1_, c2_,over_p_;$/;"	m	class:templs_problem
+c2_	biot_ls.hpp	/^			alpha_, permeability_, force_,penalty_, c1_, c2_,over_p_;$/;"	m	class:biotls_problem
+c2_	temp_ls.hpp	/^			alpha_, permeability_, force_,penalty_, c1_, c2_,over_p_;$/;"	m	class:templs_problem
+col_sparse_matrix_type	biot.hpp	/^typedef gmm::col_matrix<sparse_vector_type> col_sparse_matrix_type;$/;"	t
+col_sparse_matrix_type	biot_ls.hpp	/^typedef gmm::col_matrix<sparse_vector_type> col_sparse_matrix_type;$/;"	t
+col_sparse_matrix_type	temp.hpp	/^typedef gmm::col_matrix<sparse_vector_type> col_sparse_matrix_type;$/;"	t
+col_sparse_matrix_type	temp_ls.hpp	/^typedef gmm::col_matrix<sparse_vector_type> col_sparse_matrix_type;$/;"	t
+compute_normal_2_ls	biot_ls.cpp	/^void biotls_problem::compute_normal_2_ls(){$/;"	f	class:biotls_problem
+compute_normal_2_ls	temp_ls.cpp	/^void templs_problem::compute_normal_2_ls(){$/;"	f	class:templs_problem
+configure_workspace	biot.cpp	/^void biot_problem::configure_workspace(getfem::ga_workspace & workspace,double dt){$/;"	f	class:biot_problem
+configure_workspace	biot_ls.cpp	/^void biotls_problem::configure_workspace(getfem::ga_workspace & workspace,double dt){$/;"	f	class:biotls_problem
+configure_workspace	temp.cpp	/^void temperature_problem::configure_workspace(getfem::ga_workspace & workspace,double dt){$/;"	f	class:temperature_problem
+configure_workspace	temp_ls.cpp	/^void templs_problem::configure_workspace(getfem::ga_workspace & workspace,double dt){$/;"	f	class:templs_problem
+convert_matrix	AMG_Interface.cpp	/^void AMG::convert_matrix(gmm::csr_matrix<scalar_type> A_csr)$/;"	f	class:AMG
+datafilename	biot.hpp	/^	std::string datafilename="laplace"; $/;"	m	struct:problem_descriptor_quad
+datafilename	biot.hpp	/^	std::string datafilename="resu\/laplace"; $/;"	m	struct:problem_descriptor_tri
+datafilename	biot.hpp	/^	std::string datafilename="resu\/laplacedisp"; $/;"	m	struct:problem_descriptor_quad_3d
+datafilename	biot.hpp	/^	std::string datafilename="resu\/laplacedisp_pinch"; $/;"	m	struct:problem_descriptor_tetra_3d
+datafilename	biot_ls.hpp	/^	std::string datafilename="laplace"; $/;"	m	struct:problem_descriptor_quad
+datafilename	biot_ls.hpp	/^	std::string datafilename="resu\/laplace"; $/;"	m	struct:problem_descriptor_quad_3d
+datafilename	biot_ls.hpp	/^	std::string datafilename="resu\/laplace2"; $/;"	m	struct:problem_descriptor_tri
+datafilename	biot_ls.hpp	/^	std::string datafilename="resu\/lk_ls_dom"; $/;"	m	struct:problem_descriptor_tetra_3d
+datafilename	prob_descriptor.hpp	/^	std::string datafilename="laplace"; $/;"	m	struct:generic_problem_descriptor_quad
+datafilename	prob_descriptor.hpp	/^	std::string datafilename="resu\/laplace"; $/;"	m	struct:generic_problem_descriptor_quad_3d
+datafilename	prob_descriptor.hpp	/^	std::string datafilename="resu\/laplace2"; $/;"	m	struct:generic_problem_descriptor_tri
+datafilename	prob_descriptor.hpp	/^	std::string datafilename="resu\/lk_ls_dom"; $/;"	m	struct:generic_problem_descriptor_tetra_3d
+datafilename	temp.hpp	/^	std::string datafilename="laplace"; $/;"	m	struct:problem_T_descriptor_quad
+datafilename	temp.hpp	/^	std::string datafilename="resu\/laplace"; $/;"	m	struct:problem_T_descriptor_quad_3d
+datafilename	temp.hpp	/^	std::string datafilename="resu\/laplace"; $/;"	m	struct:problem_T_descriptor_tri
+datafilename	temp.hpp	/^	std::string datafilename="resu\/laplacetemp_pinch"; $/;"	m	struct:problem_T_descriptor_tetra_3d
+eXt_dof	biot_ls.hpp	/^		std::vector<size_type> eXt_dof, eXt_dof_u;  \/\/ The extended dofs$/;"	m	class:biotls_problem
+eXt_dof	temp_ls.hpp	/^		std::vector<size_type> eXt_dof, eXt_dof_u;  \/\/ The extended dofs$/;"	m	class:templs_problem
+eXt_dof_u	biot_ls.hpp	/^		std::vector<size_type> eXt_dof, eXt_dof_u;  \/\/ The extended dofs$/;"	m	class:biotls_problem
+eXt_dof_u	temp_ls.hpp	/^		std::vector<size_type> eXt_dof, eXt_dof_u;  \/\/ The extended dofs$/;"	m	class:templs_problem
+features	build/CMakeFiles/feature_tests.c	/^  const char features[] = {"\\n"$/;"	v
+features	build/CMakeFiles/feature_tests.cxx	/^  const char features[] = {"\\n"$/;"	v
+finalize	logs/stripper.cpp	/^   void finalize(){$/;"	f	class:time_step
+find_element	horizon.cpp	/^int horizon::find_element(std::vector<double>& pt){$/;"	f	class:horizon
+fine_search	horizon.cpp	/^int horizon::fine_search(std::vector<double>&pt,std::vector<int>& maybe_element){$/;"	f	class:horizon
+first_	AMG_Interface.hpp	/^bool first_=true;$/;"	m	class:AMG
+force_	biot.hpp	/^			alpha_, permeability_, force_,penalty_;$/;"	m	class:biot_problem
+force_	biot_ls.hpp	/^			alpha_, permeability_, force_,penalty_, c1_, c2_,over_p_;$/;"	m	class:biotls_problem
+force_	temp.hpp	/^			alpha_, permeability_, force_,penalty_;$/;"	m	class:temperature_problem
+force_	temp_ls.hpp	/^			alpha_, permeability_, force_,penalty_, c1_, c2_,over_p_;$/;"	m	class:templs_problem
+gen_bc	biot.cpp	/^void biot_problem::gen_bc(){$/;"	f	class:biot_problem
+gen_bc	biot_ls.cpp	/^void biotls_problem::gen_bc(){$/;"	f	class:biotls_problem
+gen_bc	temp.cpp	/^void temperature_problem::gen_bc(){$/;"	f	class:temperature_problem
+gen_bc	temp_ls.cpp	/^void templs_problem::gen_bc(){$/;"	f	class:templs_problem
+gen_coefficient	biot.cpp	/^void biot_problem::gen_coefficient(){ \/\/ creating a coefficient$/;"	f	class:biot_problem
+gen_coefficient	biot_ls.cpp	/^void biotls_problem::gen_coefficient(){ \/\/ creating a coefficient$/;"	f	class:biotls_problem
+gen_coefficient	temp.cpp	/^void temperature_problem::gen_coefficient(){ \/\/ creating a coefficient$/;"	f	class:temperature_problem
+gen_coefficient	temp_ls.cpp	/^void templs_problem::gen_coefficient(){ \/\/ creating a coefficient$/;"	f	class:templs_problem
+gen_mat	biot_ls.cpp	/^void biotls_problem::gen_mat(){$/;"	f	class:biotls_problem
+gen_mat	temp_ls.cpp	/^void templs_problem::gen_mat(){$/;"	f	class:templs_problem
+generic_problem_descriptor_quad	prob_descriptor.hpp	/^struct generic_problem_descriptor_quad{    $/;"	s
+generic_problem_descriptor_quad_3d	prob_descriptor.hpp	/^struct generic_problem_descriptor_quad_3d{    $/;"	s
+generic_problem_descriptor_tetra_3d	prob_descriptor.hpp	/^struct generic_problem_descriptor_tetra_3d{    $/;"	s
+generic_problem_descriptor_tri	prob_descriptor.hpp	/^struct generic_problem_descriptor_tri{    $/;"	s
+get_avg_p	logs/stripper.cpp	/^   double get_avg_p() {return avg_gmres_p_;};$/;"	f	class:time_step
+get_avg_u	logs/stripper.cpp	/^   double get_avg_u() {return  avg_gmres_u_;};$/;"	f	class:time_step
+get_fs	logs/stripper.cpp	/^   int get_fs() {return num_fs_it_;};$/;"	f	class:time_step
+get_pressure	biot.hpp	/^                inline std::vector<scalar_type>& get_pressure(){return P;}$/;"	f	class:biot_problem
+get_pressure_fem	biot.hpp	/^		inline getfem::mesh_fem& get_pressure_fem(){return mf_p;}$/;"	f	class:biot_problem
+get_ts	logs/stripper.cpp	/^   int get_ts() {return ts_;};$/;"	f	class:time_step
+getsol	AMG_Interface.hpp	/^  std::vector<scalar_type> getsol(){return sol_vec;}$/;"	f	class:AMG
+gmm	biot_precond.hpp	/^namespace gmm {$/;"	n
+gmm	gmm_fix.hpp	/^namespace gmm {$/;"	n
+gmm	momentum_precond.hpp	/^namespace gmm {$/;"	n
+horizon	horizon.cpp	/^horizon::horizon(const char* file){$/;"	f	class:horizon
+horizon	horizon.hpp	/^class horizon{$/;"	c
+ia_samg_	AMG_Interface.hpp	/^APPL_INT *ia_samg_;$/;"	m	class:AMG
+idx	biot_precond.hpp	/^    int idx;$/;"	m	class:biot_precond
+idx_	AMG_Interface.hpp	/^int idx_=0;$/;"	m	class:AMG
+idx_	momentum_precond.hpp	/^    int idx_;$/;"	m	class:momentum_precond
+info_arch	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
+info_arch	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
+info_compiler	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	/^char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";$/;"	v
+info_compiler	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";$/;"	v
+info_cray	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	/^char const *info_cray = "INFO" ":" "compiler_wrapper[CrayPrgEnv]";$/;"	v
+info_cray	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const *info_cray = "INFO" ":" "compiler_wrapper[CrayPrgEnv]";$/;"	v
+info_language_dialect_default	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	/^const char* info_language_dialect_default = "INFO" ":" "dialect_default["$/;"	v
+info_language_dialect_default	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^const char* info_language_dialect_default = "INFO" ":" "dialect_default["$/;"	v
+info_platform	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	/^char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";$/;"	v
+info_platform	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";$/;"	v
+info_simulate	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	/^char const* info_simulate = "INFO" ":" "simulate[" SIMULATE_ID "]";$/;"	v
+info_simulate	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_simulate = "INFO" ":" "simulate[" SIMULATE_ID "]";$/;"	v
+info_simulate_version	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	/^char const info_simulate_version[] = {$/;"	v
+info_simulate_version	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_simulate_version[] = {$/;"	v
+info_version	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	/^char const info_version[] = {$/;"	v
+info_version	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version[] = {$/;"	v
+init	biot.cpp	/^void biot_problem::init(void) {$/;"	f	class:biot_problem
+init	biot_ls.cpp	/^void biotls_problem::init(void) {$/;"	f	class:biotls_problem
+init	temp.cpp	/^void temperature_problem::init(void) {$/;"	f	class:temperature_problem
+init	temp_ls.cpp	/^void templs_problem::init(void) {$/;"	f	class:templs_problem
+is_in	horizon.cpp	/^bool horizon::is_in (std::vector<double>  pt, std::vector<double>  v1, std::vector<double>  v2, std::vector<double>  v3)$/;"	f	class:horizon
+iter_p_	logs/stripper.cpp	/^   std::vector<int> iter_p_,iter_u_;$/;"	m	class:time_step	file:
+iter_u_	logs/stripper.cpp	/^   std::vector<int> iter_p_,iter_u_;$/;"	m	class:time_step	file:
+ja_samg_	AMG_Interface.hpp	/^APPL_INT *ja_samg_;$/;"	m	class:AMG
+k	biot.hpp	/^	double k =1.e-12; \/\/permeability$/;"	m	struct:problem_descriptor_quad_3d
+k	biot.hpp	/^	double k =1.e-14; \/\/permeability$/;"	m	struct:problem_descriptor_tetra_3d
+k	biot.hpp	/^	double k =1.e-14; \/\/permeability$/;"	m	struct:problem_descriptor_tri
+k	biot.hpp	/^	double k =1.e-4; \/\/permeability$/;"	m	struct:problem_descriptor_quad
+k	biot_ls.hpp	/^	double k =1.e-15; \/\/permeability$/;"	m	struct:problem_descriptor_quad_3d
+k	biot_ls.hpp	/^	double k =1.e-15; \/\/permeability$/;"	m	struct:problem_descriptor_tetra_3d
+k	biot_ls.hpp	/^	double k =1.e-15; \/\/permeability$/;"	m	struct:problem_descriptor_tri
+k	biot_ls.hpp	/^	double k =1.e-4; \/\/permeability$/;"	m	struct:problem_descriptor_quad
+k	prob_descriptor.hpp	/^	double k =1.e-15; \/\/permeability$/;"	m	struct:generic_problem_descriptor_quad_3d
+k	prob_descriptor.hpp	/^	double k =1.e-15; \/\/permeability$/;"	m	struct:generic_problem_descriptor_tetra_3d
+k	prob_descriptor.hpp	/^	double k =1.e-15; \/\/permeability$/;"	m	struct:generic_problem_descriptor_tri
+k	prob_descriptor.hpp	/^	double k =1.e-4; \/\/permeability$/;"	m	struct:generic_problem_descriptor_quad
+k	temp.hpp	/^	double k =1.e-12; \/\/permeability$/;"	m	struct:problem_T_descriptor_quad_3d
+k	temp.hpp	/^	double k =1.e-14; \/\/permeability$/;"	m	struct:problem_T_descriptor_tri
+k	temp.hpp	/^	double k =1.e-15; \/\/permeability$/;"	m	struct:problem_T_descriptor_tetra_3d
+k	temp.hpp	/^	double k =1.e-4; \/\/permeability$/;"	m	struct:problem_T_descriptor_quad
+l_ref	biot.hpp	/^	double l_ref=1;$/;"	m	struct:problem_descriptor_quad_3d
+l_ref	biot.hpp	/^	double l_ref=1;$/;"	m	struct:problem_descriptor_tetra_3d
+l_ref	biot_ls.hpp	/^	double l_ref=1;$/;"	m	struct:problem_descriptor_quad_3d
+l_ref	biot_ls.hpp	/^	double l_ref=1;$/;"	m	struct:problem_descriptor_tetra_3d
+l_ref	biot_ls.hpp	/^	double l_ref=1;$/;"	m	struct:problem_descriptor_tri
+l_ref	prob_descriptor.hpp	/^	double l_ref=1;$/;"	m	struct:generic_problem_descriptor_quad_3d
+l_ref	prob_descriptor.hpp	/^	double l_ref=1;$/;"	m	struct:generic_problem_descriptor_tetra_3d
+l_ref	prob_descriptor.hpp	/^	double l_ref=1;$/;"	m	struct:generic_problem_descriptor_tri
+l_ref	temp.hpp	/^	double l_ref=1;$/;"	m	struct:problem_T_descriptor_quad_3d
+l_ref	temp.hpp	/^	double l_ref=1;$/;"	m	struct:problem_T_descriptor_tetra_3d
+lambda_	biot.hpp	/^		std::vector<scalar_type> tau_, vmu_, bm_ ,lambda_, beta_,$/;"	m	class:biot_problem
+lambda_	biot_ls.hpp	/^		std::vector<scalar_type> tau_, vmu_, bm_ ,lambda_, beta_,$/;"	m	class:biotls_problem
+lambda_	temp.hpp	/^		std::vector<scalar_type> tau_, vmu_, bm_ ,lambda_, beta_,$/;"	m	class:temperature_problem
+lambda_	temp_ls.hpp	/^		std::vector<scalar_type> tau_, vmu_, bm_ ,lambda_, beta_,$/;"	m	class:templs_problem
+lambda_l	biot.hpp	/^	double lambda_l= E*poisson\/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;$/;"	m	struct:problem_descriptor_quad
+lambda_l	biot.hpp	/^	double lambda_l= E*poisson\/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;$/;"	m	struct:problem_descriptor_quad_3d
+lambda_l	biot.hpp	/^	double lambda_l= E*poisson\/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;$/;"	m	struct:problem_descriptor_tetra_3d
+lambda_l	biot.hpp	/^	double lambda_l= E*poisson\/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;$/;"	m	struct:problem_descriptor_tri
+lambda_l	biot_ls.hpp	/^	double lambda_l= E*poisson\/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;$/;"	m	struct:problem_descriptor_quad
+lambda_l	biot_ls.hpp	/^	double lambda_l= E*poisson\/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;$/;"	m	struct:problem_descriptor_quad_3d
+lambda_l	biot_ls.hpp	/^	double lambda_l= E*poisson\/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;$/;"	m	struct:problem_descriptor_tetra_3d
+lambda_l	biot_ls.hpp	/^	double lambda_l= E*poisson\/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;$/;"	m	struct:problem_descriptor_tri
+lambda_l	prob_descriptor.hpp	/^	double lambda_l= E*poisson\/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;$/;"	m	struct:generic_problem_descriptor_quad
+lambda_l	prob_descriptor.hpp	/^	double lambda_l= E*poisson\/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;$/;"	m	struct:generic_problem_descriptor_quad_3d
+lambda_l	prob_descriptor.hpp	/^	double lambda_l= E*poisson\/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;$/;"	m	struct:generic_problem_descriptor_tetra_3d
+lambda_l	prob_descriptor.hpp	/^	double lambda_l= E*poisson\/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;$/;"	m	struct:generic_problem_descriptor_tri
+lambda_l	temp.hpp	/^	double lambda_l= E*poisson\/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;$/;"	m	struct:problem_T_descriptor_quad
+lambda_l	temp.hpp	/^	double lambda_l= E*poisson\/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;$/;"	m	struct:problem_T_descriptor_quad_3d
+lambda_l	temp.hpp	/^	double lambda_l= E*poisson\/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;$/;"	m	struct:problem_T_descriptor_tetra_3d
+lambda_l	temp.hpp	/^	double lambda_l= E*poisson\/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;$/;"	m	struct:problem_T_descriptor_tri
+linalg_traits	biot_precond.hpp	/^    struct linalg_traits<::biot_precond<MATRIX>> {$/;"	s	namespace:gmm
+linalg_traits	momentum_precond.hpp	/^    struct linalg_traits<::momentum_precond<MATRIX>> {$/;"	s	namespace:gmm
+ls	biot_ls.hpp	/^		getfem::level_set ls; \/\/ create a levelset$/;"	m	class:biotls_problem
+ls	temp_ls.hpp	/^		getfem::level_set ls; \/\/ create a levelset$/;"	m	class:templs_problem
+ls_function	biot_ls.cpp	/^base_small_vector biotls_problem::ls_function(const base_node P, double time,int num) {$/;"	f	class:biotls_problem
+ls_function	temp_ls.cpp	/^base_small_vector templs_problem::ls_function(const base_node P, double time,int num) {$/;"	f	class:templs_problem
+main	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	/^int main(int argc, char* argv[])$/;"	f
+main	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f
+main	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^int main(int argc, char* argv[])$/;"	f
+main	build/CMakeFiles/feature_tests.c	/^int main(int argc, char** argv) { (void)argv; return features[argc]; }$/;"	f
+main	build/CMakeFiles/feature_tests.cxx	/^int main(int argc, char** argv) { (void)argv; return features[argc]; }$/;"	f
+main	logs/stripper.cpp	/^int main(int argc, char* argv[]){$/;"	f
+main	main.cpp	/^int main(int argc, char *argv[]) {$/;"	f
+mesh	biot.hpp	/^		getfem::mesh mesh;$/;"	m	class:biot_problem
+mesh	biot_ls.hpp	/^		getfem::mesh mesh;$/;"	m	class:biotls_problem
+mesh	temp.hpp	/^		getfem::mesh mesh;$/;"	m	class:temperature_problem
+mesh	temp_ls.hpp	/^		getfem::mesh mesh;$/;"	m	class:templs_problem
+mesh_	horizon.hpp	/^  getfem::mesh mesh_;$/;"	m	class:horizon
+mesh_labeling	biot.cpp	/^void biot_problem::mesh_labeling(){$/;"	f	class:biot_problem
+mesh_labeling	temp.cpp	/^void temperature_problem::mesh_labeling(){$/;"	f	class:temperature_problem
+mesh_ls	biot_ls.hpp	/^		getfem::mesh mesh_ls;$/;"	m	class:biotls_problem
+mesh_ls	temp_ls.hpp	/^		getfem::mesh mesh_ls;$/;"	m	class:templs_problem
+mf_coef	biot.hpp	/^		getfem::mesh_fem mf_coef; \/* the mesh_fem to represent pde coefficients    *\/$/;"	m	class:biot_problem
+mf_coef	biot_ls.hpp	/^		getfem::mesh_fem mf_coef; \/* the mesh_fem to represent pde coefficients    *\/$/;"	m	class:biotls_problem
+mf_coef	temp.hpp	/^		getfem::mesh_fem mf_coef; \/* the mesh_fem to represent pde coefficients    *\/$/;"	m	class:temperature_problem
+mf_coef	temp_ls.hpp	/^		getfem::mesh_fem mf_coef; \/* the mesh_fem to represent pde coefficients    *\/$/;"	m	class:templs_problem
+mf_coef_v	biot_ls.hpp	/^		getfem::mesh_fem mf_coef_v; \/* the mesh_fem to represent pde vectorial coefficients    *\/$/;"	m	class:biotls_problem
+mf_coef_v	temp_ls.hpp	/^		getfem::mesh_fem mf_coef_v; \/* the mesh_fem to represent pde vectorial coefficients    *\/$/;"	m	class:templs_problem
+mf_p	biot.hpp	/^		getfem::mesh_fem mf_p;    \/\/\/ the main mesh_fem, for the pressure solution$/;"	m	class:biot_problem
+mf_p	biot_ls.hpp	/^		getfem::mesh_fem mf_p;    \/\/\/ the main mesh_fem, for the pressure solution$/;"	m	class:biotls_problem
+mf_p	temp.hpp	/^		getfem::mesh_fem mf_p;    \/\/\/ the main mesh_fem, for the pressure solution$/;"	m	class:temperature_problem
+mf_p	temp_ls.hpp	/^		getfem::mesh_fem mf_p;    \/\/\/ the main mesh_fem, for the pressure solution$/;"	m	class:templs_problem
+mf_rhs	biot.hpp	/^		getfem::mesh_fem mf_rhs;  \/\/\/ the mesh_fem for the right hand side(f(x),..)$/;"	m	class:biot_problem
+mf_rhs	biot_ls.hpp	/^		getfem::mesh_fem mf_rhs;  \/\/\/ the mesh_fem for the right hand side(f(x),..)$/;"	m	class:biotls_problem
+mf_rhs	temp.hpp	/^		getfem::mesh_fem mf_rhs;  \/\/\/ the mesh_fem for the right hand side(f(x),..)$/;"	m	class:temperature_problem
+mf_rhs	temp_ls.hpp	/^		getfem::mesh_fem mf_rhs;  \/\/\/ the mesh_fem for the right hand side(f(x),..)$/;"	m	class:templs_problem
+mf_u	biot.hpp	/^		getfem::mesh_fem mf_u;    \/\/\/ the main mesh_fem, for the displacement solution$/;"	m	class:biot_problem
+mf_u	biot_ls.hpp	/^		getfem::mesh_fem mf_u;    \/\/\/ the main mesh_fem, for the displacement solution$/;"	m	class:biotls_problem
+mf_u	temp.hpp	/^		getfem::mesh_fem mf_u;    \/\/\/ the main mesh_fem, for the displacement solution$/;"	m	class:temperature_problem
+mf_u	temp_ls.hpp	/^		getfem::mesh_fem mf_u;    \/\/\/ the main mesh_fem, for the displacement solution$/;"	m	class:templs_problem
+mfls	biot_ls.hpp	/^		getfem::mesh_fem_level_set mfls, mfls_u, mfls_p;$/;"	m	class:biotls_problem
+mfls	temp_ls.hpp	/^		getfem::mesh_fem_level_set mfls, mfls_u, mfls_p;$/;"	m	class:templs_problem
+mfls_p	biot_ls.hpp	/^		getfem::mesh_fem_level_set mfls, mfls_u, mfls_p;$/;"	m	class:biotls_problem
+mfls_p	temp_ls.hpp	/^		getfem::mesh_fem_level_set mfls, mfls_u, mfls_p;$/;"	m	class:templs_problem
+mfls_u	biot_ls.hpp	/^		getfem::mesh_fem_level_set mfls, mfls_u, mfls_p;$/;"	m	class:biotls_problem
+mfls_u	temp_ls.hpp	/^		getfem::mesh_fem_level_set mfls, mfls_u, mfls_p;$/;"	m	class:templs_problem
+mim	biot.hpp	/^		getfem::mesh_im mim;      \/\/\/ the integration methods$/;"	m	class:biot_problem
+mim	biot_ls.hpp	/^		getfem::mesh_im mim;      \/\/\/ the integration methods$/;"	m	class:biotls_problem
+mim	temp.hpp	/^		getfem::mesh_im mim;      \/\/\/ the integration methods$/;"	m	class:temperature_problem
+mim	temp_ls.hpp	/^		getfem::mesh_im mim;      \/\/\/ the integration methods$/;"	m	class:templs_problem
+mim_ls_all	biot_ls.hpp	/^		getfem::mesh_im_level_set mim_ls_all;$/;"	m	class:biotls_problem
+mim_ls_all	temp_ls.hpp	/^		getfem::mesh_im_level_set mim_ls_all;$/;"	m	class:templs_problem
+mim_ls_bd	biot_ls.hpp	/^		getfem::mesh_im_level_set mim_ls_bd;$/;"	m	class:biotls_problem
+mim_ls_bd	temp_ls.hpp	/^		getfem::mesh_im_level_set mim_ls_bd;$/;"	m	class:templs_problem
+mim_ls_in	biot_ls.hpp	/^		getfem::mesh_im_level_set mim_ls_in;$/;"	m	class:biotls_problem
+mim_ls_in	temp_ls.hpp	/^		getfem::mesh_im_level_set mim_ls_in;$/;"	m	class:templs_problem
+mim_ls_out	biot_ls.hpp	/^		getfem::mesh_im_level_set mim_ls_out;$/;"	m	class:biotls_problem
+mim_ls_out	temp_ls.hpp	/^		getfem::mesh_im_level_set mim_ls_out;$/;"	m	class:templs_problem
+mls	biot_ls.hpp	/^		getfem::mesh_level_set mls;$/;"	m	class:biotls_problem
+mls	temp_ls.hpp	/^		getfem::mesh_level_set mls;$/;"	m	class:templs_problem
+momentum_precond	momentum_precond.hpp	/^class momentum_precond$/;"	c
+momentum_precond	momentum_precond.hpp	/^momentum_precond<MATRIX>::momentum_precond(MATRIX &A, MATRIX &B, int ind)$/;"	f	class:momentum_precond
+mu_s	biot.hpp	/^	double mu_s = E\/( 2 * ( 1 + poisson) ) ;$/;"	m	struct:problem_descriptor_quad
+mu_s	biot.hpp	/^	double mu_s = E\/( 2 * ( 1 + poisson) ) ;$/;"	m	struct:problem_descriptor_quad_3d
+mu_s	biot.hpp	/^	double mu_s = E\/( 2 * ( 1 + poisson) ) ;$/;"	m	struct:problem_descriptor_tetra_3d
+mu_s	biot.hpp	/^	double mu_s = E\/( 2 * ( 1 + poisson) ) ;$/;"	m	struct:problem_descriptor_tri
+mu_s	biot_ls.hpp	/^	double mu_s = E\/( 2 * ( 1 + poisson) ) ;$/;"	m	struct:problem_descriptor_quad
+mu_s	biot_ls.hpp	/^	double mu_s = E\/( 2 * ( 1 + poisson) ) ;$/;"	m	struct:problem_descriptor_quad_3d
+mu_s	biot_ls.hpp	/^	double mu_s = E\/( 2 * ( 1 + poisson) ) ;$/;"	m	struct:problem_descriptor_tetra_3d
+mu_s	biot_ls.hpp	/^	double mu_s = E\/( 2 * ( 1 + poisson) ) ;$/;"	m	struct:problem_descriptor_tri
+mu_s	prob_descriptor.hpp	/^	double mu_s = E\/( 2 * ( 1 + poisson) ) ;$/;"	m	struct:generic_problem_descriptor_quad
+mu_s	prob_descriptor.hpp	/^	double mu_s = E\/( 2 * ( 1 + poisson) ) ;$/;"	m	struct:generic_problem_descriptor_quad_3d
+mu_s	prob_descriptor.hpp	/^	double mu_s = E\/( 2 * ( 1 + poisson) ) ;$/;"	m	struct:generic_problem_descriptor_tetra_3d
+mu_s	prob_descriptor.hpp	/^	double mu_s = E\/( 2 * ( 1 + poisson) ) ;$/;"	m	struct:generic_problem_descriptor_tri
+mu_s	temp.hpp	/^	double mu_s = E\/( 2 * ( 1 + poisson) ) ;$/;"	m	struct:problem_T_descriptor_quad
+mu_s	temp.hpp	/^	double mu_s = E\/( 2 * ( 1 + poisson) ) ;$/;"	m	struct:problem_T_descriptor_quad_3d
+mu_s	temp.hpp	/^	double mu_s = E\/( 2 * ( 1 + poisson) ) ;$/;"	m	struct:problem_T_descriptor_tetra_3d
+mu_s	temp.hpp	/^	double mu_s = E\/( 2 * ( 1 + poisson) ) ;$/;"	m	struct:problem_T_descriptor_tri
+mult	biot_precond.hpp	/^    void mult(const L2 &src, L3 &dst) const$/;"	f	class:biot_precond
+mult	momentum_precond.hpp	/^    void mult(const L2 &src, L3 &dst) const$/;"	f	class:momentum_precond
+mult_spec	gmm_fix.hpp	/^    void mult_spec(const L1 &m, const L2 &src, L3 &dst, owned_implementation tag)$/;"	f	namespace:gmm
+n1_x	biot_precond.hpp	/^    int n1_x, n2_x;$/;"	m	class:biot_precond
+n2_x	biot_precond.hpp	/^    int n1_x, n2_x;$/;"	m	class:biot_precond
+nb_dof_	momentum_precond.hpp	/^    bgeot::size_type nb_dof_, nb_dof_x_;$/;"	m	class:momentum_precond
+nb_dof_x_	momentum_precond.hpp	/^    bgeot::size_type nb_dof_, nb_dof_x_;$/;"	m	class:momentum_precond
+nb_x_dof_p	biot_ls.hpp	/^		size_type nb_x_dof_p, nb_x_dof_u;$/;"	m	class:biotls_problem
+nb_x_dof_p	temp_ls.hpp	/^		size_type nb_x_dof_p, nb_x_dof_u;$/;"	m	class:templs_problem
+nb_x_dof_u	biot_ls.hpp	/^		size_type nb_x_dof_p, nb_x_dof_u;$/;"	m	class:biotls_problem
+nb_x_dof_u	temp_ls.hpp	/^		size_type nb_x_dof_p, nb_x_dof_u;$/;"	m	class:templs_problem
+ncols	biot_precond.hpp	/^        static size_type ncols(const this_type &m) { return m.ncols(); }$/;"	f	struct:gmm::linalg_traits
+ncols	biot_precond.hpp	/^    getfem::size_type ncols() const {$/;"	f	class:biot_precond
+ncols	momentum_precond.hpp	/^        static size_type ncols(const this_type &m) { return m.ncols(); }$/;"	f	struct:gmm::linalg_traits
+ncols	momentum_precond.hpp	/^     getfem::size_type ncols() const {$/;"	f	class:momentum_precond
+nna_	AMG_Interface.hpp	/^APPL_INT nnu_,nna_;$/;"	m	class:AMG
+nnu_	AMG_Interface.hpp	/^APPL_INT nnu_,nna_;$/;"	m	class:AMG
+noised	biot_ls.hpp	/^	int noised =0;  \/\/ noise on mesh$/;"	m	struct:problem_descriptor_quad_3d
+noised	biot_ls.hpp	/^	int noised =0;  \/\/ noise on mesh$/;"	m	struct:problem_descriptor_tetra_3d
+noised	biot_ls.hpp	/^	int noised =0;  \/\/ noise on mesh$/;"	m	struct:problem_descriptor_tri
+noised	biot_ls.hpp	/^	int noised =1;  \/\/ noise on mesh$/;"	m	struct:problem_descriptor_quad
+noised	prob_descriptor.hpp	/^	int noised =0;  \/\/ noise on mesh$/;"	m	struct:generic_problem_descriptor_quad_3d
+noised	prob_descriptor.hpp	/^	int noised =0;  \/\/ noise on mesh$/;"	m	struct:generic_problem_descriptor_tetra_3d
+noised	prob_descriptor.hpp	/^	int noised =0;  \/\/ noise on mesh$/;"	m	struct:generic_problem_descriptor_tri
+noised	prob_descriptor.hpp	/^	int noised =1;  \/\/ noise on mesh$/;"	m	struct:generic_problem_descriptor_quad
+norm_p_	logs/stripper.cpp	/^   std::vector<double> norm_p_,norm_u_;$/;"	m	class:time_step	file:
+norm_u_	logs/stripper.cpp	/^   std::vector<double> norm_p_,norm_u_;$/;"	m	class:time_step	file:
+normal_ls_v	biot_ls.hpp	/^		std::vector<scalar_type> normal_ls_v;$/;"	m	class:biotls_problem
+normal_ls_v	temp_ls.hpp	/^		std::vector<scalar_type> normal_ls_v;$/;"	m	class:templs_problem
+nrows	biot_precond.hpp	/^        static size_type nrows(const this_type &m) { return m.nrows(); }$/;"	f	struct:gmm::linalg_traits
+nrows	biot_precond.hpp	/^    getfem::size_type nrows() const {$/;"	f	class:biot_precond
+nrows	momentum_precond.hpp	/^        static size_type nrows(const this_type &m) { return m.nrows(); }$/;"	f	struct:gmm::linalg_traits
+nrows	momentum_precond.hpp	/^     getfem::size_type nrows() const {$/;"	f	class:momentum_precond
+nsubdiv	biot.hpp	/^	int nsubdiv=10; \/\/ subdivision of the sqaured mesh$/;"	m	struct:problem_descriptor_quad
+nsubdiv	biot.hpp	/^	int nsubdiv=10; \/\/ subdivision of the sqaured mesh$/;"	m	struct:problem_descriptor_tri
+nsubdiv	biot.hpp	/^	int nsubdiv=128; \/\/ subdivision of the sqaured mesh$/;"	m	struct:problem_descriptor_quad_3d
+nsubdiv	biot.hpp	/^	int nsubdiv=128; \/\/ subdivision of the sqaured mesh$/;"	m	struct:problem_descriptor_tetra_3d
+nsubdiv	biot_ls.hpp	/^	int nsubdiv=32; \/\/ subdivision of the sqaured mesh$/;"	m	struct:problem_descriptor_tri
+nsubdiv	biot_ls.hpp	/^	int nsubdiv=40; \/\/ subdivision of the sqaured mesh$/;"	m	struct:problem_descriptor_quad
+nsubdiv	biot_ls.hpp	/^	int nsubdiv=5; \/\/ subdivision of the sqaured mesh$/;"	m	struct:problem_descriptor_tetra_3d
+nsubdiv	biot_ls.hpp	/^	int nsubdiv=6; \/\/ subdivision of the sqaured mesh$/;"	m	struct:problem_descriptor_quad_3d
+nsubdiv	prob_descriptor.hpp	/^	int nsubdiv=32; \/\/ subdivision of the sqaured mesh$/;"	m	struct:generic_problem_descriptor_tri
+nsubdiv	prob_descriptor.hpp	/^	int nsubdiv=40; \/\/ subdivision of the sqaured mesh$/;"	m	struct:generic_problem_descriptor_quad
+nsubdiv	prob_descriptor.hpp	/^	int nsubdiv=5; \/\/ subdivision of the sqaured mesh$/;"	m	struct:generic_problem_descriptor_tetra_3d
+nsubdiv	prob_descriptor.hpp	/^	int nsubdiv=6; \/\/ subdivision of the sqaured mesh$/;"	m	struct:generic_problem_descriptor_quad_3d
+nsubdiv	temp.hpp	/^	int nsubdiv=10; \/\/ subdivision of the sqaured mesh$/;"	m	struct:problem_T_descriptor_quad
+nsubdiv	temp.hpp	/^	int nsubdiv=10; \/\/ subdivision of the sqaured mesh$/;"	m	struct:problem_T_descriptor_tri
+nsubdiv	temp.hpp	/^	int nsubdiv=6; \/\/ subdivision of the sqaured mesh$/;"	m	struct:problem_T_descriptor_quad_3d
+nsubdiv	temp.hpp	/^	int nsubdiv=6; \/\/ subdivision of the sqaured mesh$/;"	m	struct:problem_T_descriptor_tetra_3d
+num_fs_it_	logs/stripper.cpp	/^   int num_fs_it_;$/;"	m	class:time_step	file:
+over_p_	biot_ls.hpp	/^			alpha_, permeability_, force_,penalty_, c1_, c2_,over_p_;$/;"	m	class:biotls_problem
+over_p_	temp_ls.hpp	/^			alpha_, permeability_, force_,penalty_, c1_, c2_,over_p_;$/;"	m	class:templs_problem
+owned_implementation	gmm_fix.hpp	/^    struct owned_implementation {};$/;"	s	namespace:gmm
+pA_	biot_precond.hpp	/^    gmm::diagonal_precond<MATRIX> pA_;$/;"	m	class:biot_precond
+pA_	momentum_precond.hpp	/^    gmm::diagonal_precond<MATRIX> pA_;$/;"	m	class:momentum_precond
+pS_	biot_precond.hpp	/^    gmm::diagonal_precond<MATRIX> pS_;$/;"	m	class:biot_precond
+pS_	momentum_precond.hpp	/^    gmm::diagonal_precond<MATRIX> pS_;$/;"	m	class:momentum_precond
+p_des	biot.hpp	/^		problem_descriptor_tetra_3d p_des;$/;"	m	class:biot_problem
+p_des	biot_ls.hpp	/^		problem_descriptor_tetra_3d p_des;$/;"	m	class:biotls_problem
+p_des	temp.hpp	/^		problem_T_descriptor_tetra_3d p_des;$/;"	m	class:temperature_problem
+p_des	temp_ls.hpp	/^		generic_problem_descriptor_tetra_3d p_des;$/;"	m	class:templs_problem
+p_ref	biot.hpp	/^	double p_ref=1;$/;"	m	struct:problem_descriptor_quad_3d
+p_ref	biot.hpp	/^	double p_ref=1;$/;"	m	struct:problem_descriptor_tetra_3d
+p_ref	biot_ls.hpp	/^	double p_ref=1;$/;"	m	struct:problem_descriptor_quad_3d
+p_ref	biot_ls.hpp	/^	double p_ref=1;$/;"	m	struct:problem_descriptor_tetra_3d
+p_ref	biot_ls.hpp	/^	double p_ref=1;$/;"	m	struct:problem_descriptor_tri
+p_ref	prob_descriptor.hpp	/^	double p_ref=1;$/;"	m	struct:generic_problem_descriptor_quad_3d
+p_ref	prob_descriptor.hpp	/^	double p_ref=1;$/;"	m	struct:generic_problem_descriptor_tetra_3d
+p_ref	prob_descriptor.hpp	/^	double p_ref=1;$/;"	m	struct:generic_problem_descriptor_tri
+p_ref	temp.hpp	/^	double p_ref=1;$/;"	m	struct:problem_T_descriptor_quad_3d
+p_ref	temp.hpp	/^	double p_ref=1;$/;"	m	struct:problem_T_descriptor_tetra_3d
+penalty_	biot.hpp	/^			alpha_, permeability_, force_,penalty_;$/;"	m	class:biot_problem
+penalty_	biot_ls.hpp	/^			alpha_, permeability_, force_,penalty_, c1_, c2_,over_p_;$/;"	m	class:biotls_problem
+penalty_	temp.hpp	/^			alpha_, permeability_, force_,penalty_;$/;"	m	class:temperature_problem
+penalty_	temp_ls.hpp	/^			alpha_, permeability_, force_,penalty_, c1_, c2_,over_p_;$/;"	m	class:templs_problem
+permeability_	biot.hpp	/^			alpha_, permeability_, force_,penalty_;$/;"	m	class:biot_problem
+permeability_	biot_ls.hpp	/^			alpha_, permeability_, force_,penalty_, c1_, c2_,over_p_;$/;"	m	class:biotls_problem
+permeability_	temp.hpp	/^			alpha_, permeability_, force_,penalty_;$/;"	m	class:temperature_problem
+permeability_	temp_ls.hpp	/^			alpha_, permeability_, force_,penalty_, c1_, c2_,over_p_;$/;"	m	class:templs_problem
+pin_index_	biot_ls.hpp	/^		std::vector<size_type> pin_index_, pout_index_;  \/\/ The extended dofs$/;"	m	class:biotls_problem
+pin_index_	temp_ls.hpp	/^		std::vector<size_type> pin_index_, pout_index_;  \/\/ The extended dofs$/;"	m	class:templs_problem
+plain_vector	biot.hpp	/^typedef std::vector<scalar_type> plain_vector;$/;"	t
+plain_vector	biot_ls.hpp	/^typedef std::vector<scalar_type> plain_vector;$/;"	t
+plain_vector	temp.hpp	/^typedef std::vector<scalar_type> plain_vector;$/;"	t
+plain_vector	temp_ls.hpp	/^typedef std::vector<scalar_type> plain_vector;$/;"	t
+poisson	biot.hpp	/^	double poisson =0.0;$/;"	m	struct:problem_descriptor_quad
+poisson	biot.hpp	/^	double poisson =0.3;$/;"	m	struct:problem_descriptor_quad_3d
+poisson	biot.hpp	/^	double poisson =0.3;$/;"	m	struct:problem_descriptor_tetra_3d
+poisson	biot.hpp	/^	double poisson =0.3;$/;"	m	struct:problem_descriptor_tri
+poisson	biot_ls.hpp	/^	double poisson =0.0;$/;"	m	struct:problem_descriptor_quad
+poisson	biot_ls.hpp	/^	double poisson =0.3;$/;"	m	struct:problem_descriptor_quad_3d
+poisson	biot_ls.hpp	/^	double poisson =0.3;$/;"	m	struct:problem_descriptor_tetra_3d
+poisson	biot_ls.hpp	/^	double poisson =0.3;$/;"	m	struct:problem_descriptor_tri
+poisson	prob_descriptor.hpp	/^	double poisson =0.0;$/;"	m	struct:generic_problem_descriptor_quad
+poisson	prob_descriptor.hpp	/^	double poisson =0.3;$/;"	m	struct:generic_problem_descriptor_quad_3d
+poisson	prob_descriptor.hpp	/^	double poisson =0.3;$/;"	m	struct:generic_problem_descriptor_tetra_3d
+poisson	prob_descriptor.hpp	/^	double poisson =0.3;$/;"	m	struct:generic_problem_descriptor_tri
+poisson	temp.hpp	/^	double poisson =0.0;$/;"	m	struct:problem_T_descriptor_quad
+poisson	temp.hpp	/^	double poisson =0.3;$/;"	m	struct:problem_T_descriptor_quad_3d
+poisson	temp.hpp	/^	double poisson =0.3;$/;"	m	struct:problem_T_descriptor_tetra_3d
+poisson	temp.hpp	/^	double poisson =0.3;$/;"	m	struct:problem_T_descriptor_tri
+pout_index_	biot_ls.hpp	/^		std::vector<size_type> pin_index_, pout_index_;  \/\/ The extended dofs$/;"	m	class:biotls_problem
+pout_index_	temp_ls.hpp	/^		std::vector<size_type> pin_index_, pout_index_;  \/\/ The extended dofs$/;"	m	class:templs_problem
+principal_orientation_type	gmm_fix.hpp	/^    struct principal_orientation_type<owned_implementation> {$/;"	s	namespace:gmm
+print	biot.cpp	/^void biot_problem::print(int time){$/;"	f	class:biot_problem
+print	biot_ls.cpp	/^void biotls_problem::print(double time,int istep,double time_ls){$/;"	f	class:biotls_problem
+print	temp.cpp	/^void temperature_problem::print(int time){$/;"	f	class:temperature_problem
+print	temp_ls.cpp	/^void templs_problem::print(double time,int istep,double time_ls){$/;"	f	class:templs_problem
+print_crop	biot_ls.cpp	/^void biotls_problem::print_crop(double time,int istep,double time_ls){$/;"	f	class:biotls_problem
+print_crop	temp_ls.cpp	/^void templs_problem::print_crop(double time,int istep,double time_ls){$/;"	f	class:templs_problem
+print_ls	biot_ls.cpp	/^void biotls_problem::print_ls(double time,int istep,double time_ls){$/;"	f	class:biotls_problem
+print_ls	temp_ls.cpp	/^void templs_problem::print_ls(double time,int istep,double time_ls){$/;"	f	class:templs_problem
+print_pattern	biot_ls.cpp	/^void biotls_problem::print_pattern(int iter){$/;"	f	class:biotls_problem
+print_pattern	temp_ls.cpp	/^void templs_problem::print_pattern(int iter){$/;"	f	class:templs_problem
+problem_T_descriptor_quad	temp.hpp	/^struct problem_T_descriptor_quad{    $/;"	s
+problem_T_descriptor_quad_3d	temp.hpp	/^struct problem_T_descriptor_quad_3d{    $/;"	s
+problem_T_descriptor_tetra_3d	temp.hpp	/^struct problem_T_descriptor_tetra_3d{    $/;"	s
+problem_T_descriptor_tri	temp.hpp	/^struct problem_T_descriptor_tri{    $/;"	s
+problem_descriptor_quad	biot.hpp	/^struct problem_descriptor_quad{    $/;"	s
+problem_descriptor_quad	biot_ls.hpp	/^struct problem_descriptor_quad{    $/;"	s
+problem_descriptor_quad_3d	biot.hpp	/^struct problem_descriptor_quad_3d{    $/;"	s
+problem_descriptor_quad_3d	biot_ls.hpp	/^struct problem_descriptor_quad_3d{    $/;"	s
+problem_descriptor_tetra_3d	biot.hpp	/^struct problem_descriptor_tetra_3d{    $/;"	s
+problem_descriptor_tetra_3d	biot_ls.hpp	/^struct problem_descriptor_tetra_3d{    $/;"	s
+problem_descriptor_tri	biot.hpp	/^struct problem_descriptor_tri{    $/;"	s
+problem_descriptor_tri	biot_ls.hpp	/^struct problem_descriptor_tri{    $/;"	s
+qnxnto	build/CMakeFiles/3.5.0/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
+qnxnto	build/CMakeFiles/3.5.0/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v
+quick_search	horizon.cpp	/^void horizon::quick_search(std::vector<double>&pt,std::vector<int>& maybe_element, double eps){$/;"	f	class:horizon
+rho_l	biot.hpp	/^	double rho_l=1000; \/\/ Biot coefficient$/;"	m	struct:problem_descriptor_quad_3d
+rho_l	biot.hpp	/^	double rho_l=1000; \/\/ Biot coefficient$/;"	m	struct:problem_descriptor_tetra_3d
+rho_l	biot_ls.hpp	/^	double rho_l=1000; \/\/ Biot coefficient$/;"	m	struct:problem_descriptor_quad_3d
+rho_l	biot_ls.hpp	/^	double rho_l=1000; \/\/ Biot coefficient$/;"	m	struct:problem_descriptor_tetra_3d
+rho_l	biot_ls.hpp	/^	double rho_l=1000; \/\/ Biot coefficient$/;"	m	struct:problem_descriptor_tri
+rho_l	prob_descriptor.hpp	/^	double rho_l=1000; \/\/ Biot coefficient$/;"	m	struct:generic_problem_descriptor_quad_3d
+rho_l	prob_descriptor.hpp	/^	double rho_l=1000; \/\/ Biot coefficient$/;"	m	struct:generic_problem_descriptor_tetra_3d
+rho_l	prob_descriptor.hpp	/^	double rho_l=1000; \/\/ Biot coefficient$/;"	m	struct:generic_problem_descriptor_tri
+rho_l	temp.hpp	/^	double rho_l=1000; \/\/ Biot coefficient$/;"	m	struct:problem_T_descriptor_quad_3d
+rho_l	temp.hpp	/^	double rho_l=1000; \/\/ Biot coefficient$/;"	m	struct:problem_T_descriptor_tetra_3d
+rho_r	biot.hpp	/^	double rho_r=2200; \/\/ Biot coefficient$/;"	m	struct:problem_descriptor_quad_3d
+rho_r	biot.hpp	/^	double rho_r=2200; \/\/ Biot coefficient$/;"	m	struct:problem_descriptor_tetra_3d
+rho_r	biot_ls.hpp	/^	double rho_r=2200; \/\/ Biot coefficient$/;"	m	struct:problem_descriptor_quad_3d
+rho_r	biot_ls.hpp	/^	double rho_r=2200; \/\/ Biot coefficient$/;"	m	struct:problem_descriptor_tetra_3d
+rho_r	biot_ls.hpp	/^	double rho_r=2200; \/\/ Biot coefficient$/;"	m	struct:problem_descriptor_tri
+rho_r	prob_descriptor.hpp	/^	double rho_r=2200; \/\/ Biot coefficient$/;"	m	struct:generic_problem_descriptor_quad_3d
+rho_r	prob_descriptor.hpp	/^	double rho_r=2200; \/\/ Biot coefficient$/;"	m	struct:generic_problem_descriptor_tetra_3d
+rho_r	prob_descriptor.hpp	/^	double rho_r=2200; \/\/ Biot coefficient$/;"	m	struct:generic_problem_descriptor_tri
+rho_r	temp.hpp	/^	double rho_r=2200; \/\/ Biot coefficient$/;"	m	struct:problem_T_descriptor_quad_3d
+rho_r	temp.hpp	/^	double rho_r=2200; \/\/ Biot coefficient$/;"	m	struct:problem_T_descriptor_tetra_3d
+set_dof	AMG_Interface.cpp	/^void AMG::set_dof(int pt , int ut, int pv, int uv){$/;"	f	class:AMG
+set_pt2uk	AMG_Interface.cpp	/^void AMG::set_pt2uk(int * dofpt , int q_dof, int l_dof, int npts){$/;"	f	class:AMG
+set_step	biot_ls.hpp	/^                void set_step(int step){step_=step;}$/;"	f	class:biotls_problem
+set_step	temp_ls.hpp	/^                void set_step(int step){step_=step;}$/;"	f	class:templs_problem
+setid	AMG_Interface.hpp	/^  inline void setid(int id){idx_=id; $/;"	f	class:AMG
+sigma_ref	biot.hpp	/^	double sigma_ref=1;$/;"	m	struct:problem_descriptor_quad_3d
+sigma_ref	biot.hpp	/^	double sigma_ref=1;$/;"	m	struct:problem_descriptor_tetra_3d
+sigma_ref	biot_ls.hpp	/^	double sigma_ref=1;$/;"	m	struct:problem_descriptor_quad_3d
+sigma_ref	biot_ls.hpp	/^	double sigma_ref=1;$/;"	m	struct:problem_descriptor_tetra_3d
+sigma_ref	biot_ls.hpp	/^	double sigma_ref=1;$/;"	m	struct:problem_descriptor_tri
+sigma_ref	prob_descriptor.hpp	/^	double sigma_ref=1;$/;"	m	struct:generic_problem_descriptor_quad_3d
+sigma_ref	prob_descriptor.hpp	/^	double sigma_ref=1;$/;"	m	struct:generic_problem_descriptor_tetra_3d
+sigma_ref	prob_descriptor.hpp	/^	double sigma_ref=1;$/;"	m	struct:generic_problem_descriptor_tri
+sigma_ref	temp.hpp	/^	double sigma_ref=1;$/;"	m	struct:problem_T_descriptor_quad_3d
+sigma_ref	temp.hpp	/^	double sigma_ref=1;$/;"	m	struct:problem_T_descriptor_tetra_3d
+sign	horizon.hpp	/^  inline double sign (std::vector<double> p1, std::vector<double> p2, std::vector<double> p3)$/;"	f	class:horizon
+slu_	biot_precond.hpp	/^    gmm::SuperLU_factor<double> slu_;$/;"	m	class:biot_precond
+slu_	momentum_precond.hpp	/^    gmm::SuperLU_factor<double> slu_;$/;"	m	class:momentum_precond
+slup_	biot_precond.hpp	/^gmm::SuperLU_factor<double> slup_;$/;"	m	class:biot_precond
+slup_	momentum_precond.hpp	/^gmm::SuperLU_factor<double> slup_;$/;"	m	class:momentum_precond
+sol_vec	AMG_Interface.hpp	/^std::vector<scalar_type> sol_vec; \/\/\/ solution vector$/;"	m	class:AMG
+solve	AMG_Interface.cpp	/^void AMG::solve(gmm::csr_matrix<scalar_type> A_csr,$/;"	f	class:AMG
+solve	biot.cpp	/^void biot_problem::solve(){$/;"	f	class:biot_problem
+solve	biot_ls.cpp	/^void biotls_problem::solve(double time){$/;"	f	class:biotls_problem
+solve	temp.cpp	/^void temperature_problem::solve(){$/;"	f	class:temperature_problem
+solve	temp_ls.cpp	/^void templs_problem::solve(double time){$/;"	f	class:templs_problem
+solve_fix_stress	biot.cpp	/^void biot_problem::solve_fix_stress(double dt, int max_iter){$/;"	f	class:biot_problem
+solve_fix_stress	biot_ls.cpp	/^void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){$/;"	f	class:biotls_problem
+solve_fix_stress	temp_ls.cpp	/^void templs_problem::solve_fix_stress(double dt, int max_iter,double time){$/;"	f	class:templs_problem
+sparse_matrix_type	biot.hpp	/^typedef gmm::row_matrix<sparse_vector_type> sparse_matrix_type;$/;"	t
+sparse_matrix_type	biot_ls.hpp	/^typedef gmm::row_matrix<sparse_vector_type> sparse_matrix_type;$/;"	t
+sparse_matrix_type	biot_precond.hpp	/^typedef gmm::row_matrix<sparse_vector_type> sparse_matrix_type;$/;"	t
+sparse_matrix_type	momentum_precond.hpp	/^typedef gmm::row_matrix<sparse_vector_type> sparse_matrix_type;$/;"	t
+sparse_matrix_type	temp.hpp	/^typedef gmm::row_matrix<sparse_vector_type> sparse_matrix_type;$/;"	t
+sparse_matrix_type	temp_ls.hpp	/^typedef gmm::row_matrix<sparse_vector_type> sparse_matrix_type;$/;"	t
+sparse_vector_type	biot.hpp	/^typedef gmm::rsvector<scalar_type> sparse_vector_type;$/;"	t
+sparse_vector_type	biot_ls.hpp	/^typedef gmm::rsvector<scalar_type> sparse_vector_type;$/;"	t
+sparse_vector_type	biot_precond.hpp	/^typedef gmm::rsvector<bgeot::scalar_type> sparse_vector_type;$/;"	t
+sparse_vector_type	momentum_precond.hpp	/^typedef gmm::rsvector<bgeot::scalar_type> sparse_vector_type;$/;"	t
+sparse_vector_type	temp.hpp	/^typedef gmm::rsvector<scalar_type> sparse_vector_type;$/;"	t
+sparse_vector_type	temp_ls.hpp	/^typedef gmm::rsvector<scalar_type> sparse_vector_type;$/;"	t
+step_	biot_ls.hpp	/^                int step_=0;$/;"	m	class:biotls_problem
+step_	temp_ls.hpp	/^                int step_=0;$/;"	m	class:templs_problem
+sub_vector	gmm_fix.hpp	/^    sub_vector(const scaled_vector_const_ref<V, S> &v, const SUBI &si)$/;"	f	namespace:gmm
+summary	logs/stripper.cpp	/^   void summary(){$/;"	f	class:time_step
+t_ref	biot.hpp	/^	double t_ref=1;$/;"	m	struct:problem_descriptor_quad_3d
+t_ref	biot.hpp	/^	double t_ref=1;$/;"	m	struct:problem_descriptor_tetra_3d
+t_ref	biot_ls.hpp	/^	double t_ref=1;$/;"	m	struct:problem_descriptor_quad_3d
+t_ref	biot_ls.hpp	/^	double t_ref=1;$/;"	m	struct:problem_descriptor_tetra_3d
+t_ref	biot_ls.hpp	/^	double t_ref=1;$/;"	m	struct:problem_descriptor_tri
+t_ref	prob_descriptor.hpp	/^	double t_ref=1;$/;"	m	struct:generic_problem_descriptor_quad_3d
+t_ref	prob_descriptor.hpp	/^	double t_ref=1;$/;"	m	struct:generic_problem_descriptor_tetra_3d
+t_ref	prob_descriptor.hpp	/^	double t_ref=1;$/;"	m	struct:generic_problem_descriptor_tri
+t_ref	temp.hpp	/^	double t_ref=1;$/;"	m	struct:problem_T_descriptor_quad_3d
+t_ref	temp.hpp	/^	double t_ref=1;$/;"	m	struct:problem_T_descriptor_tetra_3d
+tau_	biot.hpp	/^		std::vector<scalar_type> tau_, vmu_, bm_ ,lambda_, beta_,$/;"	m	class:biot_problem
+tau_	biot_ls.hpp	/^		std::vector<scalar_type> tau_, vmu_, bm_ ,lambda_, beta_,$/;"	m	class:biotls_problem
+tau_	temp.hpp	/^		std::vector<scalar_type> tau_, vmu_, bm_ ,lambda_, beta_,$/;"	m	class:temperature_problem
+tau_	temp_ls.hpp	/^		std::vector<scalar_type> tau_, vmu_, bm_ ,lambda_, beta_,$/;"	m	class:templs_problem
+temperature_problem	temp.hpp	/^		temperature_problem(void): mim(mesh), mf_u(mesh), mf_rhs(mesh), mf_p(mesh), mf_coef(mesh)$/;"	f	class:temperature_problem
+temperature_problem	temp.hpp	/^class temperature_problem {$/;"	c
+templs_problem	temp_ls.hpp	/^		templs_problem(void): mim(mesh), mf_u(mesh), mf_rhs(mesh), mf_p(mesh),mf_coef(mesh),mf_coef_v(mesh)$/;"	f	class:templs_problem
+templs_problem	temp_ls.hpp	/^class templs_problem {$/;"	c
+time_iter_	biot_ls.hpp	/^		int time_iter_=0;$/;"	m	class:biotls_problem
+time_iter_	temp_ls.hpp	/^		int time_iter_=0;$/;"	m	class:templs_problem
+time_step	logs/stripper.cpp	/^   time_step(int ts)$/;"	f	class:time_step
+time_step	logs/stripper.cpp	/^class time_step{$/;"	c	file:
+ts_	logs/stripper.cpp	/^   int ts_;$/;"	m	class:time_step	file:
+u_ref	biot.hpp	/^	double u_ref=1;$/;"	m	struct:problem_descriptor_quad_3d
+u_ref	biot.hpp	/^	double u_ref=1;$/;"	m	struct:problem_descriptor_tetra_3d
+u_ref	biot_ls.hpp	/^	double u_ref=1;$/;"	m	struct:problem_descriptor_quad_3d
+u_ref	biot_ls.hpp	/^	double u_ref=1;$/;"	m	struct:problem_descriptor_tetra_3d
+u_ref	biot_ls.hpp	/^	double u_ref=1;$/;"	m	struct:problem_descriptor_tri
+u_ref	prob_descriptor.hpp	/^	double u_ref=1;$/;"	m	struct:generic_problem_descriptor_quad_3d
+u_ref	prob_descriptor.hpp	/^	double u_ref=1;$/;"	m	struct:generic_problem_descriptor_tetra_3d
+u_ref	prob_descriptor.hpp	/^	double u_ref=1;$/;"	m	struct:generic_problem_descriptor_tri
+u_ref	temp.hpp	/^	double u_ref=1;$/;"	m	struct:problem_T_descriptor_quad_3d
+u_ref	temp.hpp	/^	double u_ref=1;$/;"	m	struct:problem_T_descriptor_tetra_3d
+uin_index_	biot_ls.hpp	/^		std::vector<size_type> uin_index_, uout_index_;  \/\/ The extended dofs$/;"	m	class:biotls_problem
+uin_index_	temp_ls.hpp	/^		std::vector<size_type> uin_index_, uout_index_;  \/\/ The extended dofs$/;"	m	class:templs_problem
+uout_index_	biot_ls.hpp	/^		std::vector<size_type> uin_index_, uout_index_;  \/\/ The extended dofs$/;"	m	class:biotls_problem
+uout_index_	temp_ls.hpp	/^		std::vector<size_type> uin_index_, uout_index_;  \/\/ The extended dofs$/;"	m	class:templs_problem
+up_down	horizon.cpp	/^  int horizon::up_down(std::vector<double>& pt, int el){$/;"	f	class:horizon
+update_ls	biot_ls.cpp	/^void biotls_problem::update_ls(double time, int iter){$/;"	f	class:biotls_problem
+update_ls	temp_ls.cpp	/^void templs_problem::update_ls(double time, int iter){$/;"	f	class:templs_problem
+update_p_index	biot_ls.cpp	/^void biotls_problem::update_p_index(double time_ls){$/;"	f	class:biotls_problem
+update_p_index	temp_ls.cpp	/^void templs_problem::update_p_index(double time_ls){$/;"	f	class:templs_problem
+update_time_iter	biot_ls.hpp	/^		void update_time_iter(int a){time_iter_=a;}$/;"	f	class:biotls_problem
+update_time_iter	temp_ls.hpp	/^		void update_time_iter(int a){time_iter_=a;}$/;"	f	class:templs_problem
+update_u_index	biot_ls.cpp	/^void biotls_problem::update_u_index(double time_ls){$/;"	f	class:biotls_problem
+update_u_index	temp_ls.cpp	/^void templs_problem::update_u_index(double time_ls){$/;"	f	class:templs_problem
+vmu_	biot.hpp	/^		std::vector<scalar_type> tau_, vmu_, bm_ ,lambda_, beta_,$/;"	m	class:biot_problem
+vmu_	biot_ls.hpp	/^		std::vector<scalar_type> tau_, vmu_, bm_ ,lambda_, beta_,$/;"	m	class:biotls_problem
+vmu_	temp.hpp	/^		std::vector<scalar_type> tau_, vmu_, bm_ ,lambda_, beta_,$/;"	m	class:temperature_problem
+vmu_	temp_ls.hpp	/^		std::vector<scalar_type> tau_, vmu_, bm_ ,lambda_, beta_,$/;"	m	class:templs_problem
+~AMG	AMG_Interface.cpp	/^AMG::~AMG(void) {$/;"	f	class:AMG
