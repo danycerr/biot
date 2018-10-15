@@ -165,8 +165,10 @@ nb_dof_=A.ncols();
 nb_dof_x_=B.ncols();
 std::cout<<"nb_dof A_ "<<A_.ncols()<<std::endl;
 std::cout<<"nb_dof S_ "<<S_.ncols()<<std::endl;
+if(0){
 gmm::MatrixMarket_IO::write("Ku_s",A_);
 gmm::MatrixMarket_IO::write("Ku_x",S_);
+}
  #ifdef LUMP_A
   pA_.build_with(A_);
   #endif
