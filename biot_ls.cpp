@@ -2,11 +2,11 @@
 // Preconditioner for dispacement problem
 // mPR Bu diag(exdof) 
 // PRu diagonal
-#define DISP_PRECOND_PARAM PRu
+#define DISP_PRECOND_PARAM mPR
 // fix cut height 
 #define H_PARAM 2666.67
 
-// #define STAB_P (1)
+ #define STAB_P (1)
 
 // #define L2_NORM
 
@@ -686,7 +686,7 @@ void biotls_problem::assembly_p(double dt, double time){
   {
     // workspace.set_assembled_vector(Bp_in); 
     // NITSCHE
-    workspace.add_expression("2/element_size*p*Test_p*1", mim_ls_bd, CUT_REGION);// 1 is the region		
+    workspace.add_expression("2/element_size*p*Test_p*20", mim_ls_bd, CUT_REGION);// 1 is the region		
     workspace.add_expression("-nlsv.Grad_p*Test_p*tau- nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION); 
     //NITSCHE
     //  workspace.add_expression( "permeability*tau*[0,1].Grad_p*Test_p ", mim_ls_bd, CUT_REGION);
@@ -1457,7 +1457,7 @@ base_small_vector biotls_problem::ls_function(const base_node P, double time,int
             } break;
     case 1: {
               // res[0] = y - 2400.01 - 200*time/(20*1e+8);
-              res[0] = y - (2666.66+16.65*20) - 16.65*time/(1.e+8);
+              res[0] = z - (2666.66+16.65*20) + 16.65*time/(1.e+8);
               res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.27;
             } break;
     case 2: {
