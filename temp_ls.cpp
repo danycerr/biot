@@ -296,6 +296,10 @@ void templs_problem::configure_workspace(getfem::ga_workspace & workspace,double
     over_p_[0] = 1000.*9.81*4000.*(50-time_iter_ )/(50-30.);
   else
     over_p_[0]=0.;
+
+
+
+    over_p_[0]=1.;
  over_p_[0]=over_p_[0]/p_des.p_ref;
   workspace.add_fixed_size_constant("over_p", over_p_);
 }
@@ -335,7 +339,8 @@ void templs_problem::assembly(double dt,double time) {
   workspace.add_fem_constant("p_old", mf_p, P_old);
   // ------------------ expressions --------------------------
   workspace.add_expression( "p.Test_p + tau*Kr*Grad_p.Grad_Test_p"
-      , mim, UNCUT_REGION);
+      , mim_ls_in, UNCUT_REGION);
+  workspace.add_expression("penalty*p*Test_p *tau"	, mim_ls_out, UNCUT_REGION);
   workspace.assembly(2);
   gmm::copy(workspace.assembled_matrix(), gmm::sub_matrix( K ,
         gmm::sub_interval(0,  nb_dof_p),
@@ -344,8 +349,9 @@ void templs_problem::assembly(double dt,double time) {
       );
   workspace.clear_expressions();
 
+
   //======= RHS =====================
-  workspace.add_expression("+1.0e-6*Test_p*tau + p_old.Test_p ", mim,UNCUT_REGION);
+  workspace.add_expression("+1.0e-6*Test_p*tau + p_old.Test_p ", mim,UNCUT_REGION_IN);
   // workspace.add_expression("nls*Test_p*tau ", mim_ls_in,UNCUT_REGION_IN);
   workspace.set_assembled_vector(B);
   workspace.assembly(1);
@@ -385,38 +391,22 @@ void templs_problem::assembly(double dt,double time) {
   
   // Kout fotr enriched dof
   sparse_matrix_type K_out(nb_dof_p,nb_dof_p);
-   workspace.add_expression( "+p.Test_p + tau*Kr*Grad_p.Grad_Test_p"
-      , mim_ls_out, CUT_REGION);
-  workspace.assembly(2);
-  gmm::copy(workspace.assembled_matrix(),K_out);
-  workspace.clear_expressions();
-#ifdef  STAB_P
-{
-    getfem::mesh_region  inner_faces;
-    inner_faces = getfem::inner_faces_of_mesh(mesh, CUT_REGION);
-
-    workspace.add_expression("2*element_size*Grad_p.Normal*Grad_Test_p.Normal", mim, inner_faces);// 1 is the region		
-    workspace.assembly(2);
-    gmm::add(workspace.assembled_matrix(), K_out);
-    workspace.clear_expressions();
-
- }
-#endif
+   for (int i=0; i< nb_dof_p; i++)  K_out(i,i)=1.e+0;
   std::cout<< "end kout"<< std::endl; 
   // Kin for enriched dof
   sparse_matrix_type K_in( nb_dof_p,nb_dof_p);
   // NITSCHE
-  // workspace.add_expression("2/element_size*p*Test_p*20", mim_ls_bd, CUT_REGION);// 1 is the region		
-  // workspace.add_expression("-nlsv.Grad_p*Test_p*tau - nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION); 
+  workspace.add_expression("2/element_size*p*Test_p*tau*200", mim_ls_bd, CUT_REGION);// 1 is the region		
+  workspace.add_expression("-nlsv.Grad_p*Test_p*tau - nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION); 
   //NITSCHE
-  // workspace.add_expression( "permeability*tau*[0,1].Grad_p*Test_p ", mim_ls_bd, CUT_REGION);
   workspace.add_expression( "+p.Test_p + tau*Kr*Grad_p.Grad_Test_p"
       , mim_ls_in, CUT_REGION);
   workspace.assembly(2);
   gmm::copy(workspace.assembled_matrix(),K_in);
   workspace.clear_expressions();
   workspace.add_expression("+[+1.0e-6].Test_p*tau + p_old.Test_p ", mim_ls_in,CUT_REGION);
-  workspace.assembly(1);
+    workspace.add_expression( "2/element_size*over_p*Test_p*tau*200", mim_ls_bd, CUT_REGION);
+   workspace.assembly(1);
   workspace.clear_expressions();
  //  workspace.add_expression("2/element_size*p*Test_p", mim, LEFT);
  //  workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, LEFT); 	
@@ -439,6 +429,7 @@ void templs_problem::assembly(double dt,double time) {
  }
 #endif
 
+   // for (int i=0; i< nb_dof_p; i++)  K_in(i,i)+=1.e+0;
   std::cout<< "end kin"<< std::endl; 
 
 
@@ -461,7 +452,7 @@ void templs_problem::assembly(double dt,double time) {
       size_type ii = eXt_dof[i];
       double ls_i = ls_function(mf_p.point_of_basic_dof(ii),time, LS_TYPE)[0];
       // std::cout<< "ls values of dof"<< ii << " is "  << ls_i<< std::endl;
-      B[dof_shift + i] = B[ii];
+      B[dof_shift + i] =B[ii];
       for (size_type j = 0; j < eXt_dof.size(); ++j) {
         size_type jj = eXt_dof[j];
         double ls_j = ls_function(mf_p.point_of_basic_dof(jj),time, LS_TYPE)[0];
@@ -491,9 +482,9 @@ void templs_problem::assembly(double dt,double time) {
   }
   
   std::cout<< "End mapping"<<std::endl;
-  // std::cout<< K<<std::endl;
+  //  std::cout<< K<<std::endl;
 
-  // for (int i=0; i< nb_dof_u + nb_dof_p; i++)  K(i,i)=1.e+4;
+  // for (int i=0; i<  nb_dof_p; i++)  K(i,i)+=1.;
 
 } // end assembly
 

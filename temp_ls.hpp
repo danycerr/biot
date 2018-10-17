@@ -61,7 +61,7 @@ typedef gmm::row_matrix<sparse_vector_type> sparse_matrix_type;
 typedef gmm::col_matrix<sparse_vector_type> col_sparse_matrix_type;
 typedef std::vector<scalar_type> plain_vector;
 
-#define LS_TYPE 5
+#define LS_TYPE 7
 // Right hand side. Allows an interpolation for the source term.
 // scalar_type sol_f(const base_node &x) { return 10.; }
 // Defining unit normal on a level set ------------------------------------
