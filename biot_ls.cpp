@@ -904,14 +904,15 @@ void biotls_problem::assembly_p(double dt, double time){
     // std::cin.ignore();
     // stabilization term
 //     {
-//     getfem::mesh_region  inner_faces;
-//     inner_faces = getfem::inner_faces_of_mesh(mesh, CUT_REGION);
+    getfem::mesh_region  inner_faces;
+    inner_faces = getfem::inner_faces_of_mesh(mesh, CUT_REGION);
 // 
-//     workspace.add_expression("2*element_size*(Sym(Grad_u).Normal).(Sym(Grad_Test_u).Normal)", mim, inner_faces);// 1 is the region		
-//     workspace.assembly(2);
+
+    workspace.add_expression("2*element_size*(Grad_u.Normal).(Grad_Test_u.Normal)", mim, inner_faces);// 1 is the region	
+     workspace.assembly(2);
 //     std::cout<< workspace.assembled_matrix()<<std::endl;
-//     gmm::add(workspace.assembled_matrix(), K_in);
-//     workspace.clear_expressions();
+     gmm::add(workspace.assembled_matrix(), K_in);
+     workspace.clear_expressions();
 // 
 //   }
 // 
