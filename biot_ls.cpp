@@ -992,7 +992,7 @@ void biotls_problem::solve(double time){
   iter.set_noisy(1);               // output of iterations (2: sub-iteration)
   iter.set_maxiter(1000); // maximum number of iterations
   gmm::diagonal_precond<sparse_matrix_type> PR(K);
-  {  std::cout<<"!!!!!! Printing Matrix !!!!!"<<std::endl;
+ if(0) {  std::cout<<"!!!!!! Printing Matrix !!!!!"<<std::endl;
     gmm::MatrixMarket_IO::write("K.mm",K);
   }
   
