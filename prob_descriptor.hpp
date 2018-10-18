@@ -26,6 +26,7 @@ struct generic_problem_descriptor_tri{
 	double t_ref=1;
 	double u_ref=1;
 	double p_ref=1;
+        double k_temp=1;
 
 };
 
@@ -98,6 +99,8 @@ struct generic_problem_descriptor_tetra_3d{
 	double t_ref=1;
 	double u_ref=1;
 	double p_ref=1;
+        double alpha_temp=1.e-5; //thermal conductivity
+        double q_rad=1.e-10;
 };
 
 #endif

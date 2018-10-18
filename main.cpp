@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
 //                 temperature_problem t;
  		t.init();
 		// double dt=1e-3;
-		double dt=1e+8;
+		double dt=1e+12;
 		// p.build_fix_stress_preconditioner(dt,0);
 		//    p.assembly_p(dt,0); 
 		//    p.assembly_u(dt);
