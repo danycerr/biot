@@ -299,11 +299,11 @@ void templs_problem::configure_workspace(getfem::ga_workspace & workspace,double
 
 
 
-   over_p_[0]=1.;
-   over_p_[0]=over_p_[0]/p_des.p_ref;
-   workspace.add_fixed_size_constant("over_p", over_p_);
+   dome_t_[0]=50.;
+   dome_t_[0]=dome_t_[0]/p_des.p_ref;
+   workspace.add_fixed_size_constant("over_p", dome_t_);
 
-   over_p_[0]=10./p_des.p_ref;
+   over_p_[0]=20./p_des.p_ref;
    workspace.add_fixed_size_constant("top_temp",over_p_);
 }
 // 
@@ -379,9 +379,9 @@ void templs_problem::assembly(double dt,double time) {
   // rhs for niche boudary condition
   // workspace.add_expression(" 0*penalty/element_size*Test_p -Grad_Test_p.Normal*0 ", mim_ls_in, LEFT);
   // workspace.add_expression(" 0*penalty/element_size*Test_p -Grad_Test_p.Normal*0 ", mim_ls_in, RIGHT);
-  workspace.add_expression("2/element_size*top_temp*Test_p*20", mim, TOP);	
-  workspace.assembly(1);
-  workspace.clear_expressions();
+  // workspace.add_expression("2/element_size*top_temp*Test_p*20", mim, TOP);	
+  // workspace.assembly(1);
+  // workspace.clear_expressions();
   /// end boundary contions
  //  // uncut region penalization
  //  workspace.add_expression("penalty*p*Test_p *tau"	, mim_ls_out, UNCUT_REGION);
@@ -400,8 +400,8 @@ void templs_problem::assembly(double dt,double time) {
   // Kin for enriched dof
   sparse_matrix_type K_in( nb_dof_p,nb_dof_p);
   // NITSCHE
-  //  workspace.add_expression("2/element_size*p*Test_p*tau*2000", mim_ls_bd, CUT_REGION);// 1 is the region		
-  // workspace.add_expression("-nlsv.Grad_p*Test_p*tau - nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION); 
+  workspace.add_expression("2/element_size*p*Test_p*tau*20", mim_ls_bd, CUT_REGION);// 1 is the region		
+  workspace.add_expression("-nlsv.Grad_p*Test_p*tau - nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION); 
   //NITSCHE
   workspace.add_expression( "+p.Test_p + tau*Kr*Grad_p.Grad_Test_p"
       , mim_ls_in, CUT_REGION);
@@ -409,7 +409,7 @@ void templs_problem::assembly(double dt,double time) {
   gmm::copy(workspace.assembled_matrix(),K_in);
   workspace.clear_expressions();
   workspace.add_expression("+[+1.].Test_p*tau + p_old.Test_p ", mim_ls_in,CUT_REGION);
-  //   workspace.add_expression( "2/element_size*over_p*Test_p*tau*2000", mim_ls_bd, CUT_REGION);
+  workspace.add_expression( "2/element_size*over_p*Test_p*tau*20", mim_ls_bd, CUT_REGION);
    workspace.assembly(1);
   workspace.clear_expressions();
  //  workspace.add_expression("2/element_size*p*Test_p", mim, LEFT);

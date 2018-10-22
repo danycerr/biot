@@ -101,7 +101,7 @@ class templs_problem {
 		int time_iter_=0;
 		///  workspace configuration parameters---------------------
 		std::vector<scalar_type> tau_, vmu_, bm_ ,lambda_, beta_,
-			alpha_, permeability_, force_,penalty_, c1_, c2_,over_p_;
+			alpha_, permeability_, force_,penalty_, c1_, c2_,over_p_,dome_t_;
 		// ---------------------------------------------------------
 		sparse_matrix_type K;                                /// iteration matrix
 		std::vector<scalar_type> U, U_old, P,  Px,           /// diplacement, disp old, pressure
@@ -145,7 +145,7 @@ class templs_problem {
 		templs_problem(void): mim(mesh)/*, mf_u(mesh)*/, mf_rhs(mesh),
 	                       	mf_p(mesh),mf_coef(mesh),mf_coef_v(mesh)
 				      ,tau_(1), vmu_(1), bm_(1), lambda_(1),alpha_(1), permeability_(1), force_(1), beta_(1),penalty_(1),
-				      c1_(1),c2_(1),over_p_(1)
+				      c1_(1),c2_(1),over_p_(1), dome_t_(1)
 						    // level set 
 			    ,ls(mesh,2),mls(mesh),
 			    mim_ls_all(mls, getfem::mesh_im_level_set::INTEGRATE_ALL),
