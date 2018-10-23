@@ -1484,7 +1484,7 @@ base_small_vector biotls_problem::ls_function(const base_node P, double time,int
 			    )*p_des.l_ref
 		       )*(40.-time/(1.e+8))/40.
 	              +(z-0.844*p_des.l_ref)
-		      * time/((1.e+8)*40);
+		      * time/((1.e+8)*40) /*+0.06*p_des.l_ref*/;
               res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.35;
             } break;
     default: assert(0);
