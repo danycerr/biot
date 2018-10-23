@@ -202,7 +202,7 @@ class biotls_problem {
 		// ---------------------------------------------------------
 		sparse_matrix_type K;                                /// iteration matrix
 		std::vector<scalar_type> U, U_old, P,  Px,           /// diplacement, disp old, pressure
-			P_old, B, UP;               /// main unknown, and right hand side
+			P_old={0}, B, UP;               /// main unknown, and right hand side
 		sparse_matrix_type Kp, Ku;                           /// iteration matrix for fixed steres of tpreconditioner
 		std::vector<scalar_type> U_iter, P_iter, Bp, Bu;     /// main unknown, and right hand side
 		biot_precond<sparse_matrix_type> *bPR_;               /// preconditioner based on fixed stress
@@ -229,7 +229,7 @@ class biotls_problem {
 		void assembly(double dt,double time);                         /// assemble the monolithic iteration matrix for the problem
 		void assembly_p(double dt,double time);                       /// assemble the iteration matrix for pressure, can be used as preconditioner
 		void assembly_u(double dt,double time);                       /// assemble the iteration matrix for pressure, can be used as preconditioner
-		inline std::vector<scalar_type>& get_pressure(){return gmm::scale(P_old,p_des.p_ref);}
+		std::vector<scalar_type> get_pressure();
                 void build_fix_stress_preconditioner(double dt, double time_ls);
 		void solve(double time);                                 /// solves the monolithic system 
 		void solve_fix_stress(double dt, int max_iter,double time);   /// solves the system with classic fixed stress approach

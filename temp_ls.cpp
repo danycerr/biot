@@ -274,15 +274,15 @@ void templs_problem::configure_workspace(getfem::ga_workspace & workspace,double
   //---------------------------------------------------------
   // force_[0] = 1.e+0;
   // workspace.add_fixed_size_constant("force", force_);
-  c1_[0]=p_des.alpha*p_des.alpha*p_des.biot_modulus/p_des.mu_s;
-  c2_[0]=2*p_des.poisson/(1-2*p_des.poisson);
+  c1_[0]=p_des.l_ref/p_des.alpha_temp;
+  // c2_[0]=2*p_des.poisson/(1-2*p_des.poisson);
   workspace.add_fixed_size_constant("C1", c1_);
-  workspace.add_fixed_size_constant("C2", c2_);
+  // workspace.add_fixed_size_constant("C2", c2_);
   std::cout << "end of Configuring workspace " << std::endl;
   //---------------------------------------------------------
   //  getfem::base_vector beta(1); beta[0] = 1*(alpha[0] * alpha[0] ) / (2 * p_des.mu_s + p_des.lambda_l);
-  beta_[0] = (p_des.alpha* p_des.alpha ) /( (-2 * p_des.mu_s / 3 + p_des.lambda_l)*p_des.biot_modulus)/p_des.p_ref;
-  workspace.add_fixed_size_constant("beta", beta_);
+  // beta_[0] = (p_des.alpha* p_des.alpha ) /( (-2 * p_des.mu_s / 3 + p_des.lambda_l)*p_des.biot_modulus)/p_des.p_ref;
+  // workspace.add_fixed_size_constant("beta", beta_);
 
   penalty_[0] = 1.e+10; // 1---10
   workspace.add_fixed_size_constant("penalty", penalty_);
@@ -357,7 +357,7 @@ void templs_problem::assembly(double dt,double time) {
 
 
   //======= RHS =====================
-  workspace.add_expression("+1.*Test_p*tau + p_old.Test_p +Grad_pres.Grad_Test_p*1.e-10", mim,UNCUT_REGION_IN);
+  workspace.add_expression("+1.*Test_p*tau + p_old.Test_p +- C1*Grad_pres.Grad_Test_p*tau", mim,UNCUT_REGION_IN);
   // workspace.add_expression("nls*Test_p*tau ", mim_ls_in,UNCUT_REGION_IN);
   workspace.set_assembled_vector(B);
   workspace.assembly(1);
@@ -411,7 +411,7 @@ void templs_problem::assembly(double dt,double time) {
   workspace.assembly(2);
   gmm::copy(workspace.assembled_matrix(),K_in);
   workspace.clear_expressions();
-  workspace.add_expression("+[+1.].Test_p*tau + p_old.Test_p +Grad_pres.Grad_Test_p*1.e-10", mim_ls_in,CUT_REGION);
+  workspace.add_expression("+[+1.].Test_p*tau + p_old.Test_p  - C1*Grad_pres.Grad_Test_p*tau", mim_ls_in,CUT_REGION);
   workspace.add_expression( "2/element_size*over_p*Test_p*tau*20", mim_ls_bd, CUT_REGION);
    workspace.assembly(1);
   workspace.clear_expressions();

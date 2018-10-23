@@ -1953,3 +1953,13 @@ void biotls_problem::print_ls(double time,int istep,double time_ls){
 
   mesh.transformation(Mm1); 
 }
+
+
+std::vector<scalar_type> biotls_problem::get_pressure(){
+std::vector<scalar_type> buf(P_old.size());
+gmm::copy(P_old,buf);
+gmm::scale(buf,p_des.p_ref);
+return buf;
+}
+
+
