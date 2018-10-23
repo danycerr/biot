@@ -80,7 +80,7 @@ struct generic_problem_descriptor_tetra_3d{
 	std::string INTEGRATION =       "IM_TETRAHEDRON(6)";
 	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TETRAHEDRON(6),3)"; 
 
-	std::string datafilename="resu/lk_ls_temp_domhot"; 
+	std::string datafilename="resu/lk_ls_temp_domhot_coup"; 
 	int noised =0;  // noise on mesh
 	int nsubdiv=5; // subdivision of the sqaured mesh
 

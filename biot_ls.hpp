@@ -60,7 +60,7 @@ typedef gmm::row_matrix<sparse_vector_type> sparse_matrix_type;
 typedef gmm::col_matrix<sparse_vector_type> col_sparse_matrix_type;
 typedef std::vector<scalar_type> plain_vector;
 
-#define LS_TYPE 5 //7
+#define LS_TYPE 7 //7
 // Right hand side. Allows an interpolation for the source term.
 // scalar_type sol_f(const base_node &x) { return 10.; }
 
@@ -141,7 +141,7 @@ struct problem_descriptor_tetra_3d{
 	std::string INTEGRATION =       "IM_TETRAHEDRON(6)";
 	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TETRAHEDRON(6),3)"; 
 
-	std::string datafilename="resu/lk_ls_dom"; 
+	std::string datafilename="resu/lk_ls_dom_coup"; 
 	int noised =0;  // noise on mesh
 	int nsubdiv=5; // subdivision of the sqaured mesh
 
@@ -229,7 +229,8 @@ class biotls_problem {
 		void assembly(double dt,double time);                         /// assemble the monolithic iteration matrix for the problem
 		void assembly_p(double dt,double time);                       /// assemble the iteration matrix for pressure, can be used as preconditioner
 		void assembly_u(double dt,double time);                       /// assemble the iteration matrix for pressure, can be used as preconditioner
-		void build_fix_stress_preconditioner(double dt, double time_ls);
+		inline std::vector<scalar_type>& get_pressure(){return gmm::scale(P_old,p_des.p_ref);}
+                void build_fix_stress_preconditioner(double dt, double time_ls);
 		void solve(double time);                                 /// solves the monolithic system 
 		void solve_fix_stress(double dt, int max_iter,double time);   /// solves the system with classic fixed stress approach
 		void init(void);                                  /// initial configuration for the problem 

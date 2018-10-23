@@ -61,7 +61,9 @@ typedef gmm::row_matrix<sparse_vector_type> sparse_matrix_type;
 typedef gmm::col_matrix<sparse_vector_type> col_sparse_matrix_type;
 typedef std::vector<scalar_type> plain_vector;
 
-#define LS_TYPE 7
+#ifndef LS_TYPE
+#define LS_TYPE 7// 7 dome
+#endif
 // Right hand side. Allows an interpolation for the source term.
 // scalar_type sol_f(const base_node &x) { return 10.; }
 // Defining unit normal on a level set ------------------------------------
@@ -104,11 +106,10 @@ class templs_problem {
 			alpha_, permeability_, force_,penalty_, c1_, c2_,over_p_,dome_t_;
 		// ---------------------------------------------------------
 		sparse_matrix_type K;                                /// iteration matrix
-		std::vector<scalar_type> U, U_old, P,  Px,           /// diplacement, disp old, pressure
-			P_old, B, UP;               /// main unknown, and right hand side
-		sparse_matrix_type Kp, Ku;                           /// iteration matrix for fixed steres of tpreconditioner
-		std::vector<scalar_type> U_iter, P_iter, Bp, Bu;     /// main unknown, and right hand side
-
+		std::vector<scalar_type>  P,  Px, P_old, B, UP;           /// diplacement, disp old, pressure
+		// sparse_matrix_type Kp, Ku;                           /// iteration matrix for fixed steres of tpreconditioner
+		// std::vector<scalar_type> U_iter, P_iter, Bp, Bu;     /// main unknown, and right hand side
+                std::vector<scalar_type>  press_;
 		std::vector<scalar_type> Kr_; // permeability ratio
 		std::vector<scalar_type> Er_; // young ratio
 		std::vector<scalar_type> normal_ls_v;
@@ -141,6 +142,7 @@ class templs_problem {
 		// void update_u_index(double timels=0);
 
 		void set_step(int step){step_=step;}
+                inline void set_pressure(std::vector<scalar_type> pres){gmm::copy(pres,press_);}
 		void update_time_iter(int a){time_iter_=a;}
 		templs_problem(void): mim(mesh)/*, mf_u(mesh)*/, mf_rhs(mesh),
 	                       	mf_p(mesh),mf_coef(mesh),mf_coef_v(mesh)

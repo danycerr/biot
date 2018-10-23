@@ -133,7 +133,7 @@ void templs_problem::init(void) {
     dal::bit_vector ndofs = mf_p.basic_dof_on_region(CUT_REGION);
     for (dal::bv_visitor i(ndofs); !i.finished(); ++i)
       eXt_dof.push_back(i);
-    nb_x_dof_p=eXt_dof.size();
+      nb_x_dof_p=eXt_dof.size();
   }
   
   std::cout << "# Cut Elements      = " << mesh.region(CUT_REGION).size() << std::endl;
@@ -178,11 +178,13 @@ void templs_problem::init(void) {
   getfem::size_type nb_dof_p = mf_p.nb_dof();
 
   gmm::resize(B, nb_dof_p); gmm::clear(B);    // rhs monolithic problem
-  gmm::resize(UP, nb_dof_p); gmm::clear(UP);  // solution monolithic
+  // gmm::resize(UP, nb_dof_p); gmm::clear(UP);  // solution monolithic
   // displacement
   gmm::resize(P, nb_dof_p); gmm::resize(P_old, nb_dof_p); 
-  std::fill(P.begin(), P.end(), 0);
+  std::fill(P.begin(), P.end(), 10);
   gmm::copy(P,P_old);
+  gmm::resize(press_, nb_dof_p); gmm::resize(press_, nb_dof_p); 
+  std::fill(press_.begin(), press_.end(), -1);
   // iteration matrix monolithic
   gmm::resize(K, nb_dof_p,  nb_dof_p); gmm::clear(K);
 }
@@ -303,7 +305,7 @@ void templs_problem::configure_workspace(getfem::ga_workspace & workspace,double
    dome_t_[0]=dome_t_[0]/p_des.p_ref;
    workspace.add_fixed_size_constant("over_p", dome_t_);
 
-   over_p_[0]=20./p_des.p_ref;
+   over_p_[0]=10./p_des.p_ref;
    workspace.add_fixed_size_constant("top_temp",over_p_);
 }
 // 
@@ -340,6 +342,7 @@ void templs_problem::assembly(double dt,double time) {
 
   workspace.add_fem_variable("p", mf_p, gmm::sub_interval(0, nb_dof_p), P);
   workspace.add_fem_constant("p_old", mf_p, P_old);
+  workspace.add_fem_constant("pres", mf_p, press_);
   // ------------------ expressions --------------------------
   workspace.add_expression( "p.Test_p + tau*Kr*Grad_p.Grad_Test_p"
       , mim_ls_in, UNCUT_REGION);
@@ -354,7 +357,7 @@ void templs_problem::assembly(double dt,double time) {
 
 
   //======= RHS =====================
-  workspace.add_expression("+1.*Test_p*tau + p_old.Test_p ", mim,UNCUT_REGION_IN);
+  workspace.add_expression("+1.*Test_p*tau + p_old.Test_p +Grad_pres.Grad_Test_p*1.e-10", mim,UNCUT_REGION_IN);
   // workspace.add_expression("nls*Test_p*tau ", mim_ls_in,UNCUT_REGION_IN);
   workspace.set_assembled_vector(B);
   workspace.assembly(1);
@@ -367,7 +370,7 @@ void templs_problem::assembly(double dt,double time) {
  //  workspace.add_expression("penalty/element_size*p*Test_p", mim, RIGHT);// 1 is the region		
  //  workspace.add_expression("-Grad_p.Normal*Test_p - Grad_Test_p.Normal*p ", mim, LEFT); 	
  //  workspace.add_expression("-Grad_p.Normal*Test_p - Grad_Test_p.Normal*p", mim, RIGHT); 
-  workspace.add_expression("2/element_size*p*Test_p*20", mim, TOP);	
+  workspace.add_expression("2/element_size*p*Test_p*200", mim, TOP);	
   workspace.add_expression("-Grad_p.Normal*Test_p - Grad_Test_p.Normal*p", mim, TOP); 
   workspace.assembly(2);
   gmm::add(workspace.assembled_matrix(), gmm::sub_matrix( K ,
@@ -379,10 +382,10 @@ void templs_problem::assembly(double dt,double time) {
   // rhs for niche boudary condition
   // workspace.add_expression(" 0*penalty/element_size*Test_p -Grad_Test_p.Normal*0 ", mim_ls_in, LEFT);
   // workspace.add_expression(" 0*penalty/element_size*Test_p -Grad_Test_p.Normal*0 ", mim_ls_in, RIGHT);
-  // workspace.add_expression("2/element_size*top_temp*Test_p*20", mim, TOP);	
-  // workspace.assembly(1);
-  // workspace.clear_expressions();
-  /// end boundary contions
+   workspace.add_expression("2/element_size*top_temp*Test_p*200", mim, TOP);	
+   workspace.assembly(1);
+   workspace.clear_expressions();
+  // end boundary contions
  //  // uncut region penalization
  //  workspace.add_expression("penalty*p*Test_p *tau"	, mim_ls_out, UNCUT_REGION);
  //  workspace.assembly(2);
@@ -408,7 +411,7 @@ void templs_problem::assembly(double dt,double time) {
   workspace.assembly(2);
   gmm::copy(workspace.assembled_matrix(),K_in);
   workspace.clear_expressions();
-  workspace.add_expression("+[+1.].Test_p*tau + p_old.Test_p ", mim_ls_in,CUT_REGION);
+  workspace.add_expression("+[+1.].Test_p*tau + p_old.Test_p +Grad_pres.Grad_Test_p*1.e-10", mim_ls_in,CUT_REGION);
   workspace.add_expression( "2/element_size*over_p*Test_p*tau*20", mim_ls_bd, CUT_REGION);
    workspace.assembly(1);
   workspace.clear_expressions();
@@ -1060,3 +1063,7 @@ void templs_problem::print_ls(double time,int istep,double time_ls){
 
   mesh.transformation(Mm1); 
 }
+
+
+
+
