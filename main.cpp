@@ -5,10 +5,13 @@
 // #define BIOT
 
 #define BIOT_LS
+ #define TEMP_LS
 
 #ifdef BIOT_LS
 #include "biot_ls.hpp"
+#ifdef TEMP_LS
 #include "temp_ls.hpp"
+#endif
 #endif
 #ifdef BIOT
 #include "biot.hpp"
@@ -24,7 +27,9 @@ int main(int argc, char *argv[]) {
 	try {    
 #ifdef BIOT_LS
 		biotls_problem p;
+#ifdef TEMP_LS
 		templs_problem t;
+#endif
 #endif
 #ifdef BIOT
 		 biot_problem p;
@@ -32,7 +37,9 @@ int main(int argc, char *argv[]) {
 
 //                 temperature_problem t;
 		p.init();
+#ifdef TEMP_LS
  		t.init();
+#endif
 		// double dt=1e-3;
 		double dt=1e+12;
 		// p.build_fix_stress_preconditioner(dt,0);
@@ -42,7 +49,9 @@ int main(int argc, char *argv[]) {
 		double time=0*dt;
 		double time_ls  =0;
 		p.update_ls(time_ls, 0);
+#ifdef TEMP_LS
 		t.update_ls(time_ls, 0);
+#endif
 		for(int istep=0; istep<n_step; istep++)
 		{
 #ifdef BIOT_LS
@@ -53,15 +62,24 @@ int main(int argc, char *argv[]) {
 				if (istep<erosion_limit && istep > 30){ 
 					time_ls  =istep*dt;
 					p.update_ls(time_ls, istep);
+#ifdef TEMP_LS
 					t.update_ls(time_ls, istep);
+#endif
+
 					// p.build_fix_stress_preconditioner(dt,time_ls);
 				}
                                  p.set_step(istep);
+#ifdef TEMP_LS
                                  t.set_step(istep);
+#endif
 				 p.solve_fix_stress(dt, 2000,time_ls);
+#if defined TEMP_LS && defined BIOT_LS
                                  t.set_pressure(p.get_pressure());
+#endif
+#ifdef TEMP_LS
                                  t.assembly(dt,time_ls);
 		  	   	 t.solve(time_ls);
+#endif
                          
 			 	//  p.build_fix_stress_preconditioner(dt,time_ls);
 				// ===============================
@@ -70,8 +88,10 @@ int main(int argc, char *argv[]) {
 				// ===========================
 				 p.print(istep*dt,istep,time_ls);      
 				 p.print_crop(istep*dt,istep,time_ls);
+#ifdef TEMP_LS
 			 	 t.print_crop(istep*dt,istep,time_ls);
-				 t.print(istep*dt,istep,time_ls);      
+				 t.print(istep*dt,istep,time_ls);   
+#endif   
 				// p.print_ls(istep*dt,istep,time_ls); //pint the ls slice
 // 				p.print_pattern(istep);
 				// p.update_time_iter(istep);

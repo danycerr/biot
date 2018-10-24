@@ -838,12 +838,12 @@ void biotls_problem::assembly_p(double dt, double time){
     std::cout<<"nb_dof_u_x "<<nb_dof_u_x<<std::endl;
     gmm::resize(U, nb_dof_u_x); gmm::resize(Ku, nb_dof_u_x, nb_dof_u_x);  gmm::resize(Bu, nb_dof_u_x);
     getfem::ga_workspace workspace; configure_workspace(workspace,dt);
-
+    
     workspace.add_fem_variable("p_iter", mf_p, gmm::sub_interval(0,nb_dof_p), P_iter);
     workspace.add_fem_variable("u", mf_u, gmm::sub_interval(0, nb_dof_u), U);
     workspace.add_fem_variable("u_old", mf_u, gmm::sub_interval(0, nb_dof_u), U_old);
     // workspace.add_fem_variable("u_iter", mf_u, gmm::sub_interval(0, nb_dof_u), U_iter);
-
+    
     // ----- Boundary condisions displacemenet
     if(N_==2){
       // workspace.add_expression("[0,-2*force].Test_u" , mim, TOP);    //neumann disp
@@ -893,24 +893,27 @@ void biotls_problem::assembly_p(double dt, double time){
     sparse_matrix_type K_in(nb_dof_u, nb_dof_u );
     // internal for displacement
     workspace.add_expression( "2*Er*Sym(Grad_u):Grad_Test_u + Er*C2*Div_u*Div_Test_u", mim_ls_in, CUT_REGION);
+    // workspace.add_expression("penalty*u.Test_u" , mim_ls_bd, CUT_REGION); //neumann disp
     workspace.assembly(2);
     gmm::copy(workspace.assembled_matrix(),K_in);
     workspace.clear_expressions();
+    std::cout<< "end kin"<< std::endl; 
 
     std::vector<scalar_type> B_in(nb_dof_u, 0.0);
     workspace.set_assembled_vector(B_in);
     if(N_==2) workspace.add_expression("[0,-1].Test_u", mim_ls_in,CUT_REGION);
     if(N_==3) workspace.add_expression("[0,0,-1].Test_u", mim_ls_in,CUT_REGION);
     if(N_==3) workspace.add_expression("over_p*[0,0,-1].Test_u" , mim_ls_bd, CUT_REGION);    //neumann disp	
-    workspace.add_expression("penalty*u.Test_u" , mim_ls_bd, CUT_REGION); //neumann disp
     workspace.add_expression("C1*p_iter*Div_Test_u ",  mim_ls_in, CUT_REGION);
     workspace.assembly(1);
+    workspace.clear_expressions();
+    std::cout<< "end Bin"<< std::endl;
+
     //workspace.clear_expressions();
     //workspace.set_assembled_vector(B_in2);
     //workspace.add_expression("[0,-1].Test_u", mim,CUT_REGION);
     //workspace.add_expression("C1*p_iter*Div_Test_u ",  mim, CUT_REGION);
     //workspace.assembly(1);
-    workspace.clear_expressions();
     // for(int i=0;i<nb_dof_u; i++)std::cout << B_in[i]<<"<---mimlsin  mim--->"<< B_in2[i]<<std::endl;
     // std::cin.ignore();
     // stabilization term
@@ -927,7 +930,6 @@ void biotls_problem::assembly_p(double dt, double time){
 //   }
 // 
 
-    std::cout<< "end kin"<< std::endl; 
 
 
     // Mapping

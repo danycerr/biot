@@ -136,7 +136,7 @@ struct problem_descriptor_quad_3d{
 };
 struct problem_descriptor_tetra_3d{    
 	std::string MESH_TYPE =         "GT_PK(3,1)" ; // triangular elements
-	std::string FEM_TYPE_U  =         "FEM_PK(3,2)";
+	std::string FEM_TYPE_U  =         "FEM_PK(3,1)";
 	std::string FEM_TYPE_P  =         "FEM_PK(3,1)";
 	std::string INTEGRATION =       "IM_TETRAHEDRON(6)";
 	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TETRAHEDRON(6),3)"; 
@@ -150,7 +150,7 @@ struct problem_descriptor_tetra_3d{
 	double mu_s = E/( 2 * ( 1 + poisson) ) ;
 	double lambda_l= E*poisson/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;
 	double biot_modulus=1.e+9;
-	double k =1.e-18; //permeability
+	double k =1.e-19; //permeability
 	double alpha=1; // Biot coefficient
 	double rho_l=1000; // Biot coefficient
 	double rho_r=2200; // Biot coefficient
@@ -202,7 +202,7 @@ class biotls_problem {
 		// ---------------------------------------------------------
 		sparse_matrix_type K;                                /// iteration matrix
 		std::vector<scalar_type> U, U_old, P,  Px,           /// diplacement, disp old, pressure
-			P_old={0}, B, UP;               /// main unknown, and right hand side
+			P_old, B, UP;               /// main unknown, and right hand side
 		sparse_matrix_type Kp, Ku;                           /// iteration matrix for fixed steres of tpreconditioner
 		std::vector<scalar_type> U_iter, P_iter, Bp, Bu;     /// main unknown, and right hand side
 		biot_precond<sparse_matrix_type> *bPR_;               /// preconditioner based on fixed stress
