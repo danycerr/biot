@@ -134,9 +134,9 @@ struct problem_descriptor_quad_3d{
 	double p_ref=1;
 };
 struct problem_descriptor_tetra_3d{    
-	std::string MESH_TYPE =         "GT_PK(3,1)" ; // triangular elements
+	std::string MESH_TYPE =         "GT_PK(3,2)" ; // triangular elements
 	std::string FEM_TYPE_U  =         "FEM_PK(3,2)";
-	std::string FEM_TYPE_P  =         "FEM_PK(3,2)";
+	std::string FEM_TYPE_P  =         "FEM_PK(3,1)";
 	std::string INTEGRATION =       "IM_TETRAHEDRON(6)";
 	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TETRAHEDRON(6),3)"; 
 	std::string datafilename="resu/lsp2m_lk_s_sp_p2"; 
