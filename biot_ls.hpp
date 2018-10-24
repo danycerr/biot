@@ -150,7 +150,7 @@ struct problem_descriptor_tetra_3d{
 	double mu_s = E/( 2 * ( 1 + poisson) ) ;
 	double lambda_l= E*poisson/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;
 	double biot_modulus=1.e+9;
-	double k =1.e-15; //permeability
+	double k =1.e-18; //permeability
 	double alpha=1; // Biot coefficient
 	double rho_l=1000; // Biot coefficient
 	double rho_r=2200; // Biot coefficient

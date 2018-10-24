@@ -357,7 +357,7 @@ void templs_problem::assembly(double dt,double time) {
 
 
   //======= RHS =====================
-  workspace.add_expression("+1.*Test_p*tau + p_old.Test_p +- C1*Grad_pres.Grad_Test_p*tau", mim,UNCUT_REGION_IN);
+  workspace.add_expression("+1.*Test_p*tau + p_old.Test_p - C1*Grad_pres.Grad_Test_p*tau", mim,UNCUT_REGION_IN);
   // workspace.add_expression("nls*Test_p*tau ", mim_ls_in,UNCUT_REGION_IN);
   workspace.set_assembled_vector(B);
   workspace.assembly(1);
