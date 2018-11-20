@@ -1,1 +1,0 @@
-for i in `seq 0 6`;do cp  *temp_do*.$i.* resu_dome_reft/ ;done

@@ -75,14 +75,14 @@ struct generic_problem_descriptor_quad_3d{
 };
 struct generic_problem_descriptor_tetra_3d{    
 	std::string MESH_TYPE =         "GT_PK(3,1)" ; // triangular elements
-	std::string FEM_TYPE_U  =         "FEM_PK(3,2)";
+	std::string FEM_TYPE_U  =         "FEM_PK(3,1)";
 	std::string FEM_TYPE_P  =         "FEM_PK(3,1)";
 	std::string INTEGRATION =       "IM_TETRAHEDRON(6)";
 	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TETRAHEDRON(6),3)"; 
 
-	std::string datafilename="resu/lk_ls_temp_domhot_coup"; 
+	std::string datafilename="resu/lk_ls8_2mat_temp_coup"; 
 	int noised =0;  // noise on mesh
-	int nsubdiv=5; // subdivision of the sqaured mesh
+	int nsubdiv=6; // subdivision of the sqaured mesh
 
 	double E=1.e+10;
 	double poisson =0.3;
@@ -100,7 +100,8 @@ struct generic_problem_descriptor_tetra_3d{
 	double u_ref=1;
 	double p_ref=1;
         double alpha_temp=1.e-5; //thermal conductivity
-        double q_rad=1.e-10;
+        double q_rad=1.e-11;
+        // double q_rad=1.e-10;
 };
 
 #endif

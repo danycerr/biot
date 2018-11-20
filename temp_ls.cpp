@@ -209,14 +209,18 @@ void templs_problem::gen_bc(){
       mesh.region(BOTTOM).add(i.cv(), i.f());
     } else if (gmm::abs(un[N_-2] + 1.0) < 1.0E-7) {
       mesh.region(LEFT).add(i.cv(), i.f());
+      mesh.region(LATERAL).add(i.cv(), i.f());
     } else if (gmm::abs(un[N_-2] - 1.0) < 1.0E-7) {
       mesh.region(RIGHT).add(i.cv(), i.f());
+      mesh.region(LATERAL).add(i.cv(), i.f());
     }
     else if(N_=3){
       if (gmm::abs(un[N_-3] + 1.0) < 1.0E-7) {
         mesh.region(LEFTX).add(i.cv(), i.f());
+      mesh.region(LATERAL).add(i.cv(), i.f());
       } else if (gmm::abs(un[N_-3] - 1.0) < 1.0E-7) {
         mesh.region(RIGHTX).add(i.cv(), i.f());
+        mesh.region(LATERAL).add(i.cv(), i.f());
       }
     }
     else {
@@ -301,7 +305,7 @@ void templs_problem::configure_workspace(getfem::ga_workspace & workspace,double
 
 
 
-   dome_t_[0]=50.;
+   dome_t_[0]=90.;
    dome_t_[0]=dome_t_[0]/p_des.p_ref;
    workspace.add_fixed_size_constant("over_p", dome_t_);
 
@@ -357,7 +361,8 @@ void templs_problem::assembly(double dt,double time) {
 
 
   //======= RHS =====================
-  workspace.add_expression("+1.*Test_p*tau + p_old.Test_p - C1*Grad_pres.Grad_Test_p*tau", mim,UNCUT_REGION_IN);
+  workspace.add_expression("+1.*Test_p*tau + p_old.Test_p - 1.e-19*C1*Grad_pres.Grad_p*Test_p*tau", mim,UNCUT_REGION_IN);
+  // workspace.add_expression("-0.25*Test_p*tau ", mim,LATERAL); //lateral heat sink
   // workspace.add_expression("nls*Test_p*tau ", mim_ls_in,UNCUT_REGION_IN);
   workspace.set_assembled_vector(B);
   workspace.assembly(1);
@@ -369,9 +374,13 @@ void templs_problem::assembly(double dt,double time) {
  //  workspace.add_expression("penalty/element_size*p*Test_p", mim, LEFT);
  //  workspace.add_expression("penalty/element_size*p*Test_p", mim, RIGHT);// 1 is the region		
  //  workspace.add_expression("-Grad_p.Normal*Test_p - Grad_Test_p.Normal*p ", mim, LEFT); 	
- //  workspace.add_expression("-Grad_p.Normal*Test_p - Grad_Test_p.Normal*p", mim, RIGHT); 
+ //  workspace.add_expression("-Grad_p.Normal*Test_p - Grad_Test_p.Normal*p", mim, RIGHT); 	
   workspace.add_expression("2/element_size*p*Test_p*200", mim, TOP);	
   workspace.add_expression("-Grad_p.Normal*Test_p - Grad_Test_p.Normal*p", mim, TOP); 
+  if(const_lateral_temp_){
+      workspace.add_expression("2/element_size*p*Test_p*200", mim, LATERAL);	
+      workspace.add_expression("-Grad_p.Normal*Test_p - Grad_Test_p.Normal*p", mim, LATERAL);
+  }
   workspace.assembly(2);
   gmm::add(workspace.assembled_matrix(), gmm::sub_matrix( K ,
         gmm::sub_interval(0,  nb_dof_p),
@@ -382,38 +391,35 @@ void templs_problem::assembly(double dt,double time) {
   // rhs for niche boudary condition
   // workspace.add_expression(" 0*penalty/element_size*Test_p -Grad_Test_p.Normal*0 ", mim_ls_in, LEFT);
   // workspace.add_expression(" 0*penalty/element_size*Test_p -Grad_Test_p.Normal*0 ", mim_ls_in, RIGHT);
-   workspace.add_expression("2/element_size*top_temp*Test_p*200", mim, TOP);	
+   workspace.add_expression("2/element_size*top_temp*Test_p*200- top_temp*Grad_Test_p.Normal", mim, TOP);
+   if(const_lateral_temp_)
+       workspace.add_expression("2/element_size*p_old*Test_p*200- p_old*Grad_Test_p.Normal", mim, LATERAL);
    workspace.assembly(1);
    workspace.clear_expressions();
   // end boundary contions
- //  // uncut region penalization
- //  workspace.add_expression("penalty*p*Test_p *tau"	, mim_ls_out, UNCUT_REGION);
- //  workspace.assembly(2);
- //  gmm::add(workspace.assembled_matrix(), gmm::sub_matrix( K ,
- //        gmm::sub_interval(0, nb_dof_p),
- //        gmm::sub_interval(0, nb_dof_p) 
- //        )
- //      );
- //  workspace.clear_expressions();
   
   // Kout fotr enriched dof
   sparse_matrix_type K_out(nb_dof_p,nb_dof_p);
-   for (int i=0; i< nb_dof_p; i++)  K_out(i,i)=1.e+0;
+  for (int i=0; i< nb_dof_p; i++)  K_out(i,i)=1.e+0;
   std::cout<< "end kout"<< std::endl; 
+  //end Kout
   // Kin for enriched dof
   sparse_matrix_type K_in( nb_dof_p,nb_dof_p);
-  // NITSCHE
-  workspace.add_expression("2/element_size*p*Test_p*tau*20", mim_ls_bd, CUT_REGION);// 1 is the region		
-  workspace.add_expression("-nlsv.Grad_p*Test_p*tau - nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION); 
+  // NITSCHE for boundary 
+  if(const_lateral_temp_){
+     workspace.add_expression("2/element_size*p*Test_p*tau*20", mim_ls_bd, CUT_REGION);// 1 is the region		
+     workspace.add_expression("-nlsv.Grad_p*Test_p*tau - nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION);
+  }
   //NITSCHE
   workspace.add_expression( "+p.Test_p + tau*Kr*Grad_p.Grad_Test_p"
       , mim_ls_in, CUT_REGION);
   workspace.assembly(2);
   gmm::copy(workspace.assembled_matrix(),K_in);
   workspace.clear_expressions();
-  workspace.add_expression("+[+1.].Test_p*tau + p_old.Test_p  - C1*Grad_pres.Grad_Test_p*tau", mim_ls_in,CUT_REGION);
-  workspace.add_expression( "2/element_size*over_p*Test_p*tau*20", mim_ls_bd, CUT_REGION);
-   workspace.assembly(1);
+  workspace.add_expression("+[+1.].Test_p*tau + p_old.Test_p  - 1.e-19*C1*Grad_pres.Grad_Test_p*tau", mim_ls_in,CUT_REGION);
+  if(const_lateral_temp_)
+    workspace.add_expression( "2/element_size*over_p*Test_p*tau*20- nlsv.Grad_Test_p*over_p*tau", mim_ls_bd, CUT_REGION);
+  workspace.assembly(1);
   workspace.clear_expressions();
  //  workspace.add_expression("2/element_size*p*Test_p", mim, LEFT);
  //  workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, LEFT); 	
@@ -716,6 +722,11 @@ base_small_vector templs_problem::ls_function(const base_node P, double time,int
                             )+0.93);
               res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.35;
             } break;
+    case 8: {
+              // res[0] = (P[2]-0.4 +1.7*());
+              res[0] = -(P[2]+0.4 -1.2*( exp( -( pow((2*P[0]-1)/0.5 ,2) ))  *exp( -( pow((2*P[1]-1)/0.5 ,2) )) ) );
+              res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.35;
+            } break;
     default: assert(0);
   }
   return res;
@@ -960,8 +971,8 @@ void templs_problem::gen_coefficient(){ // creating a coefficient
 
   //std::vector<double> k; k.push_back(1);k.push_back(1.e+2);
   //std::vector<double> E; E.push_back(1);E.push_back(2.e+0);
-  std::vector<double> k; k.push_back(1);k.push_back(1.e+0);
-  std::vector<double> E; E.push_back(1);E.push_back(1.e+0);
+  std::vector<double> k; k.push_back(1);k.push_back(2.e+0);
+  std::vector<double> E; E.push_back(1.e-19);E.push_back(1.e-17);
   for (int imat=0; imat< material.size();imat++){
     dal::bit_vector bv_cv = mesh.region(material[imat]).index();
     size_type i_cv = 0;

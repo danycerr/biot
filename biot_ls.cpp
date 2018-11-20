@@ -108,7 +108,7 @@ void biotls_problem::init(void) {
   //routine for labeling internal materials
   gen_mat();
   //routine for assignment of material propeties
-   gen_coefficient();
+  gen_coefficient();
 
   {
     dal::bit_vector bv_cv = mesh.convex_index();
@@ -122,10 +122,10 @@ void biotls_problem::init(void) {
       }
     }
 
-    getfem::vtk_export vtke("normalls.vtk");
-    vtke.exporting(mf_coef_v);
-    vtke.write_mesh();
-    vtke.write_cell_data(normal_ls_v, "nls");
+    // getfem::vtk_export vtke("normalls.vtk");
+    // vtke.exporting(mf_coef_v);
+    // vtke.write_mesh();
+    // vtke.write_cell_data(normal_ls_v, "nls");
   }
 
   compute_normal_2_ls();
@@ -678,15 +678,16 @@ void biotls_problem::assembly_p(double dt, double time){
 
   sparse_matrix_type K_out(nb_dof_p,nb_dof_p);
   {
-    workspace.add_expression("penalty*p*Test_p ", mim_ls_out, CUT_REGION);
+    // workspace.add_expression("penalty*p*Test_p ", mim_ls_out, CUT_REGION);
 
     //  workspace.add_expression( "(1+beta)*p.Test_p + tau*Grad_p.Grad_Test_p", mim, CUT_REGION);
     // workspace.add_expression("(1/bm + beta)*p.Test_p + tau*permeability*Grad_p.Grad_Test_p"	, mim, CUT_REGION);
     // workspace.add_expression("2/element_size*p*Test_p*tau", mim_ls_bd, CUT_REGION);// 1 is the region		
     //   workspace.add_expression("-permeability*nlsv.Grad_p*Test_p *tau- permeability*nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION); 
-    workspace.assembly(2);
-    gmm::copy(workspace.assembled_matrix(),K_out);
-    workspace.clear_expressions();
+    // workspace.assembly(2);
+    // gmm::copy(workspace.assembled_matrix(),K_out);
+    // workspace.clear_expressions();
+    for (int i=0; i< nb_dof_p; i++)  K_out(i,i)=1.e+0;
     std::cout<< "end kout"<< std::endl; 
   }
   // Kin for enriched dof
@@ -696,8 +697,8 @@ void biotls_problem::assembly_p(double dt, double time){
   {
     // workspace.set_assembled_vector(Bp_in); 
     // NITSCHE
-     workspace.add_expression("2/element_size*p*Test_p*200", mim_ls_bd, CUT_REGION);// 1 is the region		
-     workspace.add_expression("-nlsv.Grad_p*Test_p*tau- nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION); 
+    //  workspace.add_expression("2/element_size*p*Test_p*200", mim_ls_bd, CUT_REGION);// 1 is the region		
+    //  workspace.add_expression("-nlsv.Grad_p*Test_p*tau- nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION); 
     //NITSCHE
     //  workspace.add_expression( "permeability*tau*[0,1].Grad_p*Test_p ", mim_ls_bd, CUT_REGION);
     workspace.add_expression( "(1+beta)*p.Test_p + tau*Kr*Grad_p.Grad_Test_p", mim_ls_in, CUT_REGION);
@@ -884,10 +885,11 @@ void biotls_problem::assembly_p(double dt, double time){
 
     // Enriched dof
     sparse_matrix_type K_out(nb_dof_u ,nb_dof_u );
-    workspace.add_expression("u.Test_u "	,mim_ls_out, CUT_REGION);;
-    workspace.assembly(2);
-    gmm::copy(workspace.assembled_matrix(),K_out);
-    workspace.clear_expressions();
+    // workspace.add_expression("u.Test_u "	,mim_ls_out, CUT_REGION);;
+    // workspace.assembly(2);
+    // gmm::copy(workspace.assembled_matrix(),K_out);
+    // workspace.clear_expressions();
+    for (int i=0; i< nb_dof_u; i++)  K_out(i,i)=1.e+0;
     std::cout<< "end kout"<< std::endl; 
     // Kin for enriched dof
     sparse_matrix_type K_in(nb_dof_u, nb_dof_u );
@@ -1523,6 +1525,11 @@ base_small_vector biotls_problem::ls_function(const base_node P, double time,int
                             )+0.93);
               res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.35;
             } break;
+
+    case 8: {
+              res[0] = -(P[2]+0.4 -1.2*( exp( -( pow((2*P[0]-1)/0.5 ,2) ))  *exp( -( pow((2*P[1]-1)/0.5 ,2) )) ) );
+              res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.35;
+            } break;
     default: assert(0);
   }
   return res;
@@ -1851,10 +1858,10 @@ void biotls_problem::gen_coefficient(){ // creating a coefficient
   gmm::resize(Er_, mf_coef.nb_dof()); gmm::fill(Er_,1);    // rhs monolithic problem
   std::vector<int> material; material.push_back(MAT_1);material.push_back(MAT_2);
 
-  //std::vector<double> k; k.push_back(1);k.push_back(1.e+2);
-  //std::vector<double> E; E.push_back(1);E.push_back(2.e+0);
-  std::vector<double> k; k.push_back(1);k.push_back(1.e+0);
-  std::vector<double> E; E.push_back(1);E.push_back(1.e+0);
+  std::vector<double> k; k.push_back(1);k.push_back(1.e+2);
+  std::vector<double> E; E.push_back(1);E.push_back(2.e+0);
+  // std::vector<double> k; k.push_back(1);k.push_back(1.e+0);
+  // std::vector<double> E; E.push_back(1);E.push_back(1.e+0);
   for (int imat=0; imat< material.size();imat++){
     dal::bit_vector bv_cv = mesh.region(material[imat]).index();
     size_type i_cv = 0;

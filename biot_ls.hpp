@@ -60,7 +60,7 @@ typedef gmm::row_matrix<sparse_vector_type> sparse_matrix_type;
 typedef gmm::col_matrix<sparse_vector_type> col_sparse_matrix_type;
 typedef std::vector<scalar_type> plain_vector;
 
-#define LS_TYPE 7 //7
+#define LS_TYPE 8//7-> complex dome 8->simple dome
 // Right hand side. Allows an interpolation for the source term.
 // scalar_type sol_f(const base_node &x) { return 10.; }
 
@@ -141,9 +141,9 @@ struct problem_descriptor_tetra_3d{
 	std::string INTEGRATION =       "IM_TETRAHEDRON(6)";
 	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TETRAHEDRON(6),3)"; 
 
-	std::string datafilename="resu/lk_ls_dom_coup"; 
+	std::string datafilename="resu/lk_ls8_2mat_disp_coup"; 
 	int noised =0;  // noise on mesh
-	int nsubdiv=5; // subdivision of the sqaured mesh
+	int nsubdiv=6; // subdivision of the sqaured mesh
 
 	double E=1.e+10;
 	double poisson =0.3;

@@ -1,17 +1,17 @@
 /**************************************************************************/
 /*  main program.                                                         */
 /**************************************************************************/
-
+#include "gmm/gmm_except.h"
 // #define BIOT
 
-#define BIOT_LS
+ #define BIOT_LS
  #define TEMP_LS
 
 #ifdef BIOT_LS
 #include "biot_ls.hpp"
+#endif
 #ifdef TEMP_LS
 #include "temp_ls.hpp"
-#endif
 #endif
 #ifdef BIOT
 #include "biot.hpp"
@@ -27,16 +27,18 @@ int main(int argc, char *argv[]) {
 	try {    
 #ifdef BIOT_LS
 		biotls_problem p;
+#endif
 #ifdef TEMP_LS
 		templs_problem t;
-#endif
 #endif
 #ifdef BIOT
 		 biot_problem p;
 #endif
 
 //                 temperature_problem t;
+#ifdef BIOT_LS
 		p.init();
+#endif
 #ifdef TEMP_LS
  		t.init();
 #endif
@@ -48,36 +50,45 @@ int main(int argc, char *argv[]) {
 		int n_step=80;int erosion_limit=0; // usually 50 steps
 		double time=0*dt;
 		double time_ls  =0;
+#ifdef BIOT_LS
 		p.update_ls(time_ls, 0);
+#endif
 #ifdef TEMP_LS
 		t.update_ls(time_ls, 0);
 #endif
 		for(int istep=0; istep<n_step; istep++)
 		{
-#ifdef BIOT_LS
+#if defined TEMP_LS || defined BIOT_LS
 // // 		  //level set
 			time=istep*dt;
 			std::cout<< "*** Time step "<< istep << "/"<<n_step<<std::endl;
 			{ // level set
 				if (istep<erosion_limit && istep > 30){ 
 					time_ls  =istep*dt;
+#ifdef BIOT_LS
 					p.update_ls(time_ls, istep);
+#endif
 #ifdef TEMP_LS
 					t.update_ls(time_ls, istep);
 #endif
 
 					// p.build_fix_stress_preconditioner(dt,time_ls);
 				}
+#ifdef BIOT_LS
                                  p.set_step(istep);
+#endif
 #ifdef TEMP_LS
                                  t.set_step(istep);
 #endif
+#ifdef BIOT_LS
 				 p.solve_fix_stress(dt, 2000,time_ls);
+#endif
 #if defined TEMP_LS && defined BIOT_LS
                                  t.set_pressure(p.get_pressure());
 #endif
 #ifdef TEMP_LS
-                                 t.assembly(dt,time_ls);
+                                 if(istep>0) t.set_clt(true); // imposing constant temperature lateral
+				 t.assembly(dt,time_ls);
 		  	   	 t.solve(time_ls);
 #endif
                          
@@ -86,8 +97,10 @@ int main(int argc, char *argv[]) {
 // 			 	  p.assembly(dt,time_ls);
 				//   p.solve(time_ls);
 				// ===========================
+#ifdef BIOT_LS
 				 p.print(istep*dt,istep,time_ls);      
 				 p.print_crop(istep*dt,istep,time_ls);
+#endif   
 #ifdef TEMP_LS
 			 	 t.print_crop(istep*dt,istep,time_ls);
 				 t.print(istep*dt,istep,time_ls);   
