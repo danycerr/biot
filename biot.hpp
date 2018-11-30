@@ -130,7 +130,8 @@ struct problem_descriptor_tetra_3d{
 // 	std::string datafilename="resu/gigat_fp2"; 
 // 	std::string datafilename="resu/laplacedisp_pinch"; 
 //	std::string datafilename="resu/lk_hdt_ovp_disp"; //ice load and lateral injection
-	std::string datafilename="resu/lk_hdt_disp";     //ice load
+//	std::string datafilename="resu/lk_hdt_disp";     //ice load
+        std::string datafilename="resu/ringpinch_disp";
 	int nsubdiv=128; // subdivision of the sqaured mesh
 	double E=1.e+10;
 	double poisson =0.3;

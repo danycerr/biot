@@ -24,10 +24,13 @@ void biot_problem::init(void) {
 //         getfem::import_mesh("gmsh:mesh/patch_7light.msh",mesh);
 //         getfem::import_mesh("gmsh:mesh/layer_cake/bounding.msh",mesh);
 //         getfem::import_mesh("gmsh:mesh/patch_6fp2.msh",mesh);
-        getfem::import_mesh("gmsh:mesh/layer_cake/lk_fs.msh",mesh);labeled_domain=1;
-// 	getfem::import_mesh("gmsh:mesh/pichout/patch_6.msh",mesh);
+        /////////////////////////////////////////////
+// 	getfem::import_mesh("gmsh:mesh/layer_cake/lk_fs.msh",mesh);labeled_domain=1; //official lk
+// 	//////////////////////////////////////////////
+//      getfem::import_mesh("gmsh:mesh/pichout/patch_6.msh",mesh);
 // 	getfem::import_mesh("gmsh:mesh/pinchout2/patch_6e.msh",mesh);
 // 	getfem::import_mesh("gmsh:mesh/pinchout3/patch_7.msh",mesh);
+	getfem::import_mesh("gmsh:mesh/ringmeshes/pinch_2.msh",mesh);labeled_domain=1; //official lk
 // 	=============================================
 // 	if(1){
 // 	mesh.read_from_file("mesh/pinchout3/labeled_mesh_fp2"); //good pinchout
@@ -37,10 +40,10 @@ void biot_problem::init(void) {
 //         labeled_domain=1;
 // 	}
 	//refinement
-// 	{
+ 	{
 // 		// dal::bit_vector b; b.add(0);
-// 		mesh.Bank_refine(mesh.convex_index());
-// 	}
+ 		mesh.Bank_refine(mesh.convex_index());
+ 	}
 
 
 	// A trasformation for the squarred mesh
@@ -119,6 +122,7 @@ void biot_problem::gen_bc(){
 			  mesh.region(TOP).add(i.cv(), i.f());
 			else
 			  mesh.region(TOP_P).add(i.cv(), i.f());
+			mesh.region(TOP_P).add(i.cv(), i.f()); //all top iced
 		} else if ((un[N_-1] ) < -9.0E-1) {  //the bottom surface is the most sharp
 			mesh.region(BOTTOM).add(i.cv(), i.f());
 		} else if ((un[N_-2] ) < -1.0E-1) {
@@ -259,7 +263,7 @@ void biot_problem::assembly(double dt) {
 	// gmm::copy(workspace.assembled_vector(),B);
 	workspace.clear_expressions();
 
-	//Boudanry conditions // NICHE
+	//Boudanry conditions // NITSCHE
 	// getfem::base_vector penalty(1); penalty[0] = 1e+42; // 1---10
 	// workspace.add_fixed_size_constant("penalty", penalty);
 	//Matrix term
@@ -359,10 +363,12 @@ void biot_problem::assembly_p(double dt){
 	workspace.add_expression("-permeability*Kr*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, TOP_P); 
 	
 	
+#ifdef LATERAL_INJECTION
 	
 	workspace.add_expression("penalty*p*Test_p", mim, RIGHTP);
 	workspace.add_expression("-permeability*Kr*Grad_p.Normal*Test_p - permeability*Grad_Test_p.Normal*p ", mim, RIGHTP); 	
 // 	
+#endif
 	
 	
 	
@@ -524,7 +530,7 @@ void biot_problem::solve_fix_stress(double dt, int max_iter){
 			gmm::iteration iter(1.e-8);  // iteration object with the max residu
 			iter.set_noisy(1);               // output of iterations (2: sub-iteration)
 			iter.set_maxiter(1000); // maximum number of iterations
-			// gmm::gmres(Kp, P, Bp, PRp, restart, iter);
+			gmm::gmres(Kp, P, Bp, PRp, restart, iter);
 // 			amg_p_.solve(kp_csr, P , Bp , 1);
 // 			gmm::copy(amg_p_.getsol(), P);
 
@@ -559,7 +565,7 @@ void biot_problem::solve_fix_stress(double dt, int max_iter){
 			iter.set_maxiter(1000); // maximum number of iterations
 			// gmm::MatrixMarket_load("km",Ku);
 			// gmm::clear(U);
-			// gmm::gmres(Ku, U, Bu, PRu, restart, iter);
+			gmm::gmres(Ku, U, Bu, PRu, restart, iter);
 		        
 	                scalar_type cond;
 // 			amg_.solve(ku_csr, U , Bu , 1);
@@ -628,9 +634,13 @@ void biot_problem::gen_coefficient(){ // creating a coefficient
   gmm::resize(Kr_print_, mf_coef.nb_dof()); gmm::fill(Kr_print_,1);    // rhs monolithic problem
   gmm::resize(Er_print_, mf_coef.nb_dof()); gmm::fill(Er_print_,1);    // rhs monolithic problem
   std::vector<int> material; 
-  material.push_back(1);material.push_back(5);material.push_back(3);
-  std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+3);k.push_back(1.e-2);
-  std::vector<double> E; E.push_back(1.e+0);E.push_back(2.e+0);E.push_back(1.e+1);
+  // material.push_back(1);material.push_back(5);material.push_back(3); // for layerckae
+  // material.push_back(1);material.push_back(2);material.push_back(3); // for ring_pinch2
+   material.push_back(0);material.push_back(1);material.push_back(2); // for ring_pinch2
+  // std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e-4);k.push_back(1.e-0);
+  // std::vector<double> E; E.push_back(1.e+0);E.push_back(1.e+0);E.push_back(1.e+0);
+   std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+3);k.push_back(1.e-2); // lk
+   std::vector<double> E; E.push_back(1.e+0);E.push_back(2.e+0);E.push_back(1.e+1);
   
 //   std::vector<double> k; k.push_back(1);k.push_back(1.e+0);
 //   std::vector<double> E; E.push_back(1);E.push_back(1.e+0);
@@ -642,7 +652,7 @@ void biot_problem::gen_coefficient(){ // creating a coefficient
     size_type i_cv = 0;
     for (i_cv << bv_cv; i_cv != size_type(-1); i_cv << bv_cv) {
 	    getfem::mesh_fem::ind_dof_ct idofs = mf_coef.ind_basic_dof_of_element(i_cv);
-// 	    std::cout<<"Material  "<<material[imat] << " with "<< idofs.size()<<std::endl;
+ 	 //    std::cout<<"Material  "<<material[imat] << " with "<< idofs.size()<<std::endl;
       for (size_type i=0; i < idofs.size(); ++i) {
         Kr_[idofs[i]]=k[imat]; Kr_print_[(int) i_cv]=k[imat];
         Er_[idofs[i]]=E[imat];// Er_print_[i_cv]=E[imat];
@@ -650,7 +660,7 @@ void biot_problem::gen_coefficient(){ // creating a coefficient
     }
   }
   if(1){ // Just to see what elements are cut by the level set ls:
-    getfem::vtk_export vtk_data("data_gen_3mat_pinch.vtk");
+    getfem::vtk_export vtk_data("ring_data_gen_3mat_pinch.vtk");
     vtk_data.exporting(mf_coef);
     vtk_data.write_mesh();
     vtk_data.write_cell_data(Kr_print_, "K");
@@ -721,7 +731,7 @@ void biot_problem::print_aux_data(int istep){
   bgeot::pgeometric_trans pgt = 
     bgeot::geometric_trans_descriptor("GT_PK(2,1)");
   getfem::mesh mesh_htop;
-  getfem::import_mesh("gmsh:mesh/layer_cake/horizons/horizon_4.msh",mesh_htop);
+  getfem::import_mesh("gmsh:mesh/layer_cake/horizons/horizon_4.msh",mesh_htop);// layer_cake
   getfem::mesh_fem mf_top(mesh_htop);    /// the main mesh_fem, for the pressure solution
   mf_top.set_finite_element(mesh_htop.convex_index(),
       getfem::classical_fem(pgt,1));  

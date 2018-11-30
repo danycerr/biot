@@ -30,7 +30,8 @@ void temperature_problem::init(void) {
 // 	mesh.read_from_file("mesh/labeled_mesh_fp2");// layar cake
 // 	mesh.read_from_file("mesh/pichout/labeled_mesh_fp2");
 // 	mesh.read_from_file("mesh/pinchout2/labeled_mesh_fp2");
-	getfem::import_mesh("gmsh:mesh/layer_cake/lk_fs.msh",mesh);labeled_domain=1;
+	// getfem::import_mesh("gmsh:mesh/layer_cake/lk_fs.msh",mesh);labeled_domain=1; //official lk
+	getfem::import_mesh("gmsh:mesh/ringmeshes/pinch_2.msh",mesh);labeled_domain=1;
         labeled_domain=1;
 	}
 	//refinement
@@ -100,7 +101,7 @@ void temperature_problem::gen_bc(){
 		un /= gmm::vect_norm2(un);
 
 		if ((un[N_-1] ) > 4.0E-1 && (mesh.points_of_convex(i.cv())[0])[2]>3500) { // new Neumann face
-			if ((mesh.points_of_convex(i.cv())[0])[0]>5000. )
+			if ((mesh.points_of_convex(i.cv())[0])[0]>5000. && false)
 			  mesh.region(TOP).add(i.cv(), i.f());
 			else
 			  mesh.region(TOP_P).add(i.cv(), i.f());
@@ -221,7 +222,7 @@ void temperature_problem::assembly(double dt, getfem::mesh_fem& mf_pressure, std
 // 	workspace.add_expression("-permeability*Grad_T.Normal*Test_T - permeability*Grad_Test_T.Normal*T ", mim, TOP); 	
 // 	workspace.add_expression("penalty*u.Test_u" , mim, BOTTOM); //neumann disp
 
-
+        std::cout<<"temperature assembling rhs "<<std::endl;
 	//rhs term
 // 	workspace.add_expression(" 0*penalty/element_size*Test_p - permeability*Grad_Test_p.Normal*0 ", mim, LEFT);
 // 	workspace.add_expression(" 0*penalty/element_size*Test_p - permeability*Grad_Test_p.Normal*0 ", mim, RIGHT);
@@ -290,11 +291,16 @@ void temperature_problem::gen_coefficient(){ // creating a coefficient
   gmm::resize(Kr_print_, mf_coef.nb_dof()); gmm::fill(Kr_print_,1);    // rhs monolithic problem
   gmm::resize(Er_print_, mf_coef.nb_dof()); gmm::fill(Er_print_,1);    // rhs monolithic problem
   std::vector<int> material; 
-//   material.push_back(1);material.push_back(2);material.push_back(3);
-  material.push_back(1);material.push_back(5);material.push_back(3);
-  std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+3);k.push_back(1.e-2);
+   material.push_back(1);material.push_back(2);material.push_back(3); //for ring pich
+//  material.push_back(1);material.push_back(5);material.push_back(3); //for layer cake
+   
+// // // // // // //    For layer cake ////////////////////////////////
+//   std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+3);k.push_back(1.e-2);
+//   std::vector<double> E; E.push_back(1.2e+0);E.push_back(2.e+0);E.push_back(1.1e+0);
+// // // // // //  For ring pinch  
+  std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e-4);k.push_back(1.e-0);
   std::vector<double> E; E.push_back(1.2e+0);E.push_back(2.e+0);E.push_back(1.1e+0);
-  
+// // // // // // // // // // // // // // // // // // // // // //   
 //   std::vector<double> k; k.push_back(1);k.push_back(1.e+0);
 //   std::vector<double> E; E.push_back(1);E.push_back(1.e+0);
   for (int imat=0; imat< material.size();imat++){
