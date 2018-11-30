@@ -31,7 +31,8 @@ void temperature_problem::init(void) {
 // 	mesh.read_from_file("mesh/pichout/labeled_mesh_fp2");
 // 	mesh.read_from_file("mesh/pinchout2/labeled_mesh_fp2");
 	// getfem::import_mesh("gmsh:mesh/layer_cake/lk_fs.msh",mesh);labeled_domain=1; //official lk
-	getfem::import_mesh("gmsh:mesh/ringmeshes/pinch_2.msh",mesh);labeled_domain=1;
+	// getfem::import_mesh("gmsh:mesh/ringmeshes/pinch_2.msh",mesh);labeled_domain=1;
+        getfem::import_mesh("gmsh:mesh/ringmeshes/layer_cake.msh",mesh);labeled_domain=1;
         labeled_domain=1;
 	}
 	//refinement
@@ -49,7 +50,8 @@ void temperature_problem::init(void) {
 	}
 	//  if (N>1) { M(0,1) = 0; }
 	//
-// 	mesh.transformation(M);
+	M(0,0) = 1.;M(1,1) = 1.;M(2,2) = -1.; // 180degree rotation x
+	mesh.transformation(M);
 	// // End of mesh generation
 
 
@@ -100,8 +102,8 @@ void temperature_problem::gen_bc(){
 		base_node un = mesh.normal_of_face_of_convex(i.cv(), i.f());
 		un /= gmm::vect_norm2(un);
 
-		if ((un[N_-1] ) > 4.0E-1 && (mesh.points_of_convex(i.cv())[0])[2]>3500) { // new Neumann face
-			if ((mesh.points_of_convex(i.cv())[0])[0]>5000. && false)
+		if ((un[N_-1] ) > 1.0E-1 && (mesh.points_of_convex(i.cv())[0])[2]>3500) { // new Neumann face
+			if ((mesh.points_of_convex(i.cv())[0])[0]>5000. && !false)
 			  mesh.region(TOP).add(i.cv(), i.f());
 			else
 			  mesh.region(TOP_P).add(i.cv(), i.f());
@@ -298,7 +300,9 @@ void temperature_problem::gen_coefficient(){ // creating a coefficient
 //   std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+3);k.push_back(1.e-2);
 //   std::vector<double> E; E.push_back(1.2e+0);E.push_back(2.e+0);E.push_back(1.1e+0);
 // // // // // //  For ring pinch  
-  std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e-4);k.push_back(1.e-0);
+ //  std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e-4);k.push_back(1.e-0);
+  
+  std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+3);k.push_back(1.e-2); // lk
   std::vector<double> E; E.push_back(1.2e+0);E.push_back(2.e+0);E.push_back(1.1e+0);
 // // // // // // // // // // // // // // // // // // // // // //   
 //   std::vector<double> k; k.push_back(1);k.push_back(1.e+0);

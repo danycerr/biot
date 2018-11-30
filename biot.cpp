@@ -26,11 +26,13 @@ void biot_problem::init(void) {
 //         getfem::import_mesh("gmsh:mesh/patch_6fp2.msh",mesh);
         /////////////////////////////////////////////
 // 	getfem::import_mesh("gmsh:mesh/layer_cake/lk_fs.msh",mesh);labeled_domain=1; //official lk
-// 	//////////////////////////////////////////////
+	getfem::import_mesh("gmsh:mesh/ringmeshes/layer_cake.msh",mesh);labeled_domain=1; //official lk
+
+	// 	//////////////////////////////////////////////
 //      getfem::import_mesh("gmsh:mesh/pichout/patch_6.msh",mesh);
 // 	getfem::import_mesh("gmsh:mesh/pinchout2/patch_6e.msh",mesh);
 // 	getfem::import_mesh("gmsh:mesh/pinchout3/patch_7.msh",mesh);
-	getfem::import_mesh("gmsh:mesh/ringmeshes/pinch_2.msh",mesh);labeled_domain=1; //official lk
+// 	getfem::import_mesh("gmsh:mesh/ringmeshes/pinch_2.msh",mesh);labeled_domain=1; //official lk
 // 	=============================================
 // 	if(1){
 // 	mesh.read_from_file("mesh/pinchout3/labeled_mesh_fp2"); //good pinchout
@@ -53,8 +55,9 @@ void biot_problem::init(void) {
 		M(i,i) = 1.e+4;
 	}
 	//  if (N>1) { M(0,1) = 0; }
+	M(0,0) = 1.;M(1,1) = 1.;M(2,2) = -1.; // 180degree rotation x
+	mesh.transformation(M);
 	//
-// 	mesh.transformation(M);
 	// // End of mesh generation
 
 
@@ -122,7 +125,7 @@ void biot_problem::gen_bc(){
 			  mesh.region(TOP).add(i.cv(), i.f());
 			else
 			  mesh.region(TOP_P).add(i.cv(), i.f());
-			mesh.region(TOP_P).add(i.cv(), i.f()); //all top iced
+			// mesh.region(TOP_P).add(i.cv(), i.f()); //all top iced
 		} else if ((un[N_-1] ) < -9.0E-1) {  //the bottom surface is the most sharp
 			mesh.region(BOTTOM).add(i.cv(), i.f());
 		} else if ((un[N_-2] ) < -1.0E-1) {

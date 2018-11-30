@@ -130,7 +130,7 @@ struct problem_T_descriptor_tetra_3d{
 // 	std::string datafilename="resu/cerbero_fp";
 // 	std::string datafilename="resu/laplacetemp_pinch";
 // 	std::string datafilename="resu/lk_hdt_ovp_temp";
-	std::string datafilename="resu/ringpinch_temp"; 
+	std::string datafilename="resu/ringlk_temp"; 
 	int nsubdiv=6; // subdivision of the sqaured mesh
 	double diff=1.e+0;
 	double E=1.e-15;
