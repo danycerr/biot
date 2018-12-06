@@ -23,7 +23,7 @@ void biot_problem::init(void) {
 // =============================================================
 //         getfem::import_mesh("gmsh:mesh/patch_7light.msh",mesh);
 //         getfem::import_mesh("gmsh:mesh/layer_cake/bounding.msh",mesh);
-//         getfem::import_mesh("gmsh:mesh/patch_6fp2.msh",mesh);
+       //  getfem::import_mesh("gmsh:mesh/patch_6fp2.msh",mesh);
         /////////////////////////////////////////////
 // 	getfem::import_mesh("gmsh:mesh/layer_cake/lk_fs.msh",mesh);labeled_domain=1; //official lk
 	getfem::import_mesh("gmsh:mesh/ringmeshes/layer_cake.msh",mesh);labeled_domain=1; //official lk
@@ -35,11 +35,11 @@ void biot_problem::init(void) {
 // 	getfem::import_mesh("gmsh:mesh/ringmeshes/pinch_2.msh",mesh);labeled_domain=1; //official lk
 // 	=============================================
 // 	if(1){
-// 	mesh.read_from_file("mesh/pinchout3/labeled_mesh_fp2"); //good pinchout
-// // 	mesh.read_from_file("mesh/pinchout2/labeled_mesh_fp2");
-// // 	mesh.read_from_file("mesh/pichout/labeled_mesh_fp2");
-// // 	mesh.read_from_file("mesh/labeled_mesh_fp2");// layar cake
-//         labeled_domain=1;
+// //  	 mesh.read_from_file("mesh/pinchout3/labeled_mesh_fp2"); //good pinchout
+// //	mesh.read_from_file("mesh/pinchout2/labeled_mesh_fp2");
+//  	mesh.read_from_file("mesh/pichout/labeled_mesh_fp2");
+// 	mesh.read_from_file("mesh/labeled_mesh_fp2");// layar cake
+         labeled_domain=1;
 // 	}
 	//refinement
  	{
@@ -642,11 +642,20 @@ void biot_problem::gen_coefficient(){ // creating a coefficient
    material.push_back(0);material.push_back(1);material.push_back(2); // for ring_pinch2
   // std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e-4);k.push_back(1.e-0);
   // std::vector<double> E; E.push_back(1.e+0);E.push_back(1.e+0);E.push_back(1.e+0);
-   std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+3);k.push_back(1.e-2); // lk
-   std::vector<double> E; E.push_back(1.e+0);E.push_back(2.e+0);E.push_back(1.e+1);
-  
+   /////////////////////////////////////////////////////////////////////////////////////////
+//    std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+3);k.push_back(1.e-2); // pinch trimat
+//    std::vector<double> E; E.push_back(1.e+0);E.push_back(2.e+0);E.push_back(1.e+1);
+  //////////////////ring mesh layer cake 
+   std::vector<double> k;k.push_back(1.e+3);k.push_back(1.e-2); k.push_back(1.e-0); // 
+  std::vector<double> E;E.push_back(2.e+0);E.push_back(1.e+1); E.push_back(1.e+0);
+   ///////////////////////////////////////////////////
+     //////////////////mesh cgal cake
+//   std::vector<double> k;k.push_back(1.e-2);k.push_back(1.e-0);k.push_back(1.e+3);  // 
+//    std::vector<double> E;E.push_back(1.e+1);E.push_back(1.e+0);E.push_back(2.e+0); 
+   ///////////////////////////////////////////////////
 //   std::vector<double> k; k.push_back(1);k.push_back(1.e+0);
 //   std::vector<double> E; E.push_back(1);E.push_back(1.e+0);
+/////////////////layercacke from cgal
   for (int imat=0; imat< material.size();imat++)
 //   int imat=2;
   {
@@ -663,7 +672,8 @@ void biot_problem::gen_coefficient(){ // creating a coefficient
     }
   }
   if(1){ // Just to see what elements are cut by the level set ls:
-    getfem::vtk_export vtk_data("ring_data_gen_3mat_pinch.vtk");
+    // getfem::vtk_export vtk_data("ring_data_gen_3mat_pinch.vtk");
+    getfem::vtk_export vtk_data("pinch_cgal_3mat.vtk");
     vtk_data.exporting(mf_coef);
     vtk_data.write_mesh();
     vtk_data.write_cell_data(Kr_print_, "K");
@@ -676,7 +686,7 @@ void biot_problem::gen_coefficient(){ // creating a coefficient
 // routine for the labeling mesh
 //============================================
 void biot_problem::mesh_labeling(){
-//   horizon h  ("mesh/layer_cake/mesh_horizon_2.msh");
+//    horizon h  ("mesh/layer_cake/mesh_horizon_2.msh");
 //   horizon h3 ("mesh/layer_cake/mesh_horizon_3.msh");
 //=======================================================
 //   horizon h  ("mesh/pichout/pinched_horizon_2.msh");
@@ -684,6 +694,7 @@ void biot_problem::mesh_labeling(){
 //=======================================================
 //   horizon h  ("mesh/pinchout2/mesh_pinched_horizon_1.msh");
 //=======================================================
+//=============pinchout====================
   horizon h3  ("mesh/pinchout3/pinched_horizon_0.msh");
   horizon h ("mesh/pinchout3/pinched_crop_large_horizon_1.msh");
 //=======================================================
@@ -730,14 +741,28 @@ void biot_problem::mesh_labeling(){
 
 // Method for printing auxiliar data
 void biot_problem::print_aux_data(int istep){
-  std::cout<<"Start printing auxiliar data function"<< std::endl;
-  bgeot::pgeometric_trans pgt = 
-    bgeot::geometric_trans_descriptor("GT_PK(2,1)");
-  getfem::mesh mesh_htop;
-  getfem::import_mesh("gmsh:mesh/layer_cake/horizons/horizon_4.msh",mesh_htop);// layer_cake
+ std::cout<<"Start printing auxiliar data function"<< std::endl;
+ bgeot::pgeometric_trans pgt = 
+ bgeot::geometric_trans_descriptor("GT_PK(2,1)");
+ getfem::mesh mesh_htop;
+ // getfem::import_mesh("gmsh:mesh/layer_cake/horizons/horizon_4.msh",mesh_htop);// layer_cake
+ getfem::mesh_region &rg = mesh.region(TOP_P);
+ for (getfem::mr_visitor i(rg); !i.finished(); ++i) {
+   std::vector<bgeot::base_node> nodel;
+if (i.is_face()) {
+  for(int ip=0;ip<mesh.structure_of_convex(i.cv())->ind_points_of_face(i.f()).size(); ip++){
+  nodel.push_back(mesh.points_of_convex(i.cv())
+       [mesh.structure_of_convex(i.cv())->ind_points_of_face(i.f())[ip]]);
+  }
+}
+ mesh_htop.add_convex_by_points(bgeot::simplex_geotrans(2,1),nodel.begin());
+ }
   getfem::mesh_fem mf_top(mesh_htop);    /// the main mesh_fem, for the pressure solution
   mf_top.set_finite_element(mesh_htop.convex_index(),
-      getfem::classical_fem(pgt,1));  
+      getfem::classical_fem(pgt,1)); 
+  
+  
+  
   {
   std::vector<scalar_type> over_p; // permeability ratio
   gmm::resize(over_p, mf_p.nb_dof()); gmm::fill(over_p,overpres_[0]);    // rhs monolithic problem
@@ -749,7 +774,8 @@ void biot_problem::print_aux_data(int istep){
   }  
   {
   std::vector<scalar_type> over_p; // permeability ratio
-  gmm::resize(over_p, mf_top.nb_dof()); gmm::fill(over_p,overpres_[0]);    // rhs monolithic problem
+  gmm::resize(over_p, mf_top.nb_dof()); gmm::fill(over_p,overpres_[0]);
+  
   std::string namefile= p_des.datafilename +".topaux." +  std::to_string(istep) +".vtk";
   getfem::vtk_export vtkd(namefile);
   vtkd.exporting(mf_top);vtkd.write_mesh();

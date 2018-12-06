@@ -75,18 +75,19 @@ int main(int argc, char *argv[]) {
 				{ // classic biot
 				         
 #ifdef TEMPERATURE
-                                          t.set_iter(istep);
-				          t.assembly(dt, p.get_pressure_fem(), p.get_pressure());
-				          t.solve();
-					  t.print(istep);
+                                          // t.set_iter(istep);
+				          // t.assembly(dt, p.get_pressure_fem(), p.get_pressure());
+				          // t.solve();
+					  // t.print(istep);
 #endif
 				          p.set_iter(istep);
-					  if(istep!=0) p.solve_fix_stress(dt, 100); // 100
-					  else  p.solve_fix_stress(dt, 5); //5
+					  p.assembly_p(dt);//dummy assembling just for ice
+					  // if(istep!=0) p.solve_fix_stress(dt, 100); // 100
+					  // else  p.solve_fix_stress(dt, 5); //5
 					  // p.assembly(dt);
 					  // p.solve();
-					  p.print(istep);
-                                         // p.print_aux_data(istep);
+					  // p.print(istep);
+                                          p.print_aux_data(istep);
 				}
 #endif
 // //==================================================//

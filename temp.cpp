@@ -302,8 +302,12 @@ void temperature_problem::gen_coefficient(){ // creating a coefficient
 // // // // // //  For ring pinch  
  //  std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e-4);k.push_back(1.e-0);
   
-  std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+3);k.push_back(1.e-2); // lk
-  std::vector<double> E; E.push_back(1.2e+0);E.push_back(2.e+0);E.push_back(1.1e+0);
+  // std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+3);k.push_back(1.e-2); // pinch trimat
+//   std::vector<double> E; E.push_back(1.2e+0);E.push_back(2.e+0);E.push_back(1.1e+0);
+    //////////////////ring mesh layer cake
+   std::vector<double> k;k.push_back(1.e+3);k.push_back(1.e-2); k.push_back(1.e-0); // pinch trimat
+   std::vector<double> E;E.push_back(2.e+0);E.push_back(1.1e+0); E.push_back(1.2e+0); 
+  
 // // // // // // // // // // // // // // // // // // // // // //   
 //   std::vector<double> k; k.push_back(1);k.push_back(1.e+0);
 //   std::vector<double> E; E.push_back(1);E.push_back(1.e+0);

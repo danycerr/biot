@@ -136,7 +136,7 @@ bool horizon::is_in (std::vector<double>  pt, std::vector<double>  v1, std::vect
     n[1]/=modn;
     n[2]/=modn;
     double d=-(n[0]*p[0] + n[1]*p[1]+n[2]*p[2]);
-   std::cout<< "normale "<< n[0]<< " "<< n[1]<< " "<< n[2]<< std::endl;  
+//    std::cout<< "normale "<< n[0]<< " "<< n[1]<< " "<< n[2]<< std::endl;  
 //    if(n[0]*pt[0] + n[1]*pt[1]+n[2]*pt[2] + d < 0)
 //     return 1;
 //    else
