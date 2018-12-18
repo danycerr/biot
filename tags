@@ -1,0 +1,860 @@
+$(FIN_EXEC	Makefile	/^$(FIN_EXEC): $(OBJS)$/
+%.cpp	Makefile	/^%.cpp: %.hpp$/
+%.o	Makefile	/^%.o: %.cpp config.mk$/
+.PHONY	Makefile	/^.PHONY: all clean resu_clean $/
+AMG	AMG_Interface.hpp	19
+AMG::AMG	AMG_Interface.cpp	/^AMG::AMG(std::string name)$/
+AMG::_Pt	AMG_Interface.hpp	25
+AMG::_Pv	AMG_Interface.hpp	25
+AMG::_Ut	AMG_Interface.hpp	25
+AMG::_Uv	AMG_Interface.hpp	25
+AMG::_l_dof	AMG_Interface.hpp	24
+AMG::_npts	AMG_Interface.hpp	26
+AMG::_pt2uk	AMG_Interface.hpp	22
+AMG::_q_dof	AMG_Interface.hpp	23
+AMG::a_samg_	AMG_Interface.hpp	29
+AMG::convert_matrix	AMG_Interface.cpp	/^void AMG::convert_matrix(gmm::csr_matrix<scalar_ty/
+AMG::first_	AMG_Interface.hpp	28
+AMG::getsol	AMG_Interface.hpp	/^  std::vector<scalar_type> getsol(){return sol_vec/
+AMG::ia_samg_	AMG_Interface.hpp	31
+AMG::idx_	AMG_Interface.hpp	27
+AMG::ja_samg_	AMG_Interface.hpp	30
+AMG::nna_	AMG_Interface.hpp	32
+AMG::nnu_	AMG_Interface.hpp	32
+AMG::set_dof	AMG_Interface.cpp	/^void AMG::set_dof(int pt , int ut, int pv, int uv)/
+AMG::set_pt2uk	AMG_Interface.cpp	/^void AMG::set_pt2uk(int * dofpt , int q_dof, int l/
+AMG::setid	AMG_Interface.hpp	/^  inline void setid(int id){idx_=id; $/
+AMG::sol_vec	AMG_Interface.hpp	21
+AMG::solve	AMG_Interface.cpp	/^void AMG::solve(gmm::csr_matrix<scalar_type> A_csr/
+AMG::~AMG	AMG_Interface.cpp	/^AMG::~AMG(void) {$/
+APPL_INT	AMG_Interface.hpp	14
+BIOTLS_H	biot_ls.hpp	2
+BIOT_H	biot.hpp	2
+BIOT_LS	main.cpp	7
+BIOT_PRECOND_HS	biot_precond.hpp	2
+Copyright	LICENSE	/^ Copyright (C) 2007 Free Software Foundation, Inc./
+DISP_PRECOND_PARAM	biot_ls.cpp	5
+DISP_PRECOND_PARAM	temp_ls.cpp	5
+December	LICENSE	183
+E	biot.o	27
+E	lev_set	59
+E	temp.o	21
+E	temp_ls.o	49
+FIN_EXEC	Makefile	/^FIN_EXEC=lev_set$/
+Foundation	LICENSE	639
+GMM_FIX_HPP_	gmm_fix.hpp	2
+H	lev_set	64
+H	lev_set	/^˝ˇHãï ˛ˇˇHãÖ(˛ˇˇATSHâ÷Hâ«Ë)n$/
+HDRS	Makefile	/^HDRS=$(wildcard *.hpp)$/
+HORIZONHF	horizon.hpp	2
+H_PARAM	biot_ls.cpp	7
+H_PARAM	temp_ls.cpp	7
+However	LICENSE	415
+Hâ	biot.o	27
+Hâ	lev_set	59
+Hâ	temp.o	21
+Hâ	temp_ls.o	49
+HâHãJHâHHãRHâPHãE¯	biot.o	86
+HâHãJHâHHãRHâPHãE¯	horizon.o	15
+HâHãJHâHHãRHâPHãE¯	lev_set	35
+HâHãJHâHHãRHâPHãE¯	temp.o	65
+HâHãJHâHHãRHâPHãE¯	temp_ls.o	127
+HâE¯HçU¯	temp_ls.o	135
+HâuHâUËHâM‡HãE¯HãUHâHãEËH	biot.o	27
+HâuHâUËHâM‡HãE¯HãUHâHãEËH	lev_set	59
+HâuHâUËHâM‡HãE¯HãUHâHãEËH	temp.o	21
+HâuHâUËHâM‡HãE¯HãUHâHãEËH	temp_ls.o	49
+Hâ¬Hã	lev_set	64
+Hã	temp_ls.o	129
+HãE	lev_set	38
+HãE¯∑@	biot.o	93
+HãE¯∑@	temp.o	72
+HãE¯HÉ¿P	temp_ls.o	54
+Hç	lev_set	68
+HçÖ	lev_set	56
+HçÖ	lev_set	89
+Kf	prec.m	3
+LS_TYPE	biot_ls.hpp	63
+LS_TYPE	temp_ls.hpp	65
+LUMP_SHUR	momentum_precond.hpp	19
+License	LICENSE	639
+MOMENUTM_PRECOND_HS	momentum_precond.hpp	2
+Mmain.cpp	main.cpp	/^int main(int argc, char *argv[]) {$/
+OBJS	Makefile	/^OBJS=$(SRCS:.cpp=.o)$/
+P	prec.m	8
+PDES_H	prob_descriptor.hpp	3
+SAMG	configure.sh	15
+SOLVE_A	biot_precond.hpp	15
+SOLVE_A_MOMENTUM	momentum_precond.hpp	16
+SOLVE_SHUR	biot_precond.hpp	16
+SRCS	Makefile	/^SRCS=$(wildcard *.cpp)$/
+TEMPLS_H	temp_ls.hpp	2
+TEMP_H	temp.hpp	2
+TEMP_LS	main.cpp	8
+Version	LICENSE	2
+aamg	AMG_Interface.hpp	3
+all	Makefile	/^all: $(FIN_EXEC)$/
+b_box_	horizon.cpp	20
+b_box_	horizon.cpp	20
+b_box_	horizon.cpp	21
+b_box_	horizon.cpp	21
+bgeot::base_node	biot.hpp	52
+bgeot::base_node	biot_ls.hpp	52
+bgeot::base_node	temp.hpp	52
+bgeot::base_node	temp_ls.hpp	53
+bgeot::base_small_vector	biot.hpp	51
+bgeot::base_small_vector	biot_ls.hpp	51
+bgeot::base_small_vector	temp.hpp	51
+bgeot::base_small_vector	temp_ls.hpp	52
+bgeot::base_tensor	biot_ls.hpp	56
+bgeot::base_tensor	temp_ls.hpp	57
+bgeot::dim_type	biot.hpp	55
+bgeot::dim_type	biot_ls.hpp	55
+bgeot::dim_type	temp.hpp	55
+bgeot::dim_type	temp_ls.hpp	56
+bgeot::scalar_type	AMG_Interface.hpp	17
+bgeot::scalar_type	biot.hpp	53
+bgeot::scalar_type	biot_ls.hpp	53
+bgeot::scalar_type	momentum_precond.hpp	28
+bgeot::scalar_type	temp.hpp	53
+bgeot::scalar_type	temp_ls.hpp	54
+bgeot::size_type	biot.hpp	54
+bgeot::size_type	biot_ls.hpp	54
+bgeot::size_type	temp.hpp	54
+bgeot::size_type	temp_ls.hpp	55
+biot_precond	biot_precond.hpp	28
+biot_precond	biot_precond.hpp	/^biot_precond<MATRIX>::biot_precond(MATRIX &A, MATR/
+biot_precond::A_	biot_precond.hpp	150
+biot_precond::S_	biot_precond.hpp	153
+biot_precond::amg_	biot_precond.hpp	157
+biot_precond::idx	biot_precond.hpp	155
+biot_precond::mult	biot_precond.hpp	/^    void mult(const L2 &src, L3 &dst) const$/
+biot_precond::n1_x	biot_precond.hpp	154
+biot_precond::n2_x	biot_precond.hpp	154
+biot_precond::ncols	biot_precond.hpp	/^    getfem::size_type ncols() const {$/
+biot_precond::nrows	biot_precond.hpp	/^    getfem::size_type nrows() const {$/
+biot_precond::pA_	biot_precond.hpp	151
+biot_precond::pS_	biot_precond.hpp	152
+biot_precond::slu_	biot_precond.hpp	160
+biot_precond::slup_	biot_precond.hpp	163
+biot_problem	biot.hpp	152
+biot_problem::B	biot.hpp	172
+biot_problem::BOTTOM	biot.hpp	163
+biot_problem::Bp	biot.hpp	174
+biot_problem::Bu	biot.hpp	174
+biot_problem::DIRICHLET_BOUNDARY_NUM	biot.hpp	162
+biot_problem::Er_	biot.hpp	178
+biot_problem::Er_print_	biot.hpp	180
+biot_problem::K	biot.hpp	170
+biot_problem::Kp	biot.hpp	173
+biot_problem::Kr_	biot.hpp	177
+biot_problem::Kr_print_	biot.hpp	179
+biot_problem::Ku	biot.hpp	173
+biot_problem::LEFT	biot.hpp	163
+biot_problem::LEFTX	biot.hpp	163
+biot_problem::NEUMANN_BOUNDARY_NUM	biot.hpp	162
+biot_problem::N_	biot.hpp	164
+biot_problem::P	biot.hpp	171
+biot_problem::P_iter	biot.hpp	174
+biot_problem::P_old	biot.hpp	172
+biot_problem::RIGHT	biot.hpp	163
+biot_problem::RIGHTX	biot.hpp	163
+biot_problem::TOP	biot.hpp	163
+biot_problem::U	biot.hpp	171
+biot_problem::UP	biot.hpp	172
+biot_problem::U_iter	biot.hpp	174
+biot_problem::U_old	biot.hpp	171
+biot_problem::alpha_	biot.hpp	168
+biot_problem::assembly	biot.cpp	/^void biot_problem::assembly(double dt) {$/
+biot_problem::assembly_p	biot.cpp	/^void biot_problem::assembly_p(double dt){$/
+biot_problem::assembly_u	biot.cpp	/^	void biot_problem::assembly_u(double dt){$/
+biot_problem::bPR_	biot.hpp	175
+biot_problem::beta_	biot.hpp	167
+biot_problem::biot_problem	biot.hpp	/^		biot_problem(void): mim(mesh), mf_u(mesh), mf_rh/
+biot_problem::bm_	biot.hpp	167
+biot_problem::build_fix_stress_preconditioner	biot.cpp	/^void biot_problem::build_fix_stress_preconditioner/
+biot_problem::configure_workspace	biot.cpp	/^void biot_problem::configure_workspace(getfem::ga_/
+biot_problem::force_	biot.hpp	168
+biot_problem::gen_bc	biot.cpp	/^void biot_problem::gen_bc(){$/
+biot_problem::gen_coefficient	biot.cpp	/^void biot_problem::gen_coefficient(){ \/\/ creating /
+biot_problem::get_pressure	biot.hpp	/^                inline std::vector<scalar_type>& g/
+biot_problem::get_pressure_fem	biot.hpp	/^		inline getfem::mesh_fem& get_pressure_fem(){retu/
+biot_problem::init	biot.cpp	/^void biot_problem::init(void) {$/
+biot_problem::lambda_	biot.hpp	167
+biot_problem::mesh	biot.hpp	154
+biot_problem::mesh_labeling	biot.cpp	/^void biot_problem::mesh_labeling(){$/
+biot_problem::mf_coef	biot.hpp	159
+biot_problem::mf_p	biot.hpp	157
+biot_problem::mf_rhs	biot.hpp	158
+biot_problem::mf_u	biot.hpp	156
+biot_problem::mim	biot.hpp	155
+biot_problem::p_des	biot.hpp	160
+biot_problem::penalty_	biot.hpp	168
+biot_problem::permeability_	biot.hpp	168
+biot_problem::print	biot.cpp	/^void biot_problem::print(int time){$/
+biot_problem::solve	biot.cpp	/^void biot_problem::solve(){$/
+biot_problem::solve_fix_stress	biot.cpp	/^void biot_problem::solve_fix_stress(double dt, int/
+biot_problem::tau_	biot.hpp	167
+biot_problem::vmu_	biot.hpp	167
+biotls_problem	biot_ls.hpp	167
+biotls_problem::B	biot_ls.hpp	205
+biotls_problem::BOTTOM	biot_ls.hpp	194
+biotls_problem::Bp	biot_ls.hpp	207
+biotls_problem::Bu	biot_ls.hpp	207
+biotls_problem::CUT_EDGE	biot_ls.hpp	195
+biotls_problem::CUT_REGION	biot_ls.hpp	195
+biotls_problem::DIRICHLET_BOUNDARY_NUM	biot_ls.hpp	193
+biotls_problem::Er_	biot_ls.hpp	211
+biotls_problem::K	biot_ls.hpp	203
+biotls_problem::Kp	biot_ls.hpp	206
+biotls_problem::Kr_	biot_ls.hpp	210
+biotls_problem::Ku	biot_ls.hpp	206
+biotls_problem::LEFT	biot_ls.hpp	194
+biotls_problem::LEFTX	biot_ls.hpp	194
+biotls_problem::MAT_1	biot_ls.hpp	196
+biotls_problem::MAT_2	biot_ls.hpp	196
+biotls_problem::NEUMANN_BOUNDARY_NUM	biot_ls.hpp	193
+biotls_problem::N_	biot_ls.hpp	197
+biotls_problem::P	biot_ls.hpp	204
+biotls_problem::P_iter	biot_ls.hpp	207
+biotls_problem::P_old	biot_ls.hpp	205
+biotls_problem::Px	biot_ls.hpp	204
+biotls_problem::RIGHT	biot_ls.hpp	194
+biotls_problem::RIGHTX	biot_ls.hpp	194
+biotls_problem::TOP	biot_ls.hpp	194
+biotls_problem::U	biot_ls.hpp	204
+biotls_problem::UNCUT_REGION	biot_ls.hpp	195
+biotls_problem::UNCUT_REGION_IN	biot_ls.hpp	195
+biotls_problem::UNCUT_REGION_OUT	biot_ls.hpp	195
+biotls_problem::UP	biot_ls.hpp	205
+biotls_problem::U_iter	biot_ls.hpp	207
+biotls_problem::U_old	biot_ls.hpp	204
+biotls_problem::alpha_	biot_ls.hpp	201
+biotls_problem::assembly	biot_ls.cpp	/^void biotls_problem::assembly(double dt,double tim/
+biotls_problem::assembly	biot_lscpp_orig	/^void biotls_problem::assembly(double dt) {$/
+biotls_problem::assembly_p	biot_ls.cpp	/^void biotls_problem::assembly_p(double dt, double /
+biotls_problem::assembly_p	biot_lscpp_orig	/^void biotls_problem::assembly_p(double dt){$/
+biotls_problem::assembly_u	biot_lscpp_orig	/^void biotls_problem::assembly_u(double dt){$/
+biotls_problem::bPR_	biot_ls.hpp	208
+biotls_problem::beta_	biot_ls.hpp	200
+biotls_problem::biotls_problem	biot_ls.hpp	/^		biotls_problem(void): mim(mesh), mf_u(mesh), mf_/
+biotls_problem::bm_	biot_ls.hpp	200
+biotls_problem::build_fix_stress_preconditioner	biot_ls.cpp	/^void biotls_problem::build_fix_stress_precondition/
+biotls_problem::build_fix_stress_preconditioner	biot_lscpp_orig	/^void biotls_problem::build_fix_stress_precondition/
+biotls_problem::c1_	biot_ls.hpp	201
+biotls_problem::c2_	biot_ls.hpp	201
+biotls_problem::compute_normal_2_ls	biot_ls.cpp	/^void biotls_problem::compute_normal_2_ls(){$/
+biotls_problem::configure_workspace	biot_ls.cpp	/^void biotls_problem::configure_workspace(getfem::g/
+biotls_problem::configure_workspace	biot_lscpp_orig	/^void biotls_problem::configure_workspace(getfem::g/
+biotls_problem::eXt_dof	biot_ls.hpp	186
+biotls_problem::eXt_dof_u	biot_ls.hpp	186
+biotls_problem::force_	biot_ls.hpp	201
+biotls_problem::gen_bc	biot_ls.cpp	/^void biotls_problem::gen_bc(){$/
+biotls_problem::gen_bc	biot_lscpp_orig	/^void biotls_problem::gen_bc(){$/
+biotls_problem::gen_coefficient	biot_ls.cpp	/^void biotls_problem::gen_coefficient(){ \/\/ creatin/
+biotls_problem::gen_mat	biot_ls.cpp	/^void biotls_problem::gen_mat(){$/
+biotls_problem::get_pressure	biot_ls.cpp	/^std::vector<scalar_type> biotls_problem::get_press/
+biotls_problem::init	biot_ls.cpp	/^void biotls_problem::init(void) {$/
+biotls_problem::init	biot_lscpp_orig	/^void biotls_problem::init(void) {$/
+biotls_problem::lambda_	biot_ls.hpp	200
+biotls_problem::ls	biot_ls.hpp	177
+biotls_problem::ls_function	biot_lscpp_orig	/^  base_small_vector biotls_problem::ls_function(co/
+biotls_problem::mesh	biot_ls.hpp	169
+biotls_problem::mesh_ls	biot_ls.hpp	179
+biotls_problem::mf_coef	biot_ls.hpp	174
+biotls_problem::mf_coef_v	biot_ls.hpp	175
+biotls_problem::mf_p	biot_ls.hpp	172
+biotls_problem::mf_rhs	biot_ls.hpp	173
+biotls_problem::mf_u	biot_ls.hpp	171
+biotls_problem::mfls	biot_ls.hpp	184
+biotls_problem::mfls_p	biot_ls.hpp	184
+biotls_problem::mfls_u	biot_ls.hpp	184
+biotls_problem::mim	biot_ls.hpp	170
+biotls_problem::mim_ls_all	biot_ls.hpp	180
+biotls_problem::mim_ls_bd	biot_ls.hpp	183
+biotls_problem::mim_ls_in	biot_ls.hpp	181
+biotls_problem::mim_ls_out	biot_ls.hpp	182
+biotls_problem::mls	biot_ls.hpp	178
+biotls_problem::nb_x_dof_p	biot_ls.hpp	189
+biotls_problem::nb_x_dof_u	biot_ls.hpp	189
+biotls_problem::normal_ls_v	biot_ls.hpp	212
+biotls_problem::over_p_	biot_ls.hpp	201
+biotls_problem::p_des	biot_ls.hpp	191
+biotls_problem::penalty_	biot_ls.hpp	201
+biotls_problem::permeability_	biot_ls.hpp	201
+biotls_problem::pin_index_	biot_ls.hpp	187
+biotls_problem::pout_index_	biot_ls.hpp	187
+biotls_problem::print	biot_lscpp_orig	/^void biotls_problem::print(int time){$/
+biotls_problem::print_crop	biot_ls.cpp	/^void biotls_problem::print_crop(double time,int is/
+biotls_problem::print_ls	biot_ls.cpp	/^void biotls_problem::print_ls(double time,int iste/
+biotls_problem::print_pattern	biot_ls.cpp	/^void biotls_problem::print_pattern(int iter){$/
+biotls_problem::set_step	biot_ls.hpp	/^                void set_step(int step){step_=step/
+biotls_problem::solve	biot_lscpp_orig	/^void biotls_problem::solve(){$/
+biotls_problem::solve_fix_stress	biot_lscpp_orig	/^void biotls_problem::solve_fix_stress(double dt, i/
+biotls_problem::step_	biot_ls.hpp	213
+biotls_problem::tau_	biot_ls.hpp	200
+biotls_problem::time_iter_	biot_ls.hpp	198
+biotls_problem::uin_index_	biot_ls.hpp	188
+biotls_problem::uout_index_	biot_ls.hpp	188
+biotls_problem::update_ls	biot_ls.cpp	/^void biotls_problem::update_ls(double time, int it/
+biotls_problem::update_ls	biot_lscpp_orig	/^void biotls_problem::update_ls(double time){$/
+biotls_problem::update_p_index	biot_ls.cpp	/^void biotls_problem::update_p_index(double time_ls/
+biotls_problem::update_time_iter	biot_ls.hpp	/^		void update_time_iter(int a){time_iter_=a;}$/
+biotls_problem::update_u_index	biot_ls.cpp	/^void biotls_problem::update_u_index(double time_ls/
+biotls_problem::vmu_	biot_ls.hpp	200
+break	biot_ls.cpp	1513
+break	biot_ls.cpp	1527
+break	biot_ls.cpp	1532
+bv_cv	horizon.cpp	24
+case	biot_ls.cpp	1529
+clean	Makefile	/^clean:$/
+code	LICENSE	201
+col_sparse_matrix_type	biot.hpp	59
+col_sparse_matrix_type	biot_ls.hpp	60
+col_sparse_matrix_type	temp.hpp	59
+col_sparse_matrix_type	temp_ls.hpp	61
+cond	prec.m	/^cond(Kf)$/
+course	LICENSE	661
+cv	biot_ls.cpp	1406
+different	LICENSE	662
+enforcing	LICENSE	191
+freedom	LICENSE	22
+generic_problem_descriptor_quad	prob_descriptor.hpp	33
+generic_problem_descriptor_quad::E	prob_descriptor.hpp	42
+generic_problem_descriptor_quad::FEM_TYPE_P	prob_descriptor.hpp	36
+generic_problem_descriptor_quad::FEM_TYPE_U	prob_descriptor.hpp	35
+generic_problem_descriptor_quad::INTEGRATION	prob_descriptor.hpp	37
+generic_problem_descriptor_quad::MESH_TYPE	prob_descriptor.hpp	34
+generic_problem_descriptor_quad::SIMPLEX_INTEGRATION	prob_descriptor.hpp	38
+generic_problem_descriptor_quad::alpha	prob_descriptor.hpp	48
+generic_problem_descriptor_quad::biot_modulus	prob_descriptor.hpp	46
+generic_problem_descriptor_quad::datafilename	prob_descriptor.hpp	39
+generic_problem_descriptor_quad::k	prob_descriptor.hpp	47
+generic_problem_descriptor_quad::lambda_l	prob_descriptor.hpp	45
+generic_problem_descriptor_quad::mu_s	prob_descriptor.hpp	44
+generic_problem_descriptor_quad::noised	prob_descriptor.hpp	41
+generic_problem_descriptor_quad::nsubdiv	prob_descriptor.hpp	40
+generic_problem_descriptor_quad::poisson	prob_descriptor.hpp	43
+generic_problem_descriptor_quad_3d	prob_descriptor.hpp	51
+generic_problem_descriptor_quad_3d::E	prob_descriptor.hpp	60
+generic_problem_descriptor_quad_3d::FEM_TYPE_P	prob_descriptor.hpp	54
+generic_problem_descriptor_quad_3d::FEM_TYPE_U	prob_descriptor.hpp	53
+generic_problem_descriptor_quad_3d::INTEGRATION	prob_descriptor.hpp	55
+generic_problem_descriptor_quad_3d::MESH_TYPE	prob_descriptor.hpp	52
+generic_problem_descriptor_quad_3d::SIMPLEX_INTEGRATION	prob_descriptor.hpp	56
+generic_problem_descriptor_quad_3d::alpha	prob_descriptor.hpp	66
+generic_problem_descriptor_quad_3d::biot_modulus	prob_descriptor.hpp	64
+generic_problem_descriptor_quad_3d::datafilename	prob_descriptor.hpp	57
+generic_problem_descriptor_quad_3d::k	prob_descriptor.hpp	65
+generic_problem_descriptor_quad_3d::l_ref	prob_descriptor.hpp	70
+generic_problem_descriptor_quad_3d::lambda_l	prob_descriptor.hpp	63
+generic_problem_descriptor_quad_3d::mu_s	prob_descriptor.hpp	62
+generic_problem_descriptor_quad_3d::noised	prob_descriptor.hpp	58
+generic_problem_descriptor_quad_3d::nsubdiv	prob_descriptor.hpp	59
+generic_problem_descriptor_quad_3d::p_ref	prob_descriptor.hpp	74
+generic_problem_descriptor_quad_3d::poisson	prob_descriptor.hpp	61
+generic_problem_descriptor_quad_3d::rho_l	prob_descriptor.hpp	67
+generic_problem_descriptor_quad_3d::rho_r	prob_descriptor.hpp	68
+generic_problem_descriptor_quad_3d::sigma_ref	prob_descriptor.hpp	71
+generic_problem_descriptor_quad_3d::t_ref	prob_descriptor.hpp	72
+generic_problem_descriptor_quad_3d::u_ref	prob_descriptor.hpp	73
+generic_problem_descriptor_tetra_3d	prob_descriptor.hpp	76
+generic_problem_descriptor_tetra_3d::E	prob_descriptor.hpp	87
+generic_problem_descriptor_tetra_3d::FEM_TYPE_P	prob_descriptor.hpp	79
+generic_problem_descriptor_tetra_3d::FEM_TYPE_U	prob_descriptor.hpp	78
+generic_problem_descriptor_tetra_3d::INTEGRATION	prob_descriptor.hpp	80
+generic_problem_descriptor_tetra_3d::MESH_TYPE	prob_descriptor.hpp	77
+generic_problem_descriptor_tetra_3d::SIMPLEX_INTEGRATION	prob_descriptor.hpp	81
+generic_problem_descriptor_tetra_3d::alpha	prob_descriptor.hpp	93
+generic_problem_descriptor_tetra_3d::alpha_temp	prob_descriptor.hpp	102
+generic_problem_descriptor_tetra_3d::biot_modulus	prob_descriptor.hpp	91
+generic_problem_descriptor_tetra_3d::datafilename	prob_descriptor.hpp	83
+generic_problem_descriptor_tetra_3d::k	prob_descriptor.hpp	92
+generic_problem_descriptor_tetra_3d::l_ref	prob_descriptor.hpp	97
+generic_problem_descriptor_tetra_3d::lambda_l	prob_descriptor.hpp	90
+generic_problem_descriptor_tetra_3d::mu_s	prob_descriptor.hpp	89
+generic_problem_descriptor_tetra_3d::noised	prob_descriptor.hpp	84
+generic_problem_descriptor_tetra_3d::nsubdiv	prob_descriptor.hpp	85
+generic_problem_descriptor_tetra_3d::p_ref	prob_descriptor.hpp	101
+generic_problem_descriptor_tetra_3d::poisson	prob_descriptor.hpp	88
+generic_problem_descriptor_tetra_3d::q_rad	prob_descriptor.hpp	103
+generic_problem_descriptor_tetra_3d::rho_l	prob_descriptor.hpp	94
+generic_problem_descriptor_tetra_3d::rho_r	prob_descriptor.hpp	95
+generic_problem_descriptor_tetra_3d::sigma_ref	prob_descriptor.hpp	98
+generic_problem_descriptor_tetra_3d::t_ref	prob_descriptor.hpp	99
+generic_problem_descriptor_tetra_3d::u_ref	prob_descriptor.hpp	100
+generic_problem_descriptor_tri	prob_descriptor.hpp	5
+generic_problem_descriptor_tri::E	prob_descriptor.hpp	14
+generic_problem_descriptor_tri::FEM_TYPE_P	prob_descriptor.hpp	8
+generic_problem_descriptor_tri::FEM_TYPE_U	prob_descriptor.hpp	7
+generic_problem_descriptor_tri::INTEGRATION	prob_descriptor.hpp	9
+generic_problem_descriptor_tri::MESH_TYPE	prob_descriptor.hpp	6
+generic_problem_descriptor_tri::SIMPLEX_INTEGRATION	prob_descriptor.hpp	10
+generic_problem_descriptor_tri::alpha	prob_descriptor.hpp	20
+generic_problem_descriptor_tri::biot_modulus	prob_descriptor.hpp	18
+generic_problem_descriptor_tri::datafilename	prob_descriptor.hpp	11
+generic_problem_descriptor_tri::k	prob_descriptor.hpp	19
+generic_problem_descriptor_tri::k_temp	prob_descriptor.hpp	29
+generic_problem_descriptor_tri::l_ref	prob_descriptor.hpp	24
+generic_problem_descriptor_tri::lambda_l	prob_descriptor.hpp	17
+generic_problem_descriptor_tri::mu_s	prob_descriptor.hpp	16
+generic_problem_descriptor_tri::noised	prob_descriptor.hpp	12
+generic_problem_descriptor_tri::nsubdiv	prob_descriptor.hpp	13
+generic_problem_descriptor_tri::p_ref	prob_descriptor.hpp	28
+generic_problem_descriptor_tri::poisson	prob_descriptor.hpp	15
+generic_problem_descriptor_tri::rho_l	prob_descriptor.hpp	21
+generic_problem_descriptor_tri::rho_r	prob_descriptor.hpp	22
+generic_problem_descriptor_tri::sigma_ref	prob_descriptor.hpp	25
+generic_problem_descriptor_tri::t_ref	prob_descriptor.hpp	26
+generic_problem_descriptor_tri::u_ref	prob_descriptor.hpp	27
+gmm	biot_precond.hpp	167
+gmm	gmm_fix.hpp	8
+gmm	momentum_precond.hpp	130
+gmm::linalg_traits	biot_precond.hpp	169
+gmm::linalg_traits	momentum_precond.hpp	132
+gmm::linalg_traits::ncols	biot_precond.hpp	/^        static size_type ncols(const this_type &m)/
+gmm::linalg_traits::ncols	momentum_precond.hpp	/^        static size_type ncols(const this_type &m)/
+gmm::linalg_traits::nrows	biot_precond.hpp	/^        static size_type nrows(const this_type &m)/
+gmm::linalg_traits::nrows	momentum_precond.hpp	/^        static size_type nrows(const this_type &m)/
+gmm::mult_spec	gmm_fix.hpp	/^    void mult_spec(const L1 &m, const L2 &src, L3 /
+gmm::owned_implementation	gmm_fix.hpp	21
+gmm::principal_orientation_type	gmm_fix.hpp	24
+gmm::sub_vector	gmm_fix.hpp	/^    sub_vector(const scaled_vector_const_ref<V, S>/
+horizon	horizon.hpp	9
+horizon::b_box_	horizon.hpp	15
+horizon::fine_search	horizon.cpp	/^int horizon::fine_search(std::vector<double>&pt,st/
+horizon::horizon	horizon.cpp	/^horizon::horizon(const char* file){$/
+horizon::is_in	horizon.cpp	/^bool horizon::is_in (std::vector<double>  pt, std:/
+horizon::mesh_	horizon.hpp	16
+horizon::quick_search	horizon.cpp	/^void horizon::quick_search(std::vector<double>&pt,/
+horizon::sign	horizon.hpp	/^  inline double sign (std::vector<double> p1, std:/
+horizon::up_down	horizon.cpp	/^  int horizon::up_down(std::vector<double>& pt, in/
+however	LICENSE	231
+i_cv	horizon.cpp	23
+it	LICENSE	198
+it	LICENSE	370
+ks	prec.m	6
+kx	prec.m	7
+main.cpp	Makefile	/^main.cpp: $(HDRS)$/
+material	LICENSE	372
+material	LICENSE	/^    material by anyone who conveys the material (o/
+medium	LICENSE	198
+momentum_precond	momentum_precond.hpp	31
+momentum_precond	momentum_precond.hpp	/^momentum_precond<MATRIX>::momentum_precond(MATRIX /
+momentum_precond::A_	momentum_precond.hpp	112
+momentum_precond::Ku_csr_	momentum_precond.hpp	118
+momentum_precond::S_	momentum_precond.hpp	115
+momentum_precond::amg_	momentum_precond.hpp	120
+momentum_precond::idx_	momentum_precond.hpp	117
+momentum_precond::mult	momentum_precond.hpp	/^    void mult(const L2 &src, L3 &dst) const$/
+momentum_precond::nb_dof_	momentum_precond.hpp	116
+momentum_precond::nb_dof_x_	momentum_precond.hpp	116
+momentum_precond::ncols	momentum_precond.hpp	/^     getfem::size_type ncols() const {$/
+momentum_precond::nrows	momentum_precond.hpp	/^     getfem::size_type nrows() const {$/
+momentum_precond::pA_	momentum_precond.hpp	113
+momentum_precond::pS_	momentum_precond.hpp	114
+momentum_precond::slu_	momentum_precond.hpp	123
+momentum_precond::slup_	momentum_precond.hpp	126
+notice	LICENSE	199
+or	LICENSE	/^    the Free Software Foundation, either version 3/
+plain_vector	biot.hpp	60
+plain_vector	biot_ls.hpp	61
+plain_vector	temp.hpp	60
+plain_vector	temp_ls.hpp	62
+problem_T_descriptor_quad	temp.hpp	82
+problem_T_descriptor_quad::E	temp.hpp	90
+problem_T_descriptor_quad::FEM_TYPE_P	temp.hpp	85
+problem_T_descriptor_quad::FEM_TYPE_U	temp.hpp	84
+problem_T_descriptor_quad::INTEGRATION	temp.hpp	86
+problem_T_descriptor_quad::MESH_TYPE	temp.hpp	83
+problem_T_descriptor_quad::SIMPLEX_INTEGRATION	temp.hpp	87
+problem_T_descriptor_quad::alpha	temp.hpp	96
+problem_T_descriptor_quad::biot_modulus	temp.hpp	94
+problem_T_descriptor_quad::datafilename	temp.hpp	88
+problem_T_descriptor_quad::k	temp.hpp	95
+problem_T_descriptor_quad::lambda_l	temp.hpp	93
+problem_T_descriptor_quad::mu_s	temp.hpp	92
+problem_T_descriptor_quad::nsubdiv	temp.hpp	89
+problem_T_descriptor_quad::poisson	temp.hpp	91
+problem_T_descriptor_quad_3d	temp.hpp	99
+problem_T_descriptor_quad_3d::E	temp.hpp	107
+problem_T_descriptor_quad_3d::FEM_TYPE_P	temp.hpp	102
+problem_T_descriptor_quad_3d::FEM_TYPE_U	temp.hpp	101
+problem_T_descriptor_quad_3d::INTEGRATION	temp.hpp	103
+problem_T_descriptor_quad_3d::MESH_TYPE	temp.hpp	100
+problem_T_descriptor_quad_3d::SIMPLEX_INTEGRATION	temp.hpp	104
+problem_T_descriptor_quad_3d::alpha	temp.hpp	113
+problem_T_descriptor_quad_3d::biot_modulus	temp.hpp	111
+problem_T_descriptor_quad_3d::datafilename	temp.hpp	105
+problem_T_descriptor_quad_3d::k	temp.hpp	112
+problem_T_descriptor_quad_3d::l_ref	temp.hpp	117
+problem_T_descriptor_quad_3d::lambda_l	temp.hpp	110
+problem_T_descriptor_quad_3d::mu_s	temp.hpp	109
+problem_T_descriptor_quad_3d::nsubdiv	temp.hpp	106
+problem_T_descriptor_quad_3d::p_ref	temp.hpp	121
+problem_T_descriptor_quad_3d::poisson	temp.hpp	108
+problem_T_descriptor_quad_3d::rho_l	temp.hpp	114
+problem_T_descriptor_quad_3d::rho_r	temp.hpp	115
+problem_T_descriptor_quad_3d::sigma_ref	temp.hpp	118
+problem_T_descriptor_quad_3d::t_ref	temp.hpp	119
+problem_T_descriptor_quad_3d::u_ref	temp.hpp	120
+problem_T_descriptor_tetra_3d	temp.hpp	124
+problem_T_descriptor_tetra_3d::E	temp.hpp	133
+problem_T_descriptor_tetra_3d::FEM_TYPE_P	temp.hpp	127
+problem_T_descriptor_tetra_3d::FEM_TYPE_U	temp.hpp	126
+problem_T_descriptor_tetra_3d::INTEGRATION	temp.hpp	128
+problem_T_descriptor_tetra_3d::MESH_TYPE	temp.hpp	125
+problem_T_descriptor_tetra_3d::SIMPLEX_INTEGRATION	temp.hpp	129
+problem_T_descriptor_tetra_3d::alpha	temp.hpp	139
+problem_T_descriptor_tetra_3d::biot_modulus	temp.hpp	137
+problem_T_descriptor_tetra_3d::datafilename	temp.hpp	131
+problem_T_descriptor_tetra_3d::k	temp.hpp	138
+problem_T_descriptor_tetra_3d::l_ref	temp.hpp	143
+problem_T_descriptor_tetra_3d::lambda_l	temp.hpp	136
+problem_T_descriptor_tetra_3d::mu_s	temp.hpp	135
+problem_T_descriptor_tetra_3d::nsubdiv	temp.hpp	132
+problem_T_descriptor_tetra_3d::p_ref	temp.hpp	147
+problem_T_descriptor_tetra_3d::poisson	temp.hpp	134
+problem_T_descriptor_tetra_3d::rho_l	temp.hpp	140
+problem_T_descriptor_tetra_3d::rho_r	temp.hpp	141
+problem_T_descriptor_tetra_3d::sigma_ref	temp.hpp	144
+problem_T_descriptor_tetra_3d::t_ref	temp.hpp	145
+problem_T_descriptor_tetra_3d::u_ref	temp.hpp	146
+problem_T_descriptor_tri	temp.hpp	65
+problem_T_descriptor_tri::E	temp.hpp	73
+problem_T_descriptor_tri::FEM_TYPE_P	temp.hpp	68
+problem_T_descriptor_tri::FEM_TYPE_U	temp.hpp	67
+problem_T_descriptor_tri::INTEGRATION	temp.hpp	69
+problem_T_descriptor_tri::MESH_TYPE	temp.hpp	66
+problem_T_descriptor_tri::SIMPLEX_INTEGRATION	temp.hpp	70
+problem_T_descriptor_tri::alpha	temp.hpp	79
+problem_T_descriptor_tri::biot_modulus	temp.hpp	77
+problem_T_descriptor_tri::datafilename	temp.hpp	71
+problem_T_descriptor_tri::k	temp.hpp	78
+problem_T_descriptor_tri::lambda_l	temp.hpp	76
+problem_T_descriptor_tri::mu_s	temp.hpp	75
+problem_T_descriptor_tri::nsubdiv	temp.hpp	72
+problem_T_descriptor_tri::poisson	temp.hpp	74
+problem_descriptor_quad	biot.hpp	82
+problem_descriptor_quad	biot_ls.hpp	94
+problem_descriptor_quad::E	biot.hpp	90
+problem_descriptor_quad::E	biot_ls.hpp	103
+problem_descriptor_quad::FEM_TYPE_P	biot.hpp	85
+problem_descriptor_quad::FEM_TYPE_P	biot_ls.hpp	97
+problem_descriptor_quad::FEM_TYPE_U	biot.hpp	84
+problem_descriptor_quad::FEM_TYPE_U	biot_ls.hpp	96
+problem_descriptor_quad::INTEGRATION	biot.hpp	86
+problem_descriptor_quad::INTEGRATION	biot_ls.hpp	98
+problem_descriptor_quad::MESH_TYPE	biot.hpp	83
+problem_descriptor_quad::MESH_TYPE	biot_ls.hpp	95
+problem_descriptor_quad::SIMPLEX_INTEGRATION	biot.hpp	87
+problem_descriptor_quad::SIMPLEX_INTEGRATION	biot_ls.hpp	99
+problem_descriptor_quad::alpha	biot.hpp	96
+problem_descriptor_quad::alpha	biot_ls.hpp	109
+problem_descriptor_quad::biot_modulus	biot.hpp	94
+problem_descriptor_quad::biot_modulus	biot_ls.hpp	107
+problem_descriptor_quad::datafilename	biot.hpp	88
+problem_descriptor_quad::datafilename	biot_ls.hpp	100
+problem_descriptor_quad::k	biot.hpp	95
+problem_descriptor_quad::k	biot_ls.hpp	108
+problem_descriptor_quad::lambda_l	biot.hpp	93
+problem_descriptor_quad::lambda_l	biot_ls.hpp	106
+problem_descriptor_quad::mu_s	biot.hpp	92
+problem_descriptor_quad::mu_s	biot_ls.hpp	105
+problem_descriptor_quad::noised	biot_ls.hpp	102
+problem_descriptor_quad::nsubdiv	biot.hpp	89
+problem_descriptor_quad::nsubdiv	biot_ls.hpp	101
+problem_descriptor_quad::poisson	biot.hpp	91
+problem_descriptor_quad::poisson	biot_ls.hpp	104
+problem_descriptor_quad_3d	biot.hpp	99
+problem_descriptor_quad_3d	biot_ls.hpp	112
+problem_descriptor_quad_3d::E	biot.hpp	107
+problem_descriptor_quad_3d::E	biot_ls.hpp	121
+problem_descriptor_quad_3d::FEM_TYPE_P	biot.hpp	102
+problem_descriptor_quad_3d::FEM_TYPE_P	biot_ls.hpp	115
+problem_descriptor_quad_3d::FEM_TYPE_U	biot.hpp	101
+problem_descriptor_quad_3d::FEM_TYPE_U	biot_ls.hpp	114
+problem_descriptor_quad_3d::INTEGRATION	biot.hpp	103
+problem_descriptor_quad_3d::INTEGRATION	biot_ls.hpp	116
+problem_descriptor_quad_3d::MESH_TYPE	biot.hpp	100
+problem_descriptor_quad_3d::MESH_TYPE	biot_ls.hpp	113
+problem_descriptor_quad_3d::SIMPLEX_INTEGRATION	biot.hpp	104
+problem_descriptor_quad_3d::SIMPLEX_INTEGRATION	biot_ls.hpp	117
+problem_descriptor_quad_3d::alpha	biot.hpp	113
+problem_descriptor_quad_3d::alpha	biot_ls.hpp	127
+problem_descriptor_quad_3d::biot_modulus	biot.hpp	111
+problem_descriptor_quad_3d::biot_modulus	biot_ls.hpp	125
+problem_descriptor_quad_3d::datafilename	biot.hpp	105
+problem_descriptor_quad_3d::datafilename	biot_ls.hpp	118
+problem_descriptor_quad_3d::k	biot.hpp	112
+problem_descriptor_quad_3d::k	biot_ls.hpp	126
+problem_descriptor_quad_3d::l_ref	biot.hpp	117
+problem_descriptor_quad_3d::l_ref	biot_ls.hpp	131
+problem_descriptor_quad_3d::lambda_l	biot.hpp	110
+problem_descriptor_quad_3d::lambda_l	biot_ls.hpp	124
+problem_descriptor_quad_3d::mu_s	biot.hpp	109
+problem_descriptor_quad_3d::mu_s	biot_ls.hpp	123
+problem_descriptor_quad_3d::noised	biot_ls.hpp	119
+problem_descriptor_quad_3d::nsubdiv	biot.hpp	106
+problem_descriptor_quad_3d::nsubdiv	biot_ls.hpp	120
+problem_descriptor_quad_3d::p_ref	biot.hpp	121
+problem_descriptor_quad_3d::p_ref	biot_ls.hpp	135
+problem_descriptor_quad_3d::poisson	biot.hpp	108
+problem_descriptor_quad_3d::poisson	biot_ls.hpp	122
+problem_descriptor_quad_3d::rho_l	biot.hpp	114
+problem_descriptor_quad_3d::rho_l	biot_ls.hpp	128
+problem_descriptor_quad_3d::rho_r	biot.hpp	115
+problem_descriptor_quad_3d::rho_r	biot_ls.hpp	129
+problem_descriptor_quad_3d::sigma_ref	biot.hpp	118
+problem_descriptor_quad_3d::sigma_ref	biot_ls.hpp	132
+problem_descriptor_quad_3d::t_ref	biot.hpp	119
+problem_descriptor_quad_3d::t_ref	biot_ls.hpp	133
+problem_descriptor_quad_3d::u_ref	biot.hpp	120
+problem_descriptor_quad_3d::u_ref	biot_ls.hpp	134
+problem_descriptor_tetra_3d	biot.hpp	124
+problem_descriptor_tetra_3d	biot_ls.hpp	137
+problem_descriptor_tetra_3d::E	biot.hpp	134
+problem_descriptor_tetra_3d::E	biot_ls.hpp	148
+problem_descriptor_tetra_3d::FEM_TYPE_P	biot.hpp	127
+problem_descriptor_tetra_3d::FEM_TYPE_P	biot_ls.hpp	140
+problem_descriptor_tetra_3d::FEM_TYPE_U	biot.hpp	126
+problem_descriptor_tetra_3d::FEM_TYPE_U	biot_ls.hpp	139
+problem_descriptor_tetra_3d::INTEGRATION	biot.hpp	128
+problem_descriptor_tetra_3d::INTEGRATION	biot_ls.hpp	141
+problem_descriptor_tetra_3d::MESH_TYPE	biot.hpp	125
+problem_descriptor_tetra_3d::MESH_TYPE	biot_ls.hpp	138
+problem_descriptor_tetra_3d::SIMPLEX_INTEGRATION	biot.hpp	129
+problem_descriptor_tetra_3d::SIMPLEX_INTEGRATION	biot_ls.hpp	142
+problem_descriptor_tetra_3d::alpha	biot.hpp	140
+problem_descriptor_tetra_3d::alpha	biot_ls.hpp	154
+problem_descriptor_tetra_3d::biot_modulus	biot.hpp	138
+problem_descriptor_tetra_3d::biot_modulus	biot_ls.hpp	152
+problem_descriptor_tetra_3d::datafilename	biot.hpp	131
+problem_descriptor_tetra_3d::datafilename	biot_ls.hpp	144
+problem_descriptor_tetra_3d::k	biot.hpp	139
+problem_descriptor_tetra_3d::k	biot_ls.hpp	153
+problem_descriptor_tetra_3d::l_ref	biot.hpp	144
+problem_descriptor_tetra_3d::l_ref	biot_ls.hpp	158
+problem_descriptor_tetra_3d::lambda_l	biot.hpp	137
+problem_descriptor_tetra_3d::lambda_l	biot_ls.hpp	151
+problem_descriptor_tetra_3d::mu_s	biot.hpp	136
+problem_descriptor_tetra_3d::mu_s	biot_ls.hpp	150
+problem_descriptor_tetra_3d::noised	biot_ls.hpp	145
+problem_descriptor_tetra_3d::nsubdiv	biot.hpp	133
+problem_descriptor_tetra_3d::nsubdiv	biot_ls.hpp	146
+problem_descriptor_tetra_3d::p_ref	biot.hpp	148
+problem_descriptor_tetra_3d::p_ref	biot_ls.hpp	162
+problem_descriptor_tetra_3d::poisson	biot.hpp	135
+problem_descriptor_tetra_3d::poisson	biot_ls.hpp	149
+problem_descriptor_tetra_3d::rho_l	biot.hpp	141
+problem_descriptor_tetra_3d::rho_l	biot_ls.hpp	155
+problem_descriptor_tetra_3d::rho_r	biot.hpp	142
+problem_descriptor_tetra_3d::rho_r	biot_ls.hpp	156
+problem_descriptor_tetra_3d::sigma_ref	biot.hpp	145
+problem_descriptor_tetra_3d::sigma_ref	biot_ls.hpp	159
+problem_descriptor_tetra_3d::t_ref	biot.hpp	146
+problem_descriptor_tetra_3d::t_ref	biot_ls.hpp	160
+problem_descriptor_tetra_3d::u_ref	biot.hpp	147
+problem_descriptor_tetra_3d::u_ref	biot_ls.hpp	161
+problem_descriptor_tri	biot.hpp	65
+problem_descriptor_tri	biot_ls.hpp	67
+problem_descriptor_tri::E	biot.hpp	73
+problem_descriptor_tri::E	biot_ls.hpp	76
+problem_descriptor_tri::FEM_TYPE_P	biot.hpp	68
+problem_descriptor_tri::FEM_TYPE_P	biot_ls.hpp	70
+problem_descriptor_tri::FEM_TYPE_U	biot.hpp	67
+problem_descriptor_tri::FEM_TYPE_U	biot_ls.hpp	69
+problem_descriptor_tri::INTEGRATION	biot.hpp	69
+problem_descriptor_tri::INTEGRATION	biot_ls.hpp	71
+problem_descriptor_tri::MESH_TYPE	biot.hpp	66
+problem_descriptor_tri::MESH_TYPE	biot_ls.hpp	68
+problem_descriptor_tri::SIMPLEX_INTEGRATION	biot.hpp	70
+problem_descriptor_tri::SIMPLEX_INTEGRATION	biot_ls.hpp	72
+problem_descriptor_tri::alpha	biot.hpp	79
+problem_descriptor_tri::alpha	biot_ls.hpp	82
+problem_descriptor_tri::biot_modulus	biot.hpp	77
+problem_descriptor_tri::biot_modulus	biot_ls.hpp	80
+problem_descriptor_tri::datafilename	biot.hpp	71
+problem_descriptor_tri::datafilename	biot_ls.hpp	73
+problem_descriptor_tri::k	biot.hpp	78
+problem_descriptor_tri::k	biot_ls.hpp	81
+problem_descriptor_tri::l_ref	biot_ls.hpp	86
+problem_descriptor_tri::lambda_l	biot.hpp	76
+problem_descriptor_tri::lambda_l	biot_ls.hpp	79
+problem_descriptor_tri::mu_s	biot.hpp	75
+problem_descriptor_tri::mu_s	biot_ls.hpp	78
+problem_descriptor_tri::noised	biot_ls.hpp	74
+problem_descriptor_tri::nsubdiv	biot.hpp	72
+problem_descriptor_tri::nsubdiv	biot_ls.hpp	75
+problem_descriptor_tri::p_ref	biot_ls.hpp	90
+problem_descriptor_tri::poisson	biot.hpp	74
+problem_descriptor_tri::poisson	biot_ls.hpp	77
+problem_descriptor_tri::rho_l	biot_ls.hpp	83
+problem_descriptor_tri::rho_r	biot_ls.hpp	84
+problem_descriptor_tri::sigma_ref	biot_ls.hpp	87
+problem_descriptor_tri::t_ref	biot_ls.hpp	88
+problem_descriptor_tri::u_ref	biot_ls.hpp	89
+programs	LICENSE	20
+pts	horizon.cpp	22
+res	biot_ls.cpp	1502
+res	biot_ls.cpp	1509
+res	biot_ls.cpp	1512
+resu_clean	Makefile	/^resu_clean:$/
+shift_xdof_u	biot_ls.cpp	1354
+software	LICENSE	22
+sparse_matrix_type	biot.hpp	58
+sparse_matrix_type	biot_ls.hpp	59
+sparse_matrix_type	biot_precond.hpp	25
+sparse_matrix_type	momentum_precond.hpp	26
+sparse_matrix_type	temp.hpp	58
+sparse_matrix_type	temp_ls.hpp	60
+sparse_vector_type	biot.hpp	57
+sparse_vector_type	biot_ls.hpp	58
+sparse_vector_type	biot_precond.hpp	24
+sparse_vector_type	momentum_precond.hpp	25
+sparse_vector_type	temp.hpp	57
+sparse_vector_type	temp_ls.hpp	59
+temperature_problem	temp.hpp	151
+temperature_problem::B	temp.hpp	171
+temperature_problem::BOTTOM	temp.hpp	162
+temperature_problem::Bp	temp.hpp	173
+temperature_problem::Bu	temp.hpp	173
+temperature_problem::DIRICHLET_BOUNDARY_NUM	temp.hpp	161
+temperature_problem::Er_	temp.hpp	177
+temperature_problem::Er_print_	temp.hpp	179
+temperature_problem::K	temp.hpp	169
+temperature_problem::Kp	temp.hpp	172
+temperature_problem::Kr_	temp.hpp	176
+temperature_problem::Kr_print_	temp.hpp	178
+temperature_problem::Ku	temp.hpp	172
+temperature_problem::LEFT	temp.hpp	162
+temperature_problem::LEFTX	temp.hpp	162
+temperature_problem::NEUMANN_BOUNDARY_NUM	temp.hpp	161
+temperature_problem::N_	temp.hpp	163
+temperature_problem::P	temp.hpp	170
+temperature_problem::P_iter	temp.hpp	173
+temperature_problem::P_old	temp.hpp	171
+temperature_problem::RIGHT	temp.hpp	162
+temperature_problem::RIGHTX	temp.hpp	162
+temperature_problem::TOP	temp.hpp	162
+temperature_problem::U	temp.hpp	170
+temperature_problem::UP	temp.hpp	171
+temperature_problem::U_iter	temp.hpp	173
+temperature_problem::U_old	temp.hpp	170
+temperature_problem::alpha_	temp.hpp	167
+temperature_problem::assembly	temp.cpp	/^void temperature_problem::assembly(double dt, getf/
+temperature_problem::bPR_	temp.hpp	174
+temperature_problem::beta_	temp.hpp	166
+temperature_problem::bm_	temp.hpp	166
+temperature_problem::configure_workspace	temp.cpp	/^void temperature_problem::configure_workspace(getf/
+temperature_problem::force_	temp.hpp	167
+temperature_problem::gen_bc	temp.cpp	/^void temperature_problem::gen_bc(){$/
+temperature_problem::gen_coefficient	temp.cpp	/^void temperature_problem::gen_coefficient(){ \/\/ cr/
+temperature_problem::init	temp.cpp	/^void temperature_problem::init(void) {$/
+temperature_problem::lambda_	temp.hpp	166
+temperature_problem::mesh	temp.hpp	153
+temperature_problem::mesh_labeling	temp.cpp	/^void temperature_problem::mesh_labeling(){$/
+temperature_problem::mf_coef	temp.hpp	158
+temperature_problem::mf_p	temp.hpp	156
+temperature_problem::mf_rhs	temp.hpp	157
+temperature_problem::mf_u	temp.hpp	155
+temperature_problem::mim	temp.hpp	154
+temperature_problem::p_des	temp.hpp	159
+temperature_problem::penalty_	temp.hpp	167
+temperature_problem::permeability_	temp.hpp	167
+temperature_problem::print	temp.cpp	/^void temperature_problem::print(int time){$/
+temperature_problem::solve	temp.cpp	/^void temperature_problem::solve(){$/
+temperature_problem::tau_	temp.hpp	166
+temperature_problem::temperature_problem	temp.hpp	/^		temperature_problem(void): mim(mesh), mf_u(mesh)/
+temperature_problem::vmu_	temp.hpp	166
+templs_problem	temp_ls.hpp	72
+templs_problem::B	temp_ls.hpp	109
+templs_problem::BOTTOM	temp_ls.hpp	99
+templs_problem::CUT_EDGE	temp_ls.hpp	100
+templs_problem::CUT_REGION	temp_ls.hpp	100
+templs_problem::DIRICHLET_BOUNDARY_NUM	temp_ls.hpp	98
+templs_problem::Er_	temp_ls.hpp	114
+templs_problem::K	temp_ls.hpp	108
+templs_problem::Kr_	temp_ls.hpp	113
+templs_problem::LATERAL	temp_ls.hpp	99
+templs_problem::LEFT	temp_ls.hpp	99
+templs_problem::LEFTX	temp_ls.hpp	99
+templs_problem::MAT_1	temp_ls.hpp	101
+templs_problem::MAT_2	temp_ls.hpp	101
+templs_problem::NEUMANN_BOUNDARY_NUM	temp_ls.hpp	98
+templs_problem::N_	temp_ls.hpp	102
+templs_problem::P	temp_ls.hpp	109
+templs_problem::P_old	temp_ls.hpp	109
+templs_problem::Px	temp_ls.hpp	109
+templs_problem::RIGHT	temp_ls.hpp	99
+templs_problem::RIGHTX	temp_ls.hpp	99
+templs_problem::TOP	temp_ls.hpp	99
+templs_problem::UNCUT_REGION	temp_ls.hpp	100
+templs_problem::UNCUT_REGION_IN	temp_ls.hpp	100
+templs_problem::UNCUT_REGION_OUT	temp_ls.hpp	100
+templs_problem::UP	temp_ls.hpp	109
+templs_problem::alpha_	temp_ls.hpp	106
+templs_problem::assembly	temp_ls.cpp	/^void templs_problem::assembly(double dt,double tim/
+templs_problem::beta_	temp_ls.hpp	105
+templs_problem::bm_	temp_ls.hpp	105
+templs_problem::c1_	temp_ls.hpp	106
+templs_problem::c2_	temp_ls.hpp	106
+templs_problem::compute_normal_2_ls	temp_ls.cpp	/^void templs_problem::compute_normal_2_ls(){$/
+templs_problem::configure_workspace	temp_ls.cpp	/^void templs_problem::configure_workspace(getfem::g/
+templs_problem::const_lateral_temp_	temp_ls.hpp	116
+templs_problem::dome_t_	temp_ls.hpp	106
+templs_problem::eXt_dof	temp_ls.hpp	91
+templs_problem::eXt_dof_u	temp_ls.hpp	91
+templs_problem::force_	temp_ls.hpp	106
+templs_problem::gen_bc	temp_ls.cpp	/^void templs_problem::gen_bc(){$/
+templs_problem::gen_coefficient	temp_ls.cpp	/^void templs_problem::gen_coefficient(){ \/\/ creatin/
+templs_problem::gen_mat	temp_ls.cpp	/^void templs_problem::gen_mat(){$/
+templs_problem::init	temp_ls.cpp	/^void templs_problem::init(void) {$/
+templs_problem::lambda_	temp_ls.hpp	105
+templs_problem::ls	temp_ls.hpp	82
+templs_problem::ls_function	temp_ls.cpp	/^base_small_vector templs_problem::ls_function(cons/
+templs_problem::mesh	temp_ls.hpp	74
+templs_problem::mesh_ls	temp_ls.hpp	84
+templs_problem::mf_coef	temp_ls.hpp	79
+templs_problem::mf_coef_v	temp_ls.hpp	80
+templs_problem::mf_p	temp_ls.hpp	77
+templs_problem::mf_rhs	temp_ls.hpp	78
+templs_problem::mfls_p	temp_ls.hpp	89
+templs_problem::mim	temp_ls.hpp	75
+templs_problem::mim_ls_all	temp_ls.hpp	85
+templs_problem::mim_ls_bd	temp_ls.hpp	88
+templs_problem::mim_ls_in	temp_ls.hpp	86
+templs_problem::mim_ls_out	temp_ls.hpp	87
+templs_problem::mls	temp_ls.hpp	83
+templs_problem::nb_x_dof_p	temp_ls.hpp	94
+templs_problem::nb_x_dof_u	temp_ls.hpp	94
+templs_problem::normal_ls_v	temp_ls.hpp	115
+templs_problem::over_p_	temp_ls.hpp	106
+templs_problem::p_des	temp_ls.hpp	96
+templs_problem::penalty_	temp_ls.hpp	106
+templs_problem::permeability_	temp_ls.hpp	106
+templs_problem::pin_index_	temp_ls.hpp	92
+templs_problem::pout_index_	temp_ls.hpp	92
+templs_problem::press_	temp_ls.hpp	112
+templs_problem::print	temp_ls.cpp	/^void templs_problem::print(double time,int istep,d/
+templs_problem::print_crop	temp_ls.cpp	/^void templs_problem::print_crop(double time,int is/
+templs_problem::print_ls	temp_ls.cpp	/^void templs_problem::print_ls(double time,int iste/
+templs_problem::print_pattern	temp_ls.cpp	/^void templs_problem::print_pattern(int iter){$/
+templs_problem::set_clt	temp_ls.hpp	/^                inline void set_clt (bool state){c/
+templs_problem::set_pressure	temp_ls.hpp	/^                inline void set_pressure(std::vect/
+templs_problem::set_step	temp_ls.hpp	/^		void set_step(int step){step_=step;}$/
+templs_problem::solve	temp_ls.cpp	/^void templs_problem::solve(double time){$/
+templs_problem::step_	temp_ls.hpp	117
+templs_problem::tau_	temp_ls.hpp	105
+templs_problem::templs_problem	temp_ls.hpp	/^		templs_problem(void): mim(mesh)\/*, mf_u(mesh)*\/,/
+templs_problem::time_iter_	temp_ls.hpp	103
+templs_problem::update_ls	temp_ls.cpp	/^void templs_problem::update_ls(double time, int it/
+templs_problem::update_p_index	temp_ls.cpp	/^void templs_problem::update_p_index(double time_ls/
+templs_problem::update_time_iter	temp_ls.hpp	/^		void update_time_iter(int a){time_iter_=a;}$/
+templs_problem::vmu_	temp_ls.hpp	105
+tion of	LICENSE	192
+version	LICENSE	374
+void	LICENSE	411
+warranty	LICENSE	202
+work	LICENSE	187
+work	LICENSE	190

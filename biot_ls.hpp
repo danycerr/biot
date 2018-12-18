@@ -25,6 +25,7 @@
   @brief Laplacian (Poisson) problem with generic assembly.
   */
 
+
 #include "getfem/getfem_generic_assembly.h"
 #include "getfem/getfem_export.h"
 #include "getfem/getfem_regular_meshes.h"
@@ -59,7 +60,7 @@ typedef gmm::row_matrix<sparse_vector_type> sparse_matrix_type;
 typedef gmm::col_matrix<sparse_vector_type> col_sparse_matrix_type;
 typedef std::vector<scalar_type> plain_vector;
 
-#define LS_TYPE 6
+#define LS_TYPE 8//7-> complex dome 8->simple dome
 // Right hand side. Allows an interpolation for the source term.
 // scalar_type sol_f(const base_node &x) { return 10.; }
 
@@ -135,19 +136,21 @@ struct problem_descriptor_quad_3d{
 };
 struct problem_descriptor_tetra_3d{    
 	std::string MESH_TYPE =         "GT_PK(3,1)" ; // triangular elements
-	std::string FEM_TYPE_U  =         "FEM_PK(3,2)";
+	std::string FEM_TYPE_U  =         "FEM_PK(3,1)";
 	std::string FEM_TYPE_P  =         "FEM_PK(3,1)";
 	std::string INTEGRATION =       "IM_TETRAHEDRON(6)";
 	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TETRAHEDRON(6),3)"; 
-	std::string datafilename="resu/lk_ls_ovp"; 
+
+	std::string datafilename="resu/lk_ls8_2mat_disp_coup"; 
 	int noised =0;  // noise on mesh
-	int nsubdiv=5; // subdivision of the sqaured mesh
+	int nsubdiv=6; // subdivision of the sqaured mesh
+
 	double E=1.e+10;
 	double poisson =0.3;
 	double mu_s = E/( 2 * ( 1 + poisson) ) ;
 	double lambda_l= E*poisson/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;
 	double biot_modulus=1.e+9;
-	double k =1.e-15; //permeability
+	double k =1.e-19; //permeability
 	double alpha=1; // Biot coefficient
 	double rho_l=1000; // Biot coefficient
 	double rho_r=2200; // Biot coefficient
@@ -207,6 +210,7 @@ class biotls_problem {
 		std::vector<scalar_type> Kr_; // permeability ratio
 		std::vector<scalar_type> Er_; // young ratio
 		std::vector<scalar_type> normal_ls_v;
+                int step_=0;
 		/// Methods
 		void gen_bc(void);                                /// create zones for boundary conditions
 		void gen_mat(void);                                /// create zones for internal conditions
@@ -225,7 +229,8 @@ class biotls_problem {
 		void assembly(double dt,double time);                         /// assemble the monolithic iteration matrix for the problem
 		void assembly_p(double dt,double time);                       /// assemble the iteration matrix for pressure, can be used as preconditioner
 		void assembly_u(double dt,double time);                       /// assemble the iteration matrix for pressure, can be used as preconditioner
-		void build_fix_stress_preconditioner(double dt, double time_ls);
+		std::vector<scalar_type> get_pressure();
+                void build_fix_stress_preconditioner(double dt, double time_ls);
 		void solve(double time);                                 /// solves the monolithic system 
 		void solve_fix_stress(double dt, int max_iter,double time);   /// solves the system with classic fixed stress approach
 		void init(void);                                  /// initial configuration for the problem 
@@ -237,6 +242,8 @@ class biotls_problem {
 		void update_ls(double time=0, int iter=0);
 		void update_p_index(double timels=0);
 		void update_u_index(double timels=0);
+
+                void set_step(int step){step_=step;}
 		void update_time_iter(int a){time_iter_=a;}
 		biotls_problem(void): mim(mesh), mf_u(mesh), mf_rhs(mesh), mf_p(mesh),mf_coef(mesh),mf_coef_v(mesh)
 				      ,tau_(1), vmu_(1), bm_(1), lambda_(1),alpha_(1), permeability_(1), force_(1), beta_(1),penalty_(1),

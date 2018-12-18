@@ -1,0 +1,812 @@
+[1;34m***** time step 0 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 0 fix stress iteration 2 norm p 1e+18 norm u 3.24321 iter p 0 iter u 1000
+[1;34m***** time step 0 fix stress iteration 3 norm p 1 norm u 0.0204088 iter p 94 iter u 1000
+[1;34m***** time step 0 fix stress iteration 4 norm p 0.0903623 norm u 0.00327015 iter p 72 iter u 1000
+[1;34m***** time step 0 fix stress iteration 5 norm p 0.00850601 norm u 0.000792715 iter p 66 iter u 1000
+[1;34m***** time step 0 fix stress iteration 6 norm p 0.000815694 norm u 0.000302521 iter p 54 iter u 1000
+[1;34m***** time step 0 fix stress iteration 7 norm p 7.88059e-05 norm u 0.000409412 iter p 42 iter u 1000
+[1;34m***** time step 0 fix stress iteration 8 norm p 7.55674e-06 norm u 0.000156705 iter p 28 iter u 1000
+[1;34m***** time step 0 fix stress iteration 9 norm p 6.82288e-07 norm u 0.00038476 iter p 9 iter u 1000
+[1;34m***** time step 0 fix stress iteration 10 norm p 7.60986e-08 norm u 0.00024198 iter p 6 iter u 1000
+[1;34m***** time step 0 fix stress iteration 11 norm p 4.7241e-10 norm u 0.000175705 iter p 4 iter u 1000
+[1;34m***** time step 0 fix stress iteration 12 norm p 1.65071e-08 norm u 0.000318435 iter p 5 iter u 1000
+[1;34m***** time step 0 fix stress iteration 13 norm p 2.87331e-08 norm u 0.000503262 iter p 5 iter u 1000
+[1;34m***** time step 0 fix stress iteration 14 norm p 3.98605e-08 norm u 7.74029e-05 iter p 5 iter u 1000
+[1;34m***** time step 0 fix stress iteration 15 norm p 1.83033e-08 norm u 8.89239e-05 iter p 3 iter u 1000
+[1;34m***** time step 0 fix stress iteration 16 norm p 1.47843e-08 norm u 0.000787479 iter p 4 iter u 1000
+[1;34m***** time step 0 fix stress iteration 17 norm p 3.8051e-10 norm u 0.000152943 iter p 3 iter u 1000
+[1;34m***** time step 0 fix stress iteration 18 norm p 2.50108e-09 norm u 0.000101262 iter p 3 iter u 1000
+[1;34m***** time step 0 fix stress iteration 19 norm p 5.51881e-10 norm u 0.000108287 iter p 2 iter u 520
+[1;34m***** last iteration 19 norm p 2.00516e-10 norm u 0
+[1;34m***** time step 1 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 1 fix stress iteration 2 norm p 4.00048 norm u 3.28795 iter p 121 iter u 1000
+[1;34m***** time step 1 fix stress iteration 3 norm p 5.87204 norm u 0.0230113 iter p 104 iter u 1000
+[1;34m***** time step 1 fix stress iteration 4 norm p 0.699239 norm u 0.00212496 iter p 74 iter u 1000
+[1;34m***** time step 1 fix stress iteration 5 norm p 0.0663353 norm u 0.000176027 iter p 65 iter u 1000
+[1;34m***** time step 1 fix stress iteration 6 norm p 0.00638429 norm u 2.85615e-05 iter p 56 iter u 346
+[1;34m***** time step 1 fix stress iteration 7 norm p 0.000618316 norm u 6.7069e-07 iter p 42 iter u 92
+[1;34m***** time step 1 fix stress iteration 8 norm p 5.98373e-05 norm u 4.30731e-06 iter p 32 iter u 91
+[1;34m***** time step 1 fix stress iteration 9 norm p 5.52147e-06 norm u 1.11767e-06 iter p 12 iter u 39
+[1;34m***** last iteration 9 norm p 3.24933e-07 norm u 0
+[1;34m***** time step 2 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 2 fix stress iteration 2 norm p 2.04211 norm u 3.29518 iter p 110 iter u 1000
+[1;34m***** time step 2 fix stress iteration 3 norm p 2.84955 norm u 0.0231605 iter p 100 iter u 1000
+[1;34m***** time step 2 fix stress iteration 4 norm p 0.429983 norm u 0.0021597 iter p 78 iter u 1000
+[1;34m***** time step 2 fix stress iteration 5 norm p 0.04096 norm u 0.000199642 iter p 66 iter u 315
+[1;34m***** time step 2 fix stress iteration 6 norm p 0.00395056 norm u 2.04235e-05 iter p 58 iter u 98
+[1;34m***** time step 2 fix stress iteration 7 norm p 0.000383174 norm u 1.41913e-06 iter p 43 iter u 87
+[1;34m***** time step 2 fix stress iteration 8 norm p 3.71166e-05 norm u 1.13198e-06 iter p 34 iter u 81
+[1;34m***** time step 2 fix stress iteration 9 norm p 3.4439e-06 norm u 1.64547e-06 iter p 13 iter u 39
+[1;34m***** last iteration 9 norm p 2.61345e-07 norm u 0
+[1;34m***** time step 3 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 3 fix stress iteration 2 norm p 1.31835 norm u 3.3023 iter p 108 iter u 1000
+[1;34m***** time step 3 fix stress iteration 3 norm p 1.71572 norm u 0.0234979 iter p 98 iter u 1000
+[1;34m***** time step 3 fix stress iteration 4 norm p 0.330407 norm u 0.00217498 iter p 75 iter u 800
+[1;34m***** time step 3 fix stress iteration 5 norm p 0.0315526 norm u 0.000205218 iter p 66 iter u 230
+[1;34m***** time step 3 fix stress iteration 6 norm p 0.00304768 norm u 2.01301e-05 iter p 54 iter u 97
+[1;34m***** time step 3 fix stress iteration 7 norm p 0.000295944 norm u 1.60924e-06 iter p 43 iter u 91
+[1;34m***** time step 3 fix stress iteration 8 norm p 2.87371e-05 norm u 4.91006e-07 iter p 36 iter u 74
+[1;34m***** time step 3 fix stress iteration 9 norm p 2.68577e-06 norm u 6.80257e-07 iter p 14 iter u 39
+[1;34m***** last iteration 9 norm p 2.90229e-07 norm u 0
+[1;34m***** time step 4 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 4 fix stress iteration 2 norm p 0.921666 norm u 3.30782 iter p 106 iter u 1000
+[1;34m***** time step 4 fix stress iteration 3 norm p 1.08826 norm u 0.0235562 iter p 93 iter u 1000
+[1;34m***** time step 4 fix stress iteration 4 norm p 0.275737 norm u 0.00210151 iter p 85 iter u 741
+[1;34m***** time step 4 fix stress iteration 5 norm p 0.0263702 norm u 0.000210314 iter p 68 iter u 216
+[1;34m***** time step 4 fix stress iteration 6 norm p 0.00254971 norm u 1.92699e-05 iter p 57 iter u 98
+[1;34m***** time step 4 fix stress iteration 7 norm p 0.000247801 norm u 2.1748e-06 iter p 44 iter u 48
+[1;34m***** time step 4 fix stress iteration 8 norm p 2.4041e-05 norm u 5.04488e-07 iter p 37 iter u 50
+[1;34m***** time step 4 fix stress iteration 9 norm p 2.23189e-06 norm u 3.93772e-07 iter p 13 iter u 31
+[1;34m***** last iteration 9 norm p 1.8499e-07 norm u 0
+[1;34m***** time step 5 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 5 fix stress iteration 2 norm p 0.665304 norm u 3.31191 iter p 108 iter u 1000
+[1;34m***** time step 5 fix stress iteration 3 norm p 0.683557 norm u 0.0236732 iter p 97 iter u 1000
+[1;34m***** time step 5 fix stress iteration 4 norm p 0.240664 norm u 0.00219232 iter p 82 iter u 597
+[1;34m***** time step 5 fix stress iteration 5 norm p 0.0230455 norm u 0.000209343 iter p 63 iter u 181
+[1;34m***** time step 5 fix stress iteration 6 norm p 0.00223032 norm u 1.9646e-05 iter p 56 iter u 144
+[1;34m***** time step 5 fix stress iteration 7 norm p 0.000216884 norm u 1.89227e-06 iter p 43 iter u 38
+[1;34m***** time step 5 fix stress iteration 8 norm p 2.10738e-05 norm u 1.39679e-07 iter p 38 iter u 37
+[1;34m***** time step 5 fix stress iteration 9 norm p 1.9516e-06 norm u 3.94361e-07 iter p 13 iter u 37
+[1;34m***** last iteration 9 norm p 1.89688e-07 norm u 0
+[1;34m***** time step 6 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 6 fix stress iteration 2 norm p 0.484377 norm u 3.31645 iter p 115 iter u 1000
+[1;34m***** time step 6 fix stress iteration 3 norm p 0.39762 norm u 0.0238138 iter p 112 iter u 1000
+[1;34m***** time step 6 fix stress iteration 4 norm p 0.21586 norm u 0.00216475 iter p 91 iter u 876
+[1;34m***** time step 6 fix stress iteration 5 norm p 0.0206881 norm u 0.000213583 iter p 69 iter u 227
+[1;34m***** time step 6 fix stress iteration 6 norm p 0.00200369 norm u 1.83568e-05 iter p 59 iter u 142
+[1;34m***** time step 6 fix stress iteration 7 norm p 0.000195015 norm u 2.02106e-06 iter p 43 iter u 42
+[1;34m***** time step 6 fix stress iteration 8 norm p 1.89667e-05 norm u 1.58297e-07 iter p 38 iter u 37
+[1;34m***** time step 6 fix stress iteration 9 norm p 1.7601e-06 norm u 8.16378e-07 iter p 14 iter u 39
+[1;34m***** last iteration 9 norm p 1.54795e-07 norm u 0
+[1;34m***** time step 7 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 7 fix stress iteration 2 norm p 0.349566 norm u 3.32025 iter p 110 iter u 1000
+[1;34m***** time step 7 fix stress iteration 3 norm p 0.185245 norm u 0.0239256 iter p 109 iter u 1000
+[1;34m***** time step 7 fix stress iteration 4 norm p 0.197406 norm u 0.00218731 iter p 86 iter u 699
+[1;34m***** time step 7 fix stress iteration 5 norm p 0.0189325 norm u 0.000215179 iter p 68 iter u 218
+[1;34m***** time step 7 fix stress iteration 6 norm p 0.0018348 norm u 1.92065e-05 iter p 56 iter u 119
+[1;34m***** time step 7 fix stress iteration 7 norm p 0.000178683 norm u 2.15038e-06 iter p 43 iter u 43
+[1;34m***** time step 7 fix stress iteration 8 norm p 1.73861e-05 norm u 2.8377e-07 iter p 38 iter u 39
+[1;34m***** time step 7 fix stress iteration 9 norm p 1.61377e-06 norm u 1.42117e-06 iter p 14 iter u 32
+[1;34m***** last iteration 9 norm p 1.5712e-07 norm u 0
+[1;34m***** time step 8 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 8 fix stress iteration 2 norm p 0.245315 norm u 3.32456 iter p 108 iter u 1000
+[1;34m***** time step 8 fix stress iteration 3 norm p 0.0216939 norm u 0.0240965 iter p 108 iter u 1000
+[1;34m***** time step 8 fix stress iteration 4 norm p 0.183166 norm u 0.00213261 iter p 87 iter u 738
+[1;34m***** time step 8 fix stress iteration 5 norm p 0.0175776 norm u 0.00021608 iter p 68 iter u 174
+[1;34m***** time step 8 fix stress iteration 6 norm p 0.00170445 norm u 1.89691e-05 iter p 57 iter u 95
+[1;34m***** time step 8 fix stress iteration 7 norm p 0.00016607 norm u 2.0879e-06 iter p 43 iter u 35
+[1;34m***** time step 8 fix stress iteration 8 norm p 1.61283e-05 norm u 3.16191e-07 iter p 38 iter u 33
+[1;34m***** time step 8 fix stress iteration 9 norm p 1.50482e-06 norm u 1.57141e-06 iter p 15 iter u 33
+[1;34m***** last iteration 9 norm p 1.46779e-07 norm u 0
+[1;34m***** time step 9 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 9 fix stress iteration 2 norm p 0.162483 norm u 3.32741 iter p 116 iter u 1000
+[1;34m***** time step 9 fix stress iteration 3 norm p 0.10771 norm u 0.0241316 iter p 116 iter u 1000
+[1;34m***** time step 9 fix stress iteration 4 norm p 0.171865 norm u 0.00219464 iter p 93 iter u 679
+[1;34m***** time step 9 fix stress iteration 5 norm p 0.0165015 norm u 0.000221383 iter p 79 iter u 199
+[1;34m***** time step 9 fix stress iteration 6 norm p 0.00160098 norm u 1.89507e-05 iter p 62 iter u 116
+[1;34m***** time step 9 fix stress iteration 7 norm p 0.000156065 norm u 2.2608e-06 iter p 48 iter u 43
+[1;34m***** time step 9 fix stress iteration 8 norm p 1.51833e-05 norm u 4.4222e-07 iter p 39 iter u 34
+[1;34m***** time step 9 fix stress iteration 9 norm p 1.42474e-06 norm u 3.90634e-06 iter p 15 iter u 37
+[1;34m***** last iteration 9 norm p 1.00313e-07 norm u 0
+[1;34m***** time step 10 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 10 fix stress iteration 2 norm p 0.0952452 norm u 3.33125 iter p 113 iter u 1000
+[1;34m***** time step 10 fix stress iteration 3 norm p 0.212254 norm u 0.0243213 iter p 100 iter u 1000
+[1;34m***** time step 10 fix stress iteration 4 norm p 0.16272 norm u 0.00218053 iter p 93 iter u 699
+[1;34m***** time step 10 fix stress iteration 5 norm p 0.0156313 norm u 0.000220026 iter p 73 iter u 186
+[1;34m***** time step 10 fix stress iteration 6 norm p 0.0015173 norm u 1.8742e-05 iter p 62 iter u 98
+[1;34m***** time step 10 fix stress iteration 7 norm p 0.000147979 norm u 2.17272e-06 iter p 47 iter u 35
+[1;34m***** time step 10 fix stress iteration 8 norm p 1.44023e-05 norm u 1.37209e-07 iter p 39 iter u 33
+[1;34m***** time step 10 fix stress iteration 9 norm p 1.37103e-06 norm u 6.69158e-07 iter p 16 iter u 36
+[1;34m***** last iteration 9 norm p 1.43819e-07 norm u 0
+[1;34m***** time step 11 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 11 fix stress iteration 2 norm p 0.0397471 norm u 3.33407 iter p 90 iter u 1000
+[1;34m***** time step 11 fix stress iteration 3 norm p 0.298166 norm u 0.0243668 iter p 97 iter u 1000
+[1;34m***** time step 11 fix stress iteration 4 norm p 0.155188 norm u 0.00221018 iter p 86 iter u 623
+[1;34m***** time step 11 fix stress iteration 5 norm p 0.0149148 norm u 0.000225123 iter p 66 iter u 200
+[1;34m***** time step 11 fix stress iteration 6 norm p 0.00144851 norm u 1.88192e-05 iter p 57 iter u 119
+[1;34m***** time step 11 fix stress iteration 7 norm p 0.000141355 norm u 2.15357e-06 iter p 43 iter u 40
+[1;34m***** time step 11 fix stress iteration 8 norm p 1.37597e-05 norm u 5.12501e-08 iter p 38 iter u 33
+[1;34m***** time step 11 fix stress iteration 9 norm p 1.31958e-06 norm u 5.28543e-07 iter p 16 iter u 32
+[1;34m***** last iteration 9 norm p 1.38202e-07 norm u 0
+[1;34m***** time step 12 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 12 fix stress iteration 2 norm p 0.0067059 norm u 3.33764 iter p 94 iter u 1000
+[1;34m***** time step 12 fix stress iteration 3 norm p 0.369739 norm u 0.0245528 iter p 109 iter u 1000
+[1;34m***** time step 12 fix stress iteration 4 norm p 0.148902 norm u 0.00220374 iter p 81 iter u 516
+[1;34m***** time step 12 fix stress iteration 5 norm p 0.0143171 norm u 0.000221177 iter p 71 iter u 169
+[1;34m***** time step 12 fix stress iteration 6 norm p 0.00139116 norm u 1.8435e-05 iter p 60 iter u 100
+[1;34m***** time step 12 fix stress iteration 7 norm p 0.000135843 norm u 2.38897e-06 iter p 46 iter u 44
+[1;34m***** time step 12 fix stress iteration 8 norm p 1.32533e-05 norm u 2.39541e-07 iter p 38 iter u 34
+[1;34m***** time step 12 fix stress iteration 9 norm p 1.2734e-06 norm u 4.99333e-07 iter p 17 iter u 34
+[1;34m***** last iteration 9 norm p 1.31749e-07 norm u 0
+[1;34m***** time step 13 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 13 fix stress iteration 2 norm p 0.0460483 norm u 3.34023 iter p 94 iter u 1000
+[1;34m***** time step 13 fix stress iteration 3 norm p 0.430078 norm u 0.024625 iter p 106 iter u 1000
+[1;34m***** time step 13 fix stress iteration 4 norm p 0.143595 norm u 0.00226997 iter p 89 iter u 297
+[1;34m***** time step 13 fix stress iteration 5 norm p 0.0138129 norm u 0.000219835 iter p 77 iter u 147
+[1;34m***** time step 13 fix stress iteration 6 norm p 0.00134286 norm u 1.9973e-05 iter p 62 iter u 86
+[1;34m***** time step 13 fix stress iteration 7 norm p 0.000131123 norm u 2.08452e-06 iter p 47 iter u 36
+[1;34m***** time step 13 fix stress iteration 8 norm p 1.27698e-05 norm u 1.48198e-08 iter p 38 iter u 24
+[1;34m***** time step 13 fix stress iteration 9 norm p 1.23091e-06 norm u 3.17348e-07 iter p 17 iter u 26
+[1;34m***** last iteration 9 norm p 1.35934e-07 norm u 0
+[1;34m***** time step 14 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 14 fix stress iteration 2 norm p 0.0797056 norm u 3.34302 iter p 104 iter u 1000
+[1;34m***** time step 14 fix stress iteration 3 norm p 0.481448 norm u 0.0246593 iter p 113 iter u 1000
+[1;34m***** time step 14 fix stress iteration 4 norm p 0.139073 norm u 0.00227701 iter p 94 iter u 275
+[1;34m***** time step 14 fix stress iteration 5 norm p 0.0133835 norm u 0.000221232 iter p 76 iter u 150
+[1;34m***** time step 14 fix stress iteration 6 norm p 0.00130172 norm u 1.99809e-05 iter p 65 iter u 77
+[1;34m***** time step 14 fix stress iteration 7 norm p 0.000127231 norm u 2.02703e-06 iter p 53 iter u 32
+[1;34m***** time step 14 fix stress iteration 8 norm p 1.24221e-05 norm u 7.4885e-08 iter p 38 iter u 23
+[1;34m***** time step 14 fix stress iteration 9 norm p 1.1718e-06 norm u 5.83334e-07 iter p 18 iter u 24
+[1;34m***** last iteration 9 norm p 1.22334e-07 norm u 0
+[1;34m***** time step 15 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 15 fix stress iteration 2 norm p 0.108747 norm u 3.34607 iter p 106 iter u 1000
+[1;34m***** time step 15 fix stress iteration 3 norm p 0.525562 norm u 0.0247244 iter p 113 iter u 1000
+[1;34m***** time step 15 fix stress iteration 4 norm p 0.135185 norm u 0.00226343 iter p 97 iter u 432
+[1;34m***** time step 15 fix stress iteration 5 norm p 0.0130145 norm u 0.000227828 iter p 73 iter u 214
+[1;34m***** time step 15 fix stress iteration 6 norm p 0.00126645 norm u 1.97551e-05 iter p 64 iter u 83
+[1;34m***** time step 15 fix stress iteration 7 norm p 0.000123847 norm u 2.10863e-06 iter p 49 iter u 32
+[1;34m***** time step 15 fix stress iteration 8 norm p 1.20861e-05 norm u 1.79889e-07 iter p 39 iter u 24
+[1;34m***** time step 15 fix stress iteration 9 norm p 1.14275e-06 norm u 7.46514e-07 iter p 18 iter u 24
+[1;34m***** last iteration 9 norm p 1.11102e-07 norm u 0
+[1;34m***** time step 16 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 16 fix stress iteration 2 norm p 0.134002 norm u 3.34925 iter p 112 iter u 1000
+[1;34m***** time step 16 fix stress iteration 3 norm p 0.563713 norm u 0.0248547 iter p 129 iter u 1000
+[1;34m***** time step 16 fix stress iteration 4 norm p 0.131821 norm u 0.00227633 iter p 103 iter u 436
+[1;34m***** time step 16 fix stress iteration 5 norm p 0.0126957 norm u 0.000224535 iter p 81 iter u 178
+[1;34m***** time step 16 fix stress iteration 6 norm p 0.00123603 norm u 1.94846e-05 iter p 65 iter u 100
+[1;34m***** time step 16 fix stress iteration 7 norm p 0.000120953 norm u 2.21498e-06 iter p 53 iter u 35
+[1;34m***** time step 16 fix stress iteration 8 norm p 1.1805e-05 norm u 5.23118e-08 iter p 41 iter u 31
+[1;34m***** time step 16 fix stress iteration 9 norm p 1.12389e-06 norm u 6.04952e-07 iter p 19 iter u 24
+[1;34m***** last iteration 9 norm p 1.16164e-07 norm u 0
+[1;34m***** time step 17 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 17 fix stress iteration 2 norm p 0.156112 norm u 3.35205 iter p 104 iter u 1000
+[1;34m***** time step 17 fix stress iteration 3 norm p 0.596925 norm u 0.0249131 iter p 110 iter u 1000
+[1;34m***** time step 17 fix stress iteration 4 norm p 0.128893 norm u 0.00229621 iter p 97 iter u 341
+[1;34m***** time step 17 fix stress iteration 5 norm p 0.0124185 norm u 0.000223059 iter p 72 iter u 147
+[1;34m***** time step 17 fix stress iteration 6 norm p 0.0012096 norm u 2.01309e-05 iter p 63 iter u 81
+[1;34m***** time step 17 fix stress iteration 7 norm p 0.000118387 norm u 2.04338e-06 iter p 49 iter u 31
+[1;34m***** time step 17 fix stress iteration 8 norm p 1.15652e-05 norm u 1.90851e-08 iter p 38 iter u 21
+[1;34m***** time step 17 fix stress iteration 9 norm p 1.06494e-06 norm u 2.57936e-07 iter p 19 iter u 23
+[1;34m***** last iteration 9 norm p 6.24095e-08 norm u 0
+[1;34m***** time step 18 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 18 fix stress iteration 2 norm p 0.175581 norm u 3.35518 iter p 85 iter u 1000
+[1;34m***** time step 18 fix stress iteration 3 norm p 0.626005 norm u 0.0249922 iter p 99 iter u 1000
+[1;34m***** time step 18 fix stress iteration 4 norm p 0.126327 norm u 0.00229198 iter p 92 iter u 398
+[1;34m***** time step 18 fix stress iteration 5 norm p 0.0121759 norm u 0.000223752 iter p 69 iter u 140
+[1;34m***** time step 18 fix stress iteration 6 norm p 0.00118651 norm u 1.99263e-05 iter p 59 iter u 74
+[1;34m***** time step 18 fix stress iteration 7 norm p 0.000116174 norm u 1.97538e-06 iter p 46 iter u 29
+[1;34m***** time step 18 fix stress iteration 8 norm p 1.13291e-05 norm u 2.92683e-08 iter p 37 iter u 17
+[1;34m***** time step 18 fix stress iteration 9 norm p 1.01435e-06 norm u 1.08739e-08 iter p 19 iter u 19
+[1;34m***** last iteration 9 norm p 6.38645e-08 norm u 0
+[1;34m***** time step 19 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 19 fix stress iteration 2 norm p 0.192815 norm u 3.35817 iter p 98 iter u 1000
+[1;34m***** time step 19 fix stress iteration 3 norm p 0.651585 norm u 0.0250943 iter p 100 iter u 1000
+[1;34m***** time step 19 fix stress iteration 4 norm p 0.12407 norm u 0.00232085 iter p 91 iter u 337
+[1;34m***** time step 19 fix stress iteration 5 norm p 0.0119625 norm u 0.000221026 iter p 75 iter u 133
+[1;34m***** time step 19 fix stress iteration 6 norm p 0.00116629 norm u 2.04433e-05 iter p 62 iter u 66
+[1;34m***** time step 19 fix stress iteration 7 norm p 0.000114229 norm u 1.79839e-06 iter p 48 iter u 28
+[1;34m***** time step 19 fix stress iteration 8 norm p 1.11407e-05 norm u 9.13694e-08 iter p 37 iter u 15
+[1;34m***** last iteration 8 norm p 9.97645e-07 norm u 2.10731e-09
+[1;34m***** time step 20 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 20 fix stress iteration 2 norm p 0.208592 norm u 3.38501 iter p 104 iter u 1000
+[1;34m***** time step 20 fix stress iteration 3 norm p 0.673827 norm u 0.024577 iter p 106 iter u 1000
+[1;34m***** time step 20 fix stress iteration 4 norm p 0.122212 norm u 0.00230276 iter p 93 iter u 575
+[1;34m***** time step 20 fix stress iteration 5 norm p 0.0117944 norm u 0.000218145 iter p 71 iter u 148
+[1;34m***** time step 20 fix stress iteration 6 norm p 0.00115086 norm u 2.04955e-05 iter p 60 iter u 74
+[1;34m***** time step 20 fix stress iteration 7 norm p 0.000112832 norm u 1.82985e-06 iter p 49 iter u 32
+[1;34m***** time step 20 fix stress iteration 8 norm p 1.10755e-05 norm u 9.09416e-08 iter p 41 iter u 17
+[1;34m***** last iteration 8 norm p 9.96083e-07 norm u 7.02936e-09
+[1;34m***** time step 21 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 21 fix stress iteration 2 norm p 0.222485 norm u 3.38969 iter p 97 iter u 1000
+[1;34m***** time step 21 fix stress iteration 3 norm p 0.693465 norm u 0.0248841 iter p 105 iter u 1000
+[1;34m***** time step 21 fix stress iteration 4 norm p 0.120552 norm u 0.00229576 iter p 92 iter u 347
+[1;34m***** time step 21 fix stress iteration 5 norm p 0.0116448 norm u 0.000219515 iter p 81 iter u 137
+[1;34m***** time step 21 fix stress iteration 6 norm p 0.00113716 norm u 2.00769e-05 iter p 59 iter u 68
+[1;34m***** time step 21 fix stress iteration 7 norm p 0.000111522 norm u 1.79668e-06 iter p 49 iter u 28
+[1;34m***** time step 21 fix stress iteration 8 norm p 1.08963e-05 norm u 6.01214e-08 iter p 41 iter u 16
+[1;34m***** last iteration 8 norm p 9.65336e-07 norm u 7.51441e-09
+[1;34m***** time step 22 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 22 fix stress iteration 2 norm p 0.234594 norm u 3.39315 iter p 83 iter u 1000
+[1;34m***** time step 22 fix stress iteration 3 norm p 0.711625 norm u 0.0249914 iter p 98 iter u 1000
+[1;34m***** time step 22 fix stress iteration 4 norm p 0.118889 norm u 0.00231676 iter p 76 iter u 389
+[1;34m***** time step 22 fix stress iteration 5 norm p 0.0114831 norm u 0.000218765 iter p 67 iter u 129
+[1;34m***** time step 22 fix stress iteration 6 norm p 0.00112169 norm u 2.02047e-05 iter p 59 iter u 64
+[1;34m***** time step 22 fix stress iteration 7 norm p 0.000110051 norm u 1.71331e-06 iter p 47 iter u 26
+[1;34m***** time step 22 fix stress iteration 8 norm p 1.07542e-05 norm u 7.511e-08 iter p 38 iter u 13
+[1;34m***** last iteration 8 norm p 9.4411e-07 norm u 8.28119e-10
+[1;34m***** time step 23 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 23 fix stress iteration 2 norm p 0.24557 norm u 3.3967 iter p 86 iter u 1000
+[1;34m***** time step 23 fix stress iteration 3 norm p 0.727705 norm u 0.0250598 iter p 92 iter u 1000
+[1;34m***** time step 23 fix stress iteration 4 norm p 0.117441 norm u 0.00232569 iter p 88 iter u 535
+[1;34m***** time step 23 fix stress iteration 5 norm p 0.0113438 norm u 0.000221604 iter p 67 iter u 177
+[1;34m***** time step 23 fix stress iteration 6 norm p 0.00110849 norm u 2.05704e-05 iter p 58 iter u 77
+[1;34m***** time step 23 fix stress iteration 7 norm p 0.000108814 norm u 1.93479e-06 iter p 47 iter u 34
+[1;34m***** time step 23 fix stress iteration 8 norm p 1.06948e-05 norm u 4.33396e-08 iter p 40 iter u 30
+[1;34m***** time step 23 fix stress iteration 9 norm p 1.03251e-06 norm u 8.68817e-08 iter p 22 iter u 22
+[1;34m***** last iteration 9 norm p 1.05e-07 norm u 0
+[1;34m***** time step 24 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 24 fix stress iteration 2 norm p 0.255519 norm u 3.40073 iter p 88 iter u 1000
+[1;34m***** time step 24 fix stress iteration 3 norm p 0.74206 norm u 0.025179 iter p 91 iter u 1000
+[1;34m***** time step 24 fix stress iteration 4 norm p 0.116156 norm u 0.00232666 iter p 88 iter u 899
+[1;34m***** time step 24 fix stress iteration 5 norm p 0.011221 norm u 0.000224559 iter p 66 iter u 215
+[1;34m***** time step 24 fix stress iteration 6 norm p 0.00109692 norm u 2.07147e-05 iter p 58 iter u 93
+[1;34m***** time step 24 fix stress iteration 7 norm p 0.000107738 norm u 2.07573e-06 iter p 47 iter u 36
+[1;34m***** time step 24 fix stress iteration 8 norm p 1.06093e-05 norm u 8.99304e-08 iter p 39 iter u 32
+[1;34m***** time step 24 fix stress iteration 9 norm p 1.03226e-06 norm u 7.29355e-08 iter p 22 iter u 26
+[1;34m***** last iteration 9 norm p 1.13105e-07 norm u 0
+[1;34m***** time step 25 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 25 fix stress iteration 2 norm p 0.264553 norm u 3.40422 iter p 68 iter u 1000
+[1;34m***** time step 25 fix stress iteration 3 norm p 0.754927 norm u 0.0252021 iter p 84 iter u 1000
+[1;34m***** time step 25 fix stress iteration 4 norm p 0.115008 norm u 0.00236549 iter p 77 iter u 782
+[1;34m***** time step 25 fix stress iteration 5 norm p 0.0111113 norm u 0.000223405 iter p 60 iter u 195
+[1;34m***** time step 25 fix stress iteration 6 norm p 0.00108668 norm u 2.089e-05 iter p 49 iter u 90
+[1;34m***** time step 25 fix stress iteration 7 norm p 0.000106767 norm u 1.98161e-06 iter p 44 iter u 35
+[1;34m***** time step 25 fix stress iteration 8 norm p 1.05107e-05 norm u 1.158e-07 iter p 37 iter u 31
+[1;34m***** time step 25 fix stress iteration 9 norm p 1.02473e-06 norm u 7.91563e-08 iter p 21 iter u 25
+[1;34m***** last iteration 9 norm p 1.16533e-07 norm u 0
+[1;34m***** time step 26 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 26 fix stress iteration 2 norm p 0.272779 norm u 3.40838 iter p 65 iter u 1000
+[1;34m***** time step 26 fix stress iteration 3 norm p 0.76649 norm u 0.0252768 iter p 81 iter u 1000
+[1;34m***** time step 26 fix stress iteration 4 norm p 0.113978 norm u 0.00235604 iter p 63 iter u 514
+[1;34m***** time step 26 fix stress iteration 5 norm p 0.0110127 norm u 0.000222067 iter p 55 iter u 145
+[1;34m***** time step 26 fix stress iteration 6 norm p 0.00107745 norm u 2.03073e-05 iter p 48 iter u 68
+[1;34m***** time step 26 fix stress iteration 7 norm p 0.000105862 norm u 1.85541e-06 iter p 42 iter u 32
+[1;34m***** time step 26 fix stress iteration 8 norm p 1.04411e-05 norm u 1.12639e-07 iter p 34 iter u 19
+[1;34m***** last iteration 8 norm p 9.84289e-07 norm u 1.07686e-07
+[1;34m***** time step 27 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 27 fix stress iteration 2 norm p 0.280278 norm u 3.41253 iter p 72 iter u 1000
+[1;34m***** time step 27 fix stress iteration 3 norm p 0.776912 norm u 0.0253468 iter p 79 iter u 1000
+[1;34m***** time step 27 fix stress iteration 4 norm p 0.113048 norm u 0.00236069 iter p 63 iter u 477
+[1;34m***** time step 27 fix stress iteration 5 norm p 0.0109234 norm u 0.000221558 iter p 58 iter u 140
+[1;34m***** time step 27 fix stress iteration 6 norm p 0.00106918 norm u 2.01612e-05 iter p 47 iter u 64
+[1;34m***** time step 27 fix stress iteration 7 norm p 0.000105069 norm u 1.72931e-06 iter p 42 iter u 27
+[1;34m***** time step 27 fix stress iteration 8 norm p 1.03146e-05 norm u 8.66096e-08 iter p 37 iter u 14
+[1;34m***** last iteration 8 norm p 9.27219e-07 norm u 1.74166e-09
+[1;34m***** time step 28 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 28 fix stress iteration 2 norm p 0.287142 norm u 3.41661 iter p 78 iter u 1000
+[1;34m***** time step 28 fix stress iteration 3 norm p 0.786322 norm u 0.0253789 iter p 83 iter u 1000
+[1;34m***** time step 28 fix stress iteration 4 norm p 0.112208 norm u 0.00236216 iter p 78 iter u 437
+[1;34m***** time step 28 fix stress iteration 5 norm p 0.0108424 norm u 0.000222158 iter p 60 iter u 140
+[1;34m***** time step 28 fix stress iteration 6 norm p 0.0010618 norm u 2.00053e-05 iter p 49 iter u 65
+[1;34m***** time step 28 fix stress iteration 7 norm p 0.000104437 norm u 1.74439e-06 iter p 43 iter u 25
+[1;34m***** time step 28 fix stress iteration 8 norm p 1.02516e-05 norm u 6.25946e-08 iter p 37 iter u 12
+[1;34m***** last iteration 8 norm p 8.91946e-07 norm u 1.57282e-09
+[1;34m***** time step 29 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 29 fix stress iteration 2 norm p 0.293436 norm u 3.42087 iter p 69 iter u 1000
+[1;34m***** time step 29 fix stress iteration 3 norm p 0.794838 norm u 0.0254423 iter p 81 iter u 1000
+[1;34m***** time step 29 fix stress iteration 4 norm p 0.111447 norm u 0.00237416 iter p 66 iter u 418
+[1;34m***** time step 29 fix stress iteration 5 norm p 0.0107681 norm u 0.000221493 iter p 60 iter u 132
+[1;34m***** time step 29 fix stress iteration 6 norm p 0.00105495 norm u 1.98398e-05 iter p 48 iter u 60
+[1;34m***** time step 29 fix stress iteration 7 norm p 0.000103721 norm u 1.65583e-06 iter p 42 iter u 22
+[1;34m***** time step 29 fix stress iteration 8 norm p 1.01194e-05 norm u 5.44198e-08 iter p 36 iter u 10
+[1;34m***** last iteration 8 norm p 8.57633e-07 norm u 1.09519e-09
+[1;34m***** time step 30 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 30 fix stress iteration 2 norm p 0.299548 norm u 3.45625 iter p 64 iter u 1000
+[1;34m***** time step 30 fix stress iteration 3 norm p 0.802344 norm u 0.0256909 iter p 75 iter u 1000
+[1;34m***** time step 30 fix stress iteration 4 norm p 0.110871 norm u 0.0020562 iter p 63 iter u 1000
+[1;34m***** time step 30 fix stress iteration 5 norm p 0.0107173 norm u 0.000439657 iter p 52 iter u 1000
+[1;34m***** time step 30 fix stress iteration 6 norm p 0.00105089 norm u 5.89581e-05 iter p 45 iter u 1000
+[1;34m***** time step 30 fix stress iteration 7 norm p 0.000103479 norm u 6.69308e-05 iter p 39 iter u 1000
+[1;34m***** time step 30 fix stress iteration 8 norm p 1.03802e-05 norm u 1.8695e-05 iter p 35 iter u 1000
+[1;34m***** time step 30 fix stress iteration 9 norm p 1.15512e-06 norm u 1.07877e-05 iter p 26 iter u 1000
+[1;34m***** time step 30 fix stress iteration 10 norm p 1.90189e-07 norm u 5.32125e-06 iter p 14 iter u 920
+[1;34m***** last iteration 10 norm p 7.07055e-08 norm u 3.61815e-10
+[1;34m***** time step 31 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 31 fix stress iteration 2 norm p 0.304763 norm u 3.45633 iter p 61 iter u 1000
+[1;34m***** time step 31 fix stress iteration 3 norm p 0.80942 norm u 0.0253058 iter p 68 iter u 1000
+[1;34m***** time step 31 fix stress iteration 4 norm p 0.110192 norm u 0.00236178 iter p 63 iter u 467
+[1;34m***** time step 31 fix stress iteration 5 norm p 0.0106474 norm u 0.000219678 iter p 53 iter u 140
+[1;34m***** time step 31 fix stress iteration 6 norm p 0.0010444 norm u 1.92996e-05 iter p 44 iter u 63
+[1;34m***** time step 31 fix stress iteration 7 norm p 0.000102785 norm u 1.6546e-06 iter p 40 iter u 23
+[1;34m***** time step 31 fix stress iteration 8 norm p 1.00602e-05 norm u 6.22721e-08 iter p 34 iter u 10
+[1;34m***** last iteration 8 norm p 8.46682e-07 norm u 3.25926e-09
+[1;34m***** time step 32 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 32 fix stress iteration 2 norm p 0.309641 norm u 3.46143 iter p 59 iter u 1000
+[1;34m***** time step 32 fix stress iteration 3 norm p 0.815831 norm u 0.0254141 iter p 73 iter u 1000
+[1;34m***** time step 32 fix stress iteration 4 norm p 0.109601 norm u 0.00239091 iter p 61 iter u 497
+[1;34m***** time step 32 fix stress iteration 5 norm p 0.0105858 norm u 0.000220885 iter p 50 iter u 143
+[1;34m***** time step 32 fix stress iteration 6 norm p 0.00103888 norm u 1.94973e-05 iter p 42 iter u 71
+[1;34m***** time step 32 fix stress iteration 7 norm p 0.000102288 norm u 1.64186e-06 iter p 37 iter u 26
+[1;34m***** time step 32 fix stress iteration 8 norm p 1.00122e-05 norm u 9.19803e-08 iter p 32 iter u 19
+[1;34m***** last iteration 8 norm p 9.0473e-07 norm u 3.80603e-09
+[1;34m***** time step 33 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 33 fix stress iteration 2 norm p 0.314165 norm u 3.46672 iter p 60 iter u 1000
+[1;34m***** time step 33 fix stress iteration 3 norm p 0.821643 norm u 0.0254739 iter p 73 iter u 1000
+[1;34m***** time step 33 fix stress iteration 4 norm p 0.109067 norm u 0.00239036 iter p 60 iter u 417
+[1;34m***** time step 33 fix stress iteration 5 norm p 0.010529 norm u 0.000219854 iter p 50 iter u 133
+[1;34m***** time step 33 fix stress iteration 6 norm p 0.00103383 norm u 1.92615e-05 iter p 42 iter u 62
+[1;34m***** time step 33 fix stress iteration 7 norm p 0.000101891 norm u 1.58071e-06 iter p 37 iter u 22
+[1;34m***** time step 33 fix stress iteration 8 norm p 9.93837e-06 norm u 6.41486e-08 iter p 32 iter u 10
+[1;34m***** last iteration 8 norm p 8.37744e-07 norm u 1.40384e-09
+[1;34m***** time step 34 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 34 fix stress iteration 2 norm p 0.378043 norm u 3.51638 iter p 66 iter u 1000
+[1;34m***** time step 34 fix stress iteration 3 norm p 0.780912 norm u 0.024893 iter p 67 iter u 1000
+[1;34m***** time step 34 fix stress iteration 4 norm p 0.124719 norm u 0.00240064 iter p 62 iter u 1000
+[1;34m***** time step 34 fix stress iteration 5 norm p 0.0130224 norm u 0.000492289 iter p 49 iter u 1000
+[1;34m***** time step 34 fix stress iteration 6 norm p 0.00134971 norm u 0.000208345 iter p 42 iter u 1000
+[1;34m***** time step 34 fix stress iteration 7 norm p 0.000137397 norm u 0.00028138 iter p 38 iter u 1000
+[1;34m***** time step 34 fix stress iteration 8 norm p 1.4122e-05 norm u 0.000260223 iter p 33 iter u 1000
+[1;34m***** time step 34 fix stress iteration 9 norm p 1.44169e-06 norm u 0.000122401 iter p 22 iter u 1000
+[1;34m***** time step 34 fix stress iteration 10 norm p 1.16487e-07 norm u 0.000183493 iter p 12 iter u 1000
+[1;34m***** time step 34 fix stress iteration 11 norm p 1.49823e-08 norm u 0.000215745 iter p 13 iter u 1000
+[1;34m***** time step 34 fix stress iteration 12 norm p 1.99461e-07 norm u 7.63885e-05 iter p 12 iter u 1000
+[1;34m***** time step 34 fix stress iteration 13 norm p 6.88307e-08 norm u 6.06178e-05 iter p 11 iter u 1000
+[1;34m***** time step 34 fix stress iteration 14 norm p 1.04335e-07 norm u 5.18525e-05 iter p 11 iter u 1000
+[1;34m***** time step 34 fix stress iteration 15 norm p 9.23117e-08 norm u 0.00019042 iter p 10 iter u 1000
+[1;34m***** time step 34 fix stress iteration 16 norm p 1.74976e-09 norm u 7.14006e-05 iter p 11 iter u 1000
+[1;34m***** time step 34 fix stress iteration 17 norm p 5.88336e-10 norm u 9.22945e-05 iter p 9 iter u 1000
+[1;34m***** time step 34 fix stress iteration 18 norm p 8.91637e-10 norm u 4.80565e-05 iter p 9 iter u 1000
+[1;34m***** time step 34 fix stress iteration 19 norm p 6.66748e-09 norm u 5.81123e-05 iter p 7 iter u 1000
+[1;34m***** time step 34 fix stress iteration 20 norm p 5.87752e-09 norm u 8.55265e-05 iter p 8 iter u 1000
+[1;34m***** time step 34 fix stress iteration 21 norm p 4.80193e-09 norm u 1.71044e-05 iter p 11 iter u 1000
+[1;34m***** time step 34 fix stress iteration 22 norm p 9.00256e-09 norm u 3.72919e-05 iter p 9 iter u 1000
+[1;34m***** time step 34 fix stress iteration 23 norm p 3.81868e-08 norm u 2.41947e-05 iter p 10 iter u 1000
+[1;34m***** time step 34 fix stress iteration 24 norm p 8.31378e-08 norm u 1.02255e-05 iter p 10 iter u 1000
+[1;34m***** time step 34 fix stress iteration 25 norm p 1.1038e-08 norm u 1.71858e-05 iter p 7 iter u 1000
+[1;34m***** time step 34 fix stress iteration 26 norm p 3.94875e-08 norm u 8.72736e-06 iter p 8 iter u 1000
+[1;34m***** time step 34 fix stress iteration 27 norm p 4.25558e-09 norm u 5.37359e-05 iter p 5 iter u 1000
+[1;34m***** time step 34 fix stress iteration 28 norm p 6.0834e-09 norm u 9.91476e-06 iter p 7 iter u 1000
+[1;34m***** time step 34 fix stress iteration 29 norm p 7.44307e-09 norm u 2.15124e-05 iter p 7 iter u 1000
+[1;34m***** time step 34 fix stress iteration 30 norm p 2.04139e-09 norm u 3.42284e-05 iter p 5 iter u 1000
+[1;34m***** time step 34 fix stress iteration 31 norm p 1.1661e-08 norm u 3.09759e-05 iter p 7 iter u 1000
+[1;34m***** time step 34 fix stress iteration 32 norm p 2.97335e-09 norm u 1.88405e-05 iter p 7 iter u 1000
+[1;34m***** time step 34 fix stress iteration 33 norm p 8.866e-09 norm u 2.88803e-05 iter p 5 iter u 1000
+[1;34m***** time step 34 fix stress iteration 34 norm p 2.10475e-10 norm u 2.58434e-05 iter p 3 iter u 1000
+[1;34m***** time step 34 fix stress iteration 35 norm p 1.62723e-09 norm u 2.18816e-05 iter p 5 iter u 1000
+[1;34m***** time step 34 fix stress iteration 36 norm p 9.03578e-11 norm u 3.80982e-05 iter p 4 iter u 1000
+[1;34m***** time step 34 fix stress iteration 37 norm p 2.25985e-08 norm u 1.21929e-05 iter p 7 iter u 1000
+[1;34m***** time step 34 fix stress iteration 38 norm p 6.54604e-09 norm u 1.28248e-05 iter p 7 iter u 1000
+[1;34m***** time step 34 fix stress iteration 39 norm p 4.32183e-10 norm u 1.34714e-05 iter p 4 iter u 1000
+[1;34m***** time step 34 fix stress iteration 40 norm p 1.37555e-09 norm u 1.71767e-05 iter p 3 iter u 1000
+[1;34m***** time step 34 fix stress iteration 41 norm p 1.26944e-09 norm u 3.2138e-05 iter p 3 iter u 1000
+[1;34m***** time step 34 fix stress iteration 42 norm p 4.78381e-09 norm u 4.8099e-05 iter p 5 iter u 1000
+[1;34m***** time step 34 fix stress iteration 43 norm p 9.91994e-10 norm u 3.99963e-05 iter p 5 iter u 1000
+[1;34m***** time step 34 fix stress iteration 44 norm p 1.28461e-08 norm u 0.000151219 iter p 7 iter u 496
+[1;34m***** last iteration 44 norm p 6.88711e-10 norm u 0
+[1;34m***** time step 35 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 35 fix stress iteration 2 norm p 0.323148 norm u 3.55356 iter p 58 iter u 1000
+[1;34m***** time step 35 fix stress iteration 3 norm p 0.831391 norm u 0.024577 iter p 64 iter u 1000
+[1;34m***** time step 35 fix stress iteration 4 norm p 0.108363 norm u 0.00311474 iter p 60 iter u 1000
+[1;34m***** time step 35 fix stress iteration 5 norm p 0.0104624 norm u 0.000511851 iter p 47 iter u 1000
+[1;34m***** time step 35 fix stress iteration 6 norm p 0.00102925 norm u 0.00115551 iter p 41 iter u 1000
+[1;34m***** time step 35 fix stress iteration 7 norm p 0.000101458 norm u 0.000457265 iter p 37 iter u 1000
+[1;34m***** time step 35 fix stress iteration 8 norm p 9.88194e-06 norm u 0.000659304 iter p 31 iter u 1000
+[1;34m***** time step 35 fix stress iteration 9 norm p 1.01519e-06 norm u 0.000441685 iter p 26 iter u 1000
+[1;34m***** time step 35 fix stress iteration 10 norm p 7.37728e-08 norm u 0.000798296 iter p 11 iter u 1000
+[1;34m***** time step 35 fix stress iteration 11 norm p 3.62402e-08 norm u 0.000173432 iter p 10 iter u 1000
+[1;34m***** time step 35 fix stress iteration 12 norm p 1.57762e-08 norm u 0.000113136 iter p 8 iter u 1000
+[1;34m***** time step 35 fix stress iteration 13 norm p 1.05709e-09 norm u 0.000282826 iter p 8 iter u 1000
+[1;34m***** time step 35 fix stress iteration 14 norm p 4.59146e-09 norm u 8.88935e-05 iter p 8 iter u 1000
+[1;34m***** time step 35 fix stress iteration 15 norm p 1.73461e-08 norm u 0.000284667 iter p 9 iter u 1000
+[1;34m***** time step 35 fix stress iteration 16 norm p 7.10389e-09 norm u 5.34713e-05 iter p 9 iter u 1000
+[1;34m***** time step 35 fix stress iteration 17 norm p 6.10645e-09 norm u 0.000127027 iter p 9 iter u 1000
+[1;34m***** time step 35 fix stress iteration 18 norm p 4.11082e-09 norm u 4.34652e-05 iter p 7 iter u 1000
+[1;34m***** time step 35 fix stress iteration 19 norm p 7.26742e-09 norm u 5.366e-05 iter p 7 iter u 1000
+[1;34m***** time step 35 fix stress iteration 20 norm p 1.70371e-08 norm u 5.22576e-05 iter p 8 iter u 1000
+[1;34m***** time step 35 fix stress iteration 21 norm p 1.40297e-08 norm u 3.72e-05 iter p 9 iter u 1000
+[1;34m***** time step 35 fix stress iteration 22 norm p 4.09499e-11 norm u 7.2072e-05 iter p 6 iter u 1000
+[1;34m***** time step 35 fix stress iteration 23 norm p 2.24944e-09 norm u 1.75778e-05 iter p 8 iter u 493
+[1;34m***** last iteration 23 norm p 3.53023e-09 norm u 0
+[1;34m***** time step 36 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 36 fix stress iteration 2 norm p 0.326962 norm u 3.61335 iter p 59 iter u 1000
+[1;34m***** time step 36 fix stress iteration 3 norm p 0.835683 norm u 0.0240017 iter p 66 iter u 1000
+[1;34m***** time step 36 fix stress iteration 4 norm p 0.108013 norm u 0.00254753 iter p 63 iter u 1000
+[1;34m***** time step 36 fix stress iteration 5 norm p 0.0104255 norm u 0.000104596 iter p 49 iter u 1000
+[1;34m***** time step 36 fix stress iteration 6 norm p 0.00102621 norm u 0.00011731 iter p 42 iter u 1000
+[1;34m***** time step 36 fix stress iteration 7 norm p 0.000101088 norm u 0.000131551 iter p 36 iter u 1000
+[1;34m***** time step 36 fix stress iteration 8 norm p 9.98382e-06 norm u 0.000157817 iter p 31 iter u 1000
+[1;34m***** time step 36 fix stress iteration 9 norm p 1.01786e-06 norm u 9.98184e-05 iter p 26 iter u 1000
+[1;34m***** time step 36 fix stress iteration 10 norm p 1.04463e-07 norm u 9.58429e-05 iter p 12 iter u 1000
+[1;34m***** time step 36 fix stress iteration 11 norm p 6.12611e-09 norm u 6.51421e-05 iter p 9 iter u 1000
+[1;34m***** time step 36 fix stress iteration 12 norm p 6.55661e-09 norm u 6.01851e-05 iter p 9 iter u 1000
+[1;34m***** time step 36 fix stress iteration 13 norm p 3.47323e-08 norm u 6.02003e-05 iter p 9 iter u 1000
+[1;34m***** time step 36 fix stress iteration 14 norm p 7.3323e-08 norm u 7.03309e-05 iter p 11 iter u 1000
+[1;34m***** time step 36 fix stress iteration 15 norm p 1.92185e-08 norm u 3.06171e-05 iter p 9 iter u 778
+[1;34m***** last iteration 15 norm p 1.25525e-09 norm u 0
+[1;34m***** time step 37 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 37 fix stress iteration 2 norm p 0.330301 norm u 3.65003 iter p 61 iter u 1000
+[1;34m***** time step 37 fix stress iteration 3 norm p 0.839604 norm u 0.0245863 iter p 67 iter u 1000
+[1;34m***** time step 37 fix stress iteration 4 norm p 0.107661 norm u 0.00249352 iter p 64 iter u 1000
+[1;34m***** time step 37 fix stress iteration 5 norm p 0.0103857 norm u 0.000206912 iter p 54 iter u 337
+[1;34m***** time step 37 fix stress iteration 6 norm p 0.00102328 norm u 2.05119e-05 iter p 45 iter u 83
+[1;34m***** time step 37 fix stress iteration 7 norm p 0.000100985 norm u 1.31652e-06 iter p 40 iter u 37
+[1;34m***** time step 37 fix stress iteration 8 norm p 9.98858e-06 norm u 4.36082e-07 iter p 32 iter u 32
+[1;34m***** last iteration 8 norm p 9.89275e-07 norm u 9.26101e-07
+[1;34m***** time step 38 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 38 fix stress iteration 2 norm p 0.333465 norm u 3.6623 iter p 70 iter u 1000
+[1;34m***** time step 38 fix stress iteration 3 norm p 0.84321 norm u 0.0260032 iter p 79 iter u 490
+[1;34m***** time step 38 fix stress iteration 4 norm p 0.107311 norm u 0.00244211 iter p 67 iter u 213
+[1;34m***** time step 38 fix stress iteration 5 norm p 0.0103462 norm u 0.00020709 iter p 53 iter u 72
+[1;34m***** time step 38 fix stress iteration 6 norm p 0.00102021 norm u 1.63878e-05 iter p 46 iter u 25
+[1;34m***** time step 38 fix stress iteration 7 norm p 0.000100719 norm u 1.62925e-06 iter p 40 iter u 15
+[1;34m***** time step 38 fix stress iteration 8 norm p 9.95234e-06 norm u 1.22331e-07 iter p 32 iter u 6
+[1;34m***** last iteration 8 norm p 9.13044e-07 norm u 3.61874e-09
+[1;34m***** time step 39 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 39 fix stress iteration 2 norm p 0.336443 norm u 3.6712 iter p 73 iter u 291
+[1;34m***** time step 39 fix stress iteration 3 norm p 0.846525 norm u 0.0260561 iter p 85 iter u 294
+[1;34m***** time step 39 fix stress iteration 4 norm p 0.106982 norm u 0.00247614 iter p 79 iter u 139
+[1;34m***** time step 39 fix stress iteration 5 norm p 0.0103066 norm u 0.000212897 iter p 55 iter u 67
+[1;34m***** time step 39 fix stress iteration 6 norm p 0.00101714 norm u 1.63614e-05 iter p 47 iter u 23
+[1;34m***** time step 39 fix stress iteration 7 norm p 0.000100472 norm u 1.67028e-06 iter p 40 iter u 16
+[1;34m***** time step 39 fix stress iteration 8 norm p 9.93332e-06 norm u 1.09286e-07 iter p 32 iter u 7
+[1;34m***** last iteration 8 norm p 9.10417e-07 norm u 4.69669e-09
+[1;34m***** time step 40 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 40 fix stress iteration 2 norm p 0.339293 norm u 3.67167 iter p 73 iter u 291
+[1;34m***** time step 40 fix stress iteration 3 norm p 0.851293 norm u 0.0260644 iter p 85 iter u 295
+[1;34m***** time step 40 fix stress iteration 4 norm p 0.106803 norm u 0.00247749 iter p 80 iter u 139
+[1;34m***** time step 40 fix stress iteration 5 norm p 0.010322 norm u 0.000213019 iter p 56 iter u 67
+[1;34m***** time step 40 fix stress iteration 6 norm p 0.00101792 norm u 1.63655e-05 iter p 47 iter u 23
+[1;34m***** time step 40 fix stress iteration 7 norm p 0.000100554 norm u 1.67204e-06 iter p 40 iter u 16
+[1;34m***** time step 40 fix stress iteration 8 norm p 9.94092e-06 norm u 1.08944e-07 iter p 32 iter u 7
+[1;34m***** last iteration 8 norm p 9.10873e-07 norm u 4.76125e-09
+[1;34m***** time step 41 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 41 fix stress iteration 2 norm p 0.341911 norm u 3.6721 iter p 73 iter u 291
+[1;34m***** time step 41 fix stress iteration 3 norm p 0.855621 norm u 0.0260717 iter p 86 iter u 295
+[1;34m***** time step 41 fix stress iteration 4 norm p 0.106568 norm u 0.00247813 iter p 80 iter u 139
+[1;34m***** time step 41 fix stress iteration 5 norm p 0.0103212 norm u 0.000213074 iter p 58 iter u 67
+[1;34m***** time step 41 fix stress iteration 6 norm p 0.00101735 norm u 1.63716e-05 iter p 48 iter u 23
+[1;34m***** time step 41 fix stress iteration 7 norm p 0.000100502 norm u 1.67222e-06 iter p 41 iter u 16
+[1;34m***** time step 41 fix stress iteration 8 norm p 9.93484e-06 norm u 1.09105e-07 iter p 32 iter u 7
+[1;34m***** last iteration 8 norm p 9.10654e-07 norm u 4.74453e-09
+[1;34m***** time step 42 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 42 fix stress iteration 2 norm p 0.344323 norm u 3.67251 iter p 73 iter u 291
+[1;34m***** time step 42 fix stress iteration 3 norm p 0.859579 norm u 0.0260788 iter p 86 iter u 295
+[1;34m***** time step 42 fix stress iteration 4 norm p 0.106309 norm u 0.00247904 iter p 82 iter u 139
+[1;34m***** time step 42 fix stress iteration 5 norm p 0.0103114 norm u 0.000213143 iter p 60 iter u 67
+[1;34m***** time step 42 fix stress iteration 6 norm p 0.00101606 norm u 1.6376e-05 iter p 48 iter u 23
+[1;34m***** time step 42 fix stress iteration 7 norm p 0.000100377 norm u 1.6732e-06 iter p 41 iter u 16
+[1;34m***** time step 42 fix stress iteration 8 norm p 9.92237e-06 norm u 1.08994e-07 iter p 32 iter u 7
+[1;34m***** last iteration 8 norm p 9.09469e-07 norm u 4.76805e-09
+[1;34m***** time step 43 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 43 fix stress iteration 2 norm p 0.346546 norm u 3.67288 iter p 73 iter u 291
+[1;34m***** time step 43 fix stress iteration 3 norm p 0.863209 norm u 0.026085 iter p 86 iter u 295
+[1;34m***** time step 43 fix stress iteration 4 norm p 0.106044 norm u 0.00247954 iter p 83 iter u 139
+[1;34m***** time step 43 fix stress iteration 5 norm p 0.0102963 norm u 0.000213203 iter p 60 iter u 67
+[1;34m***** time step 43 fix stress iteration 6 norm p 0.00101435 norm u 1.63811e-05 iter p 48 iter u 23
+[1;34m***** time step 43 fix stress iteration 7 norm p 0.000100212 norm u 1.67343e-06 iter p 41 iter u 16
+[1;34m***** time step 43 fix stress iteration 8 norm p 9.90559e-06 norm u 1.09114e-07 iter p 33 iter u 7
+[1;34m***** last iteration 8 norm p 9.07856e-07 norm u 4.75687e-09
+[1;34m***** time step 44 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 44 fix stress iteration 2 norm p 0.348593 norm u 3.67323 iter p 73 iter u 291
+[1;34m***** time step 44 fix stress iteration 3 norm p 0.866543 norm u 0.0260909 iter p 86 iter u 295
+[1;34m***** time step 44 fix stress iteration 4 norm p 0.105783 norm u 0.00248025 iter p 83 iter u 139
+[1;34m***** time step 44 fix stress iteration 5 norm p 0.0102782 norm u 0.000213262 iter p 61 iter u 67
+[1;34m***** time step 44 fix stress iteration 6 norm p 0.00101244 norm u 1.6385e-05 iter p 48 iter u 23
+[1;34m***** time step 44 fix stress iteration 7 norm p 0.000100025 norm u 1.67416e-06 iter p 41 iter u 16
+[1;34m***** time step 44 fix stress iteration 8 norm p 9.88705e-06 norm u 1.09054e-07 iter p 33 iter u 7
+[1;34m***** last iteration 8 norm p 9.06444e-07 norm u 4.77252e-09
+[1;34m***** time step 45 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 45 fix stress iteration 2 norm p 0.350481 norm u 3.67355 iter p 73 iter u 291
+[1;34m***** time step 45 fix stress iteration 3 norm p 0.869611 norm u 0.0260963 iter p 86 iter u 295
+[1;34m***** time step 45 fix stress iteration 4 norm p 0.105531 norm u 0.00248078 iter p 84 iter u 139
+[1;34m***** time step 45 fix stress iteration 5 norm p 0.0102586 norm u 0.000213324 iter p 62 iter u 67
+[1;34m***** time step 45 fix stress iteration 6 norm p 0.00101044 norm u 1.63887e-05 iter p 49 iter u 23
+[1;34m***** time step 45 fix stress iteration 7 norm p 9.98302e-05 norm u 1.67472e-06 iter p 41 iter u 16
+[1;34m***** time step 45 fix stress iteration 8 norm p 9.86769e-06 norm u 1.09043e-07 iter p 33 iter u 7
+[1;34m***** last iteration 8 norm p 9.04697e-07 norm u 4.78069e-09
+[1;34m***** time step 46 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 46 fix stress iteration 2 norm p 0.352221 norm u 3.67385 iter p 73 iter u 291
+[1;34m***** time step 46 fix stress iteration 3 norm p 0.872435 norm u 0.0261014 iter p 86 iter u 295
+[1;34m***** time step 46 fix stress iteration 4 norm p 0.105291 norm u 0.00248139 iter p 84 iter u 139
+[1;34m***** time step 46 fix stress iteration 5 norm p 0.0102384 norm u 0.000213387 iter p 62 iter u 67
+[1;34m***** time step 46 fix stress iteration 6 norm p 0.00100844 norm u 1.63918e-05 iter p 49 iter u 23
+[1;34m***** time step 46 fix stress iteration 7 norm p 9.9634e-05 norm u 1.67554e-06 iter p 42 iter u 16
+[1;34m***** time step 46 fix stress iteration 8 norm p 9.84826e-06 norm u 1.08934e-07 iter p 33 iter u 7
+[1;34m***** last iteration 8 norm p 9.02916e-07 norm u 4.80378e-09
+[1;34m***** time step 47 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 47 fix stress iteration 2 norm p 0.353825 norm u 3.67413 iter p 73 iter u 291
+[1;34m***** time step 47 fix stress iteration 3 norm p 0.875038 norm u 0.026106 iter p 86 iter u 295
+[1;34m***** time step 47 fix stress iteration 4 norm p 0.105065 norm u 0.00248218 iter p 85 iter u 139
+[1;34m***** time step 47 fix stress iteration 5 norm p 0.0102183 norm u 0.000213508 iter p 62 iter u 67
+[1;34m***** time step 47 fix stress iteration 6 norm p 0.00100649 norm u 1.6392e-05 iter p 49 iter u 23
+[1;34m***** time step 47 fix stress iteration 7 norm p 9.94426e-05 norm u 1.67783e-06 iter p 42 iter u 16
+[1;34m***** time step 47 fix stress iteration 8 norm p 9.82946e-06 norm u 1.08367e-07 iter p 33 iter u 7
+[1;34m***** last iteration 8 norm p 9.01267e-07 norm u 4.89944e-09
+[1;34m***** time step 48 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 48 fix stress iteration 2 norm p 0.355305 norm u 3.67439 iter p 73 iter u 291
+[1;34m***** time step 48 fix stress iteration 3 norm p 0.877437 norm u 0.0261101 iter p 86 iter u 294
+[1;34m***** time step 48 fix stress iteration 4 norm p 0.104854 norm u 0.002481 iter p 85 iter u 138
+[1;34m***** time step 48 fix stress iteration 5 norm p 0.0101987 norm u 0.000213182 iter p 62 iter u 67
+[1;34m***** time step 48 fix stress iteration 6 norm p 0.00100463 norm u 1.64078e-05 iter p 49 iter u 23
+[1;34m***** time step 48 fix stress iteration 7 norm p 9.92558e-05 norm u 1.67026e-06 iter p 42 iter u 16
+[1;34m***** time step 48 fix stress iteration 8 norm p 9.81002e-06 norm u 1.10832e-07 iter p 34 iter u 7
+[1;34m***** last iteration 8 norm p 9.00333e-07 norm u 4.50604e-09
+[1;34m***** time step 49 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 49 fix stress iteration 2 norm p 0.35667 norm u 3.67462 iter p 73 iter u 291
+[1;34m***** time step 49 fix stress iteration 3 norm p 0.87965 norm u 0.0261144 iter p 86 iter u 295
+[1;34m***** time step 49 fix stress iteration 4 norm p 0.104657 norm u 0.00248276 iter p 85 iter u 139
+[1;34m***** time step 49 fix stress iteration 5 norm p 0.0101797 norm u 0.000213526 iter p 62 iter u 67
+[1;34m***** time step 49 fix stress iteration 6 norm p 0.00100285 norm u 1.64008e-05 iter p 50 iter u 23
+[1;34m***** time step 49 fix stress iteration 7 norm p 9.90832e-05 norm u 1.67686e-06 iter p 42 iter u 16
+[1;34m***** time step 49 fix stress iteration 8 norm p 9.79339e-06 norm u 1.08909e-07 iter p 34 iter u 7
+[1;34m***** last iteration 8 norm p 8.98178e-07 norm u 4.82215e-09
+[1;34m***** time step 50 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 50 fix stress iteration 2 norm p 0.35793 norm u 3.67484 iter p 73 iter u 291
+[1;34m***** time step 50 fix stress iteration 3 norm p 0.881692 norm u 0.0261183 iter p 86 iter u 295
+[1;34m***** time step 50 fix stress iteration 4 norm p 0.104473 norm u 0.00248311 iter p 86 iter u 139
+[1;34m***** time step 50 fix stress iteration 5 norm p 0.0101614 norm u 0.000213482 iter p 64 iter u 67
+[1;34m***** time step 50 fix stress iteration 6 norm p 0.00100119 norm u 1.64055e-05 iter p 50 iter u 23
+[1;34m***** time step 50 fix stress iteration 7 norm p 9.89175e-05 norm u 1.67594e-06 iter p 42 iter u 16
+[1;34m***** time step 50 fix stress iteration 8 norm p 9.77692e-06 norm u 1.0928e-07 iter p 34 iter u 7
+[1;34m***** last iteration 8 norm p 8.96775e-07 norm u 4.76586e-09
+[1;34m***** time step 51 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 51 fix stress iteration 2 norm p 0.359094 norm u 3.67505 iter p 73 iter u 291
+[1;34m***** time step 51 fix stress iteration 3 norm p 0.883578 norm u 0.0261217 iter p 87 iter u 295
+[1;34m***** time step 51 fix stress iteration 4 norm p 0.104303 norm u 0.00248335 iter p 86 iter u 139
+[1;34m***** time step 51 fix stress iteration 5 norm p 0.0101439 norm u 0.000213515 iter p 65 iter u 67
+[1;34m***** time step 51 fix stress iteration 6 norm p 0.000999626 norm u 1.64085e-05 iter p 50 iter u 23
+[1;34m***** time step 51 fix stress iteration 7 norm p 9.87625e-05 norm u 1.6759e-06 iter p 43 iter u 16
+[1;34m***** time step 51 fix stress iteration 8 norm p 9.76148e-06 norm u 1.09397e-07 iter p 34 iter u 7
+[1;34m***** last iteration 8 norm p 8.95617e-07 norm u 4.75132e-09
+[1;34m***** time step 52 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 52 fix stress iteration 2 norm p 0.360169 norm u 3.67524 iter p 73 iter u 291
+[1;34m***** time step 52 fix stress iteration 3 norm p 0.885318 norm u 0.0261249 iter p 87 iter u 295
+[1;34m***** time step 52 fix stress iteration 4 norm p 0.104144 norm u 0.00248371 iter p 86 iter u 139
+[1;34m***** time step 52 fix stress iteration 5 norm p 0.0101271 norm u 0.000213548 iter p 66 iter u 67
+[1;34m***** time step 52 fix stress iteration 6 norm p 0.000998173 norm u 1.64107e-05 iter p 50 iter u 23
+[1;34m***** time step 52 fix stress iteration 7 norm p 9.86178e-05 norm u 1.67625e-06 iter p 43 iter u 16
+[1;34m***** time step 52 fix stress iteration 8 norm p 9.74721e-06 norm u 1.09381e-07 iter p 34 iter u 7
+[1;34m***** last iteration 8 norm p 8.94298e-07 norm u 4.75757e-09
+[1;34m***** time step 53 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 53 fix stress iteration 2 norm p 0.361161 norm u 3.67542 iter p 73 iter u 291
+[1;34m***** time step 53 fix stress iteration 3 norm p 0.886926 norm u 0.0261278 iter p 87 iter u 295
+[1;34m***** time step 53 fix stress iteration 4 norm p 0.103997 norm u 0.00248401 iter p 87 iter u 139
+[1;34m***** time step 53 fix stress iteration 5 norm p 0.0101107 norm u 0.000213581 iter p 67 iter u 67
+[1;34m***** time step 53 fix stress iteration 6 norm p 0.000996822 norm u 1.64128e-05 iter p 50 iter u 23
+[1;34m***** time step 53 fix stress iteration 7 norm p 9.84831e-05 norm u 1.67656e-06 iter p 43 iter u 16
+[1;34m***** time step 53 fix stress iteration 8 norm p 9.73392e-06 norm u 1.09374e-07 iter p 34 iter u 7
+[1;34m***** last iteration 8 norm p 8.93092e-07 norm u 4.76209e-09
+[1;34m***** time step 54 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 54 fix stress iteration 2 norm p 0.362078 norm u 3.67558 iter p 73 iter u 291
+[1;34m***** time step 54 fix stress iteration 3 norm p 0.888412 norm u 0.0261306 iter p 87 iter u 295
+[1;34m***** time step 54 fix stress iteration 4 norm p 0.10386 norm u 0.0024843 iter p 88 iter u 139
+[1;34m***** time step 54 fix stress iteration 5 norm p 0.0100946 norm u 0.000213604 iter p 69 iter u 67
+[1;34m***** time step 54 fix stress iteration 6 norm p 0.00099557 norm u 1.64148e-05 iter p 50 iter u 23
+[1;34m***** time step 54 fix stress iteration 7 norm p 9.83577e-05 norm u 1.67674e-06 iter p 44 iter u 16
+[1;34m***** time step 54 fix stress iteration 8 norm p 9.72154e-06 norm u 1.09395e-07 iter p 35 iter u 7
+[1;34m***** last iteration 8 norm p 8.91945e-07 norm u 4.76189e-09
+[1;34m***** time step 55 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 55 fix stress iteration 2 norm p 0.362926 norm u 3.67573 iter p 73 iter u 291
+[1;34m***** time step 55 fix stress iteration 3 norm p 0.889785 norm u 0.0261331 iter p 87 iter u 295
+[1;34m***** time step 55 fix stress iteration 4 norm p 0.103732 norm u 0.00248456 iter p 88 iter u 139
+[1;34m***** time step 55 fix stress iteration 5 norm p 0.0100785 norm u 0.000213628 iter p 69 iter u 67
+[1;34m***** time step 55 fix stress iteration 6 norm p 0.000994409 norm u 1.64167e-05 iter p 50 iter u 23
+[1;34m***** time step 55 fix stress iteration 7 norm p 9.82413e-05 norm u 1.67694e-06 iter p 44 iter u 16
+[1;34m***** time step 55 fix stress iteration 8 norm p 9.71007e-06 norm u 1.09408e-07 iter p 35 iter u 7
+[1;34m***** last iteration 8 norm p 8.9074e-07 norm u 4.76245e-09
+[1;34m***** time step 56 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 56 fix stress iteration 2 norm p 0.36371 norm u 3.67587 iter p 73 iter u 291
+[1;34m***** time step 56 fix stress iteration 3 norm p 0.891054 norm u 0.0261355 iter p 87 iter u 295
+[1;34m***** time step 56 fix stress iteration 4 norm p 0.103611 norm u 0.0024848 iter p 88 iter u 139
+[1;34m***** time step 56 fix stress iteration 5 norm p 0.0100618 norm u 0.000213649 iter p 69 iter u 67
+[1;34m***** time step 56 fix stress iteration 6 norm p 0.000993336 norm u 1.64184e-05 iter p 50 iter u 23
+[1;34m***** time step 56 fix stress iteration 7 norm p 9.81333e-05 norm u 1.67712e-06 iter p 44 iter u 16
+[1;34m***** time step 56 fix stress iteration 8 norm p 9.69942e-06 norm u 1.09421e-07 iter p 35 iter u 7
+[1;34m***** last iteration 8 norm p 8.89764e-07 norm u 4.76304e-09
+[1;34m***** time step 57 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 57 fix stress iteration 2 norm p 0.364434 norm u 3.676 iter p 73 iter u 291
+[1;34m***** time step 57 fix stress iteration 3 norm p 0.892228 norm u 0.0261377 iter p 87 iter u 295
+[1;34m***** time step 57 fix stress iteration 4 norm p 0.103498 norm u 0.00248503 iter p 89 iter u 139
+[1;34m***** time step 57 fix stress iteration 5 norm p 0.0100437 norm u 0.00021367 iter p 69 iter u 67
+[1;34m***** time step 57 fix stress iteration 6 norm p 0.000992344 norm u 1.642e-05 iter p 52 iter u 23
+[1;34m***** time step 57 fix stress iteration 7 norm p 9.80331e-05 norm u 1.67729e-06 iter p 45 iter u 16
+[1;34m***** time step 57 fix stress iteration 8 norm p 9.68961e-06 norm u 1.09431e-07 iter p 35 iter u 7
+[1;34m***** last iteration 8 norm p 8.88862e-07 norm u 4.76388e-09
+[1;34m***** time step 58 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 58 fix stress iteration 2 norm p 0.365104 norm u 3.67612 iter p 73 iter u 291
+[1;34m***** time step 58 fix stress iteration 3 norm p 0.893313 norm u 0.0261397 iter p 87 iter u 295
+[1;34m***** time step 58 fix stress iteration 4 norm p 0.103388 norm u 0.00248524 iter p 90 iter u 139
+[1;34m***** time step 58 fix stress iteration 5 norm p 0.0100223 norm u 0.000213688 iter p 70 iter u 67
+[1;34m***** time step 58 fix stress iteration 6 norm p 0.000991428 norm u 1.64215e-05 iter p 53 iter u 23
+[1;34m***** time step 58 fix stress iteration 7 norm p 9.79403e-05 norm u 1.67744e-06 iter p 45 iter u 16
+[1;34m***** time step 58 fix stress iteration 8 norm p 9.68047e-06 norm u 1.09441e-07 iter p 35 iter u 7
+[1;34m***** last iteration 8 norm p 8.87891e-07 norm u 4.76437e-09
+[1;34m***** time step 59 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 59 fix stress iteration 2 norm p 0.365724 norm u 3.67623 iter p 73 iter u 291
+[1;34m***** time step 59 fix stress iteration 3 norm p 0.894316 norm u 0.0261416 iter p 87 iter u 295
+[1;34m***** time step 59 fix stress iteration 4 norm p 0.103278 norm u 0.00248543 iter p 90 iter u 139
+[1;34m***** time step 59 fix stress iteration 5 norm p 0.00999402 norm u 0.000213705 iter p 71 iter u 67
+[1;34m***** time step 59 fix stress iteration 6 norm p 0.000990583 norm u 1.64229e-05 iter p 53 iter u 23
+[1;34m***** time step 59 fix stress iteration 7 norm p 9.78542e-05 norm u 1.67758e-06 iter p 45 iter u 16
+[1;34m***** time step 59 fix stress iteration 8 norm p 9.672e-06 norm u 1.09451e-07 iter p 36 iter u 7
+[1;34m***** last iteration 8 norm p 8.87053e-07 norm u 4.76488e-09
+[1;34m***** time step 60 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 60 fix stress iteration 2 norm p 0.366297 norm u 3.67633 iter p 73 iter u 291
+[1;34m***** time step 60 fix stress iteration 3 norm p 0.895245 norm u 0.0261433 iter p 87 iter u 295
+[1;34m***** time step 60 fix stress iteration 4 norm p 0.103156 norm u 0.00248562 iter p 92 iter u 139
+[1;34m***** time step 60 fix stress iteration 5 norm p 0.00994807 norm u 0.000213721 iter p 71 iter u 67
+[1;34m***** time step 60 fix stress iteration 6 norm p 0.000989804 norm u 1.64242e-05 iter p 53 iter u 23
+[1;34m***** time step 60 fix stress iteration 7 norm p 9.77743e-05 norm u 1.67772e-06 iter p 45 iter u 16
+[1;34m***** time step 60 fix stress iteration 8 norm p 9.66416e-06 norm u 1.09461e-07 iter p 36 iter u 7
+[1;34m***** last iteration 8 norm p 8.86334e-07 norm u 4.76538e-09
+[1;34m***** time step 61 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 61 fix stress iteration 2 norm p 0.366827 norm u 3.67643 iter p 73 iter u 291
+[1;34m***** time step 61 fix stress iteration 3 norm p 0.896103 norm u 0.0261449 iter p 87 iter u 295
+[1;34m***** time step 61 fix stress iteration 4 norm p 0.10298 norm u 0.00248578 iter p 92 iter u 139
+[1;34m***** time step 61 fix stress iteration 5 norm p 0.00984276 norm u 0.000213736 iter p 71 iter u 67
+[1;34m***** time step 61 fix stress iteration 6 norm p 0.000989086 norm u 1.64254e-05 iter p 53 iter u 23
+[1;34m***** time step 61 fix stress iteration 7 norm p 9.77004e-05 norm u 1.67784e-06 iter p 46 iter u 16
+[1;34m***** time step 61 fix stress iteration 8 norm p 9.65684e-06 norm u 1.09469e-07 iter p 37 iter u 7
+[1;34m***** last iteration 8 norm p 8.8568e-07 norm u 4.76585e-09
+[1;34m***** time step 62 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 62 fix stress iteration 2 norm p 0.367318 norm u 3.67652 iter p 73 iter u 291
+[1;34m***** time step 62 fix stress iteration 3 norm p 0.896898 norm u 0.0261464 iter p 87 iter u 295
+[1;34m***** time step 62 fix stress iteration 4 norm p 0.102523 norm u 0.00248594 iter p 93 iter u 139
+[1;34m***** time step 62 fix stress iteration 5 norm p 0.00944992 norm u 0.00021375 iter p 71 iter u 67
+[1;34m***** time step 62 fix stress iteration 6 norm p 0.000988425 norm u 1.64265e-05 iter p 53 iter u 23
+[1;34m***** time step 62 fix stress iteration 7 norm p 9.76318e-05 norm u 1.67795e-06 iter p 46 iter u 16
+[1;34m***** time step 62 fix stress iteration 8 norm p 9.65012e-06 norm u 1.09478e-07 iter p 37 iter u 7
+[1;34m***** last iteration 8 norm p 8.85063e-07 norm u 4.76608e-09
+[1;34m***** time step 63 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 63 fix stress iteration 2 norm p 0.367772 norm u 3.6766 iter p 73 iter u 291
+[1;34m***** time step 63 fix stress iteration 3 norm p 0.897633 norm u 0.0261478 iter p 87 iter u 295
+[1;34m***** time step 63 fix stress iteration 4 norm p 0.101472 norm u 0.00248608 iter p 93 iter u 139
+[1;34m***** time step 63 fix stress iteration 5 norm p 0.00845957 norm u 0.000213763 iter p 72 iter u 67
+[1;34m***** time step 63 fix stress iteration 6 norm p 0.000987818 norm u 1.64275e-05 iter p 53 iter u 23
+[1;34m***** time step 63 fix stress iteration 7 norm p 9.75682e-05 norm u 1.67806e-06 iter p 46 iter u 16
+[1;34m***** time step 63 fix stress iteration 8 norm p 9.6439e-06 norm u 1.09485e-07 iter p 37 iter u 7
+[1;34m***** last iteration 8 norm p 8.84493e-07 norm u 4.76654e-09
+[1;34m***** time step 64 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 64 fix stress iteration 2 norm p 0.368192 norm u 3.67668 iter p 73 iter u 291
+[1;34m***** time step 64 fix stress iteration 3 norm p 0.898314 norm u 0.0261491 iter p 87 iter u 295
+[1;34m***** time step 64 fix stress iteration 4 norm p 0.100263 norm u 0.00248621 iter p 92 iter u 139
+[1;34m***** time step 64 fix stress iteration 5 norm p 0.00730541 norm u 0.000213774 iter p 73 iter u 67
+[1;34m***** time step 64 fix stress iteration 6 norm p 0.000987259 norm u 1.64284e-05 iter p 53 iter u 23
+[1;34m***** time step 64 fix stress iteration 7 norm p 9.75093e-05 norm u 1.67815e-06 iter p 46 iter u 16
+[1;34m***** time step 64 fix stress iteration 8 norm p 9.63812e-06 norm u 1.09492e-07 iter p 38 iter u 7
+[1;34m***** last iteration 8 norm p 8.83851e-07 norm u 4.76663e-09
+[1;34m***** time step 65 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 65 fix stress iteration 2 norm p 0.368581 norm u 3.67675 iter p 73 iter u 291
+[1;34m***** time step 65 fix stress iteration 3 norm p 0.898943 norm u 0.0261503 iter p 87 iter u 295
+[1;34m***** time step 65 fix stress iteration 4 norm p 0.0990957 norm u 0.00248634 iter p 91 iter u 139
+[1;34m***** time step 65 fix stress iteration 5 norm p 0.00618976 norm u 0.000213785 iter p 73 iter u 67
+[1;34m***** time step 65 fix stress iteration 6 norm p 0.000986747 norm u 1.64293e-05 iter p 53 iter u 23
+[1;34m***** time step 65 fix stress iteration 7 norm p 9.74547e-05 norm u 1.67824e-06 iter p 47 iter u 16
+[1;34m***** time step 65 fix stress iteration 8 norm p 9.63288e-06 norm u 1.09499e-07 iter p 38 iter u 7
+[1;34m***** last iteration 8 norm p 8.83362e-07 norm u 4.76687e-09
+[1;34m***** time step 66 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 66 fix stress iteration 2 norm p 0.368941 norm u 3.67681 iter p 73 iter u 291
+[1;34m***** time step 66 fix stress iteration 3 norm p 0.899526 norm u 0.0261514 iter p 87 iter u 295
+[1;34m***** time step 66 fix stress iteration 4 norm p 0.0980011 norm u 0.00248645 iter p 90 iter u 139
+[1;34m***** time step 66 fix stress iteration 5 norm p 0.00514276 norm u 0.000213795 iter p 74 iter u 67
+[1;34m***** time step 66 fix stress iteration 6 norm p 0.000986277 norm u 1.64301e-05 iter p 54 iter u 23
+[1;34m***** time step 66 fix stress iteration 7 norm p 9.7404e-05 norm u 1.67832e-06 iter p 47 iter u 16
+[1;34m***** time step 66 fix stress iteration 8 norm p 9.6279e-06 norm u 1.09506e-07 iter p 39 iter u 7
+[1;34m***** last iteration 8 norm p 8.82879e-07 norm u 4.76701e-09
+[1;34m***** time step 67 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 67 fix stress iteration 2 norm p 0.369275 norm u 3.67687 iter p 73 iter u 291
+[1;34m***** time step 67 fix stress iteration 3 norm p 0.900066 norm u 0.0261524 iter p 87 iter u 295
+[1;34m***** time step 67 fix stress iteration 4 norm p 0.0969819 norm u 0.00248656 iter p 90 iter u 139
+[1;34m***** time step 67 fix stress iteration 5 norm p 0.00416762 norm u 0.000213805 iter p 75 iter u 67
+[1;34m***** time step 67 fix stress iteration 6 norm p 0.000985847 norm u 1.64309e-05 iter p 55 iter u 23
+[1;34m***** time step 67 fix stress iteration 7 norm p 9.73569e-05 norm u 1.6784e-06 iter p 47 iter u 16
+[1;34m***** time step 67 fix stress iteration 8 norm p 9.62333e-06 norm u 1.09511e-07 iter p 39 iter u 7
+[1;34m***** last iteration 8 norm p 8.82459e-07 norm u 4.76737e-09
+[1;34m***** time step 68 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 68 fix stress iteration 2 norm p 0.369583 norm u 3.67693 iter p 73 iter u 291
+[1;34m***** time step 68 fix stress iteration 3 norm p 0.900566 norm u 0.0261534 iter p 87 iter u 295
+[1;34m***** time step 68 fix stress iteration 4 norm p 0.0960355 norm u 0.00248665 iter p 90 iter u 139
+[1;34m***** time step 68 fix stress iteration 5 norm p 0.00326192 norm u 0.000213813 iter p 75 iter u 67
+[1;34m***** time step 68 fix stress iteration 6 norm p 0.000985453 norm u 1.64316e-05 iter p 55 iter u 23
+[1;34m***** time step 68 fix stress iteration 7 norm p 9.73131e-05 norm u 1.67847e-06 iter p 47 iter u 16
+[1;34m***** time step 68 fix stress iteration 8 norm p 9.6191e-06 norm u 1.09516e-07 iter p 39 iter u 7
+[1;34m***** last iteration 8 norm p 8.82071e-07 norm u 4.76757e-09
+[1;34m***** time step 69 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 69 fix stress iteration 2 norm p 0.369869 norm u 3.67698 iter p 73 iter u 291
+[1;34m***** time step 69 fix stress iteration 3 norm p 0.901028 norm u 0.0261543 iter p 87 iter u 295
+[1;34m***** time step 69 fix stress iteration 4 norm p 0.0951575 norm u 0.00248675 iter p 89 iter u 139
+[1;34m***** time step 69 fix stress iteration 5 norm p 0.00242174 norm u 0.000213821 iter p 75 iter u 67
+[1;34m***** time step 69 fix stress iteration 6 norm p 0.000985094 norm u 1.64322e-05 iter p 55 iter u 23
+[1;34m***** time step 69 fix stress iteration 7 norm p 9.72725e-05 norm u 1.67854e-06 iter p 47 iter u 16
+[1;34m***** time step 69 fix stress iteration 8 norm p 9.61515e-06 norm u 1.09521e-07 iter p 40 iter u 7
+[1;34m***** last iteration 8 norm p 8.81647e-07 norm u 4.76772e-09
+[1;34m***** time step 70 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 70 fix stress iteration 2 norm p 0.370134 norm u 3.67703 iter p 73 iter u 291
+[1;34m***** time step 70 fix stress iteration 3 norm p 0.901457 norm u 0.0261551 iter p 87 iter u 295
+[1;34m***** time step 70 fix stress iteration 4 norm p 0.0943436 norm u 0.00248683 iter p 89 iter u 139
+[1;34m***** time step 70 fix stress iteration 5 norm p 0.0016428 norm u 0.000213829 iter p 76 iter u 67
+[1;34m***** time step 70 fix stress iteration 6 norm p 0.000984768 norm u 1.64328e-05 iter p 56 iter u 23
+[1;34m***** time step 70 fix stress iteration 7 norm p 9.72348e-05 norm u 1.6786e-06 iter p 47 iter u 16
+[1;34m***** time step 70 fix stress iteration 8 norm p 9.61152e-06 norm u 1.09526e-07 iter p 40 iter u 7
+[1;34m***** last iteration 8 norm p 8.81313e-07 norm u 4.76792e-09
+[1;34m***** time step 71 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 71 fix stress iteration 2 norm p 0.370379 norm u 3.67707 iter p 73 iter u 291
+[1;34m***** time step 71 fix stress iteration 3 norm p 0.901853 norm u 0.0261558 iter p 87 iter u 295
+[1;34m***** time step 71 fix stress iteration 4 norm p 0.0935893 norm u 0.00248691 iter p 89 iter u 139
+[1;34m***** time step 71 fix stress iteration 5 norm p 0.000920889 norm u 0.000213836 iter p 77 iter u 67
+[1;34m***** time step 71 fix stress iteration 6 norm p 0.000984471 norm u 1.64334e-05 iter p 57 iter u 23
+[1;34m***** time step 71 fix stress iteration 7 norm p 9.71996e-05 norm u 1.67865e-06 iter p 47 iter u 16
+[1;34m***** time step 71 fix stress iteration 8 norm p 9.60817e-06 norm u 1.0953e-07 iter p 40 iter u 7
+[1;34m***** last iteration 8 norm p 8.81005e-07 norm u 4.76805e-09
+[1;34m***** time step 72 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 72 fix stress iteration 2 norm p 0.370606 norm u 3.67712 iter p 73 iter u 291
+[1;34m***** time step 72 fix stress iteration 3 norm p 0.902221 norm u 0.0261565 iter p 87 iter u 295
+[1;34m***** time step 72 fix stress iteration 4 norm p 0.0928904 norm u 0.00248698 iter p 88 iter u 139
+[1;34m***** time step 72 fix stress iteration 5 norm p 0.000251941 norm u 0.000213842 iter p 77 iter u 67
+[1;34m***** time step 72 fix stress iteration 6 norm p 0.000984203 norm u 1.64339e-05 iter p 58 iter u 23
+[1;34m***** time step 72 fix stress iteration 7 norm p 9.7167e-05 norm u 1.6787e-06 iter p 48 iter u 16
+[1;34m***** time step 72 fix stress iteration 8 norm p 9.60502e-06 norm u 1.09534e-07 iter p 41 iter u 7
+[1;34m***** last iteration 8 norm p 8.80639e-07 norm u 4.76822e-09
+[1;34m***** time step 73 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 73 fix stress iteration 2 norm p 0.370816 norm u 3.67715 iter p 73 iter u 291
+[1;34m***** time step 73 fix stress iteration 3 norm p 0.902561 norm u 0.0261572 iter p 87 iter u 295
+[1;34m***** time step 73 fix stress iteration 4 norm p 0.0922428 norm u 0.00248705 iter p 88 iter u 139
+[1;34m***** time step 73 fix stress iteration 5 norm p 0.000367864 norm u 0.000213848 iter p 77 iter u 67
+[1;34m***** time step 73 fix stress iteration 6 norm p 0.00098396 norm u 1.64344e-05 iter p 60 iter u 23
+[1;34m***** time step 73 fix stress iteration 7 norm p 9.71365e-05 norm u 1.67875e-06 iter p 48 iter u 16
+[1;34m***** time step 73 fix stress iteration 8 norm p 9.60215e-06 norm u 1.09537e-07 iter p 41 iter u 7
+[1;34m***** last iteration 8 norm p 8.80374e-07 norm u 4.76849e-09
+[1;34m***** time step 74 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 74 fix stress iteration 2 norm p 0.37101 norm u 3.67719 iter p 73 iter u 291
+[1;34m***** time step 74 fix stress iteration 3 norm p 0.902876 norm u 0.0261578 iter p 87 iter u 295
+[1;34m***** time step 74 fix stress iteration 4 norm p 0.0916428 norm u 0.00248711 iter p 88 iter u 139
+[1;34m***** time step 74 fix stress iteration 5 norm p 0.000942103 norm u 0.000213854 iter p 78 iter u 67
+[1;34m***** time step 74 fix stress iteration 6 norm p 0.000983742 norm u 1.64348e-05 iter p 60 iter u 23
+[1;34m***** time step 74 fix stress iteration 7 norm p 9.71081e-05 norm u 1.6788e-06 iter p 48 iter u 16
+[1;34m***** time step 74 fix stress iteration 8 norm p 9.59949e-06 norm u 1.0954e-07 iter p 41 iter u 7
+[1;34m***** last iteration 8 norm p 8.80106e-07 norm u 4.76873e-09
+[1;34m***** time step 75 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 75 fix stress iteration 2 norm p 0.371191 norm u 3.67722 iter p 73 iter u 291
+[1;34m***** time step 75 fix stress iteration 3 norm p 0.903168 norm u 0.0261583 iter p 87 iter u 295
+[1;34m***** time step 75 fix stress iteration 4 norm p 0.091087 norm u 0.00248717 iter p 88 iter u 139
+[1;34m***** time step 75 fix stress iteration 5 norm p 0.00147411 norm u 0.000213859 iter p 78 iter u 67
+[1;34m***** time step 75 fix stress iteration 6 norm p 0.000983547 norm u 1.64352e-05 iter p 60 iter u 23
+[1;34m***** time step 75 fix stress iteration 7 norm p 9.70816e-05 norm u 1.67884e-06 iter p 49 iter u 16
+[1;34m***** time step 75 fix stress iteration 8 norm p 9.59705e-06 norm u 1.09544e-07 iter p 41 iter u 7
+[1;34m***** last iteration 8 norm p 8.7988e-07 norm u 4.76875e-09
+[1;34m***** time step 76 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 76 fix stress iteration 2 norm p 0.371358 norm u 3.67725 iter p 73 iter u 291
+[1;34m***** time step 76 fix stress iteration 3 norm p 0.903438 norm u 0.0261588 iter p 87 iter u 295
+[1;34m***** time step 76 fix stress iteration 4 norm p 0.090572 norm u 0.00248722 iter p 88 iter u 139
+[1;34m***** time step 76 fix stress iteration 5 norm p 0.00196698 norm u 0.000213863 iter p 79 iter u 67
+[1;34m***** time step 76 fix stress iteration 6 norm p 0.000983373 norm u 1.64356e-05 iter p 60 iter u 23
+[1;34m***** time step 76 fix stress iteration 7 norm p 9.70568e-05 norm u 1.67888e-06 iter p 49 iter u 16
+[1;34m***** time step 76 fix stress iteration 8 norm p 9.59477e-06 norm u 1.09547e-07 iter p 42 iter u 7
+[1;34m***** last iteration 8 norm p 8.79666e-07 norm u 4.76879e-09
+[1;34m***** time step 77 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 77 fix stress iteration 2 norm p 0.371512 norm u 3.67728 iter p 73 iter u 291
+[1;34m***** time step 77 fix stress iteration 3 norm p 0.903688 norm u 0.0261593 iter p 87 iter u 295
+[1;34m***** time step 77 fix stress iteration 4 norm p 0.0900949 norm u 0.00248727 iter p 88 iter u 139
+[1;34m***** time step 77 fix stress iteration 5 norm p 0.0024236 norm u 0.000213868 iter p 80 iter u 67
+[1;34m***** time step 77 fix stress iteration 6 norm p 0.000983219 norm u 1.6436e-05 iter p 60 iter u 23
+[1;34m***** time step 77 fix stress iteration 7 norm p 9.70335e-05 norm u 1.67892e-06 iter p 49 iter u 16
+[1;34m***** time step 77 fix stress iteration 8 norm p 9.59267e-06 norm u 1.0955e-07 iter p 42 iter u 7
+[1;34m***** last iteration 8 norm p 8.79471e-07 norm u 4.7689e-09
+[1;34m***** time step 78 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 78 fix stress iteration 2 norm p 0.371656 norm u 3.67731 iter p 73 iter u 291
+[1;34m***** time step 78 fix stress iteration 3 norm p 0.90392 norm u 0.0261598 iter p 87 iter u 295
+[1;34m***** time step 78 fix stress iteration 4 norm p 0.0896529 norm u 0.00248732 iter p 88 iter u 139
+[1;34m***** time step 78 fix stress iteration 5 norm p 0.00284663 norm u 0.000213872 iter p 80 iter u 67
+[1;34m***** time step 78 fix stress iteration 6 norm p 0.000983083 norm u 1.64363e-05 iter p 62 iter u 23
+[1;34m***** time step 78 fix stress iteration 7 norm p 9.70118e-05 norm u 1.67895e-06 iter p 49 iter u 16
+[1;34m***** time step 78 fix stress iteration 8 norm p 9.59072e-06 norm u 1.09551e-07 iter p 42 iter u 7
+[1;34m***** last iteration 8 norm p 8.79241e-07 norm u 4.76907e-09
+[1;34m***** time step 79 fix stress iteration 1 norm p 1 norm u 1 iter p 0 iter u 0
+[1;34m***** time step 79 fix stress iteration 2 norm p 0.371788 norm u 3.67733 iter p 73 iter u 291
+[1;34m***** time step 79 fix stress iteration 3 norm p 0.904135 norm u 0.0261602 iter p 87 iter u 295
+[1;34m***** time step 79 fix stress iteration 4 norm p 0.0892434 norm u 0.00248736 iter p 88 iter u 139
+[1;34m***** time step 79 fix stress iteration 5 norm p 0.00323855 norm u 0.000213876 iter p 80 iter u 67
+[1;34m***** time step 79 fix stress iteration 6 norm p 0.000982965 norm u 1.64366e-05 iter p 63 iter u 23
+[1;34m***** time step 79 fix stress iteration 7 norm p 9.69913e-05 norm u 1.67898e-06 iter p 49 iter u 16
+[1;34m***** time step 79 fix stress iteration 8 norm p 9.58892e-06 norm u 1.09554e-07 iter p 42 iter u 7
+[1;34m***** last iteration 8 norm p 8.79074e-07 norm u 4.76917e-09
