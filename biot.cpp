@@ -26,20 +26,20 @@ void biot_problem::init(void) {
        //  getfem::import_mesh("gmsh:mesh/patch_6fp2.msh",mesh);
         /////////////////////////////////////////////
 // 	getfem::import_mesh("gmsh:mesh/layer_cake/lk_fs.msh",mesh);labeled_domain=1; //official lk
-	getfem::import_mesh("gmsh:mesh/ringmeshes/layer_cake.msh",mesh);labeled_domain=1; //official lk
+// 	getfem::import_mesh("gmsh:mesh/ringmeshes/layer_cake.msh",mesh);labeled_domain=1; //official lk
 
 	// 	//////////////////////////////////////////////
 //      getfem::import_mesh("gmsh:mesh/pichout/patch_6.msh",mesh);
 // 	getfem::import_mesh("gmsh:mesh/pinchout2/patch_6e.msh",mesh);
 // 	getfem::import_mesh("gmsh:mesh/pinchout3/patch_7.msh",mesh);
-// 	getfem::import_mesh("gmsh:mesh/ringmeshes/pinch_2.msh",mesh);labeled_domain=1; //official lk
+	getfem::import_mesh("gmsh:mesh/ringmeshes/pinch_2.msh",mesh);labeled_domain=1; //official lk
 // 	=============================================
 // 	if(1){
 // //  	 mesh.read_from_file("mesh/pinchout3/labeled_mesh_fp2"); //good pinchout
 // //	mesh.read_from_file("mesh/pinchout2/labeled_mesh_fp2");
 //  	mesh.read_from_file("mesh/pichout/labeled_mesh_fp2");
 // 	mesh.read_from_file("mesh/labeled_mesh_fp2");// layar cake
-         labeled_domain=1;
+//          labeled_domain=1;
 // 	}
 	//refinement
  	{
@@ -56,7 +56,7 @@ void biot_problem::init(void) {
 	}
 	//  if (N>1) { M(0,1) = 0; }
 	M(0,0) = 1.;M(1,1) = 1.;M(2,2) = -1.; // 180degree rotation x
-	mesh.transformation(M);
+// 	mesh.transformation(M);
 	//
 	// // End of mesh generation
 
@@ -121,11 +121,11 @@ void biot_problem::gen_bc(){
 		un /= gmm::vect_norm2(un);
 
 		if ((un[N_-1] ) > 1.0E-1  && (mesh.points_of_convex(i.cv())[0])[2]>3500. ) { // new Neumann face
-			if ((mesh.points_of_convex(i.cv())[0])[0]>5000. )
-			  mesh.region(TOP).add(i.cv(), i.f());
-			else
-			  mesh.region(TOP_P).add(i.cv(), i.f());
-			// mesh.region(TOP_P).add(i.cv(), i.f()); //all top iced
+// 			if ((mesh.points_of_convex(i.cv())[0])[0]>5000. ) 
+// 			  mesh.region(TOP).add(i.cv(), i.f());
+// 			else
+// 			  mesh.region(TOP_P).add(i.cv(), i.f());
+			mesh.region(TOP_P).add(i.cv(), i.f()); //all top iced
 		} else if ((un[N_-1] ) < -9.0E-1) {  //the bottom surface is the most sharp
 			mesh.region(BOTTOM).add(i.cv(), i.f());
 		} else if ((un[N_-2] ) < -1.0E-1) {
@@ -781,6 +781,6 @@ if (i.is_face()) {
   vtkd.exporting(mf_top);vtkd.write_mesh();
   vtkd.write_point_data(mf_top, over_p, "h_ice");
   }
-  std::cout<<"end printing auziliar function function"<< std::endl;
+  std::cout<<"end printing auxiliar function function"<< std::endl;
 }
 
