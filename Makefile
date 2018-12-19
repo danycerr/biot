@@ -13,16 +13,24 @@ $(FIN_EXEC): $(OBJS)
 %.o: %.cpp config.mk
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -c -o $@ $<
 
-%.cpp: %.hpp
-	touch $@
+# %.cpp: %.hpp
+# 	touch $@
 	
-main.cpp: $(HDRS)
-	touch $@
+# main.cpp: $(HDRS)
+# 	touch $@
 
 clean:
 	$(RM) $(OBJS)
 
 resu_clean:
 	$(RM) $(RESU_OBJS)
+	
+depend: .depend
+
+.depend: $(SRCS)
+	rm -f ./.depend
+	$(CXX) $(CXXFLAGS) -MM $^ > ./.depend;
+
+include .depend
 	
 .PHONY: all clean resu_clean 

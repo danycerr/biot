@@ -5,7 +5,7 @@
 // #define BIOT
 
 #define TEMPERATURE
-
+#define ISOSTASY
 #include "gmm/gmm_except.h"
 
 // #define BIOT_LS
@@ -23,7 +23,9 @@
 #ifdef TEMPERATURE
 #include "temp.hpp"
 #endif
-
+#ifdef ISOSTASY
+#include "isostasy.hpp"
+#endif
 
 int main(int argc, char *argv[]) {
 
@@ -133,15 +135,21 @@ int main(int argc, char *argv[]) {
 			} // endl of lev_set biot
 #endif
 // //==================================================//
-#ifdef BIOT
+#if defined BIOT || defined TEMPERATURE
 				{ // classic biot
 				         
 #ifdef TEMPERATURE
-                                          // t.set_iter(istep);
-				          // t.assembly(dt, p.get_pressure_fem(), p.get_pressure());
-				          // t.solve();
-					  // t.print(istep);
+                                          t.set_iter(istep);
+                                          t.move_mesh();
+#if defined BIOT && defined TEMPERATURE
+				          t.assembly(dt, p.get_pressure_fem(), p.get_pressure());
+#elif defined TEMPERATURE
+					  t.assembly(dt);			  
 #endif
+					  t.solve();
+					  t.print(istep);
+#endif
+#ifdef BIOT
 				          p.set_iter(istep);
 					  p.assembly_p(dt);//dummy assembling just for ice
 					  // if(istep!=0) p.solve_fix_stress(dt, 100); // 100
@@ -150,6 +158,7 @@ int main(int argc, char *argv[]) {
 					  // p.solve();
 					  // p.print(istep);
                                           p.print_aux_data(istep);
+#endif
 				}
 #endif
 // //==================================================//

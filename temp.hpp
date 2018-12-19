@@ -130,7 +130,7 @@ struct problem_T_descriptor_tetra_3d{
 // 	std::string datafilename="resu/cerbero_fp";
 // 	std::string datafilename="resu/laplacetemp_pinch";
 // 	std::string datafilename="resu/lk_hdt_ovp_temp";
-	std::string datafilename="resu/ringlk_temp"; 
+	std::string datafilename="resu/rotating_t"; 
 	int nsubdiv=6; // subdivision of the sqaured mesh
 	double diff=1.e+0;
 	double E=1.e-15;
@@ -191,11 +191,13 @@ class temperature_problem {
 		void mesh_labeling();                           /// generate volume labels for mesh
 	
          public:
-		void assembly(double dt, getfem::mesh_fem& mf_pressure, std::vector<scalar_type>& p);                         /// assemble the monolithic iteration matrix for the problem
+		void assembly(double dt, getfem::mesh_fem& mf_pressure, std::vector<scalar_type>& p);   /// assemble the monolithic iteration matrix for the problem
+		void assembly(double dt);   /// assemble the monolithic iteration matrix for the problem
 		void solve(void);                                 /// solves the monolithic system 
 		void init(void);                                  /// initial configuration for the problem 
 		void print(int time=0);
 		void set_iter(int it){iter_=it;}
+		void move_mesh();
 		temperature_problem(void): mim(mesh), mf_u(mesh), mf_rhs(mesh), mf_p(mesh), mf_coef(mesh)
 				    ,tau_(1), vmu_(1), bm_(1), lambda_(1),alpha_(1), permeability_(1), force_(1), beta_(1),penalty_(1)
 				    , iter_(0),temp_bc_(20.)

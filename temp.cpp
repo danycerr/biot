@@ -180,7 +180,11 @@ void temperature_problem::configure_workspace(getfem::ga_workspace & workspace,d
 	// workspace.add_fem_constant("f", mf_data, F);
 }
 // 
-
+void temperature_problem::assembly(double dt){
+   gmm::resize(P_iter, mf_u.nb_dof()); gmm::clear(P_iter);
+   std::fill(P_iter.begin(), P_iter.end(), 0.);
+   assembly(dt, mf_u,P_iter);
+}
 
 //=======================================================
 // Assembly solution and iteration matrix for 
@@ -376,4 +380,20 @@ void temperature_problem::mesh_labeling(){
    }
    mesh.write_to_file("mesh/labeled_mesh_fp");
    
+}
+//===================================================
+void temperature_problem::move_mesh(){
+  	// A trasformation for the squarred mesh
+	bgeot::base_matrix M(N_,N_);
+	for(int i=0; i<N_;  i++)
+	  for(int j=0; j<N_;j++)    M(i,j)=0.;
+	double angle=3.1415/20.;
+	M(0,0) = cos(angle);M(0,2) = -sin(angle);
+	M(2,0) = sin(angle);M(2,2) = cos(angle);
+	M(1,1)=1.;
+	bgeot::small_vector<double> dx(-4978.,-2000,-2830); //center of ring layer cake
+	bgeot::small_vector<double> mdx(4978.,2000,2830);   // center of ring layer cake
+	mesh.translation(dx);
+	mesh.transformation(M);
+	mesh.translation(mdx);
 }
