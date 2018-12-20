@@ -45,6 +45,9 @@ int main(int argc, char *argv[]) {
 #ifdef TEMPERATURE
                  temperature_problem t;
 #endif
+#ifdef ISOSTASY
+                 isostasy isos;
+#endif
 
 //                 temperature_problem t;
 // 		t.init();
@@ -79,6 +82,10 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef TEMP_LS
 		t.update_ls(time_ls, 0);
+#endif
+#ifdef ISOSTASY
+// 		set center of rotation of isostasy
+		isos.set_center_of_rotation( t.get_mesh()); 
 #endif
 		for(int istep=0; istep<n_step; istep++)
 		{
@@ -140,7 +147,10 @@ int main(int argc, char *argv[]) {
 				         
 #ifdef TEMPERATURE
                                           t.set_iter(istep);
-                                          t.move_mesh();
+//                                           t.move_mesh();
+#ifdef ISOSTASY
+					 isos.move_mesh( t.get_mesh()); 
+#endif
 #if defined BIOT && defined TEMPERATURE
 				          t.assembly(dt, p.get_pressure_fem(), p.get_pressure());
 #elif defined TEMPERATURE
@@ -158,6 +168,9 @@ int main(int argc, char *argv[]) {
 					  // p.solve();
 					  // p.print(istep);
                                           p.print_aux_data(istep);
+#endif
+#ifdef ISOSTASY
+					 isos.undo_move_mesh( t.get_mesh()); 
 #endif
 				}
 #endif

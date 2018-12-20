@@ -198,6 +198,7 @@ class temperature_problem {
 		void print(int time=0);
 		void set_iter(int it){iter_=it;}
 		void move_mesh();
+		getfem::mesh* get_mesh(){return &mesh;}
 		temperature_problem(void): mim(mesh), mf_u(mesh), mf_rhs(mesh), mf_p(mesh), mf_coef(mesh)
 				    ,tau_(1), vmu_(1), bm_(1), lambda_(1),alpha_(1), permeability_(1), force_(1), beta_(1),penalty_(1)
 				    , iter_(0),temp_bc_(20.)

@@ -13,12 +13,6 @@ $(FIN_EXEC): $(OBJS)
 %.o: %.cpp config.mk
 	$(CXX) $(CXXFLAGS) $(INCLUDES) -c -o $@ $<
 
-# %.cpp: %.hpp
-# 	touch $@
-	
-# main.cpp: $(HDRS)
-# 	touch $@
-
 clean:
 	$(RM) $(OBJS)
 
@@ -33,4 +27,4 @@ depend: .depend
 
 include .depend
 	
-.PHONY: all clean resu_clean 
+.PHONY: all clean resu_clean depend
