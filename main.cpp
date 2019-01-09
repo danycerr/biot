@@ -2,7 +2,7 @@
 /*  main program.                                                         */
 /**************************************************************************/
 
-// #define BIOT
+#define BIOT
 
 #define TEMPERATURE
 #define ISOSTASY
@@ -149,7 +149,15 @@ int main(int argc, char *argv[]) {
                                           t.set_iter(istep);
 //                                           t.move_mesh();
 #ifdef ISOSTASY
-					 isos.move_mesh( t.get_mesh()); 
+					  isos.set_time(istep*dt);
+					  isos.set_transformation();
+#ifdef TEMPERATURE
+					  isos.move_mesh( t.get_mesh()); 
+#endif
+					  std::cout<< "Gravity is "<< *(isos.get_gravity())<<std::endl;
+#ifdef BIOT
+					  p.set_gravity(isos.get_gravity());
+#endif
 #endif
 #if defined BIOT && defined TEMPERATURE
 				          t.assembly(dt, p.get_pressure_fem(), p.get_pressure());
@@ -158,19 +166,29 @@ int main(int argc, char *argv[]) {
 #endif
 					  t.solve();
 					  t.print(istep);
+					  
+// 					  isos.undo_move_mesh( t.get_mesh()); 
 #endif
 #ifdef BIOT
 				          p.set_iter(istep);
 					  p.assembly_p(dt);//dummy assembling just for ice
-					  // if(istep!=0) p.solve_fix_stress(dt, 100); // 100
-					  // else  p.solve_fix_stress(dt, 5); //5
+					  if(istep!=0) p.solve_fix_stress(dt, 100); // 100
+					  else  p.solve_fix_stress(dt, 5); //5
 					  // p.assembly(dt);
 					  // p.solve();
-					  // p.print(istep);
-                                          p.print_aux_data(istep);
+#ifdef BIOT
+					  isos.move_mesh( p.get_mesh()); 
+#endif
+					  p.print(istep);
+//                                           p.print_aux_data(istep);
 #endif
 #ifdef ISOSTASY
+#ifdef TEMPERATURE
 					 isos.undo_move_mesh( t.get_mesh()); 
+#endif
+#ifdef BIOT
+					 isos.undo_move_mesh( p.get_mesh()); 
+#endif
 #endif
 				}
 #endif

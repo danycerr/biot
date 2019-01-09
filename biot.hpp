@@ -131,7 +131,8 @@ struct problem_descriptor_tetra_3d{
 // 	std::string datafilename="resu/laplacedisp_pinch"; 
 //	std::string datafilename="resu/lk_hdt_ovp_disp"; //ice load and lateral injection
 //	std::string datafilename="resu/lk_hdt_disp";     //ice load
-        std::string datafilename="resu/ring_pinch_disp";
+//         std::string datafilename="resu/ring_pinch_disp";
+        std::string datafilename="resu/rotating_disp";
 	int nsubdiv=128; // subdivision of the sqaured mesh
 	double E=1.e+10;
 	double poisson =0.3;
@@ -168,6 +169,7 @@ class biot_problem {
 		///  workspace configuration parameters---------------------
 		std::vector<scalar_type> tau_, vmu_, bm_ ,lambda_, beta_,
 			alpha_, permeability_, force_,overpres_,penalty_;
+		std::vector<scalar_type> *g_;
 		// ---------------------------------------------------------
 		sparse_matrix_type K;                                /// iteration matrix
 		std::vector<scalar_type> U, U_old, P,                /// diplacement, disp old, pressure
@@ -199,8 +201,10 @@ class biot_problem {
 		void print(int time=0);
 		void print_aux_data(int istep=0);
                 inline void set_iter(int iteration){iter_=iteration;} //iteration numeber timestep
+                inline void set_gravity(std::vector<double>* g){g_=g;} //iteration numeber timestep
 		inline getfem::mesh_fem& get_pressure_fem(){return mf_p;}
                 inline std::vector<scalar_type>& get_pressure(){return P;}
+		inline getfem::mesh* get_mesh(){return &mesh;}
 		biot_problem(void): mim(mesh), mf_u(mesh), mf_rhs(mesh), mf_p(mesh), mf_coef(mesh)
 				    ,tau_(1), vmu_(1), bm_(1), lambda_(1),alpha_(1), permeability_(1), force_(1), overpres_(1), beta_(1),penalty_(1)
 	{}

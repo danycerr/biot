@@ -31,8 +31,8 @@ void temperature_problem::init(void) {
 // 	mesh.read_from_file("mesh/pichout/labeled_mesh_fp2");
 // 	mesh.read_from_file("mesh/pinchout2/labeled_mesh_fp2");
 	// getfem::import_mesh("gmsh:mesh/layer_cake/lk_fs.msh",mesh);labeled_domain=1; //official lk
-	// getfem::import_mesh("gmsh:mesh/ringmeshes/pinch_2.msh",mesh);labeled_domain=1;
-        getfem::import_mesh("gmsh:mesh/ringmeshes/layer_cake.msh",mesh);labeled_domain=1;
+	getfem::import_mesh("gmsh:mesh/ringmeshes/pinch_2.msh",mesh);labeled_domain=1;
+//         getfem::import_mesh("gmsh:mesh/ringmeshes/layer_cake.msh",mesh);labeled_domain=1;
         labeled_domain=1;
 	}
 	//refinement
@@ -51,7 +51,7 @@ void temperature_problem::init(void) {
 	//  if (N>1) { M(0,1) = 0; }
 	//
 	M(0,0) = 1.;M(1,1) = 1.;M(2,2) = -1.; // 180degree rotation x
-	mesh.transformation(M);
+// 	mesh.transformation(M);
 	// // End of mesh generation
 
 

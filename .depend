@@ -444,7 +444,7 @@ temp.o: temp.cpp temp.hpp \
 main.o: main.cpp \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_except.h \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_std.h \
- temp.hpp \
+ biot.hpp \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/getfem_generic_assembly.h \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/getfem_models.h \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/getfem_assembling.h \
@@ -578,7 +578,7 @@ main.o: main.cpp \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/bgeot_comma_init.h \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_solver_bfgs.h \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/getfem_export.h \
- /opt/lib/samg/samg.h isostasy.hpp
+ /opt/lib/samg/samg.h temp.hpp isostasy.hpp
 isostasy.o: isostasy.cpp isostasy.hpp \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/getfem_mesh.h \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/bgeot_ftool.h \

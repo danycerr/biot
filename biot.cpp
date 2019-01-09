@@ -44,7 +44,7 @@ void biot_problem::init(void) {
 	//refinement
  	{
 // 		// dal::bit_vector b; b.add(0);
- 		mesh.Bank_refine(mesh.convex_index());
+//  		mesh.Bank_refine(mesh.convex_index());
  	}
 
 
@@ -55,7 +55,7 @@ void biot_problem::init(void) {
 		M(i,i) = 1.e+4;
 	}
 	//  if (N>1) { M(0,1) = 0; }
-	M(0,0) = 1.;M(1,1) = 1.;M(2,2) = -1.; // 180degree rotation x
+	M(0,0) = 1.;M(1,1) = 1.;M(2,2) = -1.; // 180degree rotation x for pichout ring
 // 	mesh.transformation(M);
 	//
 	// // End of mesh generation
@@ -197,6 +197,7 @@ void biot_problem::configure_workspace(getfem::ga_workspace & workspace,double d
 	                              *1000*9.81*1700;
 	else               force_[0]= 0.;
 	workspace.add_fixed_size_constant("topload",force_);
+	workspace.add_fixed_size_constant("gravity",*g_);
 	
 	if(iter_<t1)       overpres_[0]= 0.;
 	else if(iter_<t2)  overpres_[0]= (iter_ -((double) t1))/(((double) t2)-((double) t1))* 1000*9.81*4000;
@@ -451,9 +452,9 @@ void biot_problem::assembly_u(double dt){
 		gmm::copy(workspace.assembled_matrix(), Ku);
 		workspace.clear_expressions();
 		if(N_==2) workspace.add_expression("(2200*0.8 + 1000*0.2 -1000 )*[0,-1].Test_u", mim);
-		if(N_==3) workspace.add_expression("(2200*0.8 + 1000*0.2 -1000 )*[0,0,-1].Test_u", mim);
+		if(N_==3) workspace.add_expression("(2200*0.8 + 1000*0.2 -1000 )*gravity.Test_u", mim);
 		workspace.add_expression("alpha*p*Div_Test_u ", mim);
-		if(N_==3)workspace.add_expression("topload*[0,0,-1].Test_u" , mim, TOP_P); //Height og the ice disp
+		if(N_==3)workspace.add_expression("topload*gravity.Test_u" , mim, TOP_P); //Height og the ice disp
 #ifdef LATERAL_INJECTION
 		if(N_==3)workspace.add_expression("overpres*[1,0,0].Test_u" , mim, RIGHTP); //Height og the ice disp
 #endif
@@ -647,7 +648,7 @@ void biot_problem::gen_coefficient(){ // creating a coefficient
 //    std::vector<double> E; E.push_back(1.e+0);E.push_back(2.e+0);E.push_back(1.e+1);
   //////////////////ring mesh layer cake 
    std::vector<double> k;k.push_back(1.e+3);k.push_back(1.e-2); k.push_back(1.e-0); // 
-  std::vector<double> E;E.push_back(2.e+0);E.push_back(1.e+1); E.push_back(1.e+0);
+   std::vector<double> E;E.push_back(2.e+0);E.push_back(1.e+1); E.push_back(1.e+0);
    ///////////////////////////////////////////////////
      //////////////////mesh cgal cake
 //   std::vector<double> k;k.push_back(1.e-2);k.push_back(1.e-0);k.push_back(1.e+3);  // 
