@@ -132,7 +132,7 @@ struct problem_T_descriptor_tetra_3d{
 // 	std::string datafilename="resu/lk_hdt_ovp_temp";
 	std::string datafilename="resu/rotating_t"; 
 	int nsubdiv=6; // subdivision of the sqaured mesh
-	double diff=1.e+0;
+	double diff=1.e-6;
 	double E=1.e-15;
 	double poisson =0.3;
 	double mu_s = E/( 2 * ( 1 + poisson) ) ;

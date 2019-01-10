@@ -103,7 +103,7 @@ void temperature_problem::gen_bc(){
 		un /= gmm::vect_norm2(un);
 
 		if ((un[N_-1] ) > 1.0E-1 && (mesh.points_of_convex(i.cv())[0])[2]>3500) { // new Neumann face
-			if ((mesh.points_of_convex(i.cv())[0])[0]>5000. && !false)
+			if ((mesh.points_of_convex(i.cv())[0])[0]>5000. && false)
 			  mesh.region(TOP).add(i.cv(), i.f());
 			else
 			  mesh.region(TOP_P).add(i.cv(), i.f());
@@ -235,7 +235,7 @@ void temperature_problem::assembly(double dt, getfem::mesh_fem& mf_pressure, std
 	workspace.set_assembled_vector(B);
 	workspace.add_expression(" tau*10*penalty*Test_T", mim, TOP);
 	workspace.add_expression(" tau*temp_bc*penalty*Test_T", mim, TOP_P);
-	workspace.add_expression("+tau*[+1.0e-5].Test_T + T_old.Test_T", mim);
+	workspace.add_expression("+tau*[+1.0e-11].Test_T + T_old.Test_T", mim);
 	workspace.assembly(1);
 // // 	gmm::add(workspace.assembled_vector(),B);
 	workspace.clear_expressions();
@@ -306,11 +306,11 @@ void temperature_problem::gen_coefficient(){ // creating a coefficient
 // // // // // //  For ring pinch  
  //  std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e-4);k.push_back(1.e-0);
   
-  // std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+3);k.push_back(1.e-2); // pinch trimat
-//   std::vector<double> E; E.push_back(1.2e+0);E.push_back(2.e+0);E.push_back(1.1e+0);
+  std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+3);k.push_back(1.e-2); // pinch trimat
+  std::vector<double> E; E.push_back(1.2e+0);E.push_back(2.e+0);E.push_back(1.1e+0);
     //////////////////ring mesh layer cake
-   std::vector<double> k;k.push_back(1.e+3);k.push_back(1.e-2); k.push_back(1.e-0); // pinch trimat
-   std::vector<double> E;E.push_back(2.e+0);E.push_back(1.1e+0); E.push_back(1.2e+0); 
+//    std::vector<double> k;k.push_back(1.e+3);k.push_back(1.e-2); k.push_back(1.e-0); // pinch trimat
+//    std::vector<double> E;E.push_back(2.e+0);E.push_back(1.1e+0); E.push_back(1.2e+0); 
   
 // // // // // // // // // // // // // // // // // // // // // //   
 //   std::vector<double> k; k.push_back(1);k.push_back(1.e+0);

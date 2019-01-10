@@ -58,6 +58,7 @@ void biot_problem::init(void) {
 	M(0,0) = 1.;M(1,1) = 1.;M(2,2) = -1.; // 180degree rotation x for pichout ring
 // 	mesh.transformation(M);
 	//
+	g_=new std::vector<double>{0., 0., -1.};
 	// // End of mesh generation
 
 
@@ -644,11 +645,11 @@ void biot_problem::gen_coefficient(){ // creating a coefficient
   // std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e-4);k.push_back(1.e-0);
   // std::vector<double> E; E.push_back(1.e+0);E.push_back(1.e+0);E.push_back(1.e+0);
    /////////////////////////////////////////////////////////////////////////////////////////
-//    std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+3);k.push_back(1.e-2); // pinch trimat
-//    std::vector<double> E; E.push_back(1.e+0);E.push_back(2.e+0);E.push_back(1.e+1);
+   std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+3);k.push_back(1.e-2); // pinch trimat
+   std::vector<double> E; E.push_back(1.e+0);E.push_back(2.e+0);E.push_back(1.e+1);
   //////////////////ring mesh layer cake 
-   std::vector<double> k;k.push_back(1.e+3);k.push_back(1.e-2); k.push_back(1.e-0); // 
-   std::vector<double> E;E.push_back(2.e+0);E.push_back(1.e+1); E.push_back(1.e+0);
+//    std::vector<double> k;k.push_back(1.e+3);k.push_back(1.e-2); k.push_back(1.e-0); // 
+//    std::vector<double> E;E.push_back(2.e+0);E.push_back(1.e+1); E.push_back(1.e+0);
    ///////////////////////////////////////////////////
      //////////////////mesh cgal cake
 //   std::vector<double> k;k.push_back(1.e-2);k.push_back(1.e-0);k.push_back(1.e+3);  // 
