@@ -23,7 +23,7 @@ void biotls_problem::init(void) {
   std::vector<size_type> nsubdiv(N_);
   int NX=p_des.nsubdiv;
   std::fill(nsubdiv.begin(),nsubdiv.end(),NX);
-  getfem::regular_unit_mesh(mesh, nsubdiv, pgt, p_des.noised);
+//   getfem::regular_unit_mesh(mesh, nsubdiv, pgt, p_des.noised);
   // // A trasformation for the squared mesh
   p_des.l_ref=4000;
 
@@ -32,13 +32,17 @@ void biotls_problem::init(void) {
   // getfem::import_mesh("gmsh:mesh/square2k.msh",mesh);
   // getfem::import_mesh("gmsh:mesh/squarepinch.msh",mesh);
   //  getfem::import_mesh("gmsh:mesh/squarepinch_fine.msh",mesh);
+  getfem::import_mesh("gmsh:mesh/ringmeshes/pinch_2.msh",mesh);//labeled_domain=1; //official lk
+
   // dal::bit_vector b; b.add(0);
   // mesh.Bank_refine(b);
   // mesh.Bank_refine(mesh.convex_index());
   bgeot::base_matrix M(N_,N_);
   for (size_type i=0; i < N_; ++i) {
-    M(i,i) = 1.;// /p_des.l_ref;
+//     M(i,i) = 1.;// /p_des.l_ref;
+    M(i,i) = 1. / p_des.l_ref;
   }
+  g_=new std::vector<double>{0., 0., -1.};
   //  if (N>1) { M(0,1) = 0; }
   //
   mesh.transformation(M);
@@ -281,6 +285,7 @@ void biotls_problem::configure_workspace(getfem::ga_workspace & workspace,double
   c2_[0]=2*p_des.poisson/(1-2*p_des.poisson);
   workspace.add_fixed_size_constant("C1", c1_);
   workspace.add_fixed_size_constant("C2", c2_);
+  workspace.add_fixed_size_constant("gravity",*g_);
   std::cout << "end of Configuring workspace " << std::endl;
   //---------------------------------------------------------
   //  getfem::base_vector beta(1); beta[0] = 1*(alpha[0] * alpha[0] ) / (2 * p_des.mu_s + p_des.lambda_l);
@@ -591,25 +596,25 @@ void biotls_problem::assembly_p(double dt, double time){
   workspace.clear_expressions();
 
   //Matrix term
-  workspace.add_expression("2*penalty/element_size*p*Test_p*200", mim, TOP);
-  workspace.add_expression("-Grad_p.Normal*Test_p - Grad_Test_p.Normal*p ", mim, TOP); 	
-  workspace.add_expression("2*penalty/element_size*p*Test_p", mim, LEFT);
-  workspace.add_expression("-Grad_p.Normal*Test_p*tau- Grad_Test_p.Normal*p*tau ", mim, LEFT); 	
-  workspace.add_expression("2*penalty/element_size*p*Test_p", mim, RIGHT);
-  workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, RIGHT); 	
-  if (N_== 3 ){
-    workspace.add_expression("2*penalty/element_size*p*Test_p", mim, LEFTX);
-    workspace.add_expression("-Grad_p.Normal*Test_p*tau- Grad_Test_p.Normal*p*tau ", mim, LEFTX); 	
-    workspace.add_expression("2*penalty/element_size*p*Test_p", mim, RIGHTX);
-    workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, RIGHTX); 	
-  }
+//   workspace.add_expression("2*penalty/element_size*p*Test_p*200", mim, TOP);
+//   workspace.add_expression("-Grad_p.Normal*Test_p - Grad_Test_p.Normal*p ", mim, TOP); 	
+//   workspace.add_expression("2*penalty/element_size*p*Test_p", mim, LEFT);
+//   workspace.add_expression("-Grad_p.Normal*Test_p*tau- Grad_Test_p.Normal*p*tau ", mim, LEFT); 	
+//   workspace.add_expression("2*penalty/element_size*p*Test_p", mim, RIGHT);
+//   workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, RIGHT); 	
+//   if (N_== 3 ){
+//     workspace.add_expression("2*penalty/element_size*p*Test_p", mim, LEFTX);
+//     workspace.add_expression("-Grad_p.Normal*Test_p*tau- Grad_Test_p.Normal*p*tau ", mim, LEFTX); 	
+//     workspace.add_expression("2*penalty/element_size*p*Test_p", mim, RIGHTX);
+//     workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, RIGHTX); 	
+//   }
 
-  workspace.assembly(2);
-  gmm::add(workspace.assembled_matrix(), gmm::sub_matrix(Kp,
-        gmm::sub_interval(0, nb_dof_p),
-        gmm::sub_interval(0, nb_dof_p) 
-        ));
-  workspace.clear_expressions();
+//   workspace.assembly(2);
+//   gmm::add(workspace.assembled_matrix(), gmm::sub_matrix(Kp,
+//         gmm::sub_interval(0, nb_dof_p),
+//         gmm::sub_interval(0, nb_dof_p) 
+//         ));
+//   workspace.clear_expressions();
   //rhs term
   // workspace.add_expression("0*penalty*p*Test_p", mim, TOP); 
   // workspace.assembly(1);
@@ -664,37 +669,38 @@ void biotls_problem::assembly_p(double dt, double time){
   {
     // workspace.set_assembled_vector(Bp_in); 
     // NITSCHE
-    //  workspace.add_expression("2/element_size*p*Test_p*200", mim_ls_bd, CUT_REGION);// 1 is the region		
-    //  workspace.add_expression("-nlsv.Grad_p*Test_p*tau- nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION); 
+     workspace.add_expression("2/element_size*p*Test_p*2", mim_ls_bd, CUT_REGION);// 1 is the region // 200		
+     workspace.add_expression("-nlsv.Grad_p*Test_p*tau- nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION); 
     //NITSCHE
     //  workspace.add_expression( "permeability*tau*[0,1].Grad_p*Test_p ", mim_ls_bd, CUT_REGION);
     workspace.add_expression( "(1+beta)*p.Test_p + tau*Kr*Grad_p.Grad_Test_p", mim_ls_in, CUT_REGION);
     workspace.assembly(2);
     gmm::copy(workspace.assembled_matrix(),K_in);
     workspace.clear_expressions();
+//     workspace.add_expression("2/element_size*p*Test_p*200", mim_ls_bd, CUT_REGION);// 1 is the region	
     workspace.add_expression("+[0].Test_p*tau + p_old.Test_p + Test_p*Div_u_old", mim_ls_in,CUT_REGION);
     workspace.add_expression("(beta)*p_iter.Test_p - Test_p*Trace(Sym(Grad_u_iter))", mim_ls_in,CUT_REGION); // tau
     workspace.set_assembled_vector(Bp_in);
     workspace.assembly(1);
     workspace.clear_expressions();
-    workspace.add_expression("2/element_size*p*Test_p", mim, LEFT);
-    workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, LEFT); 	
-    workspace.add_expression("2/element_size*p*Test_p", mim, RIGHT);
-    workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, RIGHT);
-    if (N_==3){
-      workspace.add_expression("2/element_size*p*Test_p", mim, LEFT);
-      workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, LEFT); 	
-      workspace.add_expression("2/element_size*p*Test_p", mim, RIGHT);
-      workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, RIGHT);
-    }
-
-    workspace.assembly(2);
-    gmm::add(workspace.assembled_matrix(),K_in);
-    workspace.clear_expressions();
+//     workspace.add_expression("2/element_size*p*Test_p", mim, LEFT);
+//     workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, LEFT); 	
+//     workspace.add_expression("2/element_size*p*Test_p", mim, RIGHT);
+//     workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, RIGHT);
+//     if (N_==3){
+//       workspace.add_expression("2/element_size*p*Test_p", mim, LEFT);
+//       workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, LEFT); 	
+//       workspace.add_expression("2/element_size*p*Test_p", mim, RIGHT);
+//       workspace.add_expression("-Grad_p.Normal*Test_p*tau - Grad_Test_p.Normal*p*tau ", mim, RIGHT);
+//     }
+// 
+//     workspace.assembly(2);
+//     gmm::add(workspace.assembled_matrix(),K_in);
+//     workspace.clear_expressions();
     //pstab stabilization term
 #ifdef STAB_P 
 {
->>>>>>> ls_temp
+// >>>>>>> ls_temp
     getfem::mesh_region  inner_faces;
     inner_faces = getfem::inner_faces_of_mesh(mesh, CUT_REGION);
 
@@ -838,7 +844,7 @@ void biotls_problem::assembly_p(double dt, double time){
     workspace.clear_expressions();
 
     if(N_==2) workspace.add_expression("[0,-1].Test_u"  ,  mim_ls_in,  UNCUT_REGION_IN);
-    if(N_==3) workspace.add_expression("[0,0,-1].Test_u",  mim_ls_in,  UNCUT_REGION_IN);
+    if(N_==3) workspace.add_expression("gravity.Test_u",  mim_ls_in,  UNCUT_REGION_IN);
     workspace.add_expression("C1*p_iter*Div_Test_u "    ,  mim_ls_in,  UNCUT_REGION_IN);
     workspace.assembly(1);
     workspace.clear_expressions();
@@ -872,8 +878,8 @@ void biotls_problem::assembly_p(double dt, double time){
     std::vector<scalar_type> B_in(nb_dof_u, 0.0);
     workspace.set_assembled_vector(B_in);
     if(N_==2) workspace.add_expression("[0,-1].Test_u", mim_ls_in,CUT_REGION);
-    if(N_==3) workspace.add_expression("[0,0,-1].Test_u", mim_ls_in,CUT_REGION);
-    if(N_==3) workspace.add_expression("over_p*[0,0,-1].Test_u" , mim_ls_bd, CUT_REGION);    //neumann disp	
+    if(N_==3) workspace.add_expression("gravity.Test_u", mim_ls_in,CUT_REGION);
+//     if(N_==3) workspace.add_expression("over_p*[0,0,-1].Test_u" , mim_ls_bd, CUT_REGION);    //neumann disp	
     workspace.add_expression("C1*p_iter*Div_Test_u ",  mim_ls_in, CUT_REGION);
     workspace.assembly(1);
     workspace.clear_expressions();
@@ -1496,6 +1502,10 @@ base_small_vector biotls_problem::ls_function(const base_node P, double time,int
               res[0] = -(P[2]+0.4 -1.2*( exp( -( pow((2*P[0]-1)/0.5 ,2) ))  *exp( -( pow((2*P[1]-1)/0.5 ,2) )) ) );
               res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.35;
             } break;
+    case 9: {
+              res[0] = -(-2.856e+6*x -1.6008e+7*z+1.2203e+11) +1.e+9 * (1 + time / (1.e+12 * 10) ) ;
+              res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.35;
+            }break;
     default: assert(0);
   }
   return res;
@@ -1820,16 +1830,25 @@ void biotls_problem::gen_coefficient(){ // creating a coefficient
   gmm::resize(Kr_, mf_coef.nb_dof()); gmm::fill(Kr_,1);    // rhs monolithic problem
   gmm::resize(Er_, mf_coef.nb_dof()); gmm::fill(Er_,1);    // rhs monolithic problem
 // <<<<<<< HEAD
-//   std::vector<int> material; material.push_back(50);material.push_back(60);
+  std::vector<int> material; 
+//   material.push_back(50);material.push_back(60);
 //   std::vector<double> k; k.push_back(1);k.push_back(1.e+2);
 //   std::vector<double> E; E.push_back(1);E.push_back(5.e-1);
-// =======
-  std::vector<int> material; material.push_back(MAT_1);material.push_back(MAT_2);
-
-  std::vector<double> k; k.push_back(1);k.push_back(1.e+2);
-  std::vector<double> E; E.push_back(1);E.push_back(2.e+0);
+// ======= generated mesh 2 mat ================================
+//   std::vector<int> material; material.push_back(MAT_1);material.push_back(MAT_2);
+// 
+//   std::vector<double> k; k.push_back(1);k.push_back(1.e+2);
+//   std::vector<double> E; E.push_back(1);E.push_back(2.e+0);
+//   ========================================================
   // std::vector<double> k; k.push_back(1);k.push_back(1.e+0);
   // std::vector<double> E; E.push_back(1);E.push_back(1.e+0);
+  // ===========================material for pinch_2===========
+  material.push_back(0);material.push_back(1);material.push_back(2); // for ring_pinch2
+  /////////////////////////////////////////////////////////////////////////////////////////
+//   std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+3);k.push_back(1.e-2); // pinch trimat
+//   std::vector<double> E; E.push_back(1.e+0);E.push_back(2.e+0);E.push_back(1.e+1);
+  std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+0);k.push_back(1.e-0); // pinch trimat
+  std::vector<double> E; E.push_back(1.e+0);E.push_back(1.e+0);E.push_back(1.e+0);
 // >>>>>>> ls_temp
   for (int imat=0; imat< material.size();imat++){
     dal::bit_vector bv_cv = mesh.region(material[imat]).index();

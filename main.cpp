@@ -2,13 +2,12 @@
 /*  main program.                                                         */
 /**************************************************************************/
 
-#define BIOT
-
-#define TEMPERATURE
-#define ISOSTASY
+// #define BIOT
+// #define TEMPERATURE
+// #define ISOSTASY
 #include "gmm/gmm_except.h"
 
-// #define BIOT_LS
+#define BIOT_LS
 // #define TEMP_LS
 
 #ifdef BIOT_LS
@@ -74,7 +73,7 @@ int main(int argc, char *argv[]) {
 		// p.build_fix_stress_preconditioner(dt,0);
 		//    p.assembly_p(dt,0); 
 		//    p.assembly_u(dt);
-		int n_step=80;int erosion_limit=0; // usually 50 steps
+		int n_step=80;int erosion_limit=10; // usually 50 steps
 		double time=0*dt;
 		double time_ls  =0;
 #ifdef BIOT_LS
@@ -94,7 +93,7 @@ int main(int argc, char *argv[]) {
 			time=istep*dt;
 			std::cout<< "*** Time step "<< istep << "/"<<n_step<<std::endl;
 			{ // level set
-				if (istep<erosion_limit && istep > 30){ 
+				if (istep<erosion_limit && istep > 0){ 
 					time_ls  =istep*dt;
 #ifdef BIOT_LS
 					p.update_ls(time_ls, istep);
