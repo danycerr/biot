@@ -43,6 +43,7 @@ void biotls_problem::init(void) {
     M(i,i) = 1. / p_des.l_ref;
   }
   g_=new std::vector<double>{0., 0., -1.};
+  isos_descr_= new isostasy_descriptor;
   //  if (N>1) { M(0,1) = 0; }
   //
   mesh.transformation(M);
@@ -669,7 +670,7 @@ void biotls_problem::assembly_p(double dt, double time){
   {
     // workspace.set_assembled_vector(Bp_in); 
     // NITSCHE
-     workspace.add_expression("2/element_size*p*Test_p*2", mim_ls_bd, CUT_REGION);// 1 is the region // 200		
+     workspace.add_expression("2/element_size*p*Test_p*3", mim_ls_bd, CUT_REGION);// 1 is the region // 200		
      workspace.add_expression("-nlsv.Grad_p*Test_p*tau- nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION); 
     //NITSCHE
     //  workspace.add_expression( "permeability*tau*[0,1].Grad_p*Test_p ", mim_ls_bd, CUT_REGION);
@@ -1605,7 +1606,7 @@ void biotls_problem::print_crop(double time,int istep,double time_ls){
       }
       else
         PIn[ii] = UP[mf_u.nb_dof() + mf_p.nb_dof()+ i];
-      Pm[ii] = 0.5* (UP[mf_u.nb_dof() +ii] + UP[mf_u.nb_dof() +mf_p.nb_dof()+ i]);
+        Pm[ii] = 0.5* (UP[mf_u.nb_dof() +ii] + UP[mf_u.nb_dof() +mf_p.nb_dof()+ i]);
     }
     for (size_type i = 0; i < mf_p.nb_dof(); ++i) {
       double ls_i = ls_function(mf_p.point_of_basic_dof(i),time_ls, LS_TYPE)[0];
@@ -1615,7 +1616,7 @@ void biotls_problem::print_crop(double time,int istep,double time_ls){
         POut[i] = -100+UP[mf_u.nb_dof() +i]; Pm[i] = UP[mf_u.nb_dof() +i];}
     }
   }
-  std::cout<<"end print numerical pressure" <<std::endl;
+//   std::cout<<"end print numerical pressure" <<std::endl;
   // dispalcement
   std::vector<scalar_type> UIn(mf_u.nb_dof(), 0.0);
   int shift_xdof_u = mf_u.nb_dof() + mf_p.nb_dof() + eXt_dof.size(); // dof for extended dofs
@@ -1647,15 +1648,27 @@ void biotls_problem::print_crop(double time,int istep,double time_ls){
   slicer.push_back_action(a3);
   slicer.exec(nrefine);
 
-  bgeot::base_matrix M(N_,N_);
-  bgeot::base_matrix Mm1(N_,N_);
+
+  
+  if (isos_descr_->active){
+    mesh.translation(*(isos_descr_->dx));
+    mesh.transformation(isos_descr_->M);
+    mesh.translation(*(isos_descr_->mdx));
+    
+    mesh_dim.translation(*(isos_descr_->dx));
+    mesh_dim.transformation(isos_descr_->M);
+    mesh_dim.translation(*(isos_descr_->mdx));
+  }
+  
+    bgeot::base_matrix M(N_,N_);
+  bgeot::base_matrix Mm1(N_,N_); 
   for (size_type i=0; i < N_; ++i) {
     M(i,i) = p_des.l_ref;
     Mm1(i,i) = 1/p_des.l_ref;
   }
   mesh_dim.transformation(M);
   mesh.transformation(M);
-
+  
   //sl.build(mesh, , -1),2);
   std::cout<<"end cropping"<< std::endl;
   {  
@@ -1674,6 +1687,16 @@ void biotls_problem::print_crop(double time,int istep,double time_ls){
   }
 
   mesh.transformation(Mm1); 
+    // undu isostasy disp
+  if (isos_descr_->active){
+    mesh.translation(*(isos_descr_->dx));
+    mesh.transformation(isos_descr_->Mm1);
+    mesh.translation(*(isos_descr_->mdx));
+    
+    mesh_dim.translation(*(isos_descr_->dx));
+    mesh_dim.transformation(isos_descr_->Mm1);
+    mesh_dim.translation(*(isos_descr_->mdx));
+  }
 }  
 
 // evaluate birnak to a level set
@@ -1845,10 +1868,10 @@ void biotls_problem::gen_coefficient(){ // creating a coefficient
   // ===========================material for pinch_2===========
   material.push_back(0);material.push_back(1);material.push_back(2); // for ring_pinch2
   /////////////////////////////////////////////////////////////////////////////////////////
-//   std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+3);k.push_back(1.e-2); // pinch trimat
-//   std::vector<double> E; E.push_back(1.e+0);E.push_back(2.e+0);E.push_back(1.e+1);
-  std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+0);k.push_back(1.e-0); // pinch trimat
-  std::vector<double> E; E.push_back(1.e+0);E.push_back(1.e+0);E.push_back(1.e+0);
+  std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+3);k.push_back(1.e-2); // pinch trimat
+  std::vector<double> E; E.push_back(1.e+0);E.push_back(2.e+0);E.push_back(1.e+1);
+//   std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+0);k.push_back(1.e-0); // pinch trimat
+//   std::vector<double> E; E.push_back(1.e+0);E.push_back(1.e+0);E.push_back(1.e+0);
 // >>>>>>> ls_temp
   for (int imat=0; imat< material.size();imat++){
     dal::bit_vector bv_cv = mesh.region(material[imat]).index();

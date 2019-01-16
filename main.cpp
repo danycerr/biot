@@ -4,11 +4,11 @@
 
 // #define BIOT
 // #define TEMPERATURE
-// #define ISOSTASY
+#define ISOSTASY
 #include "gmm/gmm_except.h"
 
 #define BIOT_LS
-// #define TEMP_LS
+#define TEMP_LS
 
 #ifdef BIOT_LS
 #include "biot_ls.hpp"
@@ -73,7 +73,7 @@ int main(int argc, char *argv[]) {
 		// p.build_fix_stress_preconditioner(dt,0);
 		//    p.assembly_p(dt,0); 
 		//    p.assembly_u(dt);
-		int n_step=80;int erosion_limit=10; // usually 50 steps
+		int n_step=80;int erosion_limit=20; // usually 50 steps
 		double time=0*dt;
 		double time_ls  =0;
 #ifdef BIOT_LS
@@ -85,6 +85,7 @@ int main(int argc, char *argv[]) {
 #ifdef ISOSTASY
 // 		set center of rotation of isostasy
 		isos.set_center_of_rotation( t.get_mesh()); 
+// 		isos.set_center_of_rotation( p.get_mesh()); 
 #endif
 		for(int istep=0; istep<n_step; istep++)
 		{
@@ -104,11 +105,23 @@ int main(int argc, char *argv[]) {
 
 					// p.build_fix_stress_preconditioner(dt,time_ls);
 				}
+#ifdef ISOSTASY
+					  isos.set_time(time);
+					  isos.set_transformation();
+#endif
+				
 #ifdef BIOT_LS
                                  p.set_step(istep);
+#ifdef ISOSTASY
+				 p.set_isostasy(isos.get_descriptor());
+				 p.set_gravity(isos.get_gravity());
+#endif
 #endif
 #ifdef TEMP_LS
                                  t.set_step(istep);
+#ifdef ISOSTASY
+				 t.set_isostasy(isos.get_descriptor());
+#endif
 #endif
 #ifdef BIOT_LS
 				 p.solve_fix_stress(dt, 2000,time_ls);
@@ -117,7 +130,7 @@ int main(int argc, char *argv[]) {
                                  t.set_pressure(p.get_pressure());
 #endif
 #ifdef TEMP_LS
-                                 if(istep>0) t.set_clt(true); // imposing constant temperature lateral
+//                                  if(istep>0) t.set_clt(true); // imposing constant temperature lateral
 				 t.assembly(dt,time_ls);
 		  	   	 t.solve(time_ls);
 #endif
@@ -128,7 +141,7 @@ int main(int argc, char *argv[]) {
 				//   p.solve(time_ls);
 				// ===========================
 #ifdef BIOT_LS
-				 p.print(istep*dt,istep,time_ls);      
+// 				 p.print(istep*dt,istep,time_ls);      
 				 p.print_crop(istep*dt,istep,time_ls);
 #endif   
 #ifdef TEMP_LS

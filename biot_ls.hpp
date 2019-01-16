@@ -46,6 +46,9 @@
 // Preconditioner
 #include "biot_precond.hpp" 
 #include "momentum_precond.hpp" 
+//isostasy
+#include "isostasy_descriptor.hpp"
+
 
 /* some GetFEM++ types that we will be using */
 using bgeot::base_small_vector; /* special class for small (dim<16) vectors */
@@ -226,6 +229,8 @@ class biotls_problem {
 		base_small_vector ls_function(const base_node P, 
 				double time=0,
 				int num = 0);
+		isostasy_descriptor* isos_descr_;
+// 		std::unique_ptr<isostasy_descriptor> isos_descr;
 
 	public:
 		void assembly(double dt,double time);                         /// assemble the monolithic iteration matrix for the problem
@@ -245,8 +250,14 @@ class biotls_problem {
 		void update_p_index(double timels=0);
 		void update_u_index(double timels=0);
 
+		inline getfem::mesh* get_mesh(){return &mesh;}
+		
                 void set_step(int step){step_=step;}
 		void update_time_iter(int a){time_iter_=a;}
+		// ===========isostasy interaface 
+		inline void set_isostasy(isostasy_descriptor * id){isos_descr_= id;}
+	        inline void set_gravity(std::vector<double>* g){g_=g;} // get gravity orientation from isostasy class
+                // =================================
 		biotls_problem(void): mim(mesh), mf_u(mesh), mf_rhs(mesh), mf_p(mesh),mf_coef(mesh),mf_coef_v(mesh)
 				      ,tau_(1), vmu_(1), bm_(1), lambda_(1),alpha_(1), permeability_(1), force_(1), beta_(1),penalty_(1),
 				      c1_(1),c2_(1),over_p_(1)

@@ -582,7 +582,9 @@ main.o: main.cpp \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_scaled.h \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_precond_diagonal.h \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_superlu_interface.h \
- momentum_precond.hpp
+ momentum_precond.hpp isostasy_descriptor.hpp temp_ls.hpp \
+ prob_descriptor.hpp isostasy.hpp \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/getfem_mesh.h
 isostasy.o: isostasy.cpp isostasy.hpp \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/getfem_mesh.h \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/bgeot_ftool.h \
@@ -669,7 +671,8 @@ isostasy.o: isostasy.cpp isostasy.hpp \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_condition_number.h \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_inoutput.h \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_range_basis.h \
- /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_domain_decomp.h
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_domain_decomp.h \
+ isostasy_descriptor.hpp
 biot_ls.o: biot_ls.cpp biot_ls.hpp \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/getfem_generic_assembly.h \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/getfem_models.h \
@@ -810,7 +813,7 @@ biot_ls.o: biot_ls.cpp biot_ls.hpp \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_scaled.h \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_precond_diagonal.h \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_superlu_interface.h \
- momentum_precond.hpp
+ momentum_precond.hpp isostasy_descriptor.hpp
 temp_ls.o: temp_ls.cpp temp_ls.hpp \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/getfem_generic_assembly.h \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/getfem_models.h \
@@ -945,4 +948,4 @@ temp_ls.o: temp_ls.cpp temp_ls.hpp \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_domain_decomp.h \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/getfem_import.h \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_inoutput.h \
- prob_descriptor.hpp
+ prob_descriptor.hpp isostasy_descriptor.hpp

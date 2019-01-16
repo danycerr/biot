@@ -201,7 +201,7 @@ class biot_problem {
 		void print(int time=0);
 		void print_aux_data(int istep=0);
                 inline void set_iter(int iteration){iter_=iteration;} //iteration numeber timestep
-                inline void set_gravity(std::vector<double>* g){g_=g;} //iteration numeber timestep
+                inline void set_gravity(std::vector<double>* g){g_=g;} // get gravity orientation from isostasy class
 		inline getfem::mesh_fem& get_pressure_fem(){return mf_p;}
                 inline std::vector<scalar_type>& get_pressure(){return P;}
 		inline getfem::mesh* get_mesh(){return &mesh;}
