@@ -49,7 +49,12 @@ return g;
 
 // ==================dummy transformation ====================================
 void isostasy::dummy_transform(){
-  double tilt[]={3.1415/4*time_/(80.*1.e+12),3.1415/10,3.1415/50}; /// vector describing a casual rotation
+  double dt=1.e+12;
+  double tilt[]={3.1415/4*(time_ -20*dt)/((70-20)*dt),3.1415/10*(time_ -20*dt)/((70-20)*dt),3.1415/50*(time_ -20*dt)/((70-20)*dt)}; /// vector describing a casual rotation
+  if (time_<20*dt) for (int i=0;i<3;i++) tilt[i]=0.;
+  else if (time_ > 70*dt){
+    tilt[0]=3.1415/4;tilt[1]=3.1415/10;tilt[2]=3.1415/50;
+  }
   bgeot::base_matrix Mx(N_,N_);
   bgeot::base_matrix My(N_,N_);
   bgeot::base_matrix Mz(N_,N_);

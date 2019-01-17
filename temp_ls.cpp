@@ -300,13 +300,6 @@ void templs_problem::configure_workspace(getfem::ga_workspace & workspace,double
   workspace.add_fem_constant("Er", mf_coef, Er_);
 
   workspace.add_fem_constant("nlsv", mf_coef_v, normal_ls_v);
-  over_p_[0]=0.;
-  if(time_iter_ > 10 && time_iter_ < 30 ) 
-    over_p_[0] = 1000.*9.81*4000.*(time_iter_ - 10. )/(30.-10.);
-  else if( time_iter_ < 50 && time_iter_ > 29.5 ) 
-    over_p_[0] = 1000.*9.81*4000.*(50-time_iter_ )/(50-30.);
-  else
-    over_p_[0]=0.;
 
 
 
@@ -314,7 +307,19 @@ void templs_problem::configure_workspace(getfem::ga_workspace & workspace,double
    dome_t_[0]=dome_t_[0]/p_des.p_ref;
    workspace.add_fixed_size_constant("over_p", dome_t_);
 
-   over_p_[0]=10./p_des.p_ref;
+  int t1=10*2; int t2=20*2;
+  int t3=30*2; int t4=35*2;
+  //         std::vector<scalar_type> ice_force(1);ice_force[0] = 1.e+0;
+  double t_buf=0.;
+  if(step_<t1)       t_buf= 10.;
+  else if(step_<t2)  t_buf= 10.-(step_ -((double) t1) )/(((double) t2)-((double) t1))*10;
+  else if(step_<t3)  t_buf= 0;
+  else if(step_<t4)  t_buf= (step_ -((double) t4))/(((double) t3)-((double) t4))*10;
+  else               t_buf= 0.;
+  over_p_[0]= t_buf/p_des.p_ref; 
+  
+  
+//    over_p_[0]=10./p_des.p_ref;
    workspace.add_fixed_size_constant("top_temp",over_p_);
 }
 // 
@@ -668,6 +673,7 @@ base_small_vector templs_problem::ls_function(const base_node P, double time,int
   scalar_type x = P[0]*p_des.l_ref, y = P[1]*p_des.l_ref, z=0;
   if (N_==3)  z = P[2]*p_des.l_ref;
   y = P[1]*p_des.l_ref;
+  double dt=1.e+12;
   // time*=p_des.t_ref;
   base_small_vector res(2);
   switch (num) {
@@ -736,7 +742,8 @@ base_small_vector templs_problem::ls_function(const base_node P, double time,int
               res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.35;
             } break;
     case 9: { // ring pinchout
-              res[0] = -(-2.856e+6*x -1.6008e+7*z+1.2203e+11) +1.e+9 * (1 + time / (1.e+12 * 10) ) ;
+//               res[0] = -(-2.856e+6*x -1.6008e+7*z+1.2203e+11) +1.e+9 * (1 + time / (1.e+12 * 10) ) ; //from 0-to t10
+              res[0] = -(-2.856e+6*x -1.6008e+7*z+1.2203e+11) +1.e+9 * (1 + ((time>60*dt && time < 70*dt)? 1:0)*(time - dt*60 ) / (dt * (70 -60)) ) ; //from 0-to t10
               res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.35;
             }break;
     default: assert(0);

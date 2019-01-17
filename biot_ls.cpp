@@ -300,6 +300,22 @@ void biotls_problem::configure_workspace(getfem::ga_workspace & workspace,double
   workspace.add_fem_constant("Er", mf_coef, Er_);
 
   workspace.add_fem_constant("nlsv", mf_coef_v, normal_ls_v);
+  //top load of ice
+  
+  int t1=10*2; int t2=20*2;
+  int t3=30*2; int t4=35*2;
+//         std::vector<scalar_type> ice_force(1);ice_force[0] = 1.e+0;
+  double p_buf=0.;
+  if(step_<t1)       p_buf= 0.;
+  else if(step_<t2)  p_buf= (step_ -((double) t1) )/(((double) t2)-((double) t1))
+                            *1000*9.81*4000;
+  else if(step_<t3)  p_buf= 1000*9.81*4000;
+  else if(step_<t4)  p_buf= (step_ -((double) t4))/(((double) t3)-((double) t4))
+                            *1000*9.81*4000;
+  else               p_buf= 0.;
+  over_p_[0]= p_buf/p_des.p_ref; 
+  workspace.add_fixed_size_constant("topload",over_p_);
+  
 }
 // 
 
@@ -880,7 +896,7 @@ void biotls_problem::assembly_p(double dt, double time){
     workspace.set_assembled_vector(B_in);
     if(N_==2) workspace.add_expression("[0,-1].Test_u", mim_ls_in,CUT_REGION);
     if(N_==3) workspace.add_expression("gravity.Test_u", mim_ls_in,CUT_REGION);
-//     if(N_==3) workspace.add_expression("over_p*[0,0,-1].Test_u" , mim_ls_bd, CUT_REGION);    //neumann disp	
+    if(N_==3) workspace.add_expression("topload*gravity.Test_u" , mim_ls_bd, CUT_REGION);    //neumann disp	
     workspace.add_expression("C1*p_iter*Div_Test_u ",  mim_ls_in, CUT_REGION);
     workspace.assembly(1);
     workspace.clear_expressions();
@@ -1438,6 +1454,7 @@ base_small_vector biotls_problem::ls_function(const base_node P, double time,int
   scalar_type x = P[0]*p_des.l_ref, y = P[1]*p_des.l_ref, z=0;
   if (N_==3)  z = P[2]*p_des.l_ref;
   y = P[1]*p_des.l_ref;
+  double dt=1.e+12;
   // time*=p_des.t_ref;
   base_small_vector res(2);
   switch (num) {
@@ -1504,7 +1521,8 @@ base_small_vector biotls_problem::ls_function(const base_node P, double time,int
               res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.35;
             } break;
     case 9: {
-              res[0] = -(-2.856e+6*x -1.6008e+7*z+1.2203e+11) +1.e+9 * (1 + time / (1.e+12 * 10) ) ;
+//               res[0] = -(-2.856e+6*x -1.6008e+7*z+1.2203e+11) +1.e+9 * (1 + time / (1.e+12 * 10) ) ; // for 0-10 time step
+	      res[0] = -(-2.856e+6*x -1.6008e+7*z+1.2203e+11) +1.e+9 * (1 + ((time>60*dt && time < 70*dt)? 1:0)*(time - dt*60 ) / (dt * (70 -60)) ) ; //from 0-to t10
               res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.35;
             }break;
     default: assert(0);
