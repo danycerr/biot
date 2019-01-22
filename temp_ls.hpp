@@ -72,7 +72,8 @@ typedef std::vector<scalar_type> plain_vector;
 
 //   structure for the Laplacian problem
 class templs_problem {
-	private:
+private:
+protected:
 		getfem::mesh mesh;
 		getfem::mesh_im mim;      /// the integration methods
 		// getfem::mesh_fem mf_u;    /// the main mesh_fem, for the displacement solution
@@ -119,23 +120,23 @@ class templs_problem {
 		isostasy_descriptor* isos_descr_;
 		int step_=0;
 		/// Methods
-		void gen_bc(void);                                /// create zones for boundary conditions
+		virtual void gen_bc(void);                                /// create zones for boundary conditions
 		void gen_mat(void);                                /// create zones for internal conditions
 		void compute_normal_2_ls(void);                   /// create normal to ls as a cell field
 		void gen_coefficient();                         /// generate coefficient p0
-
+                virtual void import_mesh();
 		void configure_workspace                          /// configure the workspace add constants
 			(getfem::ga_workspace & workspace,                /// the workspace
 			 double dt);                                      /// timestep
 
-		base_small_vector ls_function(const base_node P, 
+		virtual base_small_vector ls_function(const base_node P, 
 				double time=0,
 				int num = 0);
 
 	public:
-		void assembly(double dt,double time);                         /// assemble the monolithic iteration matrix for the problem
+		virtual void assembly(double dt,double time);                         /// assemble the monolithic iteration matrix for the problem
 		void solve(double time);                                 /// solves the monolithic system 
-		void init(void);                                  /// initial configuration for the problem 
+		virtual void init(void);                                  /// initial configuration for the problem 
 		void print(double time=0,int istep=0,double time_ls=0);
 
 		void print_crop(double time=0,int istep=0,double time_ls=0);

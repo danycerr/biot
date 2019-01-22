@@ -100,7 +100,7 @@ struct generic_problem_descriptor_tetra_3d{
 	double t_ref=1;
 	double u_ref=1;
 	double p_ref=1;
-        double alpha_temp=0.5e-5; //thermal conductivity
+        double alpha_temp=0.7e-5; //thermal conductivity
         double q_rad=1.e-6/(2200);
         // double q_rad=1.e-10;
 };

@@ -170,6 +170,7 @@ struct problem_descriptor_tetra_3d{
 //   structure for the Laplacian problem
 class biotls_problem {
 	private:
+        protected:
 		getfem::mesh mesh;
 		getfem::mesh_im mim;      /// the integration methods
 		getfem::mesh_fem mf_u;    /// the main mesh_fem, for the displacement solution
@@ -217,16 +218,17 @@ class biotls_problem {
 		std::vector<scalar_type> normal_ls_v;
                 int step_=0;
 		/// Methods
-		void gen_bc(void);                                /// create zones for boundary conditions
+		virtual void gen_bc(void);                                /// create zones for boundary conditions
 		void gen_mat(void);                                /// create zones for internal conditions
 		void compute_normal_2_ls(void);                   /// create normal to ls as a cell field
 		void gen_coefficient();                         /// generate coefficient p0
-
+                virtual void import_mesh();                    /// import mesh
+		
 		void configure_workspace                          /// configure the workspace add constants
 			(getfem::ga_workspace & workspace,                /// the workspace
 			 double dt);                                      /// timestep
 
-		base_small_vector ls_function(const base_node P, 
+		virtual base_small_vector ls_function(const base_node P, 
 				double time=0,
 				int num = 0);
 		isostasy_descriptor* isos_descr_;
@@ -234,8 +236,8 @@ class biotls_problem {
 
 	public:
 		void assembly(double dt,double time);                         /// assemble the monolithic iteration matrix for the problem
-		void assembly_p(double dt,double time);                       /// assemble the iteration matrix for pressure, can be used as preconditioner
-		void assembly_u(double dt,double time);                       /// assemble the iteration matrix for pressure, can be used as preconditioner
+		virtual void assembly_p(double dt,double time);                       /// assemble the iteration matrix for pressure, can be used as preconditioner
+		virtual void assembly_u(double dt,double time);                       /// assemble the iteration matrix for pressure, can be used as preconditioner
 		std::vector<scalar_type> get_pressure();
                 void build_fix_stress_preconditioner(double dt, double time_ls);
 		void solve(double time);                                 /// solves the monolithic system 

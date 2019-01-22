@@ -27,13 +27,7 @@ void biotls_problem::init(void) {
   // // A trasformation for the squared mesh
   p_des.l_ref=4000;
 
-
-  // import mesh
-  // getfem::import_mesh("gmsh:mesh/square2k.msh",mesh);
-  // getfem::import_mesh("gmsh:mesh/squarepinch.msh",mesh);
-  //  getfem::import_mesh("gmsh:mesh/squarepinch_fine.msh",mesh);
-  getfem::import_mesh("gmsh:mesh/ringmeshes/pinch_2.msh",mesh);//labeled_domain=1; //official lk
-
+  import_mesh();
   // dal::bit_vector b; b.add(0);
   // mesh.Bank_refine(b);
   // mesh.Bank_refine(mesh.convex_index());
@@ -179,18 +173,18 @@ void biotls_problem::init(void) {
   mim_ls_bd.set_simplex_im(simp_ppi);
   mim_ls_bd.adapt();
 
-  mfls.adapt();mfls_u.adapt();mfls_p.adapt();
+//   mfls.adapt();mfls_u.adapt();mfls_p.adapt();
   // mfls_u_old.adapt();mfls_p_old.adapt();
 
   mf_u.set_qdim(bgeot::dim_type(N_)); //number of variable
-  mfls_u.set_qdim(bgeot::dim_type(N_)); //number of variable
-  mfls_p.set_qdim(bgeot::dim_type(1)); //number of variable
+//   mfls_u.set_qdim(bgeot::dim_type(N_)); //number of variable
+//   mfls_p.set_qdim(bgeot::dim_type(1)); //number of variable
   // mfls_u_old.set_qdim(bgeot::dim_type(2)); //number of variable
   // mfls_p_old.set_qdim(bgeot::dim_type(1)); //number of variable
 
   getfem::mesh mesh_ls;
   mls.global_cut_mesh(mesh_ls);
-  std::cout<<"laplace cut fem::save_mesh  "<<std::endl;
+  std::cout<<"Biot_ls cut fem::save_mesh  "<<std::endl;
   getfem::vtk_export exp_cut("cutmesh.vtk");
   exp_cut.exporting(mesh_ls);
   exp_cut.write_mesh();
@@ -218,7 +212,14 @@ void biotls_problem::init(void) {
   gmm::resize(Kp, nb_dof_p , nb_dof_p ); gmm::clear(Kp);
 }
 // assembly with ls
-
+//============== import mesh =======================
+void biotls_problem::import_mesh(){
+  // import mesh
+  // getfem::import_mesh("gmsh:mesh/square2k.msh",mesh);
+  // getfem::import_mesh("gmsh:mesh/squarepinch.msh",mesh);
+  //  getfem::import_mesh("gmsh:mesh/squarepinch_fine.msh",mesh);
+  getfem::import_mesh("gmsh:mesh/ringmeshes/pinch_2.msh",mesh);//labeled_domain=1; //official lk
+}
 // ===========================================
 // method for generation of bcs zones
 // ===========================================
@@ -293,7 +294,7 @@ void biotls_problem::configure_workspace(getfem::ga_workspace & workspace,double
   beta_[0] = (p_des.alpha* p_des.alpha ) /( (-2 * p_des.mu_s / 3 + p_des.lambda_l)*p_des.biot_modulus)/p_des.p_ref;
   workspace.add_fixed_size_constant("beta", beta_);
 
-  penalty_[0] = 1.e+10; // 1---10
+  penalty_[0] = 1.e+5; // 1---10
   workspace.add_fixed_size_constant("penalty", penalty_);
 
   workspace.add_fem_constant("Kr", mf_coef, Kr_);
@@ -314,6 +315,7 @@ void biotls_problem::configure_workspace(getfem::ga_workspace & workspace,double
                             *1000*9.81*4000;
   else               p_buf= 0.;
   over_p_[0]= p_buf/p_des.p_ref; 
+  std::cout<<"top load is "<<  p_buf/p_des.p_ref <<std::endl;
   workspace.add_fixed_size_constant("topload",over_p_);
   
 }
@@ -1532,13 +1534,14 @@ base_small_vector biotls_problem::ls_function(const base_node P, double time,int
 
 
 void biotls_problem::update_ls(double time, int iter){
-  std::cout<< "laplacian_problem::update_ls" <<std::endl;
+  std::cout<< "biotls_problem::update_ls" <<std::endl;
   //  dim_type Q = mfls_u.get_qdim();
   ls.reinit(); 
   for (size_type d = 0; d < ls.get_mesh_fem().nb_basic_dof(); ++d) {
     ls.values(0)[d] = ls_function(ls.get_mesh_fem().point_of_basic_dof(d), time ,LS_TYPE)[0];
   }
   ls.touch();
+  std::cout<<"adaptation of mesh fems "<<std::endl;
   mls.adapt();mls.global_cut_mesh(mesh_ls);
   mim_ls_in.adapt(); mim_ls_out.adapt();mim_ls_bd.adapt();  mim_ls_all.adapt();
   // clear regions todo optimize it
@@ -1547,6 +1550,7 @@ void biotls_problem::update_ls(double time, int iter){
   mesh.region(UNCUT_REGION_IN).clear();
   mesh.region(UNCUT_REGION_OUT).clear();
   // creating cut and uncut region
+  std::cout<<"adaptation of mesh regions "<<std::endl;
   std::vector<scalar_type> phicell(mesh.convex_index().size(), 0.0);
   dal::bit_vector bv_cv = mesh.convex_index();
   size_type i_cv = 0;
@@ -1565,7 +1569,7 @@ void biotls_problem::update_ls(double time, int iter){
   }
 
   { // Just to see what elements are cut by the level set ls:
-    std::cout<<"printin cut elements"<<std::endl;
+    std::cout<<"printin cut elements in "<< p_des.datafilename + ".cut_elements."+std::to_string(iter)+".vtk" <<std::endl;
     getfem::vtk_export vtke(p_des.datafilename + ".cut_elements."+std::to_string(iter)+".vtk");
     vtke.exporting(mf_p);
     vtke.write_mesh();
@@ -1886,10 +1890,10 @@ void biotls_problem::gen_coefficient(){ // creating a coefficient
   // ===========================material for pinch_2===========
   material.push_back(0);material.push_back(1);material.push_back(2); // for ring_pinch2
   /////////////////////////////////////////////////////////////////////////////////////////
-  std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+3);k.push_back(1.e-2); // pinch trimat
-  std::vector<double> E; E.push_back(1.e+0);E.push_back(2.e+0);E.push_back(1.e+1);
-//   std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+0);k.push_back(1.e-0); // pinch trimat
-//   std::vector<double> E; E.push_back(1.e+0);E.push_back(1.e+0);E.push_back(1.e+0);
+//   std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+3);k.push_back(1.e-2); // pinch trimat
+//   std::vector<double> E; E.push_back(1.e+0);E.push_back(2.e+0);E.push_back(1.e+1);
+  std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+0);k.push_back(1.e-0); // pinch trimat
+  std::vector<double> E; E.push_back(1.e+0);E.push_back(1.e+0);E.push_back(1.e+0);
 // >>>>>>> ls_temp
   for (int imat=0; imat< material.size();imat++){
     dal::bit_vector bv_cv = mesh.region(material[imat]).index();

@@ -26,14 +26,7 @@ void templs_problem::init(void) {
   // // A trasformation for the squared mesh
   p_des.l_ref=4000;
 
-
-  // import mesh
-  // getfem::import_mesh("gmsh:mesh/square2k.msh",mesh);
-  // getfem::import_mesh("gmsh:mesh/squarepinch.msh",mesh);
-  //  getfem::import_mesh("gmsh:mesh/squarepinch_fine.msh",mesh);
-  // dal::bit_vector b; b.add(0);
-  
-  getfem::import_mesh("gmsh:mesh/ringmeshes/pinch_2.msh",mesh);//labeled_domain=1; //official lk
+  import_mesh();
   // mesh.Bank_refine(b);
   // mesh.Bank_refine(mesh.convex_index());
   bgeot::base_matrix M(N_,N_);
@@ -194,6 +187,15 @@ void templs_problem::init(void) {
 }
 // assembly with ls
 
+
+void templs_problem::import_mesh(){
+  // import mesh
+  // getfem::import_mesh("gmsh:mesh/square2k.msh",mesh);
+  // getfem::import_mesh("gmsh:mesh/squarepinch.msh",mesh);
+  //  getfem::import_mesh("gmsh:mesh/squarepinch_fine.msh",mesh);
+  // dal::bit_vector b; b.add(0);
+  getfem::import_mesh("gmsh:mesh/ringmeshes/pinch_2.msh",mesh);//labeled_domain=1; //official lk
+}
 // ===========================================
 // method for generation of bcs zones
 // ===========================================
@@ -303,9 +305,10 @@ void templs_problem::configure_workspace(getfem::ga_workspace & workspace,double
 
 
 
-   dome_t_[0]=90.;
+   dome_t_[0]=200.;
    dome_t_[0]=dome_t_[0]/p_des.p_ref;
    workspace.add_fixed_size_constant("over_p", dome_t_);
+   workspace.add_fixed_size_constant("dome_t", dome_t_);
 
   int t1=10*2; int t2=20*2;
   int t3=30*2; int t4=35*2;

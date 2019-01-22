@@ -12,9 +12,11 @@
 
 #ifdef BIOT_LS
 #include "biot_ls.hpp"
+#include "biot_ls_dome.hpp"
 #endif
 #ifdef TEMP_LS
 #include "temp_ls.hpp"
+#include "temp_ls_dome.hpp"
 #endif
 #ifdef BIOT
 #include "biot.hpp"
@@ -33,10 +35,12 @@ int main(int argc, char *argv[]) {
 
 	try {    
 #ifdef BIOT_LS
-		biotls_problem p;
+// 		biotls_problem p;
+		biot_ls_dome p;
 #endif
 #ifdef TEMP_LS
-		templs_problem t;
+// 		templs_problem t;
+		temp_ls_dome t;
 #endif
 #ifdef BIOT
 		 biot_problem p;
@@ -74,7 +78,7 @@ int main(int argc, char *argv[]) {
 		//    p.assembly_p(dt,0); 
 		//    p.assembly_u(dt);
 		int n_step=80;
-		int erosion_limit=10; // usually 50 steps
+		int erosion_limit=0; // usually 50 steps // 10 for isostasy
 		int erosion_begin=60; // usually 0
 		double time=0*dt;
 		double time_ls  =0;
@@ -85,6 +89,7 @@ int main(int argc, char *argv[]) {
 		t.update_ls(time_ls, 0);
 		//preliminary time steps for temperature
 		for (int i=0; i<5; i++){t.assembly(dt,0.);t.solve(0.);}
+		t.set_clt(true); // imposing constant temperature lateral
 #endif
 #ifdef ISOSTASY
 // 		set center of rotation of isostasy
@@ -110,8 +115,8 @@ int main(int argc, char *argv[]) {
 					// p.build_fix_stress_preconditioner(dt,time_ls);
 				}
 #ifdef ISOSTASY
-					  isos.set_time(time);
-					  isos.set_transformation();
+			         isos.set_time(time);
+			         isos.set_transformation();
 #endif
 				
 #ifdef BIOT_LS
