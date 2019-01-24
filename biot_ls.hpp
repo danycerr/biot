@@ -145,7 +145,7 @@ struct problem_descriptor_tetra_3d{
 	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TETRAHEDRON(6),3)"; 
 
 // 	std::string datafilename="resu/lk_ls8_2mat_disp_coup"; 
-	std::string datafilename="resu/ls_rp_disp"; 
+	std::string datafilename="resu/ls_ring_pinch_disp"; 
 	int noised =0;  // noise on mesh
 	int nsubdiv=6; // subdivision of the sqaured mesh
 
@@ -248,6 +248,7 @@ class biotls_problem {
 		void print_crop(double time=0,int istep=0,double time_ls=0);
 		void print_ls(double time=0,int istep=0,double time_ls=0);
                 void print_pattern(int istep=0);
+		void print_aux (double time=0,int istep=0,double time_ls=0);
 		void update_ls(double time=0, int iter=0);
 		void update_p_index(double timels=0);
 		void update_u_index(double timels=0);

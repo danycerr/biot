@@ -232,20 +232,20 @@ void biotls_problem::gen_bc(){
     assert(i.is_face());
     base_node un = mesh.normal_of_face_of_convex(i.cv(), i.f());
     un /= gmm::vect_norm2(un);
-
-    if (gmm::abs(un[N_-1] - 1.0) < 1.0E-7) { // new Neumann face
+    double tol=2.e-1;
+    if (gmm::abs(un[N_-1] - 1.0) < tol) { // new Neumann face
       mesh.region(TOP).add(i.cv(), i.f());
-    } else if (gmm::abs(un[N_-1] + 1.0) < 1.0E-7) {
+    } else if (gmm::abs(un[N_-1] + 1.0) < tol) {
       mesh.region(BOTTOM).add(i.cv(), i.f());
-    } else if (gmm::abs(un[N_-2] + 1.0) < 1.0E-7) {
+    } else if (gmm::abs(un[N_-2] + 1.0) < tol) {
       mesh.region(LEFT).add(i.cv(), i.f());
-    } else if (gmm::abs(un[N_-2] - 1.0) < 1.0E-7) {
+    } else if (gmm::abs(un[N_-2] - 1.0) < tol) {
       mesh.region(RIGHT).add(i.cv(), i.f());
     }
     else if(N_=3){
-      if (gmm::abs(un[N_-3] + 1.0) < 1.0E-7) {
+      if (gmm::abs(un[N_-3] + 1.0) < tol) {
         mesh.region(LEFTX).add(i.cv(), i.f());
-      } else if (gmm::abs(un[N_-3] - 1.0) < 1.0E-7) {
+      } else if (gmm::abs(un[N_-3] - 1.0) < tol) {
         mesh.region(RIGHTX).add(i.cv(), i.f());
       }
     }
@@ -1682,7 +1682,7 @@ void biotls_problem::print_crop(double time,int istep,double time_ls){
     mesh_dim.translation(*(isos_descr_->mdx));
   }
   
-    bgeot::base_matrix M(N_,N_);
+  bgeot::base_matrix M(N_,N_);
   bgeot::base_matrix Mm1(N_,N_); 
   for (size_type i=0; i < N_; ++i) {
     M(i,i) = p_des.l_ref;
@@ -1693,9 +1693,10 @@ void biotls_problem::print_crop(double time,int istep,double time_ls){
   
   //sl.build(mesh, , -1),2);
   std::cout<<"end cropping"<< std::endl;
+
+    
   {  
     //// Export discontinuous solution
-
     std::vector<scalar_type> PIn_dim(mf_p.nb_dof(), 0.0);gmm::copy(PIn,PIn_dim);gmm::scale(PIn_dim,p_des.p_ref);
     std::vector<scalar_type> UIn_dim(mf_u.nb_dof(), 0.0);gmm::copy(UIn,UIn_dim);gmm::scale(UIn_dim,p_des.u_ref);
     std::string namefile= p_des.datafilename +".crop." +  std::to_string(istep) +".vtk";
@@ -1709,6 +1710,7 @@ void biotls_problem::print_crop(double time,int istep,double time_ls){
   }
 
   mesh.transformation(Mm1); 
+  mesh_dim.transformation(Mm1); 
     // undu isostasy disp
   if (isos_descr_->active){
     mesh.translation(*(isos_descr_->dx));
@@ -1719,6 +1721,23 @@ void biotls_problem::print_crop(double time,int istep,double time_ls){
     mesh_dim.transformation(isos_descr_->Mm1);
     mesh_dim.translation(*(isos_descr_->mdx));
   }
+  
+  mesh_dim.transformation(M); 
+   {  
+    //// Export discontinuous solution
+    std::vector<scalar_type> PIn2_dim(mf_p.nb_dof(), 0.0);gmm::copy(PIn,PIn2_dim);gmm::scale(PIn2_dim,p_des.p_ref);
+    std::vector<scalar_type> UIn2_dim(mf_u.nb_dof(), 0.0);gmm::copy(UIn,UIn2_dim);gmm::scale(UIn2_dim,p_des.u_ref);
+    
+    std::string namefile= p_des.datafilename +".noisos.crop." +  std::to_string(istep) +".vtk";
+    getfem::vtk_export vtkd(namefile);
+    vtkd.exporting(mesh_dim);
+    vtkd.write_mesh();
+    vtkd.write_point_data(mf_p, PIn2_dim, "p");
+    vtkd.write_point_data(mf_u, UIn2_dim, "u");
+    std::cout<<"end printing no isos "<<std::endl;
+
+  }
+  
 }  
 
 // evaluate birnak to a level set
@@ -1872,7 +1891,9 @@ void biotls_problem::update_u_index(double time_ls){
 // routine for the generation of coeffient
 //============================================
 void biotls_problem::gen_coefficient(){ // creating a coefficient
+  std::vector<scalar_type> Kr_print; // permeability ratio
   gmm::resize(Kr_, mf_coef.nb_dof()); gmm::fill(Kr_,1);    // rhs monolithic problem
+  gmm::resize(Kr_print, mf_coef.nb_dof()); gmm::fill(Kr_print,1);    // rhs monolithic problem
   gmm::resize(Er_, mf_coef.nb_dof()); gmm::fill(Er_,1);    // rhs monolithic problem
 // <<<<<<< HEAD
   std::vector<int> material; 
@@ -1890,10 +1911,10 @@ void biotls_problem::gen_coefficient(){ // creating a coefficient
   // ===========================material for pinch_2===========
   material.push_back(0);material.push_back(1);material.push_back(2); // for ring_pinch2
   /////////////////////////////////////////////////////////////////////////////////////////
-//   std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+3);k.push_back(1.e-2); // pinch trimat
-//   std::vector<double> E; E.push_back(1.e+0);E.push_back(2.e+0);E.push_back(1.e+1);
-  std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+0);k.push_back(1.e-0); // pinch trimat
-  std::vector<double> E; E.push_back(1.e+0);E.push_back(1.e+0);E.push_back(1.e+0);
+  std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+3);k.push_back(1.e-2); // pinch trimat
+  std::vector<double> E; E.push_back(1.e+0);E.push_back(2.e+0);E.push_back(1.e+1);
+//   std::vector<double> k; k.push_back(1.e-0);k.push_back(1.e+0);k.push_back(1.e-0); // pinch trimat
+//   std::vector<double> E; E.push_back(1.e+0);E.push_back(1.e+0);E.push_back(1.e+0);
 // >>>>>>> ls_temp
   for (int imat=0; imat< material.size();imat++){
     dal::bit_vector bv_cv = mesh.region(material[imat]).index();
@@ -1901,10 +1922,17 @@ void biotls_problem::gen_coefficient(){ // creating a coefficient
     for (i_cv << bv_cv; i_cv != size_type(-1); i_cv << bv_cv) {
       getfem::mesh_fem::ind_dof_ct idofs = mf_coef.ind_basic_dof_of_element(i_cv);
       for (size_type i=0; i < idofs.size(); ++i) {
-        Kr_[idofs[i]]=k[imat];
+        Kr_[idofs[i]]=k[imat];Kr_print[(int) i_cv]=k[imat];
         Er_[idofs[i]]=E[imat];
       }
     }
+  }
+  if(1){ // Just to see what elements are cut by the level set ls:
+    std::string namefile= p_des.datafilename +".materials.vtk";
+    getfem::vtk_export vtk_data(namefile);
+    vtk_data.exporting(mf_coef);
+    vtk_data.write_mesh();
+    vtk_data.write_cell_data(Kr_print, "K");
   }
 }
 
@@ -1958,6 +1986,88 @@ void biotls_problem::print_pattern(int iter){
 
 
 
+//============================================
+// routine for printing spasity pattern
+//============================================
+void biotls_problem::print_aux(double time,int istep,double time_ls){
+    std::vector<scalar_type> ls_vector(mf_p.nb_dof(), 0.0);
+    std::vector<scalar_type> zeroes(mf_p.nb_dof(), 1.0);
+    std::vector<scalar_type> hice(mesh.convex_index().size(), 0.0);
+      //top load of ice
+  
+  int t1=10*2; int t2=20*2;
+  int t3=30*2; int t4=35*2;
+//         std::vector<scalar_type> ice_force(1);ice_force[0] = 1.e+0;
+  double p_buf=0.;
+  if(step_<t1)       p_buf= 0.;
+  else if(step_<t2)  p_buf= (step_ -((double) t1) )/(((double) t2)-((double) t1))
+                            *1000*9.81*4000;
+  else if(step_<t3)  p_buf= 1000*9.81*4000;
+  else if(step_<t4)  p_buf= (step_ -((double) t4))/(((double) t3)-((double) t4))
+                            *1000*9.81*4000;
+  else               p_buf= 0.;
+  
+//creation of vector of level set
+    for (size_type i = 0; i < mf_p.nb_dof(); ++i)
+      ls_vector[i] = ls_function(mf_p.point_of_basic_dof(i),time_ls, LS_TYPE)[0];
+    {
+    dal::bit_vector bv_cv = mesh.convex_index();
+    size_type i_cv = 0;
+    for (i_cv << bv_cv; i_cv != size_type(-1); i_cv << bv_cv) 
+        hice[i_cv] = p_buf;
+    }
+    {
+      int tb_nul[]={LEFT,RIGHT,LEFTX,RIGHTX};
+      for (int i=0; i< 4; i++){
+      dal::bit_vector bv_cv =  mf_p.basic_dof_on_region(tb_nul[i]);
+      size_type i_cv = 0;
+      for (i_cv << bv_cv; i_cv != size_type(-1); i_cv << bv_cv)
+        zeroes[i_cv] = 0.;
+      }
+    }
+    
+//         hice[i_cv] = over_p_[0] * p_des.p_ref;
+  
+
+   if (isos_descr_->active){
+    mesh.translation(*(isos_descr_->dx));
+    mesh.transformation(isos_descr_->M);
+    mesh.translation(*(isos_descr_->mdx));
+   }
+  
+   bgeot::base_matrix M(N_,N_);
+   bgeot::base_matrix Mm1(N_,N_); 
+   for (size_type i=0; i < N_; ++i) {
+    M(i,i) = p_des.l_ref;
+    Mm1(i,i) = 1/p_des.l_ref;
+   }
+   mesh.transformation(M);
+  
+  {  
+    //// Export discontinuous solution
+
+//     std::vector<scalar_type> PIn_dim(mf_p.nb_dof(), 0.0);gmm::copy(PIn,PIn_dim);gmm::scale(PIn_dim,p_des.p_ref);
+//     std::vector<scalar_type> UIn_dim(mf_u.nb_dof(), 0.0);gmm::copy(UIn,UIn_dim);gmm::scale(UIn_dim,p_des.u_ref);
+    std::string namefile= p_des.datafilename +".auxiliar." +  std::to_string(istep) +".vtk";
+    getfem::vtk_export vtkd(namefile);
+    vtkd.exporting(mesh);
+    vtkd.write_mesh();
+    vtkd.write_point_data(mf_p, ls_vector, "ls");
+    vtkd.write_point_data(mf_p, zeroes, "border");
+    vtkd.write_cell_data(hice, "h_ice");
+//     vtkd.write_point_data(mf_u, UIn_dim, "u");
+    std::cout<<"end printing"<<std::endl;
+
+  }
+
+  mesh.transformation(Mm1); 
+    // undu isostasy disp
+  if (isos_descr_->active){
+    mesh.translation(*(isos_descr_->dx));
+    mesh.transformation(isos_descr_->Mm1);
+    mesh.translation(*(isos_descr_->mdx));
+  }
+}
 //===========================================================
 std::vector<scalar_type> biotls_problem::get_pressure(){
 std::vector<scalar_type> buf(P_old.size());
@@ -1965,5 +2075,6 @@ gmm::copy(P_old,buf);
 gmm::scale(buf,p_des.p_ref);
 return buf;
 }
+
 
 

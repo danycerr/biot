@@ -35,12 +35,12 @@ int main(int argc, char *argv[]) {
 
 	try {    
 #ifdef BIOT_LS
-// 		biotls_problem p;
-		biot_ls_dome p;
+		biotls_problem p;
+// 		biot_ls_dome p;
 #endif
 #ifdef TEMP_LS
-// 		templs_problem t;
-		temp_ls_dome t;
+		templs_problem t;
+// 		temp_ls_dome t;
 #endif
 #ifdef BIOT
 		 biot_problem p;
@@ -93,8 +93,8 @@ int main(int argc, char *argv[]) {
 #endif
 #ifdef ISOSTASY
 // 		set center of rotation of isostasy
-		isos.set_center_of_rotation( t.get_mesh()); 
-// 		isos.set_center_of_rotation( p.get_mesh()); 
+// 		isos.set_center_of_rotation( t.get_mesh()); 
+		isos.set_center_of_rotation( p.get_mesh()); 
 #endif
 		for(int istep=0; istep<n_step; istep++)
 		{
@@ -150,8 +150,10 @@ int main(int argc, char *argv[]) {
 				//   p.solve(time_ls);
 				// ===========================
 #ifdef BIOT_LS
-// 				 p.print(istep*dt,istep,time_ls);      
+// // 				 p.print(istep*dt,istep,time_ls);      
 				 p.print_crop(istep*dt,istep,time_ls);
+				 
+// 				 p.print_aux(istep*dt,istep,time_ls);
 #endif   
 #ifdef TEMP_LS
 			 	 t.print_crop(istep*dt,istep,time_ls);

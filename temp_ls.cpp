@@ -530,9 +530,9 @@ void templs_problem::solve(double time){
   iter.set_noisy(1);               // output of iterations (2: sub-iteration)
   iter.set_maxiter(1000); // maximum number of iterations
   gmm::diagonal_precond<sparse_matrix_type> PR(K);
-  {  std::cout<<"!!!!!! Printing Matrix !!!!!"<<std::endl;
-    gmm::MatrixMarket_IO::write("K.mm",K);
-  }
+//   {  std::cout<<"!!!!!! Printing Matrix !!!!!"<<std::endl;
+//     gmm::MatrixMarket_IO::write("K.mm",K);
+//   }
   
   getfem::size_type nb_dof_p = mf_p.nb_dof();
   sparse_matrix_type Ku_x;                                /// iteration matrix
@@ -885,26 +885,41 @@ void templs_problem::print_crop(double time,int istep,double time_ls){
 
   //sl.build(mesh, , -1),2);
   std::cout<<"end cropping"<< std::endl;
+    
   {  
-    //// Export discontinuous solution
-
     std::vector<scalar_type> PIn_dim(mf_p.nb_dof(), 0.0);gmm::copy(PIn,PIn_dim);gmm::scale(PIn_dim,p_des.p_ref);
+    //// Export discontinuous solution
     std::string namefile= p_des.datafilename +".crop." +  std::to_string(istep) +".vtk";
     getfem::vtk_export vtkd(namefile);
     vtkd.exporting(mesh_dim);
     vtkd.write_mesh();
     vtkd.write_point_data(mf_p, PIn_dim, "p");
     std::cout<<"end printing"<<std::endl;
-
   }
 
   mesh.transformation(Mm1); 
+  mesh_dim.transformation(Mm1); 
       // undu isostasy disp
   if (isos_descr_->active){
     mesh.translation(*(isos_descr_->dx));
     mesh.transformation(isos_descr_->Mm1);
     mesh.translation(*(isos_descr_->mdx));
+    mesh_dim.translation(*(isos_descr_->dx));
+    mesh_dim.transformation(isos_descr_->Mm1);
+    mesh_dim.translation(*(isos_descr_->mdx));
   }
+  mesh_dim.transformation(M);
+  {  
+    //// Export discontinuous solution
+    std::vector<scalar_type> PIn2_dim(mf_p.nb_dof(), 0.0);gmm::copy(PIn,PIn2_dim);gmm::scale(PIn2_dim,p_des.p_ref);
+    std::string namefile= p_des.datafilename +".nosisos.crop." +  std::to_string(istep) +".vtk";
+    getfem::vtk_export vtkd(namefile);
+    vtkd.exporting(mesh_dim);
+    vtkd.write_mesh();
+    vtkd.write_point_data(mf_p, PIn2_dim, "p");
+    std::cout<<"end printing"<<std::endl;
+  }
+  
 }  
 
 // evaluate birnak to a level set

@@ -81,7 +81,7 @@ struct generic_problem_descriptor_tetra_3d{
 	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TETRAHEDRON(6),3)"; 
 
 // 	std::string datafilename="resu/lk_ls8_2mat_temp_coup"; 
-	std::string datafilename="resu/ls_rp_temp"; 
+	std::string datafilename="resu/ls_ring_pinch_temp"; 
 	int noised =0;  // noise on mesh
 	int nsubdiv=6; // subdivision of the sqaured mesh
 
@@ -100,7 +100,7 @@ struct generic_problem_descriptor_tetra_3d{
 	double t_ref=1;
 	double u_ref=1;
 	double p_ref=1;
-        double alpha_temp=0.7e-5; //thermal conductivity
+        double alpha_temp=0.8e-5; //thermal conductivity
         double q_rad=1.e-6/(2200);
         // double q_rad=1.e-10;
 };

@@ -123,6 +123,10 @@ void temp_ls_dome::assembly(double dt,double time) {
   //NITSCHE
   workspace.add_expression( "+p.Test_p + tau*Kr*Grad_p.Grad_Test_p"
       , mim_ls_in, CUT_REGION);
+//   if(const_lateral_temp_){
+//       workspace.add_expression("2/element_size*p*Test_p*200", mim, LATERAL);	
+//       workspace.add_expression("-Grad_p.Normal*Test_p - Grad_Test_p.Normal*p", mim, LATERAL);
+//   }
   workspace.assembly(2);
   gmm::copy(workspace.assembled_matrix(),K_in);
   workspace.clear_expressions();
@@ -130,6 +134,8 @@ void temp_ls_dome::assembly(double dt,double time) {
 //   if(const_lateral_temp_)
 //     workspace.add_expression( "2/element_size*over_p*Test_p*tau*2000- nlsv.Grad_Test_p*over_p*tau", mim_ls_bd, CUT_REGION);
   if(const_lateral_temp_) workspace.add_expression("2/element_size*dome_t*Test_p*2000*tau", mim_ls_bd, CUT_REGION);
+//   if(const_lateral_temp_)
+//        workspace.add_expression("2/element_size*p_old*Test_p*200- p_old*Grad_Test_p.Normal", mim, LATERAL);
   workspace.assembly(1);
   workspace.clear_expressions();
  //  workspace.add_expression("2/element_size*p*Test_p", mim, LEFT);
@@ -225,23 +231,24 @@ void temp_ls_dome::gen_bc(){
     base_node un = mesh.normal_of_face_of_convex(i.cv(), i.f());
     un /= gmm::vect_norm2(un);
 
-//     if (gmm::abs(un[N_-1] - 1.0) < 1.0E-7) { // new Neumann face //for squared domain
-    if (un[N_-1]  > 1.0E-1) { // new Neumann face //for squared domain
+//     if (gmm::abs(un[N_-1] - 1.0) < tol) { // new Neumann face //for squared domain
+    double tol=3.E-1;
+    if (un[N_-1]  > 3.0E-1) { // new Neumann face //for squared domain
       mesh.region(TOP).add(i.cv(), i.f());
-    } else if (gmm::abs(un[N_-1] + 1.0) < 1.0E-7) {
+    } else if (gmm::abs(un[N_-1] + 1.0) < tol) {
       mesh.region(BOTTOM).add(i.cv(), i.f());
-    } else if (gmm::abs(un[N_-2] + 1.0) < 1.0E-7) {
+    } else if (gmm::abs(un[N_-2] + 1.0) < tol) {
       mesh.region(LEFT).add(i.cv(), i.f());
       mesh.region(LATERAL).add(i.cv(), i.f());
-    } else if (gmm::abs(un[N_-2] - 1.0) < 1.0E-7) {
+    } else if (gmm::abs(un[N_-2] - 1.0) < tol) {
       mesh.region(RIGHT).add(i.cv(), i.f());
       mesh.region(LATERAL).add(i.cv(), i.f());
     }
     else if(N_=3){
-      if (gmm::abs(un[N_-3] + 1.0) < 1.0E-7) {
+      if (gmm::abs(un[N_-3] + 1.0) < tol) {
         mesh.region(LEFTX).add(i.cv(), i.f());
       mesh.region(LATERAL).add(i.cv(), i.f());
-      } else if (gmm::abs(un[N_-3] - 1.0) < 1.0E-7) {
+      } else if (gmm::abs(un[N_-3] - 1.0) < tol) {
         mesh.region(RIGHTX).add(i.cv(), i.f());
         mesh.region(LATERAL).add(i.cv(), i.f());
       }
