@@ -153,7 +153,7 @@ int main(int argc, char *argv[]) {
 // // 				 p.print(istep*dt,istep,time_ls);      
 				 p.print_crop(istep*dt,istep,time_ls);
 				 
-// 				 p.print_aux(istep*dt,istep,time_ls);
+				 p.print_aux(istep*dt,istep,time_ls);
 #endif   
 #ifdef TEMP_LS
 			 	 t.print_crop(istep*dt,istep,time_ls);

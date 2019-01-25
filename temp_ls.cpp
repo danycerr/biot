@@ -908,17 +908,17 @@ void templs_problem::print_crop(double time,int istep,double time_ls){
     mesh_dim.transformation(isos_descr_->Mm1);
     mesh_dim.translation(*(isos_descr_->mdx));
   }
-  mesh_dim.transformation(M);
-  {  
-    //// Export discontinuous solution
-    std::vector<scalar_type> PIn2_dim(mf_p.nb_dof(), 0.0);gmm::copy(PIn,PIn2_dim);gmm::scale(PIn2_dim,p_des.p_ref);
-    std::string namefile= p_des.datafilename +".nosisos.crop." +  std::to_string(istep) +".vtk";
-    getfem::vtk_export vtkd(namefile);
-    vtkd.exporting(mesh_dim);
-    vtkd.write_mesh();
-    vtkd.write_point_data(mf_p, PIn2_dim, "p");
-    std::cout<<"end printing"<<std::endl;
-  }
+//   mesh_dim.transformation(M);
+//   {  
+//     //// Export discontinuous solution
+//     std::vector<scalar_type> PIn2_dim(mf_p.nb_dof(), 0.0);gmm::copy(PIn,PIn2_dim);gmm::scale(PIn2_dim,p_des.p_ref);
+//     std::string namefile= p_des.datafilename +".nosisos.crop." +  std::to_string(istep) +".vtk";
+//     getfem::vtk_export vtkd(namefile);
+//     vtkd.exporting(mesh_dim);
+//     vtkd.write_mesh();
+//     vtkd.write_point_data(mf_p, PIn2_dim, "p");
+//     std::cout<<"end printing"<<std::endl;
+//   }
   
 }  
 

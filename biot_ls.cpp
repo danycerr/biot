@@ -1661,13 +1661,16 @@ void biotls_problem::print_crop(double time,int istep,double time_ls){
   getfem::slicer_isovalues a1(a,0,-1);
   getfem::mesh_slicer slicer(mls);
   getfem::mesh mesh_dim;
+  getfem::mesh mesh_dim2;
   int nrefine = 1;
   getfem::stored_mesh_slice sl;
   getfem::slicer_build_stored_mesh_slice a2(sl);
   getfem::slicer_build_mesh              a3(mesh_dim);
+  getfem::slicer_build_mesh              a4(mesh_dim2);
   slicer.push_back_action(a1);
   slicer.push_back_action(a2);
   slicer.push_back_action(a3);
+  slicer.push_back_action(a4);
   slicer.exec(nrefine);
 
 
@@ -1706,12 +1709,11 @@ void biotls_problem::print_crop(double time,int istep,double time_ls){
     vtkd.write_point_data(mf_p, PIn_dim, "p");
     vtkd.write_point_data(mf_u, UIn_dim, "u");
     std::cout<<"end printing"<<std::endl;
-
   }
 
   mesh.transformation(Mm1); 
   mesh_dim.transformation(Mm1); 
-    // undu isostasy disp
+    // undo isostasy disp
   if (isos_descr_->active){
     mesh.translation(*(isos_descr_->dx));
     mesh.transformation(isos_descr_->Mm1);
@@ -1722,21 +1724,19 @@ void biotls_problem::print_crop(double time,int istep,double time_ls){
     mesh_dim.translation(*(isos_descr_->mdx));
   }
   
-  mesh_dim.transformation(M); 
-   {  
-    //// Export discontinuous solution
-    std::vector<scalar_type> PIn2_dim(mf_p.nb_dof(), 0.0);gmm::copy(PIn,PIn2_dim);gmm::scale(PIn2_dim,p_des.p_ref);
-    std::vector<scalar_type> UIn2_dim(mf_u.nb_dof(), 0.0);gmm::copy(UIn,UIn2_dim);gmm::scale(UIn2_dim,p_des.u_ref);
-    
-    std::string namefile= p_des.datafilename +".noisos.crop." +  std::to_string(istep) +".vtk";
-    getfem::vtk_export vtkd(namefile);
-    vtkd.exporting(mesh_dim);
-    vtkd.write_mesh();
-    vtkd.write_point_data(mf_p, PIn2_dim, "p");
-    vtkd.write_point_data(mf_u, UIn2_dim, "u");
-    std::cout<<"end printing no isos "<<std::endl;
-
-  }
+//   mesh_dim2.transformation(M); 
+//    {  
+//     //// Export discontinuous solution
+//     std::vector<scalar_type> PIn2_dim(mf_p.nb_dof(), 0.0);gmm::copy(PIn,PIn2_dim);gmm::scale(PIn2_dim,p_des.p_ref);
+//     std::vector<scalar_type> UIn2_dim(mf_u.nb_dof(), 0.0);gmm::copy(UIn,UIn2_dim);gmm::scale(UIn2_dim,p_des.u_ref);
+//     std::string namefile= p_des.datafilename +".noisos.crop." +  std::to_string(istep) +".vtk";
+//     getfem::vtk_export vtkn(namefile);
+//     vtkn.exporting(mesh_dim2);
+//     vtkn.write_mesh();
+//     vtkn.write_point_data(mf_p, PIn2_dim, "p");
+//     vtkn.write_point_data(mf_u, UIn2_dim, "u");
+//     std::cout<<"end printing no isos "<<std::endl;
+//   }
   
 }  
 
