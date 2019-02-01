@@ -7,7 +7,7 @@
 #define ISOSTASY
 #include "gmm/gmm_except.h"
 
-#define BIOT_LS
+// #define BIOT_LS
 #define TEMP_LS
 
 #ifdef BIOT_LS
@@ -73,7 +73,9 @@ int main(int argc, char *argv[]) {
  		t.init();
 #endif
 		// double dt=1e-3;
-		double dt=1e+12;
+// 		double dt=1e+12;
+// 		
+		double dt=0.5e+10;
 		// p.build_fix_stress_preconditioner(dt,0);
 		//    p.assembly_p(dt,0); 
 		//    p.assembly_u(dt);
@@ -88,13 +90,13 @@ int main(int argc, char *argv[]) {
 #ifdef TEMP_LS
 		t.update_ls(time_ls, 0);
 		//preliminary time steps for temperature
-		for (int i=0; i<5; i++){t.assembly(dt,0.);t.solve(0.);}
+		for (int i=0; i<5; i++){double dt_pre=1.e+12; t.assembly(dt_pre,0.);t.solve(0.);}
 		t.set_clt(true); // imposing constant temperature lateral
 #endif
 #ifdef ISOSTASY
 // 		set center of rotation of isostasy
-// 		isos.set_center_of_rotation( t.get_mesh()); 
-		isos.set_center_of_rotation( p.get_mesh()); 
+		isos.set_center_of_rotation( t.get_mesh()); 
+// 		isos.set_center_of_rotation( p.get_mesh()); 
 #endif
 		for(int istep=0; istep<n_step; istep++)
 		{
@@ -199,8 +201,10 @@ int main(int argc, char *argv[]) {
 					  else  p.solve_fix_stress(dt, 5); //5
 					  // p.assembly(dt);
 					  // p.solve();
-#ifdef BIOT
+#ifdef BIOT 
+#ifdef ISOSTASY
 					  isos.move_mesh( p.get_mesh()); 
+#endif
 #endif
 					  p.print(istep);
 //                                           p.print_aux_data(istep);

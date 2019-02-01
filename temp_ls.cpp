@@ -6,7 +6,7 @@
 // fix cut height 
 #define H_PARAM 2666.67
 
-#define STAB_P (0)
+#define STAB_T (0)
 
 // #define L2_NORM
 
@@ -423,7 +423,7 @@ void templs_problem::assembly(double dt,double time) {
 //      workspace.add_expression("2/element_size*p*Test_p*tau*2000", mim_ls_bd, CUT_REGION);// 1 is the region		
 //      workspace.add_expression("-nlsv.Grad_p*Test_p*tau - nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION);
 //   }
-   workspace.add_expression("2/element_size*p*Test_p*tau*2000", mim_ls_bd, CUT_REGION);// 1 is the region		
+   workspace.add_expression("2/element_size*p*Test_p*tau*200", mim_ls_bd, CUT_REGION);// 1 is the region		
 //    workspace.add_expression("-nlsv.Grad_p*Test_p*tau - nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION);
   //NITSCHE
   workspace.add_expression( "+p.Test_p + tau*Kr*Grad_p.Grad_Test_p"
@@ -434,7 +434,7 @@ void templs_problem::assembly(double dt,double time) {
   workspace.add_expression("+[+1.].Test_p*tau + p_old.Test_p  - 1.e-19*C1*Er*Grad_pres.Grad_Test_p*tau", mim_ls_in,CUT_REGION);
 //   if(const_lateral_temp_)
 //     workspace.add_expression( "2/element_size*over_p*Test_p*tau*2000- nlsv.Grad_Test_p*over_p*tau", mim_ls_bd, CUT_REGION);
-  workspace.add_expression("2/element_size*top_temp*Test_p*2000*tau", mim_ls_bd, CUT_REGION);
+  workspace.add_expression("2/element_size*top_temp*Test_p*200*tau", mim_ls_bd, CUT_REGION);
   workspace.assembly(1);
   workspace.clear_expressions();
  //  workspace.add_expression("2/element_size*p*Test_p", mim, LEFT);
@@ -445,12 +445,12 @@ void templs_problem::assembly(double dt,double time) {
 //  gmm::add(workspace.assembled_matrix(),K_in);
 //  workspace.clear_expressions();
   // stabilization term
-#ifdef  STAB_P
+#ifdef  STAB_T
 {
     getfem::mesh_region  inner_faces;
     inner_faces = getfem::inner_faces_of_mesh(mesh, CUT_REGION);
 
-    workspace.add_expression("2*element_size*Grad_p.Normal*Grad_Test_p.Normal*1", mim, inner_faces);// 1 is the region		
+    workspace.add_expression("2*element_size*Grad_p.Normal*Grad_Test_p.Normal*2.e-3", mim, inner_faces);// 1 is the region		
     workspace.assembly(2);
     gmm::add(workspace.assembled_matrix(), K_in);
     workspace.clear_expressions();
@@ -893,7 +893,7 @@ void templs_problem::print_crop(double time,int istep,double time_ls){
     getfem::vtk_export vtkd(namefile);
     vtkd.exporting(mesh_dim);
     vtkd.write_mesh();
-    vtkd.write_point_data(mf_p, PIn_dim, "p");
+    vtkd.write_point_data(mf_p, PIn_dim, "T");
     std::cout<<"end printing"<<std::endl;
   }
 

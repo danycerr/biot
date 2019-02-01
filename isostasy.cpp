@@ -49,7 +49,8 @@ return g;
 
 // ==================dummy transformation ====================================
 void isostasy::dummy_transform(){
-  double dt=1.e+12;
+//   double dt=1.e+12;
+  double dt=0.5e+10;
   double tilt[]={3.1415/4*(time_ -20*dt)/((70-20)*dt),3.1415/10*(time_ -20*dt)/((70-20)*dt),3.1415/50*(time_ -20*dt)/((70-20)*dt)}; /// vector describing a casual rotation
   if (time_<20*dt) for (int i=0;i<3;i++) tilt[i]=0.;
   else if (time_ > 70*dt){
