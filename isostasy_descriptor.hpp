@@ -11,14 +11,4 @@ struct isostasy_descriptor {
   std::unique_ptr<bgeot::small_vector<double>> dx,mdx;
   isostasy_descriptor() : M(3,3),Mm1(3,3){}
 } ;
-// // // // // // // // // // // // // // // // // // // // 
-class isostasy_from_files {
-protected:
-  std::vector<double> rotations_;
-private:
-public:
-  isostasy_from_files(){};
-};
-
-
 #endif

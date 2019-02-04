@@ -33,8 +33,11 @@ void isostasy::set_center_of_rotation(getfem::mesh *mesh){
 // ======================================================
 // ======================================================
 void isostasy::set_transformation(){
-  dummy_transform();
-//  read_transform)
+  // create a dummy transformation
+//   dummy_transform();
+//  read_transformation from file
+  f_isos->get_rotation(time_, M_);
+// //  final copy of the matrix
 gmm::copy(M_, is_des_.M);
 gmm::copy(Mm1_, is_des_.Mm1);
 }
@@ -82,3 +85,8 @@ void isostasy::dummy_transform(){
         }
 }
 // ======================================================
+
+
+
+
+

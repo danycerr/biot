@@ -74,16 +74,23 @@ int main(int argc, char *argv[]) {
 #endif
 		// double dt=1e-3;
 // 		double dt=1e+12;
-// 		
-		double dt=0.5e+10;
+// =======================================================
+// 		double dt=0.5e+10; // classic simulation
+// 		int n_step=80;
+// 		int erosion_limit=0; // usually 50 steps // 10 for isostasy
+// 		int erosion_begin=60; // usually 0
+// ========================================================
+		double dt=9.11e+9; // classic simulation
+		int n_step=90;
+		int erosion_limit=0; // usually 50 steps // 10 for isostasy
+		int erosion_begin=60; // usually 0
+// ========================================================
+		double time=0*dt;
+		double time_ls  =0;
+		
 		// p.build_fix_stress_preconditioner(dt,0);
 		//    p.assembly_p(dt,0); 
 		//    p.assembly_u(dt);
-		int n_step=80;
-		int erosion_limit=0; // usually 50 steps // 10 for isostasy
-		int erosion_begin=60; // usually 0
-		double time=0*dt;
-		double time_ls  =0;
 #ifdef BIOT_LS
 		p.update_ls(time_ls, 0);
 #endif

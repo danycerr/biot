@@ -308,6 +308,49 @@ AMG_Interface.o: AMG_Interface.cpp AMG_Interface.hpp \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_range_basis.h \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_domain_decomp.h \
  /opt/lib/samg/samg.h
+isostasy_from_file.o: isostasy_from_file.cpp isostasy_from_file.hpp \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/getfem_config.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/bgeot_config.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/getfem_arch_config.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/dal_config.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_except.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_std.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_algobase.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_except.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_kernel.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_def.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_ref.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_blas.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_scaled.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_transposed.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_conjugated.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_real_part.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_vector.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_interface.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_sub_index.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_sub_vector.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_sub_matrix.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_vector_to_matrix.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_matrix.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_tri_solve.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_blas_interface.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_lapack_interface.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_dense_lu.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_dense_Householder.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_kernel.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_opt.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_dense_qr.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_dense_lu.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem_boost/noncopyable.hpp \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/bgeot_tensor.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/bgeot_small_vector.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/dal_singleton.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/getfem_omp.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_std.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_interface_bgeot.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/bgeot_poly.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/getfem_superlu.h \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/getfem_config.h
 biot.o: biot.cpp biot.hpp \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/getfem_generic_assembly.h \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/getfem_models.h \
@@ -854,7 +897,9 @@ main.o: main.cpp \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_inoutput.h \
  prob_descriptor.hpp isostasy_descriptor.hpp temp_ls_dome.hpp \
  isostasy.hpp \
- /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/getfem_mesh.h
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/getfem_mesh.h \
+ isostasy_from_file.hpp \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/getfem_config.h
 isostasy.o: isostasy.cpp isostasy.hpp \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/getfem_mesh.h \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/bgeot_ftool.h \
@@ -942,7 +987,8 @@ isostasy.o: isostasy.cpp isostasy.hpp \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_inoutput.h \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_range_basis.h \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/gmm/gmm_domain_decomp.h \
- isostasy_descriptor.hpp
+ isostasy_descriptor.hpp isostasy_from_file.hpp \
+ /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/getfem_config.h
 biot_ls.o: biot_ls.cpp biot_ls.hpp \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/getfem_generic_assembly.h \
  /u/sw/pkgs/toolchains/gcc-glibc/5/pkgs/getfem/5.1/include/getfem/getfem_models.h \
