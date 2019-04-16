@@ -101,7 +101,7 @@ protected:
 		enum { DIRICHLET_BOUNDARY_NUM = 10, NEUMANN_BOUNDARY_NUM = 11}; // descriptor for bcs flag
 		enum { BOTTOM = 22, TOP = 21 , LEFT = 23, RIGHT =24, LEFTX = 25, RIGHTX =26, LATERAL = 27}; // descriptor for zones
 		enum { CUT_REGION = 100, UNCUT_REGION = 200, UNCUT_REGION_IN = 201, UNCUT_REGION_OUT = 202, CUT_EDGE=203};
-		enum { MAT_1 = 50,MAT_2=60};
+		enum { MAT_1 = 50,MAT_2=60, REFINE=80, NOTREFINE=81};
 		size_type N_;             /// dimension of the problem
 		int time_iter_=0;
 		///  workspace configuration parameters---------------------
@@ -109,12 +109,13 @@ protected:
 			alpha_, permeability_, force_,penalty_, c1_, c2_,over_p_,dome_t_;
 		// ---------------------------------------------------------
 		sparse_matrix_type K;                                /// iteration matrix
-		std::vector<scalar_type>  P,  Px, P_old, B, UP;           /// diplacement, disp old, pressure
+		std::vector<scalar_type>  P,  Px, P_old, B, UP, P_ini;           /// diplacement, disp old, pressure
 		// sparse_matrix_type Kp, Ku;                           /// iteration matrix for fixed steres of tpreconditioner
 		// std::vector<scalar_type> U_iter, P_iter, Bp, Bu;     /// main unknown, and right hand side
                 std::vector<scalar_type>  press_;
 		std::vector<scalar_type> Kr_; // permeability ratio
-		std::vector<scalar_type> Er_; // young ratio
+                std::vector<scalar_type> Er_; // young ratio
+                std::vector<scalar_type> Qr_; // Power ratio
 		std::vector<scalar_type> normal_ls_v;
                 bool const_lateral_temp_=false;
 		isostasy_descriptor* isos_descr_;
@@ -144,10 +145,10 @@ protected:
 		void print_pattern(int istep=0);
 		void update_ls(double time=0, int iter=0);
 		void update_p_index(double timels=0);
+                void update_power_source();
 		// void update_u_index(double timels=0);
 
 		void set_step(int step){step_=step;}
-		
 		inline getfem::mesh* get_mesh(){return &mesh;}
                 inline void set_pressure(std::vector<scalar_type> pres){gmm::copy(pres,press_);}
                 inline void set_clt (bool state){const_lateral_temp_=state;}

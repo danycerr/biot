@@ -81,7 +81,7 @@ struct generic_problem_descriptor_tetra_3d{
 	std::string SIMPLEX_INTEGRATION="IM_STRUCTURED_COMPOSITE(IM_TETRAHEDRON(6),3)"; 
 
 // 	std::string datafilename="resu/lk_ls8_2mat_temp_coup"; 
-	std::string datafilename="resu/ls_ring_pinch_temp"; 
+	std::string datafilename="resu/ls_ring_pinch_dtemp"; 
 	int noised =0;  // noise on mesh
 	int nsubdiv=6; // subdivision of the sqaured mesh
 
@@ -90,7 +90,7 @@ struct generic_problem_descriptor_tetra_3d{
 	double mu_s = E/( 2 * ( 1 + poisson) ) ;
 	double lambda_l= E*poisson/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;
 	double biot_modulus=1.e+9;
-	double k =1.e-15; //permeability
+	double k =1.e-19; //permeability
 	double alpha=1; // Biot coefficient
 	double rho_l=1000; // Biot coefficient
 	double rho_r=2200; // Biot coefficient
@@ -100,8 +100,8 @@ struct generic_problem_descriptor_tetra_3d{
 	double t_ref=1;
 	double u_ref=1;
 	double p_ref=1;
-        double alpha_temp=0.8e-5; //thermal conductivity
-        double q_rad=1.e-6/(2200);
+        double alpha_temp=1.2e-6; //thermal conductivity 0.8e-5
+        double q_rad=0.1e-6/(2200); // 1.e-6
         // double q_rad=1.e-10;
 };
 

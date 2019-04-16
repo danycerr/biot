@@ -6,7 +6,7 @@
 // fix cut height 
 #define H_PARAM 2666.67
 
-#define STAB_T (0)
+#define STAB_T (1)
 
 // #define L2_NORM
 
@@ -28,7 +28,7 @@ void templs_problem::init(void) {
 
   import_mesh();
   // mesh.Bank_refine(b);
-  // mesh.Bank_refine(mesh.convex_index());
+//   mesh.Bank_refine(mesh.convex_index());
   bgeot::base_matrix M(N_,N_);
   for (size_type i=0; i < N_; ++i) {
     M(i,i) = 1./p_des.l_ref;
@@ -68,10 +68,11 @@ void templs_problem::init(void) {
   mls.global_cut_mesh(mesh_ls);
   std::cout<<"End of ls evaluation"<<std::endl;
   // creating cut and uncut region
-  std::vector<scalar_type> phicell(mesh.convex_index().size(), 0.0);
+  std::vector<scalar_type> phicell(mf_coef.nb_dof(), 0.0);
   dal::bit_vector bv_cv = mesh.convex_index();
   size_type i_cv = 0;
   for (i_cv << bv_cv; i_cv != size_type(-1); i_cv << bv_cv) {
+//     std::cout << mf_coef.nb_basic_dof_of_element(i_cv) << "  "<< (mf_coef.ind_basic_dof_of_element(i_cv))[0]<< "  "<< i_cv<<std::endl;
     if (mls.is_convex_cut(i_cv)) {
       mesh.region(CUT_REGION).add(i_cv);
       // std::cout<<"CUT element"<<std::endl;
@@ -89,16 +90,19 @@ void templs_problem::init(void) {
   }
 
   { // Just to see what elements are cut by the level set ls:
-    std::cout<<"*** *** *** printin cut elements *** *** *** "<<std::endl;
+    std::cout<<"*** *** *** printin cut elements init *** *** *** "<<std::endl;
     getfem::vtk_export vtke(p_des.datafilename + ".cut_elements_0.vtk");
-    vtke.exporting(ls.get_mesh_fem());
+//     vtke.exporting(ls.get_mesh_fem());
+    vtke.exporting(mf_coef);
     vtke.write_mesh();
     vtke.write_cell_data(phicell, "CutEl");
+    std::cout<<"*** *** *** end printin cut elements init *** *** *** "<<std::endl;
   }
   // base_small_vector a(2);
 
   gmm::resize(normal_ls_v, mf_coef_v.nb_dof()); gmm::clear(normal_ls_v);    // rhs monolithic problem
-
+  
+  gmm::resize(Qr_, mf_coef.nb_dof()); gmm::fill(Qr_,1);    // constant power ratio
   //routine for labeling internal materials
 //   gen_mat();
   //routine for assignment of material propeties
@@ -177,11 +181,11 @@ void templs_problem::init(void) {
   gmm::resize(B, nb_dof_p); gmm::clear(B);    // rhs monolithic problem
   // gmm::resize(UP, nb_dof_p); gmm::clear(UP);  // solution monolithic
   // displacement
-  gmm::resize(P, nb_dof_p); gmm::resize(P_old, nb_dof_p); 
+  gmm::resize(P, nb_dof_p); gmm::resize(P_old, nb_dof_p); ; gmm::resize(P_ini, nb_dof_p); 
   std::fill(P.begin(), P.end(), 10);
   gmm::copy(P,P_old);
   gmm::resize(press_, nb_dof_p); gmm::resize(press_, nb_dof_p); 
-  std::fill(press_.begin(), press_.end(), -1);
+  std::fill(press_.begin(), press_.end(), 0);
   // iteration matrix monolithic
   gmm::resize(K, nb_dof_p,  nb_dof_p); gmm::clear(K);
 }
@@ -195,6 +199,25 @@ void templs_problem::import_mesh(){
   //  getfem::import_mesh("gmsh:mesh/squarepinch_fine.msh",mesh);
   // dal::bit_vector b; b.add(0);
   getfem::import_mesh("gmsh:mesh/ringmeshes/pinch_2.msh",mesh);//labeled_domain=1; //official lk
+  //   getfem::import_mesh("gmsh:mesh/ringmeshes/pinch_2_l2.msh",mesh);//labeled_domain=1; //official lk
+  
+  dal::bit_vector bv_cv = mesh.convex_index();
+  size_type i_cv = 0;
+  for (i_cv << bv_cv; i_cv != size_type(-1); i_cv << bv_cv) {
+    double bar[]= {0.,0.,0.};
+    for (int inode=0; inode< mesh.structure_of_convex(i_cv)->nb_points(); inode++)
+      for (int i =0; i< 3; i++)
+      {
+	bar[i]+=(mesh.points_of_convex(i_cv)[inode])[i] / mesh.structure_of_convex(i_cv)->nb_points();
+      }
+      if (bar[2] < 3600 )  mesh.region(REFINE).add(i_cv);
+      else                 mesh.region(NOTREFINE).add(i_cv);
+  }
+  
+  
+  mesh.Bank_refine(mesh.region(REFINE).index()); // middle point refinement of the REFINE region
+//   mesh.Bank_refine(mesh.convex_index()); 
+  mesh.optimize_structure();
 }
 // ===========================================
 // method for generation of bcs zones
@@ -300,27 +323,36 @@ void templs_problem::configure_workspace(getfem::ga_workspace & workspace,double
 
   workspace.add_fem_constant("Kr", mf_coef, Kr_);
   workspace.add_fem_constant("Er", mf_coef, Er_);
+  workspace.add_fem_constant("Qr", mf_coef, Qr_);
 
   workspace.add_fem_constant("nlsv", mf_coef_v, normal_ls_v);
-
+  
 
 
    dome_t_[0]=200.;
    dome_t_[0]=dome_t_[0]/p_des.p_ref;
    workspace.add_fixed_size_constant("over_p", dome_t_);
    workspace.add_fixed_size_constant("dome_t", dome_t_);
-
-  int t1=10*2; int t2=20*2;
-  int t3=30*2; int t4=35*2;
+//===============classic=================================
+//   int t1=10*2; int t2=20*2;
+//   int t3=30*2; int t4=35*2;
+//   //         std::vector<scalar_type> ice_force(1);ice_force[0] = 1.e+0;
+//   double t_buf=0.;
+//   if(step_<t1)       t_buf= 10.;
+//   else if(step_<t2)  t_buf= 10.-(step_ -((double) t1) )/(((double) t2)-((double) t1))*10;
+//   else if(step_<t3)  t_buf= 0;
+//   else if(step_<t4)  t_buf= (step_ -((double) t4))/(((double) t3)-((double) t4))*10;
+//   else               t_buf= 0.;
+//   over_p_[0]= t_buf/p_des.p_ref; 
+//===============classic=================================
+  
+  int t1=1; int t2=15*2;
   //         std::vector<scalar_type> ice_force(1);ice_force[0] = 1.e+0;
   double t_buf=0.;
-  if(step_<t1)       t_buf= 10.;
-  else if(step_<t2)  t_buf= 10.-(step_ -((double) t1) )/(((double) t2)-((double) t1))*10;
-  else if(step_<t3)  t_buf= 0;
-  else if(step_<t4)  t_buf= (step_ -((double) t4))/(((double) t3)-((double) t4))*10;
+  if(step_<t1)       t_buf= -10.;
+  else if(step_<t2)  t_buf= -10. + (step_ -((double) t1) )/(((double) t2)-((double) t1))*10;
   else               t_buf= 0.;
   over_p_[0]= t_buf/p_des.p_ref; 
-  
   
 //    over_p_[0]=10./p_des.p_ref;
    workspace.add_fixed_size_constant("top_temp",over_p_);
@@ -374,7 +406,7 @@ void templs_problem::assembly(double dt,double time) {
 
 
   //======= RHS =====================
-  workspace.add_expression("+1.*Test_p*tau + p_old.Test_p - 1.e-19*C1*Er*Grad_pres.Grad_p*Test_p*tau", mim,UNCUT_REGION_IN);
+  workspace.add_expression("+Qr*1.*Test_p*tau + p_old.Test_p - 1.e-19*C1*Er*Grad_pres.Grad_p*Test_p*tau", mim,UNCUT_REGION_IN);
   // workspace.add_expression("-0.25*Test_p*tau ", mim,LATERAL); //lateral heat sink
   // workspace.add_expression("nls*Test_p*tau ", mim_ls_in,UNCUT_REGION_IN);
   workspace.set_assembled_vector(B);
@@ -423,7 +455,7 @@ void templs_problem::assembly(double dt,double time) {
 //      workspace.add_expression("2/element_size*p*Test_p*tau*2000", mim_ls_bd, CUT_REGION);// 1 is the region		
 //      workspace.add_expression("-nlsv.Grad_p*Test_p*tau - nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION);
 //   }
-   workspace.add_expression("2/element_size*p*Test_p*tau*200", mim_ls_bd, CUT_REGION);// 1 is the region		
+   workspace.add_expression("2/element_size*p*Test_p*tau*400", mim_ls_bd, CUT_REGION);// 1 is the region		
 //    workspace.add_expression("-nlsv.Grad_p*Test_p*tau - nlsv.Grad_Test_p*p*tau ", mim_ls_bd, CUT_REGION);
   //NITSCHE
   workspace.add_expression( "+p.Test_p + tau*Kr*Grad_p.Grad_Test_p"
@@ -431,10 +463,10 @@ void templs_problem::assembly(double dt,double time) {
   workspace.assembly(2);
   gmm::copy(workspace.assembled_matrix(),K_in);
   workspace.clear_expressions();
-  workspace.add_expression("+[+1.].Test_p*tau + p_old.Test_p  - 1.e-19*C1*Er*Grad_pres.Grad_Test_p*tau", mim_ls_in,CUT_REGION);
+  workspace.add_expression("+Qr*[+1.].Test_p*tau + p_old.Test_p  - 1.e-19*C1*Er*Grad_pres.Grad_Test_p*tau", mim_ls_in,CUT_REGION);
 //   if(const_lateral_temp_)
 //     workspace.add_expression( "2/element_size*over_p*Test_p*tau*2000- nlsv.Grad_Test_p*over_p*tau", mim_ls_bd, CUT_REGION);
-  workspace.add_expression("2/element_size*top_temp*Test_p*200*tau", mim_ls_bd, CUT_REGION);
+  workspace.add_expression("2/element_size*top_temp*Test_p*400*tau", mim_ls_bd, CUT_REGION);
   workspace.assembly(1);
   workspace.clear_expressions();
  //  workspace.add_expression("2/element_size*p*Test_p", mim, LEFT);
@@ -450,7 +482,7 @@ void templs_problem::assembly(double dt,double time) {
     getfem::mesh_region  inner_faces;
     inner_faces = getfem::inner_faces_of_mesh(mesh, CUT_REGION);
 
-    workspace.add_expression("2*element_size*Grad_p.Normal*Grad_Test_p.Normal*2.e-3", mim, inner_faces);// 1 is the region		
+    workspace.add_expression("2*element_size*Grad_p.Normal*Grad_Test_p.Normal*4.e-5", mim, inner_faces);// 1 is the region		
     workspace.assembly(2);
     gmm::add(workspace.assembled_matrix(), K_in);
     workspace.clear_expressions();
@@ -676,7 +708,7 @@ base_small_vector templs_problem::ls_function(const base_node P, double time,int
   scalar_type x = P[0]*p_des.l_ref, y = P[1]*p_des.l_ref, z=0;
   if (N_==3)  z = P[2]*p_des.l_ref;
   y = P[1]*p_des.l_ref;
-  double dt=1.e+12;
+  double dt=9.11e+9;
   // time*=p_des.t_ref;
   base_small_vector res(2);
   switch (num) {
@@ -746,7 +778,8 @@ base_small_vector templs_problem::ls_function(const base_node P, double time,int
             } break;
     case 9: { // ring pinchout
 //               res[0] = -(-2.856e+6*x -1.6008e+7*z+1.2203e+11) +1.e+9 * (1 + time / (1.e+12 * 10) ) ; //from 0-to t10
-              res[0] = -(-2.856e+6*x -1.6008e+7*z+1.2203e+11) +1.e+9 * (1 + ((time>60*dt && time < 70*dt)? 1:0)*(time - dt*60 ) / (dt * (70 -60)) ) ; //from 0-to t10
+//               res[0] = -(-2.856e+6*x -1.6008e+7*z+1.2203e+11) +1.e+9 * (1 + ((time>60*dt && time < 70*dt)? 1:0)*(time - dt*60 ) / (dt * (70 -60)) ) ; //from 0-to t10
+	      res[0] = -(-2.856e+6*x -1.6008e+7*z+1.2353e+11) +4.e+9 * (1 + 1.*((time>60*dt && time < 90*dt)? 1:0)*(time - dt*60 ) / (dt * (90 -60)) ) ; //from 0-to t10
               res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.35;
             }break;
     default: assert(0);
@@ -763,6 +796,8 @@ void templs_problem::update_ls(double time, int iter){
     ls.values(0)[d] = ls_function(ls.get_mesh_fem().point_of_basic_dof(d), time ,LS_TYPE)[0];
   }
   ls.touch();
+  
+  std::cout<< "templs_problem::update_ls::touching ls" <<std::endl;
   mls.adapt();mls.global_cut_mesh(mesh_ls);
   mim_ls_in.adapt(); mim_ls_out.adapt();mim_ls_bd.adapt();  mim_ls_all.adapt();
   // clear regions todo optimize it
@@ -771,9 +806,10 @@ void templs_problem::update_ls(double time, int iter){
   mesh.region(UNCUT_REGION_IN).clear();
   mesh.region(UNCUT_REGION_OUT).clear();
   // creating cut and uncut region
-  std::vector<scalar_type> phicell(mesh.convex_index().size(), 0.0);
+  std::vector<scalar_type> phicell(mf_coef.nb_dof(), 0.0);
   dal::bit_vector bv_cv = mesh.convex_index();
   size_type i_cv = 0;
+  std::cout<< "templs_problem::update_ls::looping" <<std::endl;
   for (i_cv << bv_cv; i_cv != size_type(-1); i_cv << bv_cv) {
     if (mls.is_convex_cut(i_cv)) {
       mesh.region(CUT_REGION).add(i_cv);
@@ -888,12 +924,16 @@ void templs_problem::print_crop(double time,int istep,double time_ls){
     
   {  
     std::vector<scalar_type> PIn_dim(mf_p.nb_dof(), 0.0);gmm::copy(PIn,PIn_dim);gmm::scale(PIn_dim,p_des.p_ref);
+    std::vector<scalar_type> dz_dim(mf_p.nb_dof(), isos_descr_->dz);
+    if (step_==0) gmm::copy(PIn_dim,P_ini);
     //// Export discontinuous solution
     std::string namefile= p_des.datafilename +".crop." +  std::to_string(istep) +".vtk";
     getfem::vtk_export vtkd(namefile);
     vtkd.exporting(mesh_dim);
     vtkd.write_mesh();
     vtkd.write_point_data(mf_p, PIn_dim, "T");
+    vtkd.write_point_data(mf_p, P_ini, "T_ini");
+    vtkd.write_point_data(mf_p, dz_dim, "dz");
     std::cout<<"end printing"<<std::endl;
   }
 
@@ -1136,6 +1176,48 @@ void templs_problem::print_ls(double time,int istep,double time_ls){
   mesh.transformation(Mm1); 
 }
 
+//============================================
+// routine for printing spasity pattern
+//============================================
+void templs_problem::update_power_source(){
+    
+    if (isos_descr_->active){
+        mesh.translation(*(isos_descr_->dx));
+        mesh.transformation(isos_descr_->M);
+        mesh.translation(*(isos_descr_->mdx));
+    }
+    
+  bgeot::base_matrix M(N_,N_);
+  bgeot::base_matrix Mm1(N_,N_);
+  for (size_type i=0; i < N_; ++i) {
+    M(i,i) = p_des.l_ref;
+    Mm1(i,i) = 1/p_des.l_ref;
+  }
+  mesh.transformation(M);
+    
+    dal::bit_vector bv_cv = mesh.convex_index();
+    size_type i_cv = 0;
+    for (i_cv << bv_cv; i_cv != size_type(-1); i_cv << bv_cv) {
+     bgeot::base_node pt(   mf_coef.point_of_basic_dof((mf_coef.ind_basic_dof_of_element(i_cv))[0]));
 
+//         std::cout << mf_coef.nb_basic_dof_of_element(i_cv) << "  "<< (mf_coef.ind_basic_dof_of_element(i_cv))[0]<< "  "<< i_cv<<std::endl;
+      if (isos_descr_->active){
+      Qr_[i_cv] = 1.*exp ((pt[2] - 4702. + isos_descr_->dz )/(5000));
+      }
+      else 
+      Qr_[i_cv] = 1.*exp ((pt[2] - 4702. )/(5000));
+    }
+    
+    mesh.transformation(Mm1);
+    
+  // undu isostasy disp
+  if (isos_descr_->active){
+    mesh.translation(*(isos_descr_->dx));
+    mesh.transformation(isos_descr_->Mm1);
+    mesh.translation(*(isos_descr_->mdx));
+  }
+    
+    
+}
 
 

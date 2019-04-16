@@ -186,27 +186,45 @@ void biot_problem::configure_workspace(getfem::ga_workspace & workspace,double d
 
 	penalty_[0] = 1.e+12; // 1---10
 	workspace.add_fixed_size_constant("penalty", penalty_);
-	int t1=10*2; int t2=20*2;
-	int t3=30*2; int t4=35*2;
+// 	int t1=10*2; int t2=20*2;
+// 	int t3=30*2; int t4=35*2;
 	
-//         std::vector<scalar_type> ice_force(1);ice_force[0] = 1.e+0;
-	if(iter_<t1)       force_[0]= 0.;
-	else if(iter_<t2)  force_[0]= (iter_ -((double) t1) )/(((double) t2)-((double) t1))
-	                              *1000*9.81*1700;
-	else if(iter_<t3)  force_[0]= 1000*9.81*1700;
-	else if(iter_<t4)  force_[0]= (iter_ -((double) t4))/(((double) t3)-((double) t4))
-	                              *1000*9.81*1700;
-	else               force_[0]= 0.;
-	workspace.add_fixed_size_constant("topload",force_);
+// //         std::vector<scalar_type> ice_force(1);ice_force[0] = 1.e+0;
+// 	if(iter_<t1)       force_[0]= 0.;
+// 	else if(iter_<t2)  force_[0]= (iter_ -((double) t1) )/(((double) t2)-((double) t1))
+// 	                              *1000*9.81*1700;
+// 	else if(iter_<t3)  force_[0]= 1000*9.81*1700;
+// 	else if(iter_<t4)  force_[0]= (iter_ -((double) t4))/(((double) t3)-((double) t4))
+// 	                              *1000*9.81*1700;
+// 	else               force_[0]= 0.;
+// 	workspace.add_fixed_size_constant("topload",force_);
 	workspace.add_fixed_size_constant("gravity",*g_);
+// 	
+// 	if(iter_<t1)       overpres_[0]= 0.;
+// 	else if(iter_<t2)  overpres_[0]= (iter_ -((double) t1))/(((double) t2)-((double) t1))* 1000*9.81*4000;
+// 	else if(iter_<t3)  overpres_[0]= 1000*9.81*4000;
+// 	else if(iter_<t4)  overpres_[0]= (iter_ -((double) t4))/(((double) t3)-((double) t4))*1000*9.81*4000;
+// 	else               overpres_[0]= 0.;
+// 	workspace.add_fixed_size_constant("overpres",overpres_);
+//         std::cout<<"ssssssss iter is " <<iter_<< "  and force is "<<force_[0]<<std::endl;
+	  //   ================ from Paleoisostesy =========================
+  int t1=0; int t2=30;
+  int t3=60; int t4=90;
+//         std::vector<scalar_type> ice_force(1);ice_force[0] = 1.e+0;
+  double p_buf=0.;
+  if(iter_<t1)       p_buf= 0.;
+  else if(iter_<t2)  p_buf= (iter_ -((double) t1) )/(((double) t2)-((double) t1))
+                            *1000*9.81*4000;
+  else if(iter_<t3)  p_buf= 1000*9.81*4000;
+  else if(iter_<t4)  p_buf= (iter_ -((double) t4))/(((double) t3)-((double) t4))
+                            *1000*9.81*4000;
+  else               p_buf= 0.;
+  overpres_[0]= p_buf; 
+  std::cout<<"top load is "<<  p_buf/p_des.p_ref <<std::endl;
+  workspace.add_fixed_size_constant("topload",overpres_);
+  workspace.add_fixed_size_constant("overpres",overpres_);
 	
-	if(iter_<t1)       overpres_[0]= 0.;
-	else if(iter_<t2)  overpres_[0]= (iter_ -((double) t1))/(((double) t2)-((double) t1))* 1000*9.81*4000;
-	else if(iter_<t3)  overpres_[0]= 1000*9.81*4000;
-	else if(iter_<t4)  overpres_[0]= (iter_ -((double) t4))/(((double) t3)-((double) t4))*1000*9.81*4000;
-	else               overpres_[0]= 0.;
-	workspace.add_fixed_size_constant("overpres",overpres_);
-        std::cout<<"ssssssss iter is " <<iter_<< "  and force is "<<force_[0]<<std::endl;
+	
 	workspace.add_fem_constant("Kr", mf_coef, Kr_);
         workspace.add_fem_constant("Er", mf_coef, Er_);
 	// workspace.add_fem_constant("f", mf_data, F);

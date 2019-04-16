@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
 	GMM_SET_EXCEPTION_DEBUG; // Exceptions make a memory fault, to debug.
 	FE_ENABLE_EXCEPT;        // Enable floating point exception for Nan.
 
-	try {    
+	try {     
 #ifdef BIOT_LS
 		biotls_problem p;
 // 		biot_ls_dome p;
@@ -80,10 +80,10 @@ int main(int argc, char *argv[]) {
 // 		int erosion_limit=0; // usually 50 steps // 10 for isostasy
 // 		int erosion_begin=60; // usually 0
 // ========================================================
-		double dt=9.11e+9; // classic simulation
-		int n_step=90;
-		int erosion_limit=0; // usually 50 steps // 10 for isostasy
-		int erosion_begin=60; // usually 0
+		double dt=(9.11e+9)/2.; // paleoisostasy simulation
+		int n_step=90*2;
+		int erosion_limit=30*2; // usually 50 steps // 10 for isostasy
+		int erosion_begin=60*2; // usually 0
 // ========================================================
 		double time=0*dt;
 		double time_ls  =0;
@@ -97,14 +97,19 @@ int main(int argc, char *argv[]) {
 #ifdef TEMP_LS
 		t.update_ls(time_ls, 0);
 		//preliminary time steps for temperature
-		for (int i=0; i<5; i++){double dt_pre=1.e+12; t.assembly(dt_pre,0.);t.solve(0.);}
-		t.set_clt(true); // imposing constant temperature lateral
+		for (int i=0; i<5; i++){double dt_pre=1.e+15; if(i==0)dt_pre=1.e+18; 
+                    t.update_power_source(); t.assembly(dt_pre,0.);t.solve(0.);}
+// 		t.set_clt(true); // imposing constant temperature lateral
+#endif
+#ifdef TEMPERATURE
+		for (int i=0; i<5; i++){double dt_pre=1.e+18; t.assembly(dt_pre);t.solve();}
 #endif
 #ifdef ISOSTASY
 // 		set center of rotation of isostasy
 		isos.set_center_of_rotation( t.get_mesh()); 
 // 		isos.set_center_of_rotation( p.get_mesh()); 
 #endif
+		
 		for(int istep=0; istep<n_step; istep++)
 		{
 #if defined TEMP_LS || defined BIOT_LS
@@ -139,6 +144,7 @@ int main(int argc, char *argv[]) {
                                  t.set_step(istep);
 #ifdef ISOSTASY
 				 t.set_isostasy(isos.get_descriptor());
+                                 t.update_power_source();
 #endif
 #endif
 #ifdef BIOT_LS

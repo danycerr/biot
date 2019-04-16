@@ -18,7 +18,7 @@ public:
       for (int i=0; i<N_;  i++)  M_(i,i)=1.; // initial trivial transvormation
       invert_transformation();
       is_des_.active=true;
-      f_isos=std::make_unique<isostasy_from_files> ("mesh/rotation.txt",4.3155e+09);
+      f_isos=std::make_unique<isostasy_from_files> ("mesh/rotation_s.txt","mesh/tilt_s.txt","mesh/verticaldisp.csv",4.3155e+09);
       };
       
   double get_dz()    {return dz_;}

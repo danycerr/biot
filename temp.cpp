@@ -164,14 +164,21 @@ void temperature_problem::configure_workspace(getfem::ga_workspace & workspace,d
 	penalty_[0] = 1.e+5; // 1---10
 	workspace.add_fixed_size_constant("penalty", penalty_);
 	
-	int t1=10*2; int t2=20*2;
-	int t3=30*2; int t4=35*2;
-	
-	if(iter_<t1)       temp_bc_[0]= 10.;
-	else if(iter_<t2)  temp_bc_[0]= (iter_ -((double) t2))/(((double) t1)-((double) t2))*10;
-	else if(iter_<t3)  temp_bc_[0]= 0;
-	else if(iter_<t4)  temp_bc_[0]= (iter_ -((double) t3))/(((double) t4)-((double) t3))*10;
-	else               temp_bc_[0]= 10.;
+// 	int t1=10*2; int t2=20*2;
+// 	int t3=30*2; int t4=35*2;
+// 	
+// 	if(iter_<t1)       temp_bc_[0]= 10.;
+// 	else if(iter_<t2)  temp_bc_[0]= (iter_ -((double) t2))/(((double) t1)-((double) t2))*10;
+// 	else if(iter_<t3)  temp_bc_[0]= 0;
+// 	else if(iter_<t4)  temp_bc_[0]= (iter_ -((double) t3))/(((double) t4)-((double) t3))*10;
+// 	else               temp_bc_[0]= 10.;
+  int t1=1; int t2=15;
+  //         std::vector<scalar_type> ice_force(1);ice_force[0] = 1.e+0;
+  double t_buf=0.;
+  if(iter_<t1)       t_buf= -10.;
+  else if(iter_<t2)  t_buf= -10. + (iter_ -((double) t1) )/(((double) t2)-((double) t1))*10;
+  else               t_buf= 0.;
+  temp_bc_[0]= t_buf; 
 	std::cout << "Temperature is " <<temp_bc_[0] << std::endl;
 	workspace.add_fixed_size_constant("temp_bc",temp_bc_);
 
@@ -235,7 +242,7 @@ void temperature_problem::assembly(double dt, getfem::mesh_fem& mf_pressure, std
 	workspace.set_assembled_vector(B);
 	workspace.add_expression(" tau*10*penalty*Test_T", mim, TOP);
 	workspace.add_expression(" tau*temp_bc*penalty*Test_T", mim, TOP_P);
-	workspace.add_expression("+tau*[+1.0e-11].Test_T + T_old.Test_T", mim);
+	workspace.add_expression("+tau*[1.e-6/(2200)].Test_T + T_old.Test_T", mim);
 	workspace.assembly(1);
 // // 	gmm::add(workspace.assembled_vector(),B);
 	workspace.clear_expressions();

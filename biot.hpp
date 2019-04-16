@@ -132,14 +132,14 @@ struct problem_descriptor_tetra_3d{
 //	std::string datafilename="resu/lk_hdt_ovp_disp"; //ice load and lateral injection
 //	std::string datafilename="resu/lk_hdt_disp";     //ice load
 //         std::string datafilename="resu/ring_pinch_disp";
-        std::string datafilename="resu/rotating_disp";
+        std::string datafilename="resu/ring_pinch_disp";
 	int nsubdiv=128; // subdivision of the sqaured mesh
 	double E=1.e+10;
 	double poisson =0.3;
 	double mu_s = E/( 2 * ( 1 + poisson) ) ;
 	double lambda_l= E*poisson/ ( ( 1+poisson ) * (1 - 2 * poisson)) ;
 	double biot_modulus=1.e+9;
-	double k =1.e-14; //permeability
+	double k =1.e-19; //permeability -14 
 	double alpha=1.; // Biot coefficient
 	double rho_l=1000; // Biot coefficient
 	double rho_r=2200; // Biot coefficient
@@ -190,6 +190,7 @@ class biot_problem {
 			 double dt);                                      /// timestep
 		void gen_coefficient();                         /// generate coefficient p0
 		void mesh_labeling();                           /// generate volume labels for mesh
+		
 	public:
 		void assembly(double dt);                         /// assemble the monolithic iteration matrix for the problem
 		void assembly_p(double dt);                       /// assemble the iteration matrix for pressure, can be used as preconditioner

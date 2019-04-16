@@ -198,7 +198,7 @@ class biotls_problem {
 		enum { DIRICHLET_BOUNDARY_NUM = 10, NEUMANN_BOUNDARY_NUM = 11}; // descriptor for bcs flag
 		enum { BOTTOM = 22, TOP = 21 , LEFT = 23, RIGHT =24, LEFTX = 25, RIGHTX =26}; // descriptor for zones
 		enum { CUT_REGION = 100, UNCUT_REGION = 200, UNCUT_REGION_IN = 201, UNCUT_REGION_OUT = 202, CUT_EDGE=203};
-		enum { MAT_1 = 50,MAT_2=60,MAT_3=60};
+		enum { MAT_1 = 50,MAT_2=60,MAT_3=60, REFINE=80, NOTREFINE=81};
 		size_type N_;             /// dimension of the problem
 		int time_iter_=0;
 		///  workspace configuration parameters---------------------

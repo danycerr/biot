@@ -15,6 +15,8 @@ int main()
 {
   std::ofstream outfile;
   outfile.open ("rotation.txt");
+  std::ofstream outfile_tilt;
+  outfile_tilt.open ("tilt.txt");
   for (int ifile =0; ifile<190; ifile++ )
   {
     Eigen::Matrix3d m; 
@@ -31,13 +33,18 @@ int main()
     for (int i =0; i< 3 ; i++)
       for (int j =0; j< 3 ; j++){
 	getline(file,line,',');
-	m(i,j)=std::stof(line)+ ((i==j)? 1:0);
+	m(i,j)=std::stof(line)*100./6371.+ ((i==j)? 1:0);
       }//
       getline(file,line,',');
     
     std::cout<<m<<std::endl;
     Eigen::Quaterniond q(m);
     extractRotation(m,q,500);
+    double tilt[3];
+    tilt[0] = atan2(q.matrix()(2,1), q.matrix()(2,2));
+    tilt[1] = atan2(-q.matrix()(2,0), sqrt(q.matrix()(2,1)*q.matrix()(2,1) + q.matrix()(2,2)*q.matrix()(2,2)));
+    tilt[2] = atan2(q.matrix()(1,0), q.matrix()(0,0));
+    outfile_tilt << tilt[0]<<" "<< tilt[1]<<" "<< tilt[2]<<std::endl;
     for (int i =0; i< 3 ; i++)
       for (int j =0; j< 3 ; j++) outfile<<q.matrix()(i,j)<<" ";
       outfile<<std::endl;

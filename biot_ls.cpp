@@ -7,7 +7,7 @@
 // fix cut height 
 #define H_PARAM 2666.67
 
-// #define STAB_P (0)
+#define STAB_P (1)
 
 // #define L2_NORM
 
@@ -30,7 +30,7 @@ void biotls_problem::init(void) {
   import_mesh();
   // dal::bit_vector b; b.add(0);
   // mesh.Bank_refine(b);
-  // mesh.Bank_refine(mesh.convex_index());
+//   mesh.Bank_refine(mesh.convex_index());
   bgeot::base_matrix M(N_,N_);
   for (size_type i=0; i < N_; ++i) {
 //     M(i,i) = 1.;// /p_des.l_ref;
@@ -74,7 +74,7 @@ void biotls_problem::init(void) {
   mls.global_cut_mesh(mesh_ls);
   std::cout<<"End of ls evaluation"<<std::endl;
   // creating cut and uncut region
-  std::vector<scalar_type> phicell(mesh.convex_index().size(), 0.0);
+  std::vector<scalar_type> phicell(mf_coef.nb_dof(), 0.0);
   dal::bit_vector bv_cv = mesh.convex_index();
   size_type i_cv = 0;
   for (i_cv << bv_cv; i_cv != size_type(-1); i_cv << bv_cv) {
@@ -94,7 +94,7 @@ void biotls_problem::init(void) {
     }
   }
 
-  { // Just to see what elements are cut by the level set ls:
+  if(0){ // Just to see what elements are cut by the level set ls:
     std::cout<<"*** *** *** printin cut elements *** *** *** "<<std::endl;
     getfem::vtk_export vtke(p_des.datafilename + ".cut_elements_0.vtk");
     vtke.exporting(ls.get_mesh_fem());
@@ -184,7 +184,7 @@ void biotls_problem::init(void) {
 
   getfem::mesh mesh_ls;
   mls.global_cut_mesh(mesh_ls);
-  std::cout<<"Biot_ls cut fem::save_mesh  "<<std::endl;
+  std::cout<<"Biot_ls cut fem::save_mesh"<<std::endl;
   getfem::vtk_export exp_cut("cutmesh.vtk");
   exp_cut.exporting(mesh_ls);
   exp_cut.write_mesh();
@@ -219,6 +219,25 @@ void biotls_problem::import_mesh(){
   // getfem::import_mesh("gmsh:mesh/squarepinch.msh",mesh);
   //  getfem::import_mesh("gmsh:mesh/squarepinch_fine.msh",mesh);
   getfem::import_mesh("gmsh:mesh/ringmeshes/pinch_2.msh",mesh);//labeled_domain=1; //official lk
+//   getfem::import_mesh("gmsh:mesh/ringmeshes/pinch_2_l2.msh",mesh);//labeled_domain=1; //official lk
+  
+    dal::bit_vector bv_cv = mesh.convex_index();
+  size_type i_cv = 0;
+  for (i_cv << bv_cv; i_cv != size_type(-1); i_cv << bv_cv) {
+    double bar[]= {0.,0.,0.};
+    for (int inode=0; inode< mesh.structure_of_convex(i_cv)->nb_points(); inode++)
+      for (int i =0; i< 3; i++)
+      {
+	bar[i]+=(mesh.points_of_convex(i_cv)[inode])[i] / mesh.structure_of_convex(i_cv)->nb_points();
+      }
+      if (bar[2] < 3600 )  mesh.region(REFINE).add(i_cv);
+      else                 mesh.region(NOTREFINE).add(i_cv);
+  }
+  
+  
+  mesh.Bank_refine(mesh.region(REFINE).index()); // middle point refinement of the REFINE region
+//   mesh.Bank_refine(mesh.convex_index()); 
+  mesh.optimize_structure();
 }
 // ===========================================
 // method for generation of bcs zones
@@ -302,9 +321,22 @@ void biotls_problem::configure_workspace(getfem::ga_workspace & workspace,double
 
   workspace.add_fem_constant("nlsv", mf_coef_v, normal_ls_v);
   //top load of ice
-  
-  int t1=10*2; int t2=20*2;
-  int t3=30*2; int t4=35*2;
+// //   ================ classic =========================
+//   int t1=10*2; int t2=20*2;
+//   int t3=30*2; int t4=35*2;
+// //         std::vector<scalar_type> ice_force(1);ice_force[0] = 1.e+0;
+//   double p_buf=0.;
+//   if(step_<t1)       p_buf= 0.;
+//   else if(step_<t2)  p_buf= (step_ -((double) t1) )/(((double) t2)-((double) t1))
+//                             *1000*9.81*4000;
+//   else if(step_<t3)  p_buf= 1000*9.81*4000;
+//   else if(step_<t4)  p_buf= (step_ -((double) t4))/(((double) t3)-((double) t4))
+//                             *1000*9.81*4000;
+//   else               p_buf= 0.;
+//   ======================================================
+  //   ================ from Paleoisostesy =========================
+  int t1=0; int t2=30*2;
+  int t3=60*2; int t4=90*2;
 //         std::vector<scalar_type> ice_force(1);ice_force[0] = 1.e+0;
   double p_buf=0.;
   if(step_<t1)       p_buf= 0.;
@@ -723,7 +755,7 @@ void biotls_problem::assembly_p(double dt, double time){
     getfem::mesh_region  inner_faces;
     inner_faces = getfem::inner_faces_of_mesh(mesh, CUT_REGION);
 
-    workspace.add_expression("2*element_size*Grad_p.Normal*Grad_Test_p.Normal*0.1", mim, inner_faces);// 1 is the region		
+    workspace.add_expression("2*element_size*Grad_p.Normal*Grad_Test_p.Normal*0.01", mim, inner_faces);// 1 is the region		
     workspace.assembly(2);
     gmm::add(workspace.assembled_matrix(), K_in);
     workspace.clear_expressions();
@@ -812,6 +844,12 @@ void biotls_problem::assembly_p(double dt, double time){
   // workspace.add_expression("-200*1.e+12*Test_p "	, mim_ls_bd);
   //workspace.assembly(1);
   // workspace.clear_expressions();
+  for (int i=0; i<nb_dof_p_x; i++){
+    if(fabs(Kp(i,i)) < 1.e-12){
+      std::cout<<"!!!! warniging null diagonal in " <<i<<std::endl;
+      std::cin.ignore();
+    }
+  }
   return;}
 
 
@@ -855,6 +893,12 @@ void biotls_problem::assembly_p(double dt, double time){
     // ----- momentum equation
     workspace.add_expression("2*Er*Sym(Grad_u):Grad_Test_u + C2*Er*Div_u*Div_Test_u", mim , UNCUT_REGION_IN); // stress tensor 
     workspace.add_expression("penalty*u.Test_u" , mim, BOTTOM); //neumann disp
+// //     vertical disp
+    workspace.add_expression("penalty*u(2)*Test_u(2)" , mim, LEFT); //vertical disp
+    workspace.add_expression("penalty*u(2)*Test_u(2)" , mim, RIGHT); //vertical disp
+    workspace.add_expression("penalty*u(1)*Test_u(1)" , mim, LEFTX); //vertical disp
+    workspace.add_expression("penalty*u(1)*Test_u(1)" , mim, RIGHTX);//vertical disp
+// // //     
     workspace.assembly(2);   
     gmm::copy(workspace.assembled_matrix(), gmm::sub_matrix(Ku,
           gmm::sub_interval(0, nb_dof_u),
@@ -863,7 +907,7 @@ void biotls_problem::assembly_p(double dt, double time){
     workspace.clear_expressions();
 
     if(N_==2) workspace.add_expression("[0,-1].Test_u"  ,  mim_ls_in,  UNCUT_REGION_IN);
-    if(N_==3) workspace.add_expression("gravity.Test_u",  mim_ls_in,  UNCUT_REGION_IN);
+    if(N_==3) workspace.add_expression("gravity.Test_u" ,  mim_ls_in,  UNCUT_REGION_IN);
     workspace.add_expression("C1*p_iter*Div_Test_u "    ,  mim_ls_in,  UNCUT_REGION_IN);
     workspace.assembly(1);
     workspace.clear_expressions();
@@ -889,6 +933,10 @@ void biotls_problem::assembly_p(double dt, double time){
     // internal for displacement
     workspace.add_expression( "2*Er*Sym(Grad_u):Grad_Test_u + Er*C2*Div_u*Div_Test_u", mim_ls_in, CUT_REGION);
     // workspace.add_expression("penalty*u.Test_u" , mim_ls_bd, CUT_REGION); //neumann disp
+    workspace.add_expression("penalty*u(2)*Test_u(2)" , mim, LEFT); //vertical disp
+    workspace.add_expression("penalty*u(2)*Test_u(2)" , mim, RIGHT); //vertical disp
+    workspace.add_expression("penalty*u(1)*Test_u(1)" , mim, LEFTX); //vertical disp
+    workspace.add_expression("penalty*u(1)*Test_u(1)" , mim, RIGHTX);//vertical disp
     workspace.assembly(2);
     gmm::copy(workspace.assembled_matrix(),K_in);
     workspace.clear_expressions();
@@ -984,6 +1032,14 @@ void biotls_problem::assembly_p(double dt, double time){
     // end enriched dof
 
     //  std::cout<<Ku<<std::endl;std::cin.get();
+      for (int i=0; i<nb_dof_u_x; i++){
+    if(fabs(Ku(i,i)) < 1.e-12){
+      std::cout<<"!!!! warniging null diagonal in dispacement " <<i<<std::endl;
+      std::cout<<"rhs "<<Bu[i]<<std::endl;
+      Ku(i,i)=1.;
+//       std::cin.ignore();
+    }
+  }
   } // end assembling momentum matrix for fixed stress approach
 
 //====================================================
@@ -1072,7 +1128,7 @@ void biotls_problem::solve(double time){
 void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
 
 
-  double epsu=1.e-6; double epsp=1.e-6;
+  double epsu=1.e-8; double epsp=1.e-8;
   double rel_unorm=1; double rel_pnorm=1; int fix_count=0;
   double old_unorm=1; double new_unorm=1;
   double old_pnorm=1; double new_pnorm=1;
@@ -1103,8 +1159,9 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
 //         gmm::copy(Ku_x, Ku_x_csr);
 // 	//amg conversion
 //   momentum_precond<sparse_matrix_type> mPR (Ku_s_csr,Ku_x_csr); 
-  
-  momentum_precond<sparse_matrix_type> mPR (Ku_s,Ku_x, (int) (time/dt)); //classic precond
+//   std::cout<<" KUx " << Ku_x <<std::endl;
+   
+//   momentum_precond<sparse_matrix_type> mPR (Ku_s,Ku_x, (int) (time/dt)); //classic precond
   
   while( ( fix_count < max_iter  && ( rel_unorm>epsu ||  rel_pnorm > epsp)) ||  fix_count < min_iter  )
   {
@@ -1207,7 +1264,7 @@ void biotls_problem::solve_fix_stress(double dt, int max_iter,double time){
           gmm::MatrixMarket_IO::write(ku_fname.str().c_str(),Ku);
         }
 
-         gmm::gmres(Ku, U, Bu,PRu, restart, iter);
+//          gmm::gmres(Ku, U, Bu,PRu, restart, iter);
 // 	 gmm::gmres(Ku, U, Bu,mPR, restart, iter);
 	 gmm::gmres(Ku, U, Bu,DISP_PRECOND_PARAM, restart, iter);
          iter_u=iter.get_iteration();
@@ -1456,7 +1513,7 @@ base_small_vector biotls_problem::ls_function(const base_node P, double time,int
   scalar_type x = P[0]*p_des.l_ref, y = P[1]*p_des.l_ref, z=0;
   if (N_==3)  z = P[2]*p_des.l_ref;
   y = P[1]*p_des.l_ref;
-  double dt=1.e+12;
+  double dt=9.11e+9;
   // time*=p_des.t_ref;
   base_small_vector res(2);
   switch (num) {
@@ -1524,7 +1581,7 @@ base_small_vector biotls_problem::ls_function(const base_node P, double time,int
             } break;
     case 9: {
 //               res[0] = -(-2.856e+6*x -1.6008e+7*z+1.2203e+11) +1.e+9 * (1 + time / (1.e+12 * 10) ) ; // for 0-10 time step
-	      res[0] = -(-2.856e+6*x -1.6008e+7*z+1.2203e+11) +1.e+9 * (1 + ((time>60*dt && time < 70*dt)? 1:0)*(time - dt*60 ) / (dt * (70 -60)) ) ; //from 0-to t10
+	      res[0] = -(-2.856e+6*x -1.6008e+7*z+1.2353e+11) +4.e+9 * (1 + 1.*((time>60*dt && time < 90*dt)? 1:0)*(time - dt*60 ) / (dt * (90 -60)) ) ; //from 0-to t10
               res[1] = gmm::vect_dist2(P, base_node(0.25, 0.0)) - 0.35;
             }break;
     default: assert(0);
@@ -1551,7 +1608,7 @@ void biotls_problem::update_ls(double time, int iter){
   mesh.region(UNCUT_REGION_OUT).clear();
   // creating cut and uncut region
   std::cout<<"adaptation of mesh regions "<<std::endl;
-  std::vector<scalar_type> phicell(mesh.convex_index().size(), 0.0);
+  std::vector<scalar_type> phicell(mf_coef.nb_dof(), 0.0);
   dal::bit_vector bv_cv = mesh.convex_index();
   size_type i_cv = 0;
   for (i_cv << bv_cv; i_cv != size_type(-1); i_cv << bv_cv) {
@@ -1638,6 +1695,8 @@ void biotls_problem::print_crop(double time,int istep,double time_ls){
         POut[i] = -100+UP[mf_u.nb_dof() +i]; Pm[i] = UP[mf_u.nb_dof() +i];}
     }
   }
+  
+  std::cout<< "biotls_problem::print crop end pressure projection" <<std::endl;
 //   std::cout<<"end print numerical pressure" <<std::endl;
   // dispalcement
   std::vector<scalar_type> UIn(mf_u.nb_dof(), 0.0);
@@ -1656,6 +1715,8 @@ void biotls_problem::print_crop(double time,int istep,double time_ls){
     }
 
   }
+  
+  std::cout<< "biotls_problem::print crop end displacement projection" <<std::endl;
 
   getfem::mesh_slice_cv_dof_data<std::vector<double>> a(ls.get_mesh_fem(), ls.values(0));
   getfem::slicer_isovalues a1(a,0,-1);
@@ -1673,7 +1734,7 @@ void biotls_problem::print_crop(double time,int istep,double time_ls){
   slicer.push_back_action(a4);
   slicer.exec(nrefine);
 
-
+  std::cout<< "biotls_problem::print crop end slicer" <<std::endl;
   
   if (isos_descr_->active){
     mesh.translation(*(isos_descr_->dx));
@@ -1685,6 +1746,7 @@ void biotls_problem::print_crop(double time,int istep,double time_ls){
     mesh_dim.translation(*(isos_descr_->mdx));
   }
   
+  std::cout<< "biotls_problem::print crop transformation" <<std::endl;
   bgeot::base_matrix M(N_,N_);
   bgeot::base_matrix Mm1(N_,N_); 
   for (size_type i=0; i < N_; ++i) {
@@ -1992,11 +2054,14 @@ void biotls_problem::print_pattern(int iter){
 void biotls_problem::print_aux(double time,int istep,double time_ls){
     std::vector<scalar_type> ls_vector(mf_p.nb_dof(), 0.0);
     std::vector<scalar_type> zeroes(mf_p.nb_dof(), 1.0);
-    std::vector<scalar_type> hice(mesh.convex_index().size(), 0.0);
+    std::vector<scalar_type> hice(mf_coef.nb_dof(), 0.0);
       //top load of ice
   
-  int t1=10*2; int t2=20*2;
-  int t3=30*2; int t4=35*2;
+    std::cout<<"biotls_problem::print_aux start"<<std::endl;
+//   int t1=10*2; int t2=20*2;
+//   int t3=30*2; int t4=35*2;
+  int t1=0; int t2=30*2;
+  int t3=60*2; int t4=90*2;
 //         std::vector<scalar_type> ice_force(1);ice_force[0] = 1.e+0;
   double p_buf=0.;
   if(step_<t1)       p_buf= 0.;
