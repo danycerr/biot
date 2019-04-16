@@ -4,11 +4,11 @@
 
 // #define BIOT
 // #define TEMPERATURE
-#define ISOSTASY
+// #define ISOSTASY
 #include "gmm/gmm_except.h"
 
-// #define BIOT_LS
-#define TEMP_LS
+#define BIOT_LS
+// #define TEMP_LS
 
 #ifdef BIOT_LS
 #include "biot_ls.hpp"
